@@ -2,6 +2,7 @@
 
 Unpretentious short and sweet HTML Builder
 
+## Example
 ```
 msg := html.NewHTML("This is in development. Please come back later")
 div := html.NewDiv().Attr("class", "container").AddChild(msg)
@@ -9,10 +10,10 @@ style := html.NewStyle("section{padding:40px;}")
 section := html.NewSection().AddChild(style).AddChild(div)
 section.ToHTML()
 ````
-  
 
-# Implemented Tag Shortcuts
+## Implemented Tag Shortcuts
 
+- NewButton()
 - NewDiv()
 - NewForm()
 - NewHTML()
@@ -23,8 +24,10 @@ section.ToHTML()
 - NewHeading5()
 - NewHeading6()
 - NewHyperlink()
-- NewImg()
+- NewImage()
+- NewInput()
 - NewParagraph()
 - NewScript()
+- NewSpan()
 - NewStyle()
 - NewSection()
