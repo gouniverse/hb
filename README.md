@@ -16,7 +16,7 @@ section.ToHTML()
 - NewButton()
 - NewDiv()
 - NewForm()
-- NewHTML()
+- NewHTML(html string)
 - NewHeading1()
 - NewHeading2()
 - NewHeading3()
@@ -31,3 +31,21 @@ section.ToHTML()
 - NewSpan()
 - NewStyle()
 - NewSection()
+
+## Tag Methods
+
+- Attr (shortcut for SetAttribute)
+- AddChild(tag Tag)
+- AddChildren(tag []Tag)
+- GetAttribute(key string)
+- SetAttribute(key, value string)
+- ToHTML
+
+## Working with Raw Tags
+
+```
+tag := &Tag{
+		TagName: "custom-element",
+}
+tag.toHTML()
+```
