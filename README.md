@@ -45,7 +45,7 @@ section.ToHTML()
 
 ```
 tag := &Tag{
-		TagName: "custom-element",
+	TagName: "custom-element",
 }
 tag.toHTML()
 ```
