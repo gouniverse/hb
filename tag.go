@@ -5,7 +5,7 @@ type Tag struct {
 	name        string
 	text       string
 	attributes map[string]string
-	children   []*Node
+	children   []*Tag
 }
 
 // ToHTML returns HTML from Node
