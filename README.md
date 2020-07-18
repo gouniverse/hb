@@ -39,7 +39,7 @@ section.ToHTML()
 - AddChildren(tag []Tag)
 - GetAttribute(key string)
 - SetAttribute(key, value string)
-- ToHTML
+- ToHTML()
 
 ## Working with Raw Tags
 
