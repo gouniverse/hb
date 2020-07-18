@@ -12,7 +12,7 @@ type Tag struct {
 func (t Tag) ToHTML() string {
 	attrString := ""
 	
-  for key, value := range t.attributes {
+	for key, value := range t.attributes {
 		attrString += `"` + key + `"="` + value + `"`
 	}
   
