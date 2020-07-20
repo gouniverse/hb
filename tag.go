@@ -162,11 +162,11 @@ func NewScript(javascript string) *Tag {
 }
 
 // NewScriptURL represents a SCRIPT tag with URL
-func NewScript(javascriptURL string) *Tag {
+func NewScriptURL(javascriptURL string) *Tag {
 	tag := &Tag{
 		TagName: "script",
 	}
-	tad.SetAttribute("src", javascriptURL)
+	tag.SetAttribute("src", javascriptURL)
 	return tag
 }
 
@@ -198,8 +198,8 @@ func NewStyle(css string) *Tag {
 // NewStyleURL represents a LINK tag with URL
 func NewStyleURL(styleURL string) *Tag {
 	tag := NewLink()
-	tad.SetAttribute("href", styleURL)	
-	tad.SetAttribute("rel", "stylesheet")
+	tag.SetAttribute("href", styleURL)	
+	tag.SetAttribute("rel", "stylesheet")
 	return tag
 }
 
