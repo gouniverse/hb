@@ -132,6 +132,12 @@ func NewInput() *Tag {
 	return tag
 }
 
+// NewMeta represents a META tag
+func NewMeta() *Tag {
+	tag := &Tag{TagName: "meta"}
+	return tag
+}
+
 // NewParagraph represents a IMG tag
 func NewParagraph() *Tag {
 	tag := &Tag{
@@ -224,6 +230,7 @@ func (t *Tag) ToHTML() string {
 		"img",
 		"input",
 		"link",
+		"meta",
 	}
 
 	isShortTag := inArrayString(shortTags, t.TagName)
