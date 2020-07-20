@@ -6,6 +6,7 @@ type Webpage struct {
 	Body        *Tag
 	Charset     string
 	Title       string
+	Favicon     string
 	Keywords    string
 	Description string
 	ScriptURLs  []string
@@ -22,6 +23,13 @@ func (w *Webpage) ToHTML() string {
 		titleTag := &Tag{TagName: "title"}
 		titleTag.AddChild(NewHTML(w.Title))
 		w.Head.AddChild(titleTag)
+	}
+	if w.Favicon != "" {
+		faviconTag := hb.NewLink()
+		faviconTag.SetAttribute("href", w.Favicon)
+		faviconTag.SetAttribute("rel", "icon")
+		faviconTag.SetAttribute("type", "image/x-icon")
+		w.Head.AddChild(faviconTag)
 	}
 	if w.Keywords != "" {
 		metaKeywords := NewMeta()
@@ -56,6 +64,12 @@ func (w *Webpage) ToHTML() string {
 // AddChild adds a tag to the webpage
 func (w *Webpage) AddChild(child *Tag) *Webpage {
 	w.Body.AddChild(child)
+	return w
+}
+
+// SetFavicon sets the favicon of the webpage
+func (w *Webpage) SetFavicon(favicon string) *Webpage {
+	w.Favicon = favicon
 	return w
 }
 
