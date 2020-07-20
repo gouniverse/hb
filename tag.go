@@ -203,6 +203,16 @@ func NewStyleURL(styleURL string) *Tag {
 	return tag
 }
 
+// NewWebpage returns a webpage instance
+func NewWebpage() *Webpage {
+	headTag := &Tag{TagName: "head"}
+	bodyTag := &Tag{TagName: "body"}
+	h := &Webpage{Charset: "utf-8"}
+	h.Head = headTag
+	h.Body = bodyTag
+	return h
+}
+
 // Tag represents an HTML tag
 type Tag struct {
 	TagName       string
