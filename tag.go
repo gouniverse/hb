@@ -132,6 +132,12 @@ func NewInput() *Tag {
 	return tag
 }
 
+// NewLink represents a LINK tag
+func NewLink() *Tag {
+	tag := &Tag{TagName: "link"}
+	return tag
+}
+
 // NewMeta represents a META tag
 func NewMeta() *Tag {
 	tag := &Tag{TagName: "meta"}
@@ -146,12 +152,21 @@ func NewParagraph() *Tag {
 	return tag
 }
 
-// NewScript represents a STYLE tag
+// NewScript represents a SCRIPT tag
 func NewScript(javascript string) *Tag {
 	tag := &Tag{
 		TagName: "script",
 	}
 	tag.AddChild(NewHTML(javascript))
+	return tag
+}
+
+// NewScriptURL represents a SCRIPT tag with URL
+func NewScript(javascriptURL string) *Tag {
+	tag := &Tag{
+		TagName: "script",
+	}
+	tad.SetAttribute("src", javascriptURL)
 	return tag
 }
 
@@ -177,6 +192,14 @@ func NewStyle(css string) *Tag {
 		TagName: "style",
 	}
 	tag.AddChild(NewHTML(css))
+	return tag
+}
+
+// NewStyleURL represents a LINK tag with URL
+func NewStyleURL(styleURL string) *Tag {
+	tag := NewLink()
+	tad.SetAttribute("href", styleURL)	
+	tad.SetAttribute("rel", "stylesheet")
 	return tag
 }
 
