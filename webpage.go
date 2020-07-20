@@ -25,7 +25,7 @@ func (w *Webpage) ToHTML() string {
 		w.Head.AddChild(titleTag)
 	}
 	if w.Favicon != "" {
-		faviconTag := hb.NewLink()
+		faviconTag := NewLink()
 		faviconTag.SetAttribute("href", w.Favicon)
 		faviconTag.SetAttribute("rel", "icon")
 		faviconTag.SetAttribute("type", "image/x-icon")
