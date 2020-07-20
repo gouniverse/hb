@@ -1,7 +1,7 @@
 package html
 
 type Webpage struct {
-	hb.Tag
+	Tag
 	Head        *Tag
 	Body        *Tag
 	Charset     string
@@ -19,8 +19,8 @@ func (w *Webpage) ToHTML() string {
 	metaCharset := NewMeta().Attr("charset", "utf-8")
 	w.Head.AddChild(metaCharset)
 	if w.Title != "" {
-		titleTag := &hb.Tag{TagName: "title"}
-		titleTag.AddChild(hb.NewHTML(w.Title))
+		titleTag := &Tag{TagName: "title"}
+		titleTag.AddChild(NewHTML(w.Title))
 		w.Head.AddChild(titleTag)
 	}
 	if w.Keywords != "" {
@@ -47,7 +47,7 @@ func (w *Webpage) ToHTML() string {
 	for _, script := range w.Scripts {
 		w.Body.AddChild(NewScript(script))
 	}
-	h := hb.NewHTML("<!DOCTYPE html>")
+	h := NewHTML("<!DOCTYPE html>")
 	h.AddChild(w.Head)
 	h.AddChild(w.Body)
 	return h.ToHTML()
