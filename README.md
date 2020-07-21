@@ -8,10 +8,10 @@ Unpretentious short and sweet HTML Builder
 
 ```
 // 1. Create a div container with "Hello world" message
-div := html.NewDiv().Attr("class", "container").HTML("Hello world")
+div := NewDiv().Attr("class", "container").HTML("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := html.NewSection().Attr("style","padding:40px;").AddChild(div)
+section := NewSection().Attr("style","padding:40px;").AddChild(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
@@ -58,6 +58,19 @@ go get -u github.com/gouniverse/html@v1.9.0
 - SetAttribute(key, value string)
 - ToHTML()
 
+## Webpage Methods
+- AddChild(child *Tag)
+- SetFavicon(favicon string)
+- SetTitle(title string)
+- AddScripts(scripts []string)
+- AddScript(script string)
+- AddScriptURLs(scriptURLs []string)
+- AddScriptURL(scriptURL string)
+- AddStyle(style string)
+- AddStyles(styles []string)
+- AddStyleURL(styleURL string)
+- AddStyleURLs(styleURLs []string)
+
 ## Working with Raw Tags
 
 ```
@@ -100,4 +113,23 @@ card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
 
 // Convert to HTML to display
 html := card.ToHTML()
+```
+
+- Webpage with title, favicon, font-awesome icons, jQuery and Bootstrap
+
+```
+// 1. Webpage Title
+title := "Title"
+
+// 2. Webpage Favicon
+favicon := "data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABNTU0AVKH/AOPj4wDExMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIiAREQEREAIiIBERAREQAiIgIiICIiACIiAiIgIiIAMzMDMzAzMwAzMwMzMDMzACIiAiIgIiIAIiICIiAiIgAzMwMzMDMzADMzAzMwMzMAIiICIiAiIgAiIgIiICIiAAAAAAAAAAAAIiICIiAiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+
+// 3. Webpage
+webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]string{
+		"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
+	}).AddScriptURLs([]string{
+		"https://code.jquery.com/jquery-3.2.1.min.js",
+		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js",
+	}).AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`).AddChild(NewDiv().HTML("Hello"))
 ```
