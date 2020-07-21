@@ -132,7 +132,7 @@ func NewInput() *Tag {
 	return tag
 }
 
-// NewLink represents a LABEL tag
+// NewLabel represents a LABEL tag
 func NewLabel() *Tag {
 	tag := &Tag{TagName: "label"}
 	return tag
