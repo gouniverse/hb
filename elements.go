@@ -16,10 +16,10 @@ func NewDiv() *Tag {
 	return tag
 }
 
-// NewForm represents a IMG tag
+// NewForm represents a FORM tag
 func NewForm() *Tag {
 	tag := &Tag{
-		TagName: "input",
+		TagName: "form",
 	}
 	return tag
 }
@@ -179,6 +179,14 @@ func NewStyleURL(styleURL string) *Tag {
 	tag := NewLink()
 	tag.SetAttribute("href", styleURL)	
 	tag.SetAttribute("rel", "stylesheet")
+	return tag
+}
+
+// NewTextArea represents a FORM tag
+func NewTextArea() *Tag {
+	tag := &Tag{
+		TagName: "textarea",
+	}
 	return tag
 }
 
