@@ -80,6 +80,11 @@ tag := &Tag{
 tag.toHTML()
 ```
 
+## Escaping HTML
+For safeguarding HTML use the EscapeString method from the standard HTML library
+
+Link with example: https://golang.org/pkg/html/#EscapeString
+
 ## Examples
 
 - Bootstrap login form
