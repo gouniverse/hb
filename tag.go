@@ -132,6 +132,12 @@ func NewInput() *Tag {
 	return tag
 }
 
+// NewLink represents a LABEL tag
+func NewLabel() *Tag {
+	tag := &Tag{TagName: "label"}
+	return tag
+}
+
 // NewLink represents a LINK tag
 func NewLink() *Tag {
 	tag := &Tag{TagName: "link"}
