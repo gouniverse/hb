@@ -23,7 +23,7 @@ html := section.ToHTML()
 ## Installation
 
 ```
-go get -u github.com/gouniverse/html@v1.9.0
+go get -u github.com/gouniverse/html@v2.0.0
 ```
 
 ## Implemented Tag Shortcuts
