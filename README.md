@@ -7,11 +7,13 @@ Unpretentious short and sweet HTML Builder
 - Section containing div container (Bootstrap) with a message "Hello world"
 
 ```
+import hb "github.com/gouniverse/html"
+	
 // 1. Create a div container with "Hello world" message
-div := NewDiv().Attr("class", "container").HTML("Hello world")
+div := hb.NewDiv().Attr("class", "container").HTML("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := NewSection().Attr("style","padding:40px;").AddChild(div)
+section := hb.NewSection().Attr("style","padding:40px;").AddChild(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
