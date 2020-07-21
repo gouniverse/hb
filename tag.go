@@ -27,198 +27,6 @@ func inArrayString(arr []string, str string) bool {
 	return false
 }
 
-// NewButton represents a BUTTON tag
-func NewButton() *Tag {
-	tag := &Tag{
-		TagName: "button",
-	}
-	return tag
-}
-
-// NewDiv represents a DIV tag
-func NewDiv() *Tag {
-	tag := &Tag{
-		TagName: "div",
-	}
-	return tag
-}
-
-// NewForm represents a IMG tag
-func NewForm() *Tag {
-	tag := &Tag{
-		TagName: "input",
-	}
-	return tag
-}
-
-// NewHTML creates pure HTML without surrounding tags
-func NewHTML(html string) *Tag {
-	textTag := &Tag{
-		TagName:    "",
-		TagContent: html,
-	}
-	return textTag
-}
-
-// NewHeading1 represents a H1 tag
-func NewHeading1() *Tag {
-	tag := &Tag{
-		TagName: "h1",
-	}
-	return tag
-}
-
-// NewHeading2 represents a H1 tag
-func NewHeading2() *Tag {
-	tag := &Tag{
-		TagName: "h2",
-	}
-	return tag
-}
-
-// NewHeading3 represents a H1 tag
-func NewHeading3() *Tag {
-	tag := &Tag{
-		TagName: "h3",
-	}
-	return tag
-}
-
-// NewHeading4 represents a H1 tag
-func NewHeading4() *Tag {
-	tag := &Tag{
-		TagName: "h4",
-	}
-	return tag
-}
-
-// NewHeading5 represents a H1 tag
-func NewHeading5() *Tag {
-	tag := &Tag{
-		TagName: "h5",
-	}
-	return tag
-}
-
-// NewHeading6 represents a H1 tag
-func NewHeading6() *Tag {
-	tag := &Tag{
-		TagName: "h6",
-	}
-	return tag
-}
-
-// NewHyperlink represents a H1 tag
-func NewHyperlink() *Tag {
-	tag := &Tag{
-		TagName: "a",
-	}
-	return tag
-}
-
-// NewImage represents a IMG tag
-func NewImage() *Tag {
-	tag := &Tag{
-		TagName: "img",
-	}
-	return tag
-}
-
-// NewInput represents a IMG tag
-func NewInput() *Tag {
-	tag := &Tag{
-		TagName: "input",
-	}
-	return tag
-}
-
-// NewLabel represents a LABEL tag
-func NewLabel() *Tag {
-	tag := &Tag{TagName: "label"}
-	return tag
-}
-
-// NewLink represents a LINK tag
-func NewLink() *Tag {
-	tag := &Tag{TagName: "link"}
-	return tag
-}
-
-// NewMeta represents a META tag
-func NewMeta() *Tag {
-	tag := &Tag{TagName: "meta"}
-	return tag
-}
-
-// NewParagraph represents a IMG tag
-func NewParagraph() *Tag {
-	tag := &Tag{
-		TagName: "p",
-	}
-	return tag
-}
-
-// NewScript represents a SCRIPT tag
-func NewScript(javascript string) *Tag {
-	tag := &Tag{
-		TagName: "script",
-	}
-	tag.AddChild(NewHTML(javascript))
-	return tag
-}
-
-// NewScriptURL represents a SCRIPT tag with URL
-func NewScriptURL(javascriptURL string) *Tag {
-	tag := &Tag{
-		TagName: "script",
-	}
-	tag.SetAttribute("src", javascriptURL)
-	return tag
-}
-
-// NewSection represents a SECTION tag
-func NewSection() *Tag {
-	tag := &Tag{
-		TagName: "section",
-	}
-	return tag
-}
-
-// NewSpan represents a SPAN tag
-func NewSpan() *Tag {
-	tag := &Tag{
-		TagName: "span",
-	}
-	return tag
-}
-
-// NewStyle represents a STYLE tag
-func NewStyle(css string) *Tag {
-	tag := &Tag{
-		TagName: "style",
-	}
-	tag.AddChild(NewHTML(css))
-	return tag
-}
-
-// NewStyleURL represents a LINK tag with URL
-func NewStyleURL(styleURL string) *Tag {
-	tag := NewLink()
-	tag.SetAttribute("href", styleURL)	
-	tag.SetAttribute("rel", "stylesheet")
-	return tag
-}
-
-// NewWebpage returns a webpage instance
-func NewWebpage() *Webpage {
-	headTag := &Tag{TagName: "head"}
-	bodyTag := &Tag{TagName: "body"}
-	h := &Webpage{Charset: "utf-8"}
-	h.Head = headTag
-	h.Body = bodyTag
-	return h
-}
-
 // Tag represents an HTML tag
 type Tag struct {
 	TagName       string
@@ -232,17 +40,28 @@ func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
 }
 
-// AddChild returns HTML from Node
+// HTML shortcut for AddHTML
+func (t *Tag) HTML(html string) *Tag {
+	return t.AddHTML(html)
+}
+
+// AddChild adds a new child tag to this tag
 func (t *Tag) AddChild(child *Tag) *Tag {
 	t.TagChildren = append(t.TagChildren, child)
 	return t
 }
 
-// AddChildren returns HTML from Node
+// AddChildren adds an array of child tags to this tag
 func (t *Tag) AddChildren(children []*Tag) *Tag {
 	for _, child := range children {
 		t.AddChild(child)
 	}
+	return t
+}
+
+// AddHTML adds an HTML as child tags to this tag
+func (t *Tag) AddHTML(html string) *Tag {
+	t.AddChild(NewHTML(html))
 	return t
 }
 
