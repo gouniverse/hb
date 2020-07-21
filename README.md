@@ -44,9 +44,12 @@ go get -u github.com/gouniverse/html@v1.9.0
 - NewLabel()
 - NewParagraph()
 - NewScript()
+- NewScriptURL()
 - NewSpan()
 - NewStyle()
+- NewStyleURL()
 - NewSection()
+- NewTextArea()
 - NewWebpage()
 
 ## Tag Methods
