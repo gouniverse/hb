@@ -6,7 +6,7 @@ Unpretentious short and sweet HTML Builder
 
 - Section containing div container (Bootstrap) with a message "Hello world"
 
-```
+```go
 import hb "github.com/gouniverse/html"
 	
 // 1. Create a div container with "Hello world" message
@@ -17,12 +17,13 @@ section := hb.NewSection().Attr("style","padding:40px;").AddChild(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
-````
-!!! For more examples look below
+```
+
+!!! For more examples look below in the README
 
 ## Installation
 
-```
+```ssh
 go get -u github.com/gouniverse/html@v1.10.0
 ```
 
@@ -78,7 +79,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 
 ## Working with Raw Tags
 
-```
+```go
 tag := &Tag{
 	TagName: "custom-element",
 }
@@ -94,7 +95,7 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 
 - Bootstrap login form
 
-```
+```go
 // Elements for the form
 header := hb.NewHeading3().HTML("Please sign in").Attr("style", "margin:0px;")
 emailLabel := hb.NewLabel().HTML("E-mail Address")
@@ -127,7 +128,7 @@ html := card.ToHTML()
 
 - Webpage with title, favicon, font-awesome icons, jQuery and Bootstrap
 
-```
+```go
 // 1. Webpage Title
 title := "Title"
 
