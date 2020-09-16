@@ -112,7 +112,7 @@ func NewLabel() *Tag {
 }
 
 // NewLI represents a LI tag
-func NewLink() *Tag {
+func NewLI() *Tag {
 	tag := &Tag{TagName: "li"}
 	return tag
 }
