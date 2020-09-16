@@ -123,6 +123,22 @@ func NewMeta() *Tag {
 	return tag
 }
 
+// NewNav represents a NAV tag
+func NewNav() *Tag {
+	tag := &Tag{
+		TagName: "nav",
+	}
+	return tag
+}
+
+// NewNavbar represents a NAVBAR tag
+func NewNavbar() *Tag {
+	tag := &Tag{
+		TagName: "navbar",
+	}
+	return tag
+}
+
 // NewParagraph represents a IMG tag
 func NewParagraph() *Tag {
 	tag := &Tag{
