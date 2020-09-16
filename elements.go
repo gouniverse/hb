@@ -139,6 +139,14 @@ func NewNavbar() *Tag {
 	return tag
 }
 
+// NewOL represents a UL tag
+func NewOL() *Tag {
+	tag := &Tag{
+		TagName: "ol",
+	}
+	return tag
+}
+
 // NewParagraph represents a IMG tag
 func NewParagraph() *Tag {
 	tag := &Tag{
@@ -202,6 +210,14 @@ func NewStyleURL(styleURL string) *Tag {
 func NewTextArea() *Tag {
 	tag := &Tag{
 		TagName: "textarea",
+	}
+	return tag
+}
+
+// NewUL represents a UL tag
+func NewUL() *Tag {
+	tag := &Tag{
+		TagName: "ul",
 	}
 	return tag
 }
