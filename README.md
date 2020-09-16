@@ -42,7 +42,11 @@ go get -u github.com/gouniverse/html@v1.10.0
 - NewHyperlink()
 - NewImage()
 - NewInput()
+- NewLI()
 - NewLabel()
+- NewNav()
+- NewNavbar()
+- NewOL()
 - NewParagraph()
 - NewScript()
 - NewScriptURL()
@@ -51,6 +55,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 - NewStyleURL()
 - NewSection()
 - NewTextArea()
+- NewUL()
 - NewWebpage()
 
 ## Tag Methods
