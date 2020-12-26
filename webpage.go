@@ -1,5 +1,6 @@
 package html
 
+// Webpage represents a web page
 type Webpage struct {
 	Tag
 	Head        *Tag
