@@ -56,7 +56,13 @@ go get -u github.com/gouniverse/html@v1.10.0
 - NewStyle()
 - NewStyleURL()
 - NewSection()
+- NewTable()
+- NewTBody()
+- NewTD()
 - NewTextArea()
+- NewTH()
+- NewThead()
+- NewTR()
 - NewUL()
 - NewWebpage()
 
