@@ -231,7 +231,7 @@ func NewTR() *Tag {
 // NewTD represents a TD tag
 func NewTD() *Tag {
 	tag := &Tag{
-		TagName: "textarea",
+		TagName: "td",
 	}
 	return tag
 }
