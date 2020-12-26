@@ -153,6 +153,14 @@ func NewOL() *Tag {
 	return tag
 }
 
+// NewOption represents an OPTION tag
+func NewOption() *Tag {
+	tag := &Tag{
+		TagName: "option",
+	}
+	return tag
+}
+
 // NewParagraph represents a IMG tag
 func NewParagraph() *Tag {
 	tag := &Tag{
@@ -183,6 +191,14 @@ func NewScriptURL(javascriptURL string) *Tag {
 func NewSection() *Tag {
 	tag := &Tag{
 		TagName: "section",
+	}
+	return tag
+}
+
+// NewSelect represents a SELECT tag
+func NewSelect() *Tag {
+	tag := &Tag{
+		TagName: "select",
 	}
 	return tag
 }
@@ -236,7 +252,7 @@ func NewTD() *Tag {
 	return tag
 }
 
-// NewTBody represents a TBODY tag
+// NewTbody represents a TBODY tag
 func NewTbody() *Tag {
 	tag := &Tag{
 		TagName: "tbody",
