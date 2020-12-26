@@ -1,6 +1,6 @@
 # HTML
 
-![tests](https://github.com/gouniverse/html/workflows/build-and-test/badge.svg)
+![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
 Unpretentious short and sweet HTML Builder.
 
