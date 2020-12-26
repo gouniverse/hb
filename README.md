@@ -2,7 +2,15 @@
 
 ![tests](https://github.com/gouniverse/html/workflows/build-and-test/badge.svg)
 
-Unpretentious short and sweet HTML Builder
+Unpretentious short and sweet HTML Builder.
+
+## Benefits
+
+- Valid (X)HTML
+- Programatically generate (X)HTML
+- Pure GO code
+- No need to transfer HTML files
+- No need to embed HTML files
 
 ## Example
 
