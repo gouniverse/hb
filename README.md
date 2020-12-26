@@ -149,3 +149,6 @@ webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]strin
 		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js",
 	}).AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`).AddChild(NewDiv().HTML("Hello"))
 ```
+
+## Changelog
+2020.12.26 - Fix for attribute escapes, added tests
