@@ -10,7 +10,8 @@ func addslashes(str string) string {
 	var buf bytes.Buffer
 	for _, char := range str {
 		switch char {
-		case '\'', '"', '\\':
+		//case '\'', '"', '\\':
+		case '"', '\\':
 			buf.WriteRune('\\')
 		}
 		buf.WriteRune(char)
