@@ -1,5 +1,7 @@
 # HTML
 
+![example workflow name](https://github.com/actions/hello-world/workflows/build-and-test/badge.svg)
+
 Unpretentious short and sweet HTML Builder
 
 ## Example
