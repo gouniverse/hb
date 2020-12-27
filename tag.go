@@ -119,8 +119,12 @@ func (t Tag) attrToString() string {
 	if attrString != "" {
 		attrString = " " + attrString
 	}
+	
+	if len(attrString)<1{
+        return ""
+	}
 
-	return attrString
+	return " " + strings.Trim(attrString, " ")
 }
 
 func (t Tag) childrenToString() string {
