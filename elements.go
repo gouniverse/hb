@@ -1,11 +1,24 @@
 package html
 
+// NewTag represents a tag
+func NewTag(tagName string) *Tag {
+	tag := &Tag{
+		TagName: tagName,
+	}
+	return tag
+}
+
 // NewButton represents a BUTTON tag
 func NewButton() *Tag {
 	tag := &Tag{
 		TagName: "button",
 	}
 	return tag
+}
+
+// NewCode represents a CODE tag
+func NewCode() *Tag {
+	return NewTag("code")
 }
 
 // NewDiv represents a DIV tag
@@ -167,6 +180,12 @@ func NewParagraph() *Tag {
 		TagName: "p",
 	}
 	return tag
+}
+
+
+// NewPRE represents a PRE tag
+func NewPRE() *Tag {
+	return NewTag("pre")
 }
 
 // NewScript represents a SCRIPT tag
