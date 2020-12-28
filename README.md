@@ -179,3 +179,5 @@ webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]strin
 2020.12.26 - Fix for attribute escapes, added tests
 
 2020.09.16 - Added shortcuts for &lt;nav>, &lt;navbar>, &lt;ol>, &lt;ul>, &lt;li> tags
+
+2020.06.16 - Initial commit
