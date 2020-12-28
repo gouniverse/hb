@@ -40,42 +40,42 @@ go get -u github.com/gouniverse/html@v1.10.0
 ## Implemented Tag Shortcuts
 
 - <b>NewButton()</b> - shortcut for &lt;button> tag
-- <b>NewCode()</b> - shortcut for <code> tag
-- <b>NewDiv()</b> - shortcut for <div> tag
-- <b>NewForm()</b> - shortcut for <form> tag
+- <b>NewCode()</b> - shortcut for &lt;code> tag
+- <b>NewDiv()</b> - shortcut for &lt;div> tag
+- <b>NewForm()</b> - shortcut for &lt;form> tag
 - <b>NewHTML(html string)</b> - adds HTML content to tag
-- <b>NewHeading1()</b> - shortcut for <h1> tag
-- <b>NewHeading2()</b> - shortcut for <h2> tag
-- <b>NewHeading3()</b> - shortcut for <h3> tag
-- <b>NewHeading4()</b> - shortcut for <h4> tag
-- <b>NewHeading5()</b> - shortcut for <h5> tag
-- <b>NewHeading6()</b> - shortcut for <h6> tag
-- <b>NewHyperlink()</b> - shortcut for <a> tag
-- <b>NewImage()</b> - shortcut for <img> tag
-- <b>NewInput()</b> - shortcut for <input> tag
-- <b>NewLI()</b> - shortcut for <li> tag
-- <b>NewLabel()</b> - shortcut for <label> tag
-- <b>NewNav()</b> - shortcut for <nav> tag
-- <b>NewNavbar()</b> - shortcut for <navbar> tag
-- <b>NewOL()</b> - shortcut for <ol> tag
-- <b>NewOption()</b> - shortcut for <option> tag
-- <b>NewParagraph()</b> - shortcut for <p> tag
-- <b>NewPRE()</b> - shortcut for <pre> tag
-- <b>NewScript()</b> - shortcut for <script> tag
-- <b>NewScriptURL()</b> - shortcut for <script src="{SRC}"> tag
-- <b>NewSelect()</b> - shortcut for <select> tag
-- <b>NewSpan()</b>
-- <b>NewStyle()</b>
-- <b>NewStyleURL()</b>
-- <b>NewSection()</b>
+- <b>NewHeading1()</b> - shortcut for &lt;h1> tag
+- <b>NewHeading2()</b> - shortcut for &lt;h2> tag
+- <b>NewHeading3()</b> - shortcut for &lt;h3> tag
+- <b>NewHeading4()</b> - shortcut for &lt;h4> tag
+- <b>NewHeading5()</b> - shortcut for &lt;h5> tag
+- <b>NewHeading6()</b> - shortcut for &lt;h6> tag
+- <b>NewHyperlink()</b> - shortcut for &lt;a> tag
+- <b>NewImage()</b> - shortcut for &lt;img> tag
+- <b>NewInput()</b> - shortcut for &lt;input> tag
+- <b>NewLI()</b> - shortcut for &lt;li> tag
+- <b>NewLabel()</b> - shortcut for &lt;label> tag
+- <b>NewNav()</b> - shortcut for &lt;nav> tag
+- <b>NewNavbar()</b> - shortcut for &lt;navbar> tag
+- <b>NewOL()</b> - shortcut for &lt;ol> tag
+- <b>NewOption()</b> - shortcut for &lt;option> tag
+- <b>NewParagraph()</b> - shortcut for &lt;p> tag
+- <b>NewPRE()</b> - shortcut for &lt;pre> tag
+- <b>NewScript()</b> - shortcut for &lt;script> tag
+- <b>NewScriptURL()</b> - shortcut for &lt;script src="{SRC}"> tag
+- <b>NewSelect()</b> - shortcut for &lt;select> tag
+- <b>NewSpan()</b> - shortcut for &lt;span> tag
+- <b>NewStyle()</b> - shortcut for &lt;style> tag
+- <b>NewStyleURL()</b> - shortcut for &lt;link> tag
+- <b>NewSection()</b> - shortcut for &lt;section> tag
 - <b>NewTag(tagName string)</b> - for custom tags
-- <b>NewTable()</b>
-- <b>NewTBody()</b>
-- <b>NewTD()</b>
-- <b>NewTextArea()</b>
-- <b>NewTH()</b>
-- <b>NewThead()</b>
-- <b>NewTR()</b>
+- <b>NewTable()</b> - shortcut for &lt;table> tag
+- <b>NewTBody()</b> - shortcut for &lt;tbody> tag
+- <b>NewTD()</b> - shortcut for &lt;td> tag
+- <b>NewTextArea()</b> - shortcut for &lt;textarea> tag
+- <b>NewTH()</b> - shortcut for &lt;th> tag
+- <b>NewThead()</b> - shortcut for &lt;thead> tag
+- <b>NewTR()</b> - shortcut for &lt;tr> tag
 - <b>NewUL()</b> - shortcut for <ul> tag
 - <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
 
