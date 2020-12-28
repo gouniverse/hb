@@ -39,45 +39,45 @@ go get -u github.com/gouniverse/html@v1.10.0
 
 ## Implemented Tag Shortcuts
 
-- NewButton()
-- NewCode()
-- NewDiv()
-- NewForm()
-- NewHTML(html string)
-- NewHeading1()
-- NewHeading2()
-- NewHeading3()
-- NewHeading4()
-- NewHeading5()
-- NewHeading6()
-- NewHyperlink()
-- NewImage()
-- NewInput()
-- NewLI()
-- NewLabel()
-- NewNav()
-- NewNavbar()
-- NewOL()
-- NewOption()
-- NewParagraph()
-- NewPRE()
-- NewScript()
-- NewScriptURL()
-- NewSelect()
-- NewSpan()
-- NewStyle()
-- NewStyleURL()
-- NewSection()
-- NewTag(tagName string) - for custom tags
-- NewTable()
-- NewTBody()
-- NewTD()
-- NewTextArea()
-- NewTH()
-- NewThead()
-- NewTR()
-- NewUL()
-- NewWebpage()
+- <b>NewButton()</b> - shortcut for <button> tag
+- <b>NewCode()</b> - shortcut for <code> tag
+- <b>NewDiv()</b> - shortcut for <div> tag
+- <b>NewForm()</b> - shortcut for <form> tag
+- <b>NewHTML(html string)</b> - adds HTML content to tag
+- <b>NewHeading1()</b> - shortcut for <h1> tag
+- <b>NewHeading2()</b> - shortcut for <h2> tag
+- <b>NewHeading3()</b> - shortcut for <h3> tag
+- <b>NewHeading4()</b> - shortcut for <h4> tag
+- <b>NewHeading5()</b> - shortcut for <h5> tag
+- <b>NewHeading6()</b> - shortcut for <h6> tag
+- <b>NewHyperlink()</b> - shortcut for <a> tag
+- <b>NewImage()</b> - shortcut for <img> tag
+- <b>NewInput()</b> - shortcut for <input> tag
+- <b>NewLI()</b> - shortcut for <li> tag
+- <b>NewLabel()</b> - shortcut for <label> tag
+- <b>NewNav()</b> - shortcut for <nav> tag
+- <b>NewNavbar()</b> - shortcut for <navbar> tag
+- <b>NewOL()</b> - shortcut for <ol> tag
+- <b>NewOption()</b> - shortcut for <option> tag
+- <b>NewParagraph()</b> - shortcut for <p> tag
+- <b>NewPRE()</b> - shortcut for <pre> tag
+- <b>NewScript()</b> - shortcut for <script> tag
+- <b>NewScriptURL()</b> - shortcut for <script src="{SRC}"> tag
+- <b>NewSelect()</b> - shortcut for <select> tag
+- <b>NewSpan()</b>
+- <b>NewStyle()</b>
+- <b>NewStyleURL()</b>
+- <b>NewSection()</b>
+- <b>NewTag(tagName string)</b> - for custom tags
+- <b>NewTable()</b>
+- <b>NewTBody()</b>
+- <b>NewTD()</b>
+- <b>NewTextArea()</b>
+- <b>NewTH()</b>
+- <b>NewThead()</b>
+- <b>NewTR()</b>
+- <b>NewUL()</b> - shortcut for <ul> tag
+- <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
 
 ## Tag Methods
 
@@ -172,4 +172,5 @@ webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]strin
 ```
 
 ## Changelog
+2020.12.28 - Added shortcuts for <code>, <pre> tags
 2020.12.26 - Fix for attribute escapes, added tests
