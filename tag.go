@@ -116,7 +116,7 @@ func (t Tag) attrToString() string {
 	sort.Strings(keys)
 
 	for _, k := range keys {
-		value := t.TagAttributes[k])
+		value := t.TagAttributes[k]
 	        //for key, value := range t.TagAttributes {
 		if strings.Trim(value, " ") == "" {
 			continue
