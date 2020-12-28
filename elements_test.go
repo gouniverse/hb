@@ -14,7 +14,7 @@ func TestTagCode(t *testing.T) {
 }
 
 func TestTagPRE(t *testing.T) {
-	tag := NewPRE)
+	tag := NewPRE()
 	h := tag.ToHTML()
 	if strings.Contains(h, "<pre></pre>") == false {
 		t.Error("Does not contain '<pre></pre>'", "Output:"+h)
