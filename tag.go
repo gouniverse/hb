@@ -108,8 +108,16 @@ func (t *Tag) ToHTML() string {
 
 func (t Tag) attrToString() string {
 	attrString := ""
+	
+	keys := make([]string, 0, len(t.TagAttributes))
+	for k := range t.TagAttributes {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
 
-	for key, value := range t.TagAttributes {
+	for _, k := range keys {
+		value := t.TagAttributes[k])
+	        //for key, value := range t.TagAttributes {
 		if strings.Trim(value, " ") == "" {
 			continue
 		}
@@ -121,7 +129,7 @@ func (t Tag) attrToString() string {
 	}
 	
 	if len(attrString)<1{
-        return ""
+        	return ""
 	}
 
 	return " " + strings.Trim(attrString, " ")
