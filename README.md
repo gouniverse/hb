@@ -173,5 +173,7 @@ webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]strin
 
 ## Changelog
 2020.12.28 - Added shortcuts for &lt;code>, &lt;pre> tags
+
 2020.12.27 - Added shortcuts for &lt;table>, &lt;thead>, &lt;tbody>, &lt;tr>, &lt;th>, &lt;td> tags
+
 2020.12.26 - Fix for attribute escapes, added tests
