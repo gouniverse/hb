@@ -40,6 +40,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 ## Implemented Tag Shortcuts
 
 - NewButton()
+- NewCode()
 - NewDiv()
 - NewForm()
 - NewHTML(html string)
@@ -59,6 +60,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 - NewOL()
 - NewOption()
 - NewParagraph()
+- NewPRE()
 - NewScript()
 - NewScriptURL()
 - NewSelect()
@@ -66,6 +68,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 - NewStyle()
 - NewStyleURL()
 - NewSection()
+- NewTag(tagName string) - for custom tags
 - NewTable()
 - NewTBody()
 - NewTD()
