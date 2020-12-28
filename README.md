@@ -39,7 +39,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 
 ## Implemented Tag Shortcuts
 
-- <b>NewButton()</b> - shortcut for <button> tag
+- <b>NewButton()</b> - shortcut for &lt;button> tag
 - <b>NewCode()</b> - shortcut for <code> tag
 - <b>NewDiv()</b> - shortcut for <div> tag
 - <b>NewForm()</b> - shortcut for <form> tag
