@@ -81,27 +81,27 @@ go get -u github.com/gouniverse/html@v1.10.0
 
 ## Tag Methods
 
-- Attr (shortcut for SetAttribute)
-- HTML (shortcut for AddHTML)
-- AddChild(tag Tag)
-- AddChildren(tag []Tag)
-- AddHTML(html string)
-- GetAttribute(key string)
-- SetAttribute(key, value string)
-- ToHTML()
+- <b>Attr(key, value string)</b> - shortcut for SetAttribute
+- <b>HTML(html string)</b> - shortcut for AddHTML
+- <b>AddChild(tag Tag)</b> - adds a child element
+- <b>AddChildren(tag []Tag)</b> - adds an array of child elements
+- <b>AddHTML(html string)</b> - adds HTML content to the element
+- <b>GetAttribute(key string) string</b>
+- <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
+- <b>ToHTML() string</b> - outputs HTML code
 
 ## Webpage Methods
-- AddChild(child *Tag)
-- SetFavicon(favicon string)
-- SetTitle(title string)
-- AddScripts(scripts []string)
-- AddScript(script string)
-- AddScriptURLs(scriptURLs []string)
-- AddScriptURL(scriptURL string)
-- AddStyle(style string)
-- AddStyles(styles []string)
-- AddStyleURL(styleURL string)
-- AddStyleURLs(styleURLs []string)
+- <b>AddChild(child *Tag)</b>
+- <b>SetFavicon(favicon string)</b>
+- <b>SetTitle(title string)</b>
+- <b>AddScripts(scripts []string)</b>
+- <b>AddScript(script string)</b>
+- <b>AddScriptURLs(scriptURLs []string)</b>
+- <b>AddScriptURL(scriptURL string)</b>
+- <b>AddStyle(style string)</b>
+- <b>AddStyles(styles []string)</b>
+- <b>AddStyleURL(styleURL string)</b>
+- <b>AddStyleURLs(styleURLs []string)</b>
 
 ## Working with Raw Tags
 
