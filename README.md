@@ -43,7 +43,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 - <b>NewCode()</b> - shortcut for &lt;code> tag
 - <b>NewDiv()</b> - shortcut for &lt;div> tag
 - <b>NewForm()</b> - shortcut for &lt;form> tag
-- <b>NewHTML(html string)</b> - adds HTML content to tag
+- <b>NewHTML(html string)</b> - creates empty tag with the HTML content
 - <b>NewHeading1()</b> - shortcut for &lt;h1> tag
 - <b>NewHeading2()</b> - shortcut for &lt;h2> tag
 - <b>NewHeading3()</b> - shortcut for &lt;h3> tag
@@ -76,7 +76,7 @@ go get -u github.com/gouniverse/html@v1.10.0
 - <b>NewTH()</b> - shortcut for &lt;th> tag
 - <b>NewThead()</b> - shortcut for &lt;thead> tag
 - <b>NewTR()</b> - shortcut for &lt;tr> tag
-- <b>NewUL()</b> - shortcut for <ul> tag
+- <b>NewUL()</b> - shortcut for &lt;ul> tag
 - <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
 
 ## Tag Methods
