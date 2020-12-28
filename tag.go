@@ -2,6 +2,7 @@ package html
 
 import (
 	"bytes"
+	"sort"
 	"strings"
 )
 
