@@ -152,7 +152,7 @@ card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
 html := card.ToHTML()
 ```
 
-- Webpage with title, favicon, font-awesome icons, jQuery and Bootstrap
+- Webpage with title, favicon, Font Awesome icons 4.7.0, jQuery 3.2.1, and Bootstrap 4.5
 
 ```go
 // 1. Webpage Title
@@ -169,6 +169,44 @@ webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]strin
 		"https://code.jquery.com/jquery-3.2.1.min.js",
 		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js",
 	}).AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`).AddChild(NewDiv().HTML("Hello"))
+```
+
+- Wrap webpage in a function to be reused as a master template
+
+```
+// Webpage returns the webpage template for the website
+func Webpage(title, content string) *hb.Webpage {
+	faviconImgCms := `data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAmzKzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEQEAAQERAAEAAQABAAEAAQABAQEBEQABAAEREQEAAAERARARAREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAAi6MAALu7AAC6owAAuC8AAIkjAAD//wAA//8AAP//AAD//wAA`
+	webpage := hb.NewWebpage()
+	webpage.SetTitle(title)
+	webpage.SetFavicon(faviconImgCms)
+
+	webpage.AddStyleURLs([]string{
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
+	})
+	webpage.AddScriptURLs([]string{
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js",
+		"http://code.jquery.com/jquery-3.5.1.min.js",
+		"https://unpkg.com/vue@next",
+		"https://cdn.jsdelivr.net/npm/sweetalert2@9",
+	})
+	webpage.AddScripts([]string{})
+	webpage.AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`)
+	webpage.AddStyle(`body {
+		font-family: "Nunito", sans-serif;
+		font-size: 0.9rem;
+		font-weight: 400;
+		line-height: 1.6;
+		color: #212529;
+		text-align: left;
+		background-color: #f8fafc;
+	}`)
+	webpage.AddChild(hb.NewHTML(content))
+	return webpage
+}
+
+// Generate HTML
+html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
