@@ -210,6 +210,8 @@ html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
+2021.01.03 - Added example for webpage layout
+
 2020.12.28 - Added shortcuts for &lt;code>, &lt;pre> tags, shortcuts sorted alphabetically
 
 2020.12.27 - Added shortcuts for &lt;table>, &lt;thead>, &lt;tbody>, &lt;tr>, &lt;th>, &lt;td> tags
