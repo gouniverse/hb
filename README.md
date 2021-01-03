@@ -152,6 +152,8 @@ card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
 html := card.ToHTML()
 ```
 
+<img src="screenshots/html-builder-form-login.png" />
+
 - Webpage with title, favicon, Font Awesome icons 4.7.0, jQuery 3.2.1, and Bootstrap 4.5
 
 ```go
