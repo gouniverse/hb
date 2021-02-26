@@ -29,8 +29,14 @@ func inArrayString(arr []string, str string) bool {
 	return false
 }
 
+// TagInterface represents an HTML tag interface
+type TagInterface interface {
+	ToHTML()string
+}
+
 // Tag represents an HTML tag
 type Tag struct {
+	TagInterface
 	TagName       string
 	TagContent    string
 	TagAttributes map[string]string
