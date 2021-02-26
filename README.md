@@ -68,6 +68,8 @@ go get -u github.com/gouniverse/html@v1.10.0
 - <b>NewStyle()</b> - shortcut for &lt;style> tag
 - <b>NewStyleURL()</b> - shortcut for &lt;link> tag
 - <b>NewSection()</b> - shortcut for &lt;section> tag
+- <b>NewSub()</b> - shortcut for &lt;sub> tag
+- <b>NewSup()</b> - shortcut for &lt;sup> tag
 - <b>NewTag(tagName string)</b> - for custom tags
 - <b>NewTable()</b> - shortcut for &lt;table> tag
 - <b>NewTBody()</b> - shortcut for &lt;tbody> tag
@@ -214,6 +216,8 @@ html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
+2021.02.26 - Added shortcuts for &lt;sub>, &lt;sup> tags
+
 2021.01.03 - Added example for webpage layout, and screenshot
 
 2020.12.28 - Added shortcuts for &lt;code>, &lt;pre> tags, shortcuts sorted alphabetically
