@@ -247,6 +247,22 @@ func NewStyleURL(styleURL string) *Tag {
 	return tag
 }
 
+// NewSub represents a SUB tag
+func NewSub() *Tag {
+	tag := &Tag{
+		TagName: "sub",
+	}
+	return tag
+}
+
+// NewSup represents a SUP tag
+func NewSup() *Tag {
+	tag := &Tag{
+		TagName: "sup",
+	}
+	return tag
+}
+
 // NewTable represents a TABLE tag
 func NewTable() *Tag {
 	tag := &Tag{
