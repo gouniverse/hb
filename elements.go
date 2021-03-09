@@ -287,6 +287,14 @@ func NewTD() *Tag {
 	return tag
 }
 
+// NewTH represents a TH tag
+func NewTH() *Tag {
+	tag := &Tag{
+		TagName: "th",
+	}
+	return tag
+}
+
 // NewTbody represents a TBODY tag
 func NewTbody() *Tag {
 	tag := &Tag{
