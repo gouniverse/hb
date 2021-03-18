@@ -31,10 +31,26 @@ func TestTagOption(t *testing.T) {
 	}
 }
 
+func TestTagTable(t *testing.T) {
+	tag := NewTable()
+	h := tag.ToHTML()
+	if strings.Contains(h, "<table></table>") == false {
+		t.Error("Does not contain '<table></table>'", "Output:"+h)
+	}
+}
+
 func TestTagSelect(t *testing.T) {
 	tag := NewSelect()
 	h := tag.ToHTML()
 	if strings.Contains(h, "<select></select>") == false {
 		t.Error("Does not contain '<select></select>'", "Output:"+h)
+	}
+}
+
+func TestTagTemplate(t *testing.T) {
+	tag := NewTemplate()
+	h := tag.ToHTML()
+	if strings.Contains(h, "<template></template>") == false {
+		t.Error("Does not contain '<template></template>'", "Output:"+h)
 	}
 }
