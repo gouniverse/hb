@@ -311,6 +311,14 @@ func NewThead() *Tag {
 	return tag
 }
 
+// NewTemplate represents a TEMPLATE tag
+func NewTemplate() *Tag {
+	tag := &Tag{
+		TagName: "template",
+	}
+	return tag
+}
+
 // NewTextArea represents a FORM tag
 func NewTextArea() *Tag {
 	tag := &Tag{
