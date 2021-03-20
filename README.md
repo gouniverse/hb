@@ -17,7 +17,7 @@ Unpretentious short and sweet HTML Builder.
 - Section containing div container (Bootstrap) with a message "Hello world"
 
 ```go
-import hb "github.com/gouniverse/html"
+import "github.com/gouniverse/hb"
 	
 // 1. Create a div container with "Hello world" message
 div := hb.NewDiv().Attr("class", "container").HTML("Hello world")
@@ -34,7 +34,7 @@ html := section.ToHTML()
 ## Installation
 
 ```ssh
-go get -u github.com/gouniverse/html@v1.10.0
+go get -u github.com/gouniverse/hb@v2.0.0
 ```
 
 ## Implemented Tag Shortcuts
