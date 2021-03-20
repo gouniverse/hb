@@ -1,3 +1,3 @@
-module github.com/gouniverse/html
+module github.com/gouniverse/hb
 
 go 1.14
