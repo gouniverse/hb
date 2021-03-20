@@ -1,4 +1,4 @@
-package html
+package hb
 
 // Webpage represents a web page
 type Webpage struct {
