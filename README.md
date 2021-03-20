@@ -1,4 +1,4 @@
-# HTML
+# HTML Builder
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
