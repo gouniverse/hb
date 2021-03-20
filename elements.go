@@ -1,4 +1,4 @@
-package html
+package hb
 
 // NewTag represents a tag
 func NewTag(tagName string) *Tag {
