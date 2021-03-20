@@ -217,6 +217,8 @@ html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
+2021.03.20 - Renamed package name to hb to not conflict/confuse with the standard html package
+
 2021.03.18 - Added shortcuts for &lt;template> tag
 
 2021.02.26 - Added shortcuts for &lt;sub>, &lt;sup> tags
