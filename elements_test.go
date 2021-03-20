@@ -1,4 +1,4 @@
-package html
+package hb
 
 import (
 	"strings"
