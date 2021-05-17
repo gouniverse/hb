@@ -234,3 +234,7 @@ html := webpage("Home", "Hello world").ToHTML()
 2020.09.16 - Added shortcuts for &lt;nav>, &lt;navbar>, &lt;ol>, &lt;ul>, &lt;li> tags
 
 2020.06.16 - Initial commit
+
+
+## Aternatives
+- HTMLGO (https://github.com/theplant/htmlgo)
