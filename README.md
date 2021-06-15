@@ -237,4 +237,6 @@ html := webpage("Home", "Hello world").ToHTML()
 
 
 ## Aternatives
+
+- Extemplate (https://github.com/dannyvankooten/extemplate)
 - HTMLGO (https://github.com/theplant/htmlgo)
