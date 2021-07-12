@@ -238,5 +238,6 @@ html := webpage("Home", "Hello world").ToHTML()
 
 ## Aternatives
 
+- Daz (https://github.com/stevelacy/daz)
 - Extemplate (https://github.com/dannyvankooten/extemplate)
 - HTMLGO (https://github.com/theplant/htmlgo)
