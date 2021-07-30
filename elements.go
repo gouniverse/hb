@@ -48,7 +48,7 @@ func NewHTML(html string) *Tag {
 
 
 // NewHR creates represents a HR tags
-func NewHR(html string) *Tag {
+func NewHR() *Tag {
 	textTag := &Tag{
 		TagName:    "hr",
 	}
