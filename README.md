@@ -44,6 +44,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewDiv()</b> - shortcut for &lt;div> tag
 - <b>NewForm()</b> - shortcut for &lt;form> tag
 - <b>NewHTML(html string)</b> - creates empty tag with the HTML content
+- <b>NewHR()</b> - shortcut for &lt;hr> tag
 - <b>NewHeading1()</b> - shortcut for &lt;h1> tag
 - <b>NewHeading2()</b> - shortcut for &lt;h2> tag
 - <b>NewHeading3()</b> - shortcut for &lt;h3> tag
