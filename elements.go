@@ -46,6 +46,15 @@ func NewHTML(html string) *Tag {
 	return textTag
 }
 
+
+// NewHR creates represents a HR tags
+func NewHR(html string) *Tag {
+	textTag := &Tag{
+		TagName:    "hr",
+	}
+	return textTag
+}
+
 // NewHeading1 represents a H1 tag
 func NewHeading1() *Tag {
 	tag := &Tag{
