@@ -218,6 +218,8 @@ html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
+2021.07.30 - Added shortcut for &lt;hr> tag
+
 2021.03.20 - Renamed package name to hb to not conflict/confuse with the standard html package
 
 2021.03.18 - Added shortcuts for &lt;template> tag
