@@ -31,7 +31,7 @@ func inArrayString(arr []string, str string) bool {
 
 // TagInterface represents an HTML tag interface
 type TagInterface interface {
-	ToHTML()string
+	ToHTML() string
 }
 
 // Tag represents an HTML tag
@@ -46,6 +46,14 @@ type Tag struct {
 // Attr shortcut for SetAttribute
 func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
+}
+
+// Attrs shortcut for setting multiple attributes
+func (t *Tag) Attrs(attrs map[string]string) *Tag {
+	for key, value := range attrs {
+		t.SetAttribute(key, value)
+	}
+	return t
 }
 
 // HTML shortcut for AddHTML
@@ -115,7 +123,7 @@ func (t *Tag) ToHTML() string {
 
 func (t Tag) attrToString() string {
 	attrString := ""
-	
+
 	keys := make([]string, 0, len(t.TagAttributes))
 	for k := range t.TagAttributes {
 		keys = append(keys, k)
@@ -124,7 +132,7 @@ func (t Tag) attrToString() string {
 
 	for _, key := range keys {
 		value := t.TagAttributes[key]
-	        //for key, value := range t.TagAttributes {
+		//for key, value := range t.TagAttributes {
 		if strings.Trim(value, " ") == "" {
 			continue
 		}
@@ -134,9 +142,9 @@ func (t Tag) attrToString() string {
 	if attrString != "" {
 		attrString = " " + attrString
 	}
-	
-	if len(attrString)<1{
-        	return ""
+
+	if len(attrString) < 1 {
+		return ""
 	}
 
 	return " " + strings.Trim(attrString, " ")

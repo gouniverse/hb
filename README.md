@@ -86,6 +86,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 ## Tag Methods
 
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
+- <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
 - <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
@@ -218,6 +219,8 @@ html := webpage("Home", "Hello world").ToHTML()
 ```
 
 ## Changelog
+2022.01.07 - Added Attrs shortcut for setting multiple attributes
+
 2021.07.30 - Added shortcut for &lt;hr> tag
 
 2021.03.20 - Renamed package name to hb to not conflict/confuse with the standard html package
@@ -242,5 +245,7 @@ html := webpage("Home", "Hello world").ToHTML()
 ## Aternatives
 
 - Daz (https://github.com/stevelacy/daz)
+
 - Extemplate (https://github.com/dannyvankooten/extemplate)
+
 - HTMLGO (https://github.com/theplant/htmlgo)
