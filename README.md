@@ -249,3 +249,5 @@ html := webpage("Home", "Hello world").ToHTML()
 - Extemplate (https://github.com/dannyvankooten/extemplate)
 
 - HTMLGO (https://github.com/theplant/htmlgo)
+
+- Go Components (https://github.com/maragudk/gomponents)
