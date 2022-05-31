@@ -244,7 +244,7 @@ html := webpage("Home", "Hello world").ToHTML()
 
 ## Aternatives
 
-- Daz (https://github.com/stevelacy/daz) | Last update: 24 Jun 2021
+- Stevelacy Daz (https://github.com/stevelacy/daz) | Last update: 24 Jun 2021
 
 - Extemplate (https://github.com/dannyvankooten/extemplate)
 
@@ -255,5 +255,7 @@ html := webpage("Home", "Hello world").ToHTML()
 - Go Components (https://github.com/maragudk/gomponents)
 
 - Uberswe HTML (https://github.com/uberswe/html) | Last update: 24 Feb 2021
+
+- Forms from Structs (https://github.com/joncalhoun/form)
 
 
