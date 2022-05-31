@@ -246,9 +246,9 @@ html := webpage("Home", "Hello world").ToHTML()
 
 - Stevelacy Daz (https://github.com/stevelacy/daz) | Last update: 24 Jun 2021
 
-- Extemplate (https://github.com/dannyvankooten/extemplate)
+- Extemplate (https://github.com/dannyvankooten/extemplate) | Last update: 15 Jun 2021
 
-- ThePlant HTMLGO (https://github.com/theplant/htmlgo)
+- ThePlant HTMLGO (https://github.com/theplant/htmlgo) | Last update: 18 Sep 2021
 
 - Julvo HTMLGO (https://github.com/julvo/htmlgo) | Last update: 5 May 2020
 
