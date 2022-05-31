@@ -244,7 +244,7 @@ html := webpage("Home", "Hello world").ToHTML()
 
 ## Aternatives
 
-- Daz (https://github.com/stevelacy/daz)
+- Daz (https://github.com/stevelacy/daz) | Last update: 24 Jun 2021
 
 - Extemplate (https://github.com/dannyvankooten/extemplate)
 
