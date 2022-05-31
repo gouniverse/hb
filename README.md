@@ -251,3 +251,5 @@ html := webpage("Home", "Hello world").ToHTML()
 - HTMLGO (https://github.com/theplant/htmlgo)
 
 - Go Components (https://github.com/maragudk/gomponents)
+
+- Uberswe HTML (https://github.com/uberswe/html)
