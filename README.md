@@ -248,8 +248,12 @@ html := webpage("Home", "Hello world").ToHTML()
 
 - Extemplate (https://github.com/dannyvankooten/extemplate)
 
-- HTMLGO (https://github.com/theplant/htmlgo)
+- ThePlant HTMLGO (https://github.com/theplant/htmlgo)
+
+- Julvo HTMLGO (https://github.com/julvo/htmlgo) | Last update: 5 May 2020
 
 - Go Components (https://github.com/maragudk/gomponents)
 
-- Uberswe HTML (https://github.com/uberswe/html)
+- Uberswe HTML (https://github.com/uberswe/html) | Last update: 24 Feb 2021
+
+
