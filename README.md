@@ -218,6 +218,12 @@ func Webpage(title, content string) *hb.Webpage {
 html := webpage("Home", "Hello world").ToHTML()
 ```
 
+## How to Add a Redirection?
+
+```go
+webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
+```
+
 ## Changelog
 2022.01.07 - Added Attrs shortcut for setting multiple attributes
 
