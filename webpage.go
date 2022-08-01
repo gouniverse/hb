@@ -1,5 +1,7 @@
 package hb
 
+import "strings"
+
 // Webpage represents a web page
 type Webpage struct {
 	Tag
@@ -46,15 +48,32 @@ func (w *Webpage) ToHTML() string {
 	}
 	for _, styleURL := range w.StyleURLs {
 		w.Head.AddChild(NewStyleURL(styleURL))
+		if strings.HasPrefix(styleURL, "http") || strings.HasPrefix(styleURL, "//") {
+			w.Body.AddChild(NewStyleURL(styleURL))
+		} else {
+			w.Body.AddChild(NewHTML(styleURL))
+		}
 	}
 	for _, style := range w.Styles {
-		w.Head.AddChild(NewStyle(style))
+		if !strings.HasPrefix(style, "<style") {
+			w.Body.AddChild(NewScript(style))
+		} else {
+			w.Body.AddChild(NewHTML(style))
+		}
 	}
 	for _, scriptURL := range w.ScriptURLs {
-		w.Body.AddChild(NewScriptURL(scriptURL))
+		if strings.HasPrefix(scriptURL, "http") || strings.HasPrefix(scriptURL, "//") {
+			w.Body.AddChild(NewScriptURL(scriptURL))
+		} else {
+			w.Body.AddChild(NewHTML(scriptURL))
+		}
 	}
 	for _, script := range w.Scripts {
-		w.Body.AddChild(NewScript(script))
+		if !strings.HasPrefix(script, "<script") {
+			w.Body.AddChild(NewScript(script))
+		} else {
+			w.Body.AddChild(NewHTML(script))
+		}
 	}
 	h := NewHTML("<!DOCTYPE html>")
 	h.AddChild(w.Head)
