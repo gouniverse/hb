@@ -56,7 +56,7 @@ func (w *Webpage) ToHTML() string {
 	}
 	for _, style := range w.Styles {
 		if !strings.HasPrefix(style, "<style") {
-			w.Body.AddChild(NewScript(style))
+			w.Body.AddChild(NewStyle(style))
 		} else {
 			w.Body.AddChild(NewHTML(style))
 		}
