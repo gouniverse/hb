@@ -43,9 +43,8 @@ type Tag struct {
 	TagChildren   []*Tag
 }
 
-// HasClass returns true if the item is specified with the specified name.
-func (n Node) HasClass(className string) (ok bool) {
-func (t *Tag) HadClass(className string) bool
+// HasClass returns true if the tag has a class with the specified name.
+func (t *Tag) HasClass(className string) bool
 	classNames := t.GetAttribute("class")
 	classNamesArray := strings.Split(classNames," ")
 	return inArrayString(classNamesArray, className)
