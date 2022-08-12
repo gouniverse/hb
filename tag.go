@@ -54,7 +54,7 @@ func (t *Tag) HasClass(className string) bool {
 func (t *Tag) AddClass(className string) *Tag {
 	classNames := t.GetAttribute("class")
 	classNamesArray := strings.Split(classNames," ")
-	classNamesArray := append(classNamesArray, className)
+	classNamesArray = append(classNamesArray, className)
 	classNames = strings.Join(classNamesArray, " ")
 	return t.SetAttribute("class", classNames)
 }
