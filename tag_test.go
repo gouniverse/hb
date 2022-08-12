@@ -13,6 +13,14 @@ func TestAttr(t *testing.T) {
 	}
 }
 
+func TestAddClass(t *testing.T) {
+	img := NewImage().Attr("class", "one")
+	imgHtml := img.AddClass("two").ToHTML()
+	if strings.Contains(imgHtml, "class=\"one two\"") == false {
+		t.Error("Does not contain 'class=\"one two\", "Output:"+imgHtml)
+	}
+}
+
 func TestEscapeAttributes(t *testing.T) {
 	tag := &Tag{
 		TagName: "div",
