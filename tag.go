@@ -44,7 +44,7 @@ type Tag struct {
 }
 
 // HasClass returns true if the tag has a class with the specified name.
-func (t *Tag) HasClass(className string) bool
+func (t *Tag) HasClass(className string) bool {
 	classNames := t.GetAttribute("class")
 	classNamesArray := strings.Split(classNames," ")
 	return inArrayString(classNamesArray, className)
