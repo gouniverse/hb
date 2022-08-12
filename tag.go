@@ -43,6 +43,23 @@ type Tag struct {
 	TagChildren   []*Tag
 }
 
+// HasClass returns true if the item is specified with the specified name.
+func (n Node) HasClass(className string) (ok bool) {
+func (t *Tag) HadClass(className string) bool
+	classNames := t.GetAttribute("class")
+	classNamesArray := strings.Split(classNames," ")
+	return inArrayString(classNamesArray, className)
+}
+
+// AddClass adds a new class name to the tag attribute list.
+func (t *Tag) AddClass(className string) *Tag {
+	classNames := t.GetAttribute("class")
+	classNamesArray := strings.Split(classNames," ")
+	classNamesArray := append(classNamesArray, className)
+	classNames = strings.Join(classNamesArray, " ")
+	return t.SetAttribute("class", classNames)
+}
+
 // Attr shortcut for SetAttribute
 func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
