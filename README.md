@@ -90,7 +90,11 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
+- <b>AddClass(className string)</b> - adds a class name to the "class" attribute
 - <b>AddHTML(html string)</b> - adds HTML content to the element
+- <b>Class(className string)</b> - shortcut for AddClass
+- <b>HasClass(className string)</b> - checks if the class is available
+- <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>ToHTML() string</b> - outputs HTML code
@@ -130,27 +134,27 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 // Elements for the form
 header := hb.NewHeading3().HTML("Please sign in").Attr("style", "margin:0px;")
 emailLabel := hb.NewLabel().HTML("E-mail Address")
-emailInput := hb.NewInput().Attr("class", "form-control").Attr("name", "email").Attr("placeholder", "Enter e-mail address")
-emailFormGroup := hb.NewDiv().Attr("class", "form-group").AddChild(emailLabel).AddChild(emailInput)
+emailInput := hb.NewInput().Class("form-control").Attr("name", "email").Attr("placeholder", "Enter e-mail address")
+emailFormGroup := hb.NewDiv().Class("form-group").AddChild(emailLabel).AddChild(emailInput)
 passwordLabel := hb.NewLabel().AddChild(hb.NewHTML("Password"))
-passwordInput := hb.NewInput().Attr("class", "form-control").Attr("name", "password").Attr("type", "password").Attr("placeholder", "Enter password")
-passwordFormGroup := hb.NewDiv().Attr("class", "form-group").AddChild(passwordLabel).AddChild(passwordInput)
-buttonLogin := hb.NewButton().Attr("class", "btn btn-lg btn-success btn-block").HTML("Login")
-buttonRegister := hb.NewHyperlink().Attr("class", "btn btn-lg btn-info float-left").HTML("Register").Attr("href", "auth/register")
-buttonForgotPassword := hb.NewHyperlink().Attr("class", "btn btn-lg btn-warning float-right").HTML("Forgot password?").Attr("href", "auth/password-restore")
+passwordInput := hb.NewInput().Class("form-control").Attr("name", "password").Attr("type", "password").Attr("placeholder", "Enter password")
+passwordFormGroup := hb.NewDiv().Class("form-group").AddChild(passwordLabel).AddChild(passwordInput)
+buttonLogin := hb.NewButton().Class("btn btn-lg btn-success btn-block").HTML("Login")
+buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").HTML("Register").Attr("href", "auth/register")
+buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").HTML("Forgot password?").Attr("href", "auth/password-restore")
 
 // Add elements in a card
-cardHeader := hb.NewDiv().Attr("class", "card-header").AddChild(header)
-cardBody := hb.NewDiv().Attr("class", "card-body").AddChildren([]*hb.Tag{
+cardHeader := hb.NewDiv().Class("card-header").AddChild(header)
+cardBody := hb.NewDiv().Class("card-body").AddChildren([]*hb.Tag{
 	emailFormGroup,
 	passwordFormGroup,
 	buttonLogin,
 })
-cardFooter := hb.NewDiv().Attr("class", "card-footer").AddChildren([]*hb.Tag{
+cardFooter := hb.NewDiv().Class("card-footer").AddChildren([]*hb.Tag{
 	buttonRegister,
 	buttonForgotPassword,
 })
-card := hb.NewDiv().Attr("class", "card card-default").Attr("style", "margin:0 auto;max-width: 360px;")
+card := hb.NewDiv().Class("card card-default").Attr("style", "margin:0 auto;max-width: 360px;")
 card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
 
 // Convert to HTML to display

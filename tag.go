@@ -46,14 +46,14 @@ type Tag struct {
 // HasClass returns true if the tag has a class with the specified name.
 func (t *Tag) HasClass(className string) bool {
 	classNames := t.GetAttribute("class")
-	classNamesArray := strings.Split(classNames," ")
+	classNamesArray := strings.Split(classNames, " ")
 	return inArrayString(classNamesArray, className)
 }
 
 // AddClass adds a new class name to the tag attribute list.
 func (t *Tag) AddClass(className string) *Tag {
 	classNames := t.GetAttribute("class")
-	classNamesArray := strings.Split(classNames," ")
+	classNamesArray := strings.Split(classNames, " ")
 	classNamesArray = append(classNamesArray, className)
 	classNames = strings.Join(classNamesArray, " ")
 	return t.SetAttribute("class", classNames)
@@ -72,9 +72,19 @@ func (t *Tag) Attrs(attrs map[string]string) *Tag {
 	return t
 }
 
+// Class shortcut for setting the "class" attribute
+func (t *Tag) Class(clasName string) *Tag {
+	return t.AddClass(clasName)
+}
+
 // HTML shortcut for AddHTML
 func (t *Tag) HTML(html string) *Tag {
 	return t.AddHTML(html)
+}
+
+// ID shortcut for setting the "id" attribute
+func (t *Tag) ID(id string) *Tag {
+	return t.SetAttribute("id", id)
 }
 
 // AddChild adds a new child tag to this tag

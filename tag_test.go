@@ -17,7 +17,21 @@ func TestAddClass(t *testing.T) {
 	img := NewImage().Attr("class", "one")
 	imgHtml := img.AddClass("two").ToHTML()
 	if strings.Contains(imgHtml, "class=\"one two\"") == false {
-		t.Error("Does not contain 'class=\"one two\", "Output:"+imgHtml)
+		t.Error("Does not contain 'class=\"one two\", Output:" + imgHtml)
+	}
+}
+
+func TestHasClass(t *testing.T) {
+	img := NewImage().Attr("class", "one").AddClass("two").AddClass("three")
+	if img.HasClass("two") == false {
+		t.Error("Does not contain class \"two\", Output:" + img.ToHTML())
+	}
+}
+
+func TestID(t *testing.T) {
+	input := NewInput().ID("first").ToHTML()
+	if strings.Contains(input, "id=\"first\"") == false {
+		t.Error("Does not contain 'id=\"first\", Output:" + input)
 	}
 }
 
