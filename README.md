@@ -268,4 +268,6 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 
 - Forms from Structs (https://github.com/joncalhoun/form)
 
+- HTMLX (https://github.com/mdigger/htmlx) | Last update: 20 Jun 2021
+
 
