@@ -103,7 +103,7 @@ func (w *Webpage) SetTitle(title string) *Webpage {
 func (w *Webpage) AddScripts(scripts []string) *Webpage {
 	for _, script := range scripts {
 		if script == "" {
-			return w
+			continue
 		}
 		w.AddScript(script)
 	}
