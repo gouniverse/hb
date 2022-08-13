@@ -49,16 +49,16 @@ func (w *Webpage) ToHTML() string {
 	for _, styleURL := range w.StyleURLs {
 		w.Head.AddChild(NewStyleURL(styleURL))
 		if strings.HasPrefix(styleURL, "http") || strings.HasPrefix(styleURL, "//") {
-			w.Body.AddChild(NewStyleURL(styleURL))
+			w.Head.AddChild(NewStyleURL(styleURL))
 		} else {
-			w.Body.AddChild(NewHTML(styleURL))
+			w.Head.AddChild(NewHTML(styleURL))
 		}
 	}
 	for _, style := range w.Styles {
 		if !strings.HasPrefix(style, "<style") {
-			w.Body.AddChild(NewStyle(style))
+			w.Head.AddChild(NewStyle(style))
 		} else {
-			w.Body.AddChild(NewHTML(style))
+			w.Head.AddChild(NewHTML(style))
 		}
 	}
 	for _, scriptURL := range w.ScriptURLs {
