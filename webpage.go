@@ -102,6 +102,9 @@ func (w *Webpage) SetTitle(title string) *Webpage {
 // AddScripts adds scripts to the webpage
 func (w *Webpage) AddScripts(scripts []string) *Webpage {
 	for _, script := range scripts {
+		if script == "" {
+			return w
+		}
 		w.AddScript(script)
 	}
 	return w
@@ -109,6 +112,9 @@ func (w *Webpage) AddScripts(scripts []string) *Webpage {
 
 // AddScript adds a script to the webpage
 func (w *Webpage) AddScript(script string) *Webpage {
+	if script == "" {
+		return w
+	}
 	w.Scripts = append(w.Scripts, script)
 	return w
 }
@@ -116,6 +122,9 @@ func (w *Webpage) AddScript(script string) *Webpage {
 // AddScriptURLs adds style URLs to the webpage
 func (w *Webpage) AddScriptURLs(scriptURLs []string) *Webpage {
 	for _, scriptURL := range scriptURLs {
+		if scriptURL == "" {
+			continue
+		}
 		w.AddScriptURL(scriptURL)
 	}
 	return w
@@ -123,6 +132,9 @@ func (w *Webpage) AddScriptURLs(scriptURLs []string) *Webpage {
 
 // AddScriptURL adds a style URL to the webpage
 func (w *Webpage) AddScriptURL(scriptURL string) *Webpage {
+	if scriptURL == "" {
+		return w
+	}
 	w.ScriptURLs = append(w.ScriptURLs, scriptURL)
 	return w
 }
@@ -130,6 +142,9 @@ func (w *Webpage) AddScriptURL(scriptURL string) *Webpage {
 // AddStyles adds styles to the webpage
 func (w *Webpage) AddStyles(styles []string) *Webpage {
 	for _, style := range styles {
+		if style == "" {
+			continue
+		}
 		w.AddStyle(style)
 	}
 	return w
@@ -137,6 +152,9 @@ func (w *Webpage) AddStyles(styles []string) *Webpage {
 
 // AddStyle adds a style to the webpage
 func (w *Webpage) AddStyle(style string) *Webpage {
+	if style == "" {
+		return w
+	}
 	w.Styles = append(w.Styles, style)
 	return w
 }
@@ -144,6 +162,9 @@ func (w *Webpage) AddStyle(style string) *Webpage {
 // AddStyleURLs adds style URLs to the webpage
 func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 	for _, styleURL := range styleURLs {
+		if styleURL == "" {
+			continue
+		}
 		w.AddStyleURL(styleURL)
 	}
 	return w
@@ -151,6 +172,9 @@ func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 
 // AddStyleURL adds a style URL to the webpage
 func (w *Webpage) AddStyleURL(styleURL string) *Webpage {
+	if styleURL == "" {
+		return w
+	}
 	w.StyleURLs = append(w.StyleURLs, styleURL)
 	return w
 }
