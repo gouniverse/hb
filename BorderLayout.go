@@ -34,19 +34,19 @@ type BorderLayout struct {
 	Tag
 	width                 string
 	height                string
-	top                   *hb.Tag
+	top                   *Tag
 	topAlignHorizontal    string
 	topAlignVertical      string
-	bottom                *hb.Tag
+	bottom                *Tag
 	bottomAlignHorizontal string
 	bottomAlignVertical   string
-	left                  *hb.Tag
+	left                  *Tag
 	leftAlignHorizontal   string
 	leftAlignVertical     string
-	right                 *hb.Tag
+	right                 *Tag
 	rightAlignHorizontal  string
 	rightAlignVertical    string
-	center                *hb.Tag
+	center                *Tag
 	centerAlignHorizontal string
 	centerAlignVertical   string
 }
