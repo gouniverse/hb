@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestAttr(t *testing.T) {
+func TestBorderLayoutAttr(t *testing.T) {
 	bl := NewBorderLayout().Attr("width", "50%")
 	blHtml := bl.ToHTML()
 	if strings.Contains(blHtml, "width=\"50%\"") == false {
