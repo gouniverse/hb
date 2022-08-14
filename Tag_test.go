@@ -59,3 +59,10 @@ func TestAttrs(t *testing.T) {
 		t.Error("Does not contain 'height=\"40\"", "Output:"+imgHtml)
 	}
 }
+
+func TestOnClick(t *testing.T) {
+	input := NewButton().OnClick("alert('Clicked')").ToHTML()
+	if strings.Contains(input, "onclick=\"alert('Clicked')\"") == false {
+		t.Error("Does not contain 'onclick=\"alert('Clicked')\", Output:" + input)
+	}
+}

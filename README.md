@@ -98,6 +98,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>HasClass(className string)</b> - checks if the class is available
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
+- <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>ToHTML() string</b> - outputs HTML code
 
