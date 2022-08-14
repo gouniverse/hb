@@ -1,7 +1,6 @@
 package hb
 
 import (
-	"github.com/gouniverse/hb"
 	"github.com/gouniverse/utils"
 )
 
@@ -32,7 +31,7 @@ func NewBorderLayout() *BorderLayout {
 * </code>
  */
 type BorderLayout struct {
-	hb.Tag
+	Tag
 	width                 string
 	height                string
 	top                   *hb.Tag
@@ -102,31 +101,31 @@ func (bl *BorderLayout) applyDefaultAlignments() {
 	}
 }
 
-func (bl *BorderLayout) AddTop(tag *hb.Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddTop(tag *Tag, alignHorizontal string, alignVertical string) {
 	bl.top = tag
 	bl.topAlignHorizontal = alignHorizontal
 	bl.topAlignVertical = alignVertical
 }
 
-func (bl *BorderLayout) AddBottom(tag *hb.Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddBottom(tag *Tag, alignHorizontal string, alignVertical string) {
 	bl.bottom = tag
 	bl.bottomAlignHorizontal = alignHorizontal
 	bl.bottomAlignVertical = alignVertical
 }
 
-func (bl *BorderLayout) AddLeft(tag *hb.Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddLeft(tag *Tag, alignHorizontal string, alignVertical string) {
 	bl.left = tag
 	bl.leftAlignHorizontal = alignHorizontal
 	bl.leftAlignVertical = alignVertical
 }
 
-func (bl *BorderLayout) AddRight(tag *hb.Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddRight(tag *Tag, alignHorizontal string, alignVertical string) {
 	bl.right = tag
 	bl.rightAlignHorizontal = alignHorizontal
 	bl.rightAlignVertical = alignVertical
 }
 
-func (bl *BorderLayout) AddCenter(tag *hb.Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddCenter(tag *Tag, alignHorizontal string, alignVertical string) {
 	bl.center = tag
 	bl.centerAlignHorizontal = alignHorizontal
 	bl.centerAlignVertical = alignVertical
@@ -163,7 +162,7 @@ func (bl *BorderLayout) ToHTML() string {
 		colspan++
 	}
 
-	table := hb.NewTable()
+	table := NewTable()
 	table.TagAttributes = bl.TagAttributes
 	table.
 		Attr("class", "BorderLayout").
@@ -172,7 +171,7 @@ func (bl *BorderLayout) ToHTML() string {
 		Attr("style", "width:"+bl.width+";height:"+bl.height+";")
 
 	if bl.top != nil {
-		td := hb.NewTD().
+		td := NewTD().
 			Attr("class", "Top").
 			Attr("style", "height:1px;text-align:"+bl.topAlignHorizontal+";vertical-align:"+bl.topAlignVertical).
 			AddChild(bl.top)
@@ -181,14 +180,14 @@ func (bl *BorderLayout) ToHTML() string {
 			td.Attr("colspan", utils.ToString(colspan))
 		}
 
-		tr := hb.NewTR().AddChild(td)
+		tr := NewTR().AddChild(td)
 		table.AddChild(tr)
 	}
 
-	tr := hb.NewTR()
+	tr := NewTR()
 
 	if bl.left != nil {
-		td := hb.NewTD().
+		td := NewTD().
 			Attr("class", "Left").
 			Attr("style", "width:1px;text-align:"+bl.leftAlignHorizontal+";vertical-align:"+bl.leftAlignVertical).
 			AddChild(bl.left)
@@ -197,7 +196,7 @@ func (bl *BorderLayout) ToHTML() string {
 	}
 
 	if bl.center != nil {
-		td := hb.NewTD().
+		td := NewTD().
 			Attr("class", "Center").
 			Attr("style", "text-align:"+bl.centerAlignHorizontal+";vertical-align:"+bl.centerAlignVertical).
 			AddChild(bl.center)
@@ -206,7 +205,7 @@ func (bl *BorderLayout) ToHTML() string {
 	}
 
 	if bl.right != nil {
-		td := hb.NewTD().
+		td := NewTD().
 			Attr("class", "Right").
 			Attr("style", "width:1px;text-align:"+bl.rightAlignHorizontal+";vertical-align:"+bl.rightAlignVertical).
 			AddChild(bl.right)
@@ -217,7 +216,7 @@ func (bl *BorderLayout) ToHTML() string {
 	table.AddChild(tr)
 
 	if bl.bottom != nil {
-		td := hb.NewTD().
+		td := NewTD().
 			Attr("class", "Bottom").
 			Attr("style", "height:1px;text-align:"+bl.bottomAlignHorizontal+";vertical-align:"+bl.bottomAlignVertical).
 			AddChild(bl.bottom)
@@ -226,7 +225,7 @@ func (bl *BorderLayout) ToHTML() string {
 			td.Attr("colspan", utils.ToString(colspan))
 		}
 
-		tr := hb.NewTR().AddChild(td)
+		tr := NewTR().AddChild(td)
 		table.AddChild(tr)
 	}
 
