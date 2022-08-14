@@ -39,10 +39,12 @@ go get -u github.com/gouniverse/hb@v2.0.0
 
 ## Implemented Tag Shortcuts
 
+- <b>NewBorderLayout()</b> - border layout with top, bottom, left, right and center slots (see example below how to use it)
 - <b>NewButton()</b> - shortcut for &lt;button> tag
 - <b>NewCode()</b> - shortcut for &lt;code> tag
 - <b>NewDiv()</b> - shortcut for &lt;div> tag
 - <b>NewForm()</b> - shortcut for &lt;form> tag
+- <b>NewI()</b> - shortcut for &lt;i> tag
 - <b>NewHTML(html string)</b> - creates empty tag with the HTML content
 - <b>NewHR()</b> - shortcut for &lt;hr> tag
 - <b>NewHeading1()</b> - shortcut for &lt;h1> tag
@@ -112,6 +114,13 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>AddStyleURL(styleURL string)</b>
 - <b>AddStyleURLs(styleURLs []string)</b>
 
+## Border Layout Methods
+- <b>AddTop(tag *Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddBottom(tag *Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddLeft(tag *Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddRight(tag *Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddCenter(tag *Tag, alignHorizontal string, alignVertical string)</b>
+
 ## Working with Raw Tags
 
 ```go
@@ -127,6 +136,17 @@ For safeguarding HTML use the EscapeString method from the standard HTML library
 Link with example: https://golang.org/pkg/html/#EscapeString
 
 ## Examples
+
+- Border Layout
+```go
+bl := NewBorderLayout()
+	bl.AddTop(NewSpan().HTML("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddCenter(NewSpan().HTML("CENTER"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddBottom(NewSpan().HTML("BOTTOM"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddLeft(NewSpan().HTML("LEFT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddRight(NewSpan().HTML("RIGHT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	blHtml := bl.ToHTML()
+```
 
 - Bootstrap login form
 
