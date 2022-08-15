@@ -100,6 +100,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>GetAttribute(key string) string</b>
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
+- <b>Style(style string)</b> - shortcut to add a "style" attribute
 - <b>ToHTML() string</b> - outputs HTML code
 
 ## Webpage Methods
@@ -175,7 +176,7 @@ cardFooter := hb.NewDiv().Class("card-footer").AddChildren([]*hb.Tag{
 	buttonRegister,
 	buttonForgotPassword,
 })
-card := hb.NewDiv().Class("card card-default").Attr("style", "margin:0 auto;max-width: 360px;")
+card := hb.NewDiv().Class("card card-default").Style("margin:0 auto;max-width: 360px;")
 card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
 
 // Convert to HTML to display
