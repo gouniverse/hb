@@ -164,16 +164,14 @@ func (bl *BorderLayout) ToHTML() string {
 
 	table := NewTable()
 	table.TagAttributes = bl.TagAttributes
-	table.
-		Attr("class", "BorderLayout").
+	table.Class("BorderLayout").
 		Attr("cellspacing", "0").
 		Attr("cellpadding", "0").
-		Attr("style", "width:"+bl.width+";height:"+bl.height+";")
+		Style("width:"+bl.width+";height:"+bl.height+";")
 
 	if bl.top != nil {
-		td := NewTD().
-			Attr("class", "Top").
-			Attr("style", "height:1px;text-align:"+bl.topAlignHorizontal+";vertical-align:"+bl.topAlignVertical).
+		td := NewTD().Class("Top").
+			Style("height:1px;text-align:"+bl.topAlignHorizontal+";vertical-align:"+bl.topAlignVertical).
 			AddChild(bl.top)
 
 		if colspan > 1 {
@@ -187,27 +185,24 @@ func (bl *BorderLayout) ToHTML() string {
 	tr := NewTR()
 
 	if bl.left != nil {
-		td := NewTD().
-			Attr("class", "Left").
-			Attr("style", "width:1px;text-align:"+bl.leftAlignHorizontal+";vertical-align:"+bl.leftAlignVertical).
+		td := NewTD().Class("Left").
+		Style("width:1px;height:100%;text-align:"+bl.leftAlignHorizontal+";vertical-align:"+bl.leftAlignVertical).
 			AddChild(bl.left)
 
 		tr.AddChild(td)
 	}
 
 	if bl.center != nil {
-		td := NewTD().
-			Attr("class", "Center").
-			Attr("style", "text-align:"+bl.centerAlignHorizontal+";vertical-align:"+bl.centerAlignVertical).
+		td := NewTD().Class("Center").
+			Style("text-align:"+bl.centerAlignHorizontal+";vertical-align:"+bl.centerAlignVertical).
 			AddChild(bl.center)
 
 		tr.AddChild(td)
 	}
 
 	if bl.right != nil {
-		td := NewTD().
-			Attr("class", "Right").
-			Attr("style", "width:1px;text-align:"+bl.rightAlignHorizontal+";vertical-align:"+bl.rightAlignVertical).
+		td := NewTD().Class("Right").
+			Style("width:1px;height:100%;text-align:"+bl.rightAlignHorizontal+";vertical-align:"+bl.rightAlignVertical).
 			AddChild(bl.right)
 
 		tr.AddChild(td)
@@ -216,9 +211,8 @@ func (bl *BorderLayout) ToHTML() string {
 	table.AddChild(tr)
 
 	if bl.bottom != nil {
-		td := NewTD().
-			Attr("class", "Bottom").
-			Attr("style", "height:1px;text-align:"+bl.bottomAlignHorizontal+";vertical-align:"+bl.bottomAlignVertical).
+		td := NewTD().Class("Bottom").
+			Style("height:1px;text-align:"+bl.bottomAlignHorizontal+";vertical-align:"+bl.bottomAlignVertical).
 			AddChild(bl.bottom)
 
 		if colspan > 1 {
