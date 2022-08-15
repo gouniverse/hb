@@ -131,7 +131,7 @@ func (t *Tag) SetAttribute(key, value string) *Tag {
 
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
-	return t.SetAttribute("style", id)
+	return t.SetAttribute("style", style)
 }
 
 // ToHTML returns HTML from Node
