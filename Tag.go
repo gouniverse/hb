@@ -49,6 +49,7 @@ func (t *Tag) AddClass(className string) *Tag {
 	classNamesArray := strings.Split(classNames, " ")
 	classNamesArray = append(classNamesArray, className)
 	classNames = strings.Join(classNamesArray, " ")
+	classNames = strings.Trim(classNames, " ")
 	return t.SetAttribute("class", classNames)
 }
 
