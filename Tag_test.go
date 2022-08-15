@@ -66,3 +66,11 @@ func TestOnClick(t *testing.T) {
 		t.Error("Does not contain 'onclick=\"alert('Clicked')\", Output:" + input)
 	}
 }
+
+func TestStyle(t *testing.T) {
+	input := NewInput().Style("text-align:center;background:green;").ToHTML()
+	if strings.Contains(input, "style=\"text-align:center;background:green;\"") == false {
+		t.Error("Does not contain 'style=\"text-align:center;background:green;\", Output:" + input)
+	}
+}
+
