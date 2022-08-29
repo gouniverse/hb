@@ -251,6 +251,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+2022.08.29 - Added default favicon to Webpage to fix 404 if missing
+
 2022.01.07 - Added Attrs shortcut for setting multiple attributes
 
 2021.07.30 - Added shortcut for &lt;hr> tag
