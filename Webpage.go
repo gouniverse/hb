@@ -82,8 +82,7 @@ func (w *Webpage) ToHTML() string {
 		}
 	}
 	h := NewHTML("<!DOCTYPE html>")
-	h.AddChild(w.Head)
-	h.AddChild(w.Body)
+	h.AddChild(NewTag("html").AddChild(w.Head).AddChild(w.Body))
 	return h.ToHTML()
 }
 
