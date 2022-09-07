@@ -20,10 +20,10 @@ Unpretentious short and sweet HTML Builder.
 import "github.com/gouniverse/hb"
 	
 // 1. Create a div container with "Hello world" message
-div := hb.NewDiv().Attr("class", "container").HTML("Hello world")
+div := hb.NewDiv().Class("container").HTML("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := hb.NewSection().Attr("style","padding:40px;").AddChild(div)
+section := hb.NewSection().Style("padding:40px;").Child(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
@@ -94,6 +94,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
 - <b>AddHTML(html string)</b> - adds HTML content to the element
+- <b>Child(tag Tag)</b> - shortcut for AddChild
+- <b>Children(tag []Tag)</b> - shortcut for AddChildren
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>HasClass(className string)</b> - checks if the class is available
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
@@ -251,6 +253,9 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+
+2022.09.07 - Added Child and Children shortcuts
+
 2022.08.29 - Added default favicon to Webpage to fix 404 if missing
 
 2022.01.07 - Added Attrs shortcut for setting multiple attributes

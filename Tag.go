@@ -86,6 +86,16 @@ func (t *Tag) AddHTML(html string) *Tag {
 	return t
 }
 
+// AddChild shortcut for AddChild
+func (t *Tag) Child(child *Tag) *Tag {
+	return t.AddChild(child)
+}
+
+// Children shortcut for AddChildren
+func (t *Tag) Children(children []*Tag) *Tag {
+	return t.AddChildren(children)
+}
+
 // Class shortcut for setting the "class" attribute
 func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)

@@ -21,6 +21,27 @@ func TestAddClass(t *testing.T) {
 	}
 }
 
+func TestChild(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	div := NewDiv().Child(img)
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\"></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\"></div>'", "Output:"+divHtml)
+	}
+}
+
+func TestChildren(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	div := NewDiv().Children([]*Tag{
+		img,
+		img,
+	})
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\"><img width=\"100\"></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\"><img width=\"100\"></div>'", "Output:"+divHtml)
+	}
+}
+
 func TestHasClass(t *testing.T) {
 	img := NewImage().Attr("class", "one").AddClass("two").AddClass("three")
 	if img.HasClass("two") == false {
@@ -73,4 +94,3 @@ func TestStyle(t *testing.T) {
 		t.Error("Does not contain 'style=\"text-align:center;background:green;\", Output:" + input)
 	}
 }
-
