@@ -92,6 +92,24 @@ func (w *Webpage) AddChild(child *Tag) *Webpage {
 	return w
 }
 
+// AddChildren adds tags to the webpage
+func (w *Webpage) AddChildren(children []*Tag) *Webpage {
+	for _, child := range children {
+		w.AddChild(child)
+	}
+	return w
+}
+
+// AddChild shortcut for AddChild
+func (w *Webpage) Child(child *Tag) *Webpage {
+	return w.AddChild(child)
+}
+
+// Children shortcut for AddChildren
+func (w *Webpage) Children(children []*Tag) *Webpage {
+	return w.AddChildren(children)
+}
+
 // SetFavicon sets the favicon of the webpage
 func (w *Webpage) SetFavicon(favicon string) *Webpage {
 	w.Favicon = favicon
