@@ -39,6 +39,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 
 ## Implemented Tag Shortcuts
 
+- <b>NewBR()</b> - shortcut for &lt;br> tag
 - <b>NewBorderLayout()</b> - border layout with top, bottom, left, right and center slots (see example below how to use it)
 - <b>NewButton()</b> - shortcut for &lt;button> tag
 - <b>NewCode()</b> - shortcut for &lt;code> tag
