@@ -148,6 +148,7 @@ func (t *Tag) Style(style string) *Tag {
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	shortTags := []string{
+		"br",
 		"img",
 		"input",
 		"link",
