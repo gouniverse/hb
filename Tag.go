@@ -164,7 +164,7 @@ func (t *Tag) ToHTML() string {
 		tagEnd = ""
 	}
 	if isShortTag {
-		tagStart := `<` + t.TagName + t.attrToString() + ` />`
+		tagStart = `<` + t.TagName + t.attrToString() + ` />`
 		tagEnd = ""
 	}
 	return tagStart + t.TagContent + t.childrenToString() + tagEnd
