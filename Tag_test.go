@@ -37,8 +37,8 @@ func TestChildren(t *testing.T) {
 		img,
 	})
 	divHtml := div.ToHTML()
-	if strings.Contains(divHtml, "<div><img width=\"100\"><img width=\"100\" /></div>") == false {
-		t.Error("Does not contain '<div><img width=\"100\"><img width=\"100\" /></div>'", "Output:"+divHtml)
+	if strings.Contains(divHtml, "<div><img width=\"100\" /><img width=\"100\" /></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
 	}
 }
 
