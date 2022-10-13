@@ -11,6 +11,8 @@ Unpretentious short and sweet declarative HTML Builder.
 - Pure GO code
 - No need to transfer HTML files
 - No need to embed HTML files
+- No need for using template files
+- Full reuse of the code
 
 ## Example
 
