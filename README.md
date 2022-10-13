@@ -2,7 +2,7 @@
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
-Unpretentious short and sweet HTML Builder.
+Unpretentious short and sweet declarative HTML Builder.
 
 ## Benefits
 
