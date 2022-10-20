@@ -167,7 +167,13 @@ func (t *Tag) ToHTML() string {
 		tagStart = `<` + t.TagName + t.attrToString() + ` />`
 		tagEnd = ""
 	}
-	return tagStart + t.TagContent + t.childrenToString() + tagEnd
+	var builder strings.Builder
+	builder.WriteString(tagStart)
+	builder.WriteString(t.TagContent)
+	builder.WriteString(t.childrenToString())
+	builder.WriteString(tagEnd)
+	return builder.String()
+	// return tagStart + t.TagContent + t.childrenToString() + tagEnd
 }
 
 func (t Tag) attrToString() string {
