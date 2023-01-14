@@ -101,50 +101,68 @@ func (bl *BorderLayout) applyDefaultAlignments() {
 	}
 }
 
-func (bl *BorderLayout) AddTop(tag *Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddTop(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.top = tag
 	bl.topAlignHorizontal = alignHorizontal
 	bl.topAlignVertical = alignVertical
+
+	return bl
 }
 
-func (bl *BorderLayout) AddBottom(tag *Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddBottom(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.bottom = tag
 	bl.bottomAlignHorizontal = alignHorizontal
 	bl.bottomAlignVertical = alignVertical
+
+	return bl
 }
 
-func (bl *BorderLayout) AddLeft(tag *Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddLeft(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.left = tag
 	bl.leftAlignHorizontal = alignHorizontal
 	bl.leftAlignVertical = alignVertical
+
+	return bl
 }
 
-func (bl *BorderLayout) AddRight(tag *Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddRight(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.right = tag
 	bl.rightAlignHorizontal = alignHorizontal
 	bl.rightAlignVertical = alignVertical
+
+	return bl
 }
 
-func (bl *BorderLayout) AddCenter(tag *Tag, alignHorizontal string, alignVertical string) {
+func (bl *BorderLayout) AddCenter(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.center = tag
 	bl.centerAlignHorizontal = alignHorizontal
 	bl.centerAlignVertical = alignVertical
+
+	return bl
 }
 
-func (bl *BorderLayout) SetHeightPercents(height int) {
+func (bl *BorderLayout) SetHeightPercents(height int) *BorderLayout {
 	bl.height = utils.ToString(height) + "%"
+
+	return bl
 }
 
-func (bl *BorderLayout) SetWidthPercents(width int) {
+func (bl *BorderLayout) SetWidthPercents(width int) *BorderLayout {
 	bl.width = utils.ToString(width) + "%"
+
+	return bl
 }
 
-func (bl *BorderLayout) SetHeightPixels(height int) {
+func (bl *BorderLayout) SetHeightPixels(height int) *BorderLayout {
 	bl.height = utils.ToString(height) + "px"
+
+	return bl
 }
 
-func (bl *BorderLayout) SetWidthPixels(width int) {
+func (bl *BorderLayout) SetWidthPixels(width int) *BorderLayout {
 	bl.width = utils.ToString(width) + "px"
+
+	return bl
 }
 
 // BorderLayout returns HTML representation of the layout
@@ -167,11 +185,11 @@ func (bl *BorderLayout) ToHTML() string {
 	table.Class("BorderLayout").
 		Attr("cellspacing", "0").
 		Attr("cellpadding", "0").
-		Style("width:"+bl.width+";height:"+bl.height+";")
+		Style("width:" + bl.width + ";height:" + bl.height + ";")
 
 	if bl.top != nil {
 		td := NewTD().Class("Top").
-			Style("height:1px;text-align:"+bl.topAlignHorizontal+";vertical-align:"+bl.topAlignVertical).
+			Style("height:1px;text-align:" + bl.topAlignHorizontal + ";vertical-align:" + bl.topAlignVertical).
 			AddChild(bl.top)
 
 		if colspan > 1 {
@@ -186,7 +204,7 @@ func (bl *BorderLayout) ToHTML() string {
 
 	if bl.left != nil {
 		td := NewTD().Class("Left").
-		Style("width:1px;height:100%;text-align:"+bl.leftAlignHorizontal+";vertical-align:"+bl.leftAlignVertical).
+			Style("width:1px;height:100%;text-align:" + bl.leftAlignHorizontal + ";vertical-align:" + bl.leftAlignVertical).
 			AddChild(bl.left)
 
 		tr.AddChild(td)
@@ -194,7 +212,7 @@ func (bl *BorderLayout) ToHTML() string {
 
 	if bl.center != nil {
 		td := NewTD().Class("Center").
-			Style("text-align:"+bl.centerAlignHorizontal+";vertical-align:"+bl.centerAlignVertical).
+			Style("text-align:" + bl.centerAlignHorizontal + ";vertical-align:" + bl.centerAlignVertical).
 			AddChild(bl.center)
 
 		tr.AddChild(td)
@@ -202,7 +220,7 @@ func (bl *BorderLayout) ToHTML() string {
 
 	if bl.right != nil {
 		td := NewTD().Class("Right").
-			Style("width:1px;height:100%;text-align:"+bl.rightAlignHorizontal+";vertical-align:"+bl.rightAlignVertical).
+			Style("width:1px;height:100%;text-align:" + bl.rightAlignHorizontal + ";vertical-align:" + bl.rightAlignVertical).
 			AddChild(bl.right)
 
 		tr.AddChild(td)
@@ -212,7 +230,7 @@ func (bl *BorderLayout) ToHTML() string {
 
 	if bl.bottom != nil {
 		td := NewTD().Class("Bottom").
-			Style("height:1px;text-align:"+bl.bottomAlignHorizontal+";vertical-align:"+bl.bottomAlignVertical).
+			Style("height:1px;text-align:" + bl.bottomAlignHorizontal + ";vertical-align:" + bl.bottomAlignVertical).
 			AddChild(bl.bottom)
 
 		if colspan > 1 {
