@@ -257,6 +257,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 
 ## Changelog
 
+2023.01.22 - Added shortcut for &lt;footer> tag
+
 2023.01.14 - Flow pattern applied to BorderLayout methods
 
 2022.09.07 - Added Child and Children shortcuts
