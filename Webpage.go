@@ -10,6 +10,7 @@ type Webpage struct {
 	Charset     string
 	Title       string
 	Favicon     string
+	Language    string
 	Keywords    string
 	Description string
 	Attributes  map[string]string
@@ -86,6 +87,9 @@ func (w *Webpage) ToHTML() string {
 	}
 
 	htmlTag := NewTag("html")
+	if w.Language != "" {
+		w.Attr("lang", w.Language)
+	}
 	for k, v := range w.Attributes {
 		htmlTag.Attr(k, v)
 	}
