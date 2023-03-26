@@ -43,6 +43,11 @@ type Tag struct {
 	TagChildren   []*Tag
 }
 
+// Action shortcut for setting the "action" attribute
+func (t *Tag) Action(action string) *Tag {
+	return t.SetAttribute("action", action)
+}
+
 // AddClass adds a new class name to the tag attribute list.
 func (t *Tag) AddClass(className string) *Tag {
 	classNames := t.GetAttribute("class")
@@ -101,6 +106,11 @@ func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)
 }
 
+// Enctype shortcut for setting the "enctype" attribute
+func (t *Tag) Enctype(enctype string) *Tag {
+	return t.SetAttribute("enctype", enctype)
+}
+
 // GetAttribute returns the value of an attribute
 func (t *Tag) GetAttribute(key string) string {
 	if t.TagAttributes == nil {
@@ -129,6 +139,11 @@ func (t *Tag) Href(href string) *Tag {
 // ID shortcut for setting the "id" attribute
 func (t *Tag) ID(id string) *Tag {
 	return t.SetAttribute("id", id)
+}
+
+// Method shortcut for setting the "method" attribute
+func (t *Tag) Method(method string) *Tag {
+	return t.SetAttribute("method", method)
 }
 
 // Name shortcut for setting the "name" attribute

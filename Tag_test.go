@@ -42,6 +42,26 @@ func TestChildren(t *testing.T) {
 	}
 }
 
+func TestFormActionMethodEnctype(t *testing.T) {
+	form := NewForm().Method("post").Action("http://test.com/form-post").Enctype("multipart/form-data").ToHTML()
+
+	if strings.Contains(form, `method="post"`) == false {
+		t.Error(`Does not contain 'method="post"', Output:` + form)
+	}
+
+	if strings.Contains(form, `action="http://test.com/form-post"`) == false {
+		t.Error(`Does not contain 'action="http://test.com/form-post"', Output:` + form)
+	}
+
+	if strings.Contains(form, `enctype="multipart/form-data"`) == false {
+		t.Error(`Does not contain 'enctype="multipart/form-data"', Output:` + form)
+	}
+
+	if form != `<form action="http://test.com/form-post" enctype="multipart/form-data" method="post"></form>` {
+		t.Error(`Does not match '<form action="http://test.com/form-post" enctype="multipart/form-data" method="post"></form>', Output:` + form)
+	}
+}
+
 func TestHasClass(t *testing.T) {
 	img := NewImage().Attr("class", "one").AddClass("two").AddClass("three")
 	if img.HasClass("two") == false {
