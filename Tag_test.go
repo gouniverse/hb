@@ -30,10 +30,19 @@ func TestChild(t *testing.T) {
 	}
 }
 
+func TestChildWithNil(t *testing.T) {
+	div := NewDiv().Child(nil)
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div></div>") == false {
+		t.Error("Does not contain '<div></div>'", "Output:"+divHtml)
+	}
+}
+
 func TestChildren(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	div := NewDiv().Children([]*Tag{
 		img,
+		nil,
 		img,
 	})
 	divHtml := div.ToHTML()

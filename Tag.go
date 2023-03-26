@@ -73,6 +73,10 @@ func (t *Tag) Attrs(attrs map[string]string) *Tag {
 
 // AddChild adds a new child tag to this tag
 func (t *Tag) AddChild(child *Tag) *Tag {
+	if child == nil {
+		return t
+	}
+
 	t.TagChildren = append(t.TagChildren, child)
 	return t
 }
@@ -80,6 +84,10 @@ func (t *Tag) AddChild(child *Tag) *Tag {
 // AddChildren adds an array of child tags to this tag
 func (t *Tag) AddChildren(children []*Tag) *Tag {
 	for _, child := range children {
+		if child == nil {
+			continue
+		}
+
 		t.AddChild(child)
 	}
 	return t
@@ -91,9 +99,18 @@ func (t *Tag) AddHTML(html string) *Tag {
 	return t
 }
 
-// AddChild shortcut for AddChild
+// Childs shortcut for AddChild
 func (t *Tag) Child(child *Tag) *Tag {
 	return t.AddChild(child)
+}
+
+// ChildIf adds a child if a condition is met
+func (t *Tag) ChildIf(condition bool, child *Tag) *Tag {
+	if condition {
+		return t.AddChild(child)
+	}
+
+	return t
 }
 
 // Children shortcut for AddChildren
@@ -101,9 +118,27 @@ func (t *Tag) Children(children []*Tag) *Tag {
 	return t.AddChildren(children)
 }
 
+// ChildrenIf adds children if a condition is met
+func (t *Tag) ChildrenIf(condition bool, children []*Tag) *Tag {
+	if condition {
+		return t.AddChildren(children)
+	}
+
+	return t
+}
+
 // Class shortcut for setting the "class" attribute
 func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)
+}
+
+// ClassIf adds class name if a condition is met
+func (t *Tag) ClassIf(condition bool, clasName string) *Tag {
+	if condition {
+		return t.AddClass(clasName)
+	}
+
+	return t
 }
 
 // Data shortcut for setting a "data-" attribute
