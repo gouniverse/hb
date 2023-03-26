@@ -366,4 +366,6 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 
 - HTMLX (https://github.com/mdigger/htmlx) | Last update: 20 Jun 2021
 
+- HTML as functions (https://github.com/jpincas/htmlfunc) | Last update: 23 Jan 2023
+
 
