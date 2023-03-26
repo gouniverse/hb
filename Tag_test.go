@@ -49,10 +49,19 @@ func TestHasClass(t *testing.T) {
 	}
 }
 
-func TestID(t *testing.T) {
-	input := NewInput().ID("first").ToHTML()
+func TestIDNameAndValue(t *testing.T) {
+	input := NewInput().ID("first").Name("first_name").Value("John").ToHTML()
 	if strings.Contains(input, "id=\"first\"") == false {
 		t.Error("Does not contain 'id=\"first\", Output:" + input)
+	}
+	if strings.Contains(input, "name=\"first_name\"") == false {
+		t.Error("Does not contain 'name=\"first_name\", Output:" + input)
+	}
+	if strings.Contains(input, "value=\"John\"") == false {
+		t.Error("Does not contain 'value=\"John\", Output:" + input)
+	}
+	if input != `<input id="first" name="first_name" value="John" />` {
+		t.Error(`Does not match '<input id="first" name="first_name" value="John" />', Output:` + input)
 	}
 }
 
@@ -64,6 +73,19 @@ func TestEscapeAttributes(t *testing.T) {
 	h := tag.ToHTML()
 	if strings.Contains(h, "onclick=\"page('PAGE_ID')\"") == false {
 		t.Error("Does not contain onclick=\"page('PAGE_ID')\"", "Output:"+h)
+	}
+}
+
+func TestHrefTarget(t *testing.T) {
+	link := NewHyperlink().Href("http://test.com").Target("_blank").HTML("Test").ToHTML()
+	if strings.Contains(link, `href="http://test.com"`) == false {
+		t.Error(`Does not contain 'href="http://test.com"', Output:` + link)
+	}
+	if strings.Contains(link, `target="_blank""`) == false {
+		t.Error(`Does not contain 'target="_blank"', Output:` + link)
+	}
+	if link != `<a href="http://test.com" target="_blank">Test</a>` {
+		t.Error(`Does not match '<a href="http://test.com" target="_blank">Test</a>', Output:` + link)
 	}
 }
 

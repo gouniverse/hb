@@ -104,12 +104,16 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Children(tag []Tag)</b> - shortcut for AddChildren
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>HasClass(className string)</b> - checks if the class is available
+- <b>Href(href string)</b> - shortcut to add an "href" attribute
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
+- <b>Name(name string)</b> - shortcut to add a "name" attribute
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
+- <b>Target(target string)</b> - shortcut to add a "target" attribute
 - <b>ToHTML() string</b> - outputs HTML code
+- <b>Value(value string)</b> - shortcut to add a "value" attribute
 
 ## Webpage Methods
 - <b>AddChild(child *Tag)</b>

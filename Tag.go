@@ -122,8 +122,8 @@ func (t *Tag) HTML(html string) *Tag {
 }
 
 // Href shortcut for setting the "href" attribute
-func (t *Tag) Href(style string) *Tag {
-	return t.SetAttribute("href", style)
+func (t *Tag) Href(href string) *Tag {
+	return t.SetAttribute("href", href)
 }
 
 // ID shortcut for setting the "id" attribute
@@ -132,8 +132,8 @@ func (t *Tag) ID(id string) *Tag {
 }
 
 // Name shortcut for setting the "name" attribute
-func (t *Tag) Name(style string) *Tag {
-	return t.SetAttribute("name", style)
+func (t *Tag) Name(name string) *Tag {
+	return t.SetAttribute("name", name)
 }
 
 // OnClick shortcut for setting the "onclick" attribute
@@ -153,6 +153,11 @@ func (t *Tag) SetAttribute(key, value string) *Tag {
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
 	return t.SetAttribute("style", style)
+}
+
+// Target shortcut for setting the "target" attribute
+func (t *Tag) Target(target string) *Tag {
+	return t.SetAttribute("target", target)
 }
 
 // ToHTML returns HTML from Node
@@ -187,8 +192,8 @@ func (t *Tag) ToHTML() string {
 }
 
 // Value shortcut for setting the "value" attribute
-func (t *Tag) Href(style string) *Tag {
-	return t.SetAttribute("value", style)
+func (t *Tag) Value(value string) *Tag {
+	return t.SetAttribute("value", value)
 }
 
 func (t Tag) attrToString() string {
