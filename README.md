@@ -97,7 +97,6 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Action(action string)</b> - shortcut to add an "action" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
-- <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
@@ -105,9 +104,11 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>Children(tag []Tag)</b> - shortcut for AddChildren
 - <b>Class(className string)</b> - shortcut for AddClass
+- <b>Data(name string, value string)</b> - shortcut to add a "data-" attribute
 - <b>Enctype(enctype string)</b> - shortcut to add an "enctype" attribute
 - <b>HasClass(className string)</b> - checks if the class is available
 - <b>Href(href string)</b> - shortcut to add an "href" attribute
+- <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
 - <b>Method(method string)</b> - shortcut to add a "method" attribute

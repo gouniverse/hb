@@ -42,6 +42,18 @@ func TestChildren(t *testing.T) {
 	}
 }
 
+func TestData(t *testing.T) {
+	input := NewDiv().Data("id", "TestID").Data("name", "TestName").ToHTML()
+
+	if strings.Contains(input, `data-id="TestID"`) == false {
+		t.Error(`Does not contain 'data-id="TestID"', Output:` + input)
+	}
+
+	if strings.Contains(input, `data-name="TestName"`) == false {
+		t.Error(`Does not contain 'data-name="TestName"', Output:` + input)
+	}
+}
+
 func TestFormActionMethodEnctype(t *testing.T) {
 	form := NewForm().Method("post").Action("http://test.com/form-post").Enctype(ENCTYPE_FORM_MULTIPART).ToHTML()
 

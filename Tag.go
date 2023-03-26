@@ -106,6 +106,11 @@ func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)
 }
 
+// Data shortcut for setting a "data-" attribute
+func (t *Tag) Data(name string, value string) *Tag {
+	return t.SetAttribute("data-"+name, value)
+}
+
 // Enctype shortcut for setting the "enctype" attribute
 func (t *Tag) Enctype(enctype string) *Tag {
 	return t.SetAttribute("enctype", enctype)
