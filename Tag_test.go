@@ -81,7 +81,7 @@ func TestHrefTarget(t *testing.T) {
 	if strings.Contains(link, `href="http://test.com"`) == false {
 		t.Error(`Does not contain 'href="http://test.com"', Output:` + link)
 	}
-	if strings.Contains(link, `target="_blank""`) == false {
+	if strings.Contains(link, `target="_blank"`) == false {
 		t.Error(`Does not contain 'target="_blank"', Output:` + link)
 	}
 	if link != `<a href="http://test.com" target="_blank">Test</a>` {
