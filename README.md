@@ -123,6 +123,14 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Value(value string)</b> - shortcut to add a "value" attribute
 
+## Tag HTMX Attributes
+
+HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here is a shortcut for working with HTMX.
+
+- Hx(name string, value string) - shortcut for setting an HTMX attribute
+
+Check the example section, for how to use.
+
 ## Webpage Methods
 - <b>AddChild(child *Tag)</b>
 - <b>SetFavicon(favicon string)</b>
@@ -279,6 +287,21 @@ func Webpage(title, content string) *hb.Webpage {
 html := webpage("Home", "Hello world").ToHTML()
 ```
 
+## HTMX Example
+
+Here is an HTMX example which submits the content of all the inputs
+in a div to the server (no need to be in a form) and then replaces
+the content of the webpage with the result.
+
+```go
+input := NewButton().
+		HTML("Submit")
+		Hx("post", "http://test.com").
+		Hx("include", "#DivID").
+		Hx("target", "#PageID").
+		Hx("swap", "outerHTML")
+```
+
 ## How to Add a Redirection?
 
 ```go
@@ -286,6 +309,9 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+
+2023.03.26 - Added Hx attribute shortcut for working with HTMX
+
 2023.03.26 - Added OnBlur, OnChange, OnFocus, OnKeyDown, OnKeyUp, attribute shortcuts
 
 2023.03.26 - Added Enctype, Href, Method, Name, target, Value attribute shortcuts
