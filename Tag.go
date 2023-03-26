@@ -131,6 +131,11 @@ func (t *Tag) ID(id string) *Tag {
 	return t.SetAttribute("id", id)
 }
 
+// Name shortcut for setting the "name" attribute
+func (t *Tag) Name(style string) *Tag {
+	return t.SetAttribute("name", style)
+}
+
 // OnClick shortcut for setting the "onclick" attribute
 func (t *Tag) OnClick(js string) *Tag {
 	return t.SetAttribute("onclick", js)
@@ -179,6 +184,11 @@ func (t *Tag) ToHTML() string {
 	builder.WriteString(tagEnd)
 	return builder.String()
 	// return tagStart + t.TagContent + t.childrenToString() + tagEnd
+}
+
+// Value shortcut for setting the "value" attribute
+func (t *Tag) Href(style string) *Tag {
+	return t.SetAttribute("value", style)
 }
 
 func (t Tag) attrToString() string {
