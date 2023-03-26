@@ -363,9 +363,12 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - Uberswe HTML (https://github.com/uberswe/html) | Last update: 24 Feb 2021
 
 - Forms from Structs (https://github.com/joncalhoun/form)
+  Still writ
 
 - HTMLX (https://github.com/mdigger/htmlx) | Last update: 20 Jun 2021
+  An extension to the standard html package. Not lots of documentation
 
 - HTML as functions (https://github.com/jpincas/htmlfunc) | Last update: 23 Jan 2023
+  Intersting library, following Elm. Not lots of documentation
 
 
