@@ -121,6 +121,11 @@ func (t *Tag) HTML(html string) *Tag {
 	return t.AddHTML(html)
 }
 
+// Href shortcut for setting the "href" attribute
+func (t *Tag) Href(style string) *Tag {
+	return t.SetAttribute("href", style)
+}
+
 // ID shortcut for setting the "id" attribute
 func (t *Tag) ID(id string) *Tag {
 	return t.SetAttribute("id", id)
