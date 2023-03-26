@@ -111,7 +111,12 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>GetAttribute(key string) string</b>
 - <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
+- <b>OnBlur(js string)</b> - shortcut to add an "onblur" attribute
+- <b>OnChange(js string)</b> - shortcut to add an "onchange" attribute
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
+- <b>OnFocus(js string)</b> - shortcut to add an "onfocus" attribute
+- <b>OnKeyDown(js string)</b> - shortcut to add an "onkeydown" attribute
+- <b>OnKeyUp(js string)</b> - shortcut to add an "onkeyup" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
@@ -281,6 +286,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+2023.03.26 - Added OnBlur, OnChange, OnFocus, OnKeyDown, OnKeyUp, attribute shortcuts
+
 2023.03.26 - Added Enctype, Href, Method, Name, target, Value attribute shortcuts
 
 2023.01.22 - Added shortcut for &lt;footer> tag

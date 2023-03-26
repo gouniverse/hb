@@ -123,10 +123,45 @@ func TestAttrs(t *testing.T) {
 	}
 }
 
+func TestOnBlur(t *testing.T) {
+	input := NewButton().OnBlur("alert('Focus Lost')").ToHTML()
+	if strings.Contains(input, `onblur="alert('Focus Lost')"`) == false {
+		t.Error(`Does not contain 'onblur="alert('Focus Lost')"', Output:` + input)
+	}
+}
+
+func TestOnChange(t *testing.T) {
+	input := NewButton().OnChange("alert('Changed')").ToHTML()
+	if strings.Contains(input, `onchange="alert('Changed')"`) == false {
+		t.Error(`Does not contain 'onchange="alert('Changed')"', Output:` + input)
+	}
+}
+
 func TestOnClick(t *testing.T) {
 	input := NewButton().OnClick("alert('Clicked')").ToHTML()
 	if strings.Contains(input, "onclick=\"alert('Clicked')\"") == false {
 		t.Error("Does not contain 'onclick=\"alert('Clicked')\", Output:" + input)
+	}
+}
+
+func TestOnFocus(t *testing.T) {
+	input := NewButton().OnFocus("alert('Focus Gained')").ToHTML()
+	if strings.Contains(input, `onfocus="alert('Focus Gained')"`) == false {
+		t.Error(`Does not contain 'onfocus="alert('Focus Gained')"', Output:` + input)
+	}
+}
+
+func TestOnKeyDown(t *testing.T) {
+	input := NewButton().OnKeyDown("alert('Key Down')").ToHTML()
+	if strings.Contains(input, `onkeydown="alert('Key Down')"`) == false {
+		t.Error(`Does not contain 'onkeydown="alert('Key Down')"', Output:` + input)
+	}
+}
+
+func TestOnKeyUp(t *testing.T) {
+	input := NewButton().OnKeyUp("alert('Key Up')").ToHTML()
+	if strings.Contains(input, `onkeyup="alert('Key Up')"`) == false {
+		t.Error(`Does not contain 'onkeyup="alert('Key Up')"', Output:` + input)
 	}
 }
 

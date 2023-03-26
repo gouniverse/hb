@@ -151,9 +151,34 @@ func (t *Tag) Name(name string) *Tag {
 	return t.SetAttribute("name", name)
 }
 
+// OnBlur shortcut for setting the "onblur" attribute
+func (t *Tag) OnBlur(js string) *Tag {
+	return t.SetAttribute("onblur", js)
+}
+
+// OnChange shortcut for setting the "onchange" attribute
+func (t *Tag) OnChange(js string) *Tag {
+	return t.SetAttribute("onchange", js)
+}
+
 // OnClick shortcut for setting the "onclick" attribute
 func (t *Tag) OnClick(js string) *Tag {
 	return t.SetAttribute("onclick", js)
+}
+
+// OnFocus shortcut for setting the "onfocus" attribute
+func (t *Tag) OnFocus(js string) *Tag {
+	return t.SetAttribute("onfocus", js)
+}
+
+// OnKeyDown shortcut for setting the "onkeydown" attribute
+func (t *Tag) OnKeyDown(js string) *Tag {
+	return t.SetAttribute("onkeydown", js)
+}
+
+// OnKeyUp shortcut for setting the "onkeyup" attribute
+func (t *Tag) OnKeyUp(js string) *Tag {
+	return t.SetAttribute("onkeyup", js)
 }
 
 // SetAttribute sets the valua of an attribute
