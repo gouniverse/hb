@@ -93,6 +93,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 
 ## Tag Methods
 
+- <b>Action(action string)</b> - shortcut to add an "action" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
 - <b>HTML(html string)</b> - shortcut for AddHTML
@@ -103,10 +104,12 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>Children(tag []Tag)</b> - shortcut for AddChildren
 - <b>Class(className string)</b> - shortcut for AddClass
+- <b>Enctype(enctype string)</b> - shortcut to add an "enctype" attribute
 - <b>HasClass(className string)</b> - checks if the class is available
 - <b>Href(href string)</b> - shortcut to add an "href" attribute
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
+- <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
@@ -166,30 +169,45 @@ bl := NewBorderLayout()
 
 ```go
 // Elements for the form
-header := hb.NewHeading3().HTML("Please sign in").Attr("style", "margin:0px;")
+header := hb.NewHeading3().HTML("Please sign in").Style("margin:0px;")
 emailLabel := hb.NewLabel().HTML("E-mail Address")
-emailInput := hb.NewInput().Class("form-control").Attr("name", "email").Attr("placeholder", "Enter e-mail address")
+emailInput := hb.NewInput().Class("form-control").Name("email").Attr("placeholder", "Enter e-mail address")
 emailFormGroup := hb.NewDiv().Class("form-group").AddChild(emailLabel).AddChild(emailInput)
 passwordLabel := hb.NewLabel().AddChild(hb.NewHTML("Password"))
-passwordInput := hb.NewInput().Class("form-control").Attr("name", "password").Attr("type", "password").Attr("placeholder", "Enter password")
-passwordFormGroup := hb.NewDiv().Class("form-group").AddChild(passwordLabel).AddChild(passwordInput)
+passwordInput := hb.NewInput().Class("form-control").Name("password").Attr("type", "password").Attr("placeholder", "Enter password")
+passwordFormGroup := hb.NewDiv().Class("form-group").Child(passwordLabel).Child(passwordInput)
 buttonLogin := hb.NewButton().Class("btn btn-lg btn-success btn-block").HTML("Login")
-buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").HTML("Register").Attr("href", "auth/register")
-buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").HTML("Forgot password?").Attr("href", "auth/password-restore")
+buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").HTML("Register").Href("auth/register")
+buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").HTML("Forgot password?").Href("auth/password-restore")
 
 // Add elements in a card
-cardHeader := hb.NewDiv().Class("card-header").AddChild(header)
-cardBody := hb.NewDiv().Class("card-body").AddChildren([]*hb.Tag{
-	emailFormGroup,
-	passwordFormGroup,
-	buttonLogin,
-})
-cardFooter := hb.NewDiv().Class("card-footer").AddChildren([]*hb.Tag{
-	buttonRegister,
-	buttonForgotPassword,
-})
-card := hb.NewDiv().Class("card card-default").Style("margin:0 auto;max-width: 360px;")
-card.AddChild(cardHeader).AddChild(cardBody).AddChild(cardFooter)
+cardHeader := hb.NewDiv().
+	Class("card-header").
+	Child(header)
+
+cardBody := hb.NewDiv().
+	Class("card-body").
+	Children([]*hb.Tag{
+		emailFormGroup,
+		passwordFormGroup,
+		buttonLogin,
+	})
+
+cardFooter := hb.NewDiv().
+	Class("card-footer").
+	Children([]*hb.Tag{
+		buttonRegister,
+		buttonForgotPassword,
+	})
+
+card := hb.NewDiv().
+	Class("card card-default").
+	Style("margin:0 auto;max-width: 360px;").
+	Children([]*hb.Tag{
+		cardHeader,
+		cardBody,
+		cardFooter
+	})
 
 // Convert to HTML to display
 html := card.ToHTML()
@@ -263,6 +281,7 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+2023.03.26 - Added Enctype, Href, Method, Name, target, Value attribute shortcuts
 
 2023.01.22 - Added shortcut for &lt;footer> tag
 

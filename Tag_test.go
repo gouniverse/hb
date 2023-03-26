@@ -43,7 +43,7 @@ func TestChildren(t *testing.T) {
 }
 
 func TestFormActionMethodEnctype(t *testing.T) {
-	form := NewForm().Method("post").Action("http://test.com/form-post").Enctype("multipart/form-data").ToHTML()
+	form := NewForm().Method("post").Action("http://test.com/form-post").Enctype(ENCTYPE_FORM_MULTIPART).ToHTML()
 
 	if strings.Contains(form, `method="post"`) == false {
 		t.Error(`Does not contain 'method="post"', Output:` + form)
