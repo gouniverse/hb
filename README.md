@@ -13,9 +13,10 @@ Unpretentious short and sweet declarative HTML Builder.
 - No need to embed HTML files
 - No need for using template files
 - Full reuse of the code
-- Filly eliminates the quirks of the template package
-- Great for email templates
-- Easily composable
+- Fully eliminates the quirks of the standard template package
+- Great for email templates too
+- Nice looking fluent interface
+- Easy to extend and build your own flavor on top
 
 ## Example
 
