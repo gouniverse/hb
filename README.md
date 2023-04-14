@@ -102,8 +102,14 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
 - <b>AddHTML(html string)</b> - adds HTML content to the element
 - <b>Child(tag Tag)</b> - shortcut for AddChild
-- <b>Children(tag []Tag)</b> - shortcut for AddChildren
+- <b>ChildIf(condition bool, tag Tag)</b> - conditional adding of a child
+- <b>ChildIfElse(condition bool, childIf Tag, childElse Tag)</b> - conditional adding of a child
+- <b>Children(children []Tag)</b> - shortcut for AddChildren
+- <b>ChildrenIf(condition bool, children []Tag)</b> - conditional adding of children
+- <b>ChildrenIfElse(condition bool, childrenIf []Tag, childrenElse []Tag)</b> - conditional adding of a children
 - <b>Class(className string)</b> - shortcut for AddClass
+- <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
+- <b>ClassIfElse(condition bool, classNameIf string, classNameElse string)</b> - conditional adding of a class
 - <b>Data(name string, value string)</b> - shortcut to add a "data-" attribute
 - <b>Enctype(enctype string)</b> - shortcut to add an "enctype" attribute
 - <b>HasClass(className string)</b> - checks if the class is available
@@ -123,6 +129,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
 - <b>ToHTML() string</b> - outputs HTML code
+- <b>Type(target string)</b> - shortcut to add a "type" attribute
 - <b>Value(value string)</b> - shortcut to add a "value" attribute
 
 ## Tag HTMX Attributes
@@ -311,6 +318,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+
+2023.04.14 - Added Type attribute shortcut, conditionals for children and class names
 
 2023.03.26 - Added Hx attribute shortcut for working with HTMX
 

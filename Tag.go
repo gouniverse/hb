@@ -113,6 +113,15 @@ func (t *Tag) ChildIf(condition bool, child *Tag) *Tag {
 	return t
 }
 
+// ChildIfElse adds a child if a condition is met, otherwise adds another child
+func (t *Tag) ChildIfElse(condition bool, childIf *Tag, childElse *Tag) *Tag {
+	if condition {
+		return t.AddChild(childIf)
+	}
+
+	return t.AddChild(childElse)
+}
+
 // Children shortcut for AddChildren
 func (t *Tag) Children(children []*Tag) *Tag {
 	return t.AddChildren(children)
@@ -127,6 +136,15 @@ func (t *Tag) ChildrenIf(condition bool, children []*Tag) *Tag {
 	return t
 }
 
+// ChildrenIfElse adds children if a condition is met
+func (t *Tag) ChildrenIfElse(condition bool, childrenIf []*Tag, childrenElse []*Tag) *Tag {
+	if condition {
+		return t.AddChildren(childrenIf)
+	}
+
+	return t.AddChildren(childrenElse)
+}
+
 // Class shortcut for setting the "class" attribute
 func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)
@@ -139,6 +157,15 @@ func (t *Tag) ClassIf(condition bool, clasName string) *Tag {
 	}
 
 	return t
+}
+
+// ClassIfElse adds class name if a condition is met
+func (t *Tag) ClassIfElse(condition bool, clasNameIf string, classNameElse string) *Tag {
+	if condition {
+		return t.AddClass(clasNameIf)
+	}
+
+	return t.AddClass(classNameElse)
 }
 
 // Data shortcut for setting a "data-" attribute
@@ -169,6 +196,24 @@ func (t *Tag) HasClass(className string) bool {
 // HTML shortcut for AddHTML
 func (t *Tag) HTML(html string) *Tag {
 	return t.AddHTML(html)
+}
+
+// HTMLIf adds html if a condition is met
+func (t *Tag) HTMLIf(condition bool, html string) *Tag {
+	if condition {
+		return t.AddHTML(html)
+	}
+
+	return t
+}
+
+// HTMLIfElse adds html if a condition is met
+func (t *Tag) HTMLIfElse(condition bool, htmlIf string, htmlElse string) *Tag {
+	if condition {
+		return t.AddHTML(htmlIf)
+	}
+
+	return t.AddHTML(htmlElse)
 }
 
 // Href shortcut for setting the "href" attribute
@@ -269,6 +314,11 @@ func (t *Tag) ToHTML() string {
 	builder.WriteString(tagEnd)
 	return builder.String()
 	// return tagStart + t.TagContent + t.childrenToString() + tagEnd
+}
+
+// Type shortcut for setting the "type" attribute
+func (t *Tag) Type(inputType string) *Tag {
+	return t.SetAttribute("type", inputType)
 }
 
 // Value shortcut for setting the "value" attribute
