@@ -58,6 +58,19 @@ func (t *Tag) AddClass(className string) *Tag {
 	return t.SetAttribute("class", classNames)
 }
 
+// AddStyle adds a new class name to the tag attribute list.
+func (t *Tag) AddStyle(style string) *Tag {
+	styles := t.GetAttribute("style")
+	if styles == "" {
+		styles = style
+	} else if strings.HasSuffix(styles, ";") {
+		styles = styles + style
+	} else {
+		styles = styles + ";" + style
+	}
+	return t.SetAttribute("style", styles)
+}
+
 // Attr shortcut for SetAttribute
 func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
@@ -277,7 +290,25 @@ func (t *Tag) SetAttribute(key, value string) *Tag {
 
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
-	return t.SetAttribute("style", style)
+	return t.AddStyle(style)
+}
+
+// StyleIf adds style if a condition is met
+func (t *Tag) StyleIf(condition bool, style string) *Tag {
+	if condition {
+		return t.AddStyle(style)
+	}
+
+	return t
+}
+
+// StyleIfElse adds style if a condition is met
+func (t *Tag) StyleIfElse(condition bool, styleIf string, styleElse string) *Tag {
+	if condition {
+		return t.AddStyle(styleIf)
+	}
+
+	return t.AddStyle(styleElse)
 }
 
 // Target shortcut for setting the "target" attribute

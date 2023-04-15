@@ -21,12 +21,51 @@ func TestAddClass(t *testing.T) {
 	}
 }
 
+func TestAddStyle(t *testing.T) {
+	img := NewImage().AddStyle("width:100px")
+	imgHtml := img.AddStyle("height:100px").ToHTML()
+	if strings.Contains(imgHtml, `<img style="width:100px;height:100px" />`) == false {
+		t.Error(`Does not contain '<img style="width:100px;height:100px" />", Output:` + imgHtml)
+	}
+}
+
 func TestChild(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	div := NewDiv().Child(img)
 	divHtml := div.ToHTML()
 	if strings.Contains(divHtml, "<div><img width=\"100\" /></div>") == false {
 		t.Error("Does not contain '<div><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+}
+
+func TestChildIf(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	div := NewDiv().ChildIf(true, img)
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\" /></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+
+	divFalse := NewDiv().ChildIf(false, img)
+	divHtmlFalse := divFalse.ToHTML()
+	if strings.Contains(divHtmlFalse, "<div></div>") == false {
+		t.Error("Does not contain '<div></div>'", "Output:"+divHtmlFalse)
+	}
+}
+
+func TestChildIfElse(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	input := NewInput()
+	div := NewDiv().ChildIfElse(true, img, input)
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\" /></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+
+	divFalse := NewDiv().ChildIfElse(false, img, input)
+	divHtmlFalse := divFalse.ToHTML()
+	if strings.Contains(divHtmlFalse, "<div><input /></div>") == false {
+		t.Error("Does not contain '<div><input /></div>'", "Output:"+divHtmlFalse)
 	}
 }
 
@@ -48,6 +87,55 @@ func TestChildren(t *testing.T) {
 	divHtml := div.ToHTML()
 	if strings.Contains(divHtml, "<div><img width=\"100\" /><img width=\"100\" /></div>") == false {
 		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+}
+
+func TestChildrenIf(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	div := NewDiv().ChildrenIf(true, []*Tag{
+		img,
+		img,
+	})
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\" /><img width=\"100\" /></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+
+	divFalse := NewDiv().ChildrenIf(false, []*Tag{
+		img,
+		img,
+	})
+	divHtmlFalse := divFalse.ToHTML()
+	if strings.Contains(divHtmlFalse, "<div></div>") == false {
+		t.Error("Does not contain '<div></div>'", "Output:"+divHtmlFalse)
+	}
+}
+
+func TestChildrenIfElse(t *testing.T) {
+	img := NewImage().Attr("width", "100")
+	input := NewInput()
+	div := NewDiv().ChildrenIfElse(true, []*Tag{
+		img,
+		img,
+	}, []*Tag{
+		input,
+		input,
+	})
+	divHtml := div.ToHTML()
+	if strings.Contains(divHtml, "<div><img width=\"100\" /><img width=\"100\" /></div>") == false {
+		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
+	}
+
+	divFalse := NewDiv().ChildrenIfElse(false, []*Tag{
+		img,
+		img,
+	}, []*Tag{
+		input,
+		input,
+	})
+	divHtmlFalse := divFalse.ToHTML()
+	if strings.Contains(divHtmlFalse, "<div><input /><input /></div>") == false {
+		t.Error("Does not contain '<div><input /><input /></div>'", "Output:"+divHtmlFalse)
 	}
 }
 
@@ -144,6 +232,14 @@ func TestAttrs(t *testing.T) {
 	}
 }
 
+func TestClass(t *testing.T) {
+	img := NewImage().Class("one")
+	imgHtml := img.Class("two").ToHTML()
+	if strings.Contains(imgHtml, "class=\"one two\"") == false {
+		t.Error("Does not contain 'class=\"one two\", Output:" + imgHtml)
+	}
+}
+
 func TestOnBlur(t *testing.T) {
 	input := NewButton().OnBlur("alert('Focus Lost')").ToHTML()
 	if strings.Contains(input, `onblur="alert('Focus Lost')"`) == false {
@@ -190,5 +286,39 @@ func TestStyle(t *testing.T) {
 	input := NewInput().Style("text-align:center;background:green;").ToHTML()
 	if strings.Contains(input, "style=\"text-align:center;background:green;\"") == false {
 		t.Error("Does not contain 'style=\"text-align:center;background:green;\", Output:" + input)
+	}
+
+	img := NewImage().Style("width:100px")
+	imgHtml := img.Style("height:100px").ToHTML()
+	if strings.Contains(imgHtml, `<img style="width:100px;height:100px" />`) == false {
+		t.Error(`Does not contain '<img style="width:100px;height:100px" />", Output:` + imgHtml)
+	}
+}
+
+func TestStyleIf(t *testing.T) {
+	img := NewImage().StyleIf(true, "width:100px")
+	imgHtml := img.StyleIf(true, "height:100px").ToHTML()
+	if strings.Contains(imgHtml, `<img style="width:100px;height:100px" />`) == false {
+		t.Error(`Does not contain '<img style="width:100px;height:100px" />", Output:` + imgHtml)
+	}
+
+	imgFalse := NewImage().StyleIf(false, "width:100px")
+	imgHtmlFalse := imgFalse.StyleIf(false, "height:100px").ToHTML()
+	if strings.Contains(imgHtmlFalse, "<img />") == false {
+		t.Error("Does not contain '<img />'", "Output:"+imgHtmlFalse)
+	}
+}
+
+func TestStyleIfElse(t *testing.T) {
+	img := NewImage().StyleIfElse(true, "width:100px", "width:200px")
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, `<img style="width:100px" />`) == false {
+		t.Error(`Does not contain '<img style="width:100px" />", Output:` + imgHtml)
+	}
+
+	imgFalse := NewImage().StyleIfElse(false, "width:100px", "width:200px")
+	imgHtmlFalse := imgFalse.ToHTML()
+	if strings.Contains(imgHtmlFalse, `<img style="width:200px" />`) == false {
+		t.Error(`Does not contain '<img style="width:200px" />', "Output:"` + imgHtmlFalse)
 	}
 }

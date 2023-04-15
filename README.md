@@ -101,6 +101,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
 - <b>AddHTML(html string)</b> - adds HTML content to the element
+- <b>AddStyle(style string)</b> - adds a style to the "style" attribute
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>ChildIf(condition bool, tag Tag)</b> - conditional adding of a child
 - <b>ChildIfElse(condition bool, childIf Tag, childElse Tag)</b> - conditional adding of a child
@@ -127,6 +128,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>OnKeyUp(js string)</b> - shortcut to add an "onkeyup" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
+- <b>StyleIf(condition bool, style string)</b> - conditional adding of a style
+- <b>StyleIfElse(condition bool, styleIf string, styleElse string)</b> - conditional adding of a style
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Type(target string)</b> - shortcut to add a "type" attribute
@@ -318,6 +321,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 ```
 
 ## Changelog
+
+2023.04.15 - Added AddStyle, and conditionals for style
 
 2023.04.14 - Added Type attribute shortcut, conditionals for children and class names
 
