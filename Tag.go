@@ -288,6 +288,11 @@ func (t *Tag) SetAttribute(key, value string) *Tag {
 	return t
 }
 
+// Src shortcut for setting the "src" attribute
+func (t *Tag) Src(src string) *Tag {
+	return t.SetAttribute("src", src)
+}
+
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
 	return t.AddStyle(style)

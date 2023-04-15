@@ -282,6 +282,14 @@ func TestOnKeyUp(t *testing.T) {
 	}
 }
 
+func TestSrc(t *testing.T) {
+	img := NewImage().Src("http://test.com/image.jpg").ToHTML()
+
+	if strings.Contains(img, `src="http://test.com/image.jpg"`) == false {
+		t.Error(`Does not contain 'src="http://test.com/image.jpg"', Output:` + img)
+	}
+}
+
 func TestStyle(t *testing.T) {
 	input := NewInput().Style("text-align:center;background:green;").ToHTML()
 	if strings.Contains(input, "style=\"text-align:center;background:green;\"") == false {

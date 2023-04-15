@@ -322,7 +322,7 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 
 ## Changelog
 
-2023.04.15 - Added AddStyle, and conditionals for style
+2023.04.15 - Added AddStyle, Src, and conditionals for style
 
 2023.04.14 - Added Type attribute shortcut, conditionals for children and class names
 
