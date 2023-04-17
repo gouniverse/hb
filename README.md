@@ -17,6 +17,7 @@ Unpretentious short and sweet declarative HTML Builder.
 - Great for email templates too
 - Nice looking fluent interface
 - Easy to extend and build your own flavor on top
+- Dynamic UI with conditions
 
 ## Example
 
