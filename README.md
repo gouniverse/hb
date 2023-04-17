@@ -320,6 +320,10 @@ input := NewButton().
 webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
 ```
 
+## Similar
+
+- https://github.com/goradd/html5tag - option to have string or stream
+
 ## Changelog
 
 2023.04.15 - Added AddStyle, Src, and conditionals for style
