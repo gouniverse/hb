@@ -8,27 +8,6 @@ func NewTag(tagName string) *Tag {
 	return tag
 }
 
-// NewButton represents a BUTTON tag
-func NewButton() *Tag {
-	tag := &Tag{
-		TagName: "button",
-	}
-	return tag
-}
-
-// NewCode represents a CODE tag
-func NewCode() *Tag {
-	return NewTag("code")
-}
-
-// NewDiv represents a DIV tag
-func NewDiv() *Tag {
-	tag := &Tag{
-		TagName: "div",
-	}
-	return tag
-}
-
 // NewForm represents a FORM tag
 func NewForm() *Tag {
 	tag := &Tag{
@@ -46,11 +25,10 @@ func NewHTML(html string) *Tag {
 	return textTag
 }
 
-
 // NewHR creates represents a HR tags
 func NewHR() *Tag {
 	textTag := &Tag{
-		TagName:    "hr",
+		TagName: "hr",
 	}
 	return textTag
 }
@@ -191,7 +169,6 @@ func NewParagraph() *Tag {
 	return tag
 }
 
-
 // NewPRE represents a PRE tag
 func NewPRE() *Tag {
 	return NewTag("pre")
@@ -251,7 +228,7 @@ func NewStyle(css string) *Tag {
 // NewStyleURL represents a LINK tag with URL
 func NewStyleURL(styleURL string) *Tag {
 	tag := NewLink()
-	tag.SetAttribute("href", styleURL)	
+	tag.SetAttribute("href", styleURL)
 	tag.SetAttribute("rel", "stylesheet")
 	return tag
 }
