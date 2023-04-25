@@ -76,10 +76,51 @@ func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
 }
 
+// AttrIf shortcut for setting an attribute if a condition is met
+func (t *Tag) AttrIf(condition bool, key, value string) *Tag {
+	if condition {
+		return t.SetAttribute(key, value)
+	}
+	return t
+}
+
+// AttrIfElse shortcut for setting an attribute if a condition is met, otherwise adds another attribute
+func (t *Tag) AttrIfElse(condition bool, key, valueIf string, valueElse string) *Tag {
+	if condition {
+		return t.SetAttribute(key, valueIf)
+	}
+
+	return t.SetAttribute(key, valueElse)
+}
+
 // Attrs shortcut for setting multiple attributes
 func (t *Tag) Attrs(attrs map[string]string) *Tag {
 	for key, value := range attrs {
 		t.SetAttribute(key, value)
+	}
+	return t
+}
+
+// AttrsIf shortcut for setting multiple attributes if a condition is met
+func (t *Tag) AttrsIf(condition bool, attrs map[string]string) *Tag {
+	if condition {
+		for key, value := range attrs {
+			t.SetAttribute(key, value)
+		}
+	}
+	return t
+}
+
+// AttrsIfElse shortcut for setting multiple attributes if a condition is met, otherwise adds another attribute
+func (t *Tag) AttrsIfElse(condition bool, attrsIf map[string]string, attrsElse map[string]string) *Tag {
+	if condition {
+		for key, value := range attrsIf {
+			t.SetAttribute(key, value)
+		}
+	} else {
+		for key, value := range attrsElse {
+			t.SetAttribute(key, value)
+		}
 	}
 	return t
 }
@@ -247,6 +288,11 @@ func (t *Tag) Method(method string) *Tag {
 // Name shortcut for setting the "name" attribute
 func (t *Tag) Name(name string) *Tag {
 	return t.SetAttribute("name", name)
+}
+
+// Placeholder shortcut for setting the "placeholder" attribute
+func (t *Tag) Placeholder(placeholder string) *Tag {
+	return t.SetAttribute("placeholder", placeholder)
 }
 
 // OnBlur shortcut for setting the "onblur" attribute

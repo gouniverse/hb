@@ -5,6 +5,14 @@ import (
 	"testing"
 )
 
+func TestAddClass(t *testing.T) {
+	img := NewImage().Attr("class", "one")
+	imgHtml := img.AddClass("two").ToHTML()
+	if strings.Contains(imgHtml, "class=\"one two\"") == false {
+		t.Error("Does not contain 'class=\"one two\", Output:" + imgHtml)
+	}
+}
+
 func TestAttr(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	imgHtml := img.ToHTML()
@@ -13,11 +21,85 @@ func TestAttr(t *testing.T) {
 	}
 }
 
-func TestAddClass(t *testing.T) {
-	img := NewImage().Attr("class", "one")
-	imgHtml := img.AddClass("two").ToHTML()
-	if strings.Contains(imgHtml, "class=\"one two\"") == false {
-		t.Error("Does not contain 'class=\"one two\", Output:" + imgHtml)
+func TestAttrIf(t *testing.T) {
+	img := NewImage().AttrIf(true, "width", "100")
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"100\"") == false {
+		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
+	}
+}
+
+func TestAttrIfElse(t *testing.T) {
+	img := NewImage().AttrIfElse(true, "width", "100", "200")
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"100\"") == false {
+		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
+	}
+
+	img = NewImage().AttrIfElse(false, "width", "100", "200")
+	imgHtml = img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"200\"") == false {
+		t.Error("Does not contain 'width=\"200\"", "Output:"+imgHtml)
+	}
+}
+
+func TestAttrs(t *testing.T) {
+	img := NewImage().Attrs(map[string]string{
+		"width":  "100",
+		"height": "40",
+	})
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"100\"") == false {
+		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
+	}
+	if strings.Contains(imgHtml, "height=\"40\"") == false {
+		t.Error("Does not contain 'height=\"40\"", "Output:"+imgHtml)
+	}
+}
+
+func TestAttrsIf(t *testing.T) {
+	img := NewImage().AttrsIf(true, map[string]string{
+		"width":  "100",
+		"height": "40",
+	})
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"100\"") == false {
+		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
+	}
+	if strings.Contains(imgHtml, "height=\"40\"") == false {
+		t.Error("Does not contain 'height=\"40\"", "Output:"+imgHtml)
+	}
+}
+
+func TestAttrsIfElse(t *testing.T) {
+	img := NewImage().AttrsIfElse(true, map[string]string{
+		"width":  "100",
+		"height": "40",
+	}, map[string]string{
+		"width":  "200",
+		"height": "80",
+	})
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"100\"") == false {
+		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
+	}
+	if strings.Contains(imgHtml, "height=\"40\"") == false {
+		t.Error("Does not contain 'height=\"40\"", "Output:"+imgHtml)
+	}
+
+	img = NewImage().AttrsIfElse(false, map[string]string{
+		"width":  "100",
+		"height": "40",
+	}, map[string]string{
+		"width":  "200",
+		"height": "80",
+	})
+	imgHtml = img.ToHTML()
+	if strings.Contains(imgHtml, "width=\"200\"") == false {
+		t.Error("Does not contain 'width=\"200\"", "Output:"+imgHtml)
+	}
+	if strings.Contains(imgHtml, "height=\"80\"") == false {
+		t.Error("Does not contain 'height=\"80\"", "Output:"+imgHtml)
 	}
 }
 
@@ -215,20 +297,6 @@ func TestHrefTarget(t *testing.T) {
 	}
 	if link != `<a href="http://test.com" target="_blank">Test</a>` {
 		t.Error(`Does not match '<a href="http://test.com" target="_blank">Test</a>', Output:` + link)
-	}
-}
-
-func TestAttrs(t *testing.T) {
-	img := NewImage().Attrs(map[string]string{
-		"width":  "100",
-		"height": "40",
-	})
-	imgHtml := img.ToHTML()
-	if strings.Contains(imgHtml, "width=\"100\"") == false {
-		t.Error("Does not contain 'width=\"100\"", "Output:"+imgHtml)
-	}
-	if strings.Contains(imgHtml, "height=\"40\"") == false {
-		t.Error("Does not contain 'height=\"40\"", "Output:"+imgHtml)
 	}
 }
 

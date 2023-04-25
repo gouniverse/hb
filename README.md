@@ -97,7 +97,11 @@ go get -u github.com/gouniverse/hb@v2.0.0
 
 - <b>Action(action string)</b> - shortcut to add an "action" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
+- <b>AttrIf(condition bool, key, value string)</b> - conditional setting of attribute
+- <b>AttrIfElse(condition bool, key, valueIf string, valueElse string)</b> - conditional setting of attribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
+- <b>AttrsIf(conditon bool, attrs map[string]string)</b> - conditional setting of attributes
+- <b>AttrsIfElse(conditon, attrsIf map[string]string, attrsElse map[string]string)</b> - conditional setting of attributes
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
@@ -121,6 +125,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>GetAttribute(key string) string</b>
 - <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
+- <b>Placeholder(placeholder string)</b> - shortcut to add a "placeholder" attribute
 - <b>OnBlur(js string)</b> - shortcut to add an "onblur" attribute
 - <b>OnChange(js string)</b> - shortcut to add an "onchange" attribute
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
@@ -326,6 +331,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.04.25 - Added Placeholder, and conditionals for attributes
 
 2023.04.15 - Added AddStyle, Src, and conditionals for style
 
