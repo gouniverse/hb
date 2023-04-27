@@ -18,6 +18,7 @@ Unpretentious short and sweet declarative HTML Builder.
 - Nice looking fluent interface
 - Easy to extend and build your own flavor on top
 - Dynamic UI with conditions
+- Confitional attributes
 
 ## Example
 
