@@ -117,6 +117,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
 - <b>ClassIfElse(condition bool, classNameIf string, classNameElse string)</b> - conditional adding of a class
 - <b>Data(name string, value string)</b> - shortcut to add a "data-" attribute
+- <b>DataIf(condition bool, key, value string)</b> - conditional setting of attribute
+- <b>DataIfElse(condition bool, key, valueIf string, valueElse string)</b> - conditional setting of attribute
 - <b>Enctype(enctype string)</b> - shortcut to add an "enctype" attribute
 - <b>HasClass(className string)</b> - checks if the class is available
 - <b>Href(href string)</b> - shortcut to add an "href" attribute
@@ -129,9 +131,15 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>OnBlur(js string)</b> - shortcut to add an "onblur" attribute
 - <b>OnChange(js string)</b> - shortcut to add an "onchange" attribute
 - <b>OnClick(js string)</b> - shortcut to add an "onclick" attribute
+- <b>OnDblClick(js string)</b> - shortcut to add an "ondblclick" attribute
 - <b>OnFocus(js string)</b> - shortcut to add an "onfocus" attribute
 - <b>OnKeyDown(js string)</b> - shortcut to add an "onkeydown" attribute
+- <b>OnKeyPress(js string)</b> - shortcut to add an "onkeypress" attribute
 - <b>OnKeyUp(js string)</b> - shortcut to add an "onkeyup" attribute
+- <b>OnMouseDown(js string)</b> - shortcut to add an "onmousedown" attribute
+- <b>OnMouseOut(js string)</b> - shortcut to add an "onmouseout" attribute
+- <b>OnMouseUp(js string)</b> - shortcut to add an "onmouseup" attribute
+- <b>OnSubmit(js string)</b> - shortcut to add an "onsubmit" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
 - <b>StyleIf(condition bool, style string)</b> - conditional adding of a style
@@ -331,6 +339,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.04.27 - Added OnDblClick, OnInput, OnKeyPress, OnMouseDown, OnMouseUp, and conditionals for data
 
 2023.04.25 - Added Placeholder, and conditionals for attributes
 

@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"sort"
 	"strings"
+
+	"golang.org/x/net/html"
 )
 
 // Addslashes addslashes()
@@ -227,6 +229,22 @@ func (t *Tag) Data(name string, value string) *Tag {
 	return t.SetAttribute("data-"+name, value)
 }
 
+// DataIf shortcut for setting a "data-" attribute if a condition is met
+func (t *Tag) DataIf(condition bool, name string, value string) *Tag {
+	if condition {
+		return t.SetAttribute("data-"+name, value)
+	}
+	return t
+}
+
+// DataIfElse shortcut for setting a "data-" attribute if a condition is met
+func (t *Tag) DataIfElse(condition bool, name string, valueIf string, valueElse string) *Tag {
+	if condition {
+		return t.SetAttribute("data-"+name, valueIf)
+	}
+	return t.SetAttribute("data-"+name, valueElse)
+}
+
 // Enctype shortcut for setting the "enctype" attribute
 func (t *Tag) Enctype(enctype string) *Tag {
 	return t.SetAttribute("enctype", enctype)
@@ -297,32 +315,92 @@ func (t *Tag) Placeholder(placeholder string) *Tag {
 
 // OnBlur shortcut for setting the "onblur" attribute
 func (t *Tag) OnBlur(js string) *Tag {
-	return t.SetAttribute("onblur", js)
+	return t.SetAttribute("onblur", html.EscapeString(js))
 }
 
 // OnChange shortcut for setting the "onchange" attribute
 func (t *Tag) OnChange(js string) *Tag {
-	return t.SetAttribute("onchange", js)
+	return t.SetAttribute("onchange", html.EscapeString(js))
 }
 
 // OnClick shortcut for setting the "onclick" attribute
 func (t *Tag) OnClick(js string) *Tag {
-	return t.SetAttribute("onclick", js)
+	return t.SetAttribute("onclick", html.EscapeString(js))
+}
+
+// OnDblClick shortcut for setting the "ondblclick" attribute
+func (t *Tag) OnDblClick(js string) *Tag {
+	return t.SetAttribute("ondblclick", html.EscapeString(js))
 }
 
 // OnFocus shortcut for setting the "onfocus" attribute
 func (t *Tag) OnFocus(js string) *Tag {
-	return t.SetAttribute("onfocus", js)
+	return t.SetAttribute("onfocus", html.EscapeString(js))
+}
+
+// OnInput shortcut for setting the "oninput" attribute
+func (t *Tag) OnInput(js string) *Tag {
+	return t.SetAttribute("oninput", html.EscapeString(js))
 }
 
 // OnKeyDown shortcut for setting the "onkeydown" attribute
 func (t *Tag) OnKeyDown(js string) *Tag {
-	return t.SetAttribute("onkeydown", js)
+	return t.SetAttribute("onkeydown", html.EscapeString(js))
+}
+
+// OnKeyPress shortcut for setting the "onkeydown" attribute
+func (t *Tag) OnKeyPress(js string) *Tag {
+	return t.SetAttribute("onkeypress", html.EscapeString(js))
 }
 
 // OnKeyUp shortcut for setting the "onkeyup" attribute
 func (t *Tag) OnKeyUp(js string) *Tag {
-	return t.SetAttribute("onkeyup", js)
+	return t.SetAttribute("onkeyup", html.EscapeString(js))
+}
+
+// OnLoad shortcut for setting the "onload" attribute
+func (t *Tag) OnLoad(js string) *Tag {
+	return t.SetAttribute("onload", html.EscapeString(js))
+}
+
+// OnMouseDown shortcut for setting the "onmousedown" attribute
+func (t *Tag) OnMouseDown(js string) *Tag {
+	return t.SetAttribute("onmousedown", html.EscapeString(js))
+}
+
+// OnMouseEnter shortcut for setting the "onmouseenter" attribute
+func (t *Tag) OnMouseEnter(js string) *Tag {
+	return t.SetAttribute("onmouseenter", html.EscapeString(js))
+}
+
+// OnMouseLeave shortcut for setting the "onmouseleave" attribute
+func (t *Tag) OnMouseLeave(js string) *Tag {
+	return t.SetAttribute("onmouseleave", html.EscapeString(js))
+}
+
+// OnMouseMove shortcut for setting the "onmousemove" attribute
+func (t *Tag) OnMouseMove(js string) *Tag {
+	return t.SetAttribute("onmousemove", html.EscapeString(js))
+}
+
+// OnMouseOut shortcut for setting the "onmouseout" attribute
+func (t *Tag) OnMouseOut(js string) *Tag {
+	return t.SetAttribute("onmouseout", html.EscapeString(js))
+}
+
+// OnMouseOver shortcut for setting the "onmouseover" attribute
+func (t *Tag) OnMouseOver(js string) *Tag {
+	return t.SetAttribute("onmouseover", html.EscapeString(js))
+}
+
+// OnMouseUp shortcut for setting the "onmouseup" attribute
+func (t *Tag) OnMouseUp(js string) *Tag {
+	return t.SetAttribute("onmouseup", html.EscapeString(js))
+}
+
+// OnSubmit shortcut for setting the "onsubmit" attribute
+func (t *Tag) OnSubmit(js string) *Tag {
+	return t.SetAttribute("onsubmit", html.EscapeString(js))
 }
 
 // SetAttribute sets the valua of an attribute
@@ -381,14 +459,17 @@ func (t *Tag) ToHTML() string {
 
 	tagStart := `<` + t.TagName + t.attrToString() + `>`
 	tagEnd := `</` + t.TagName + `>`
+
 	if t.TagName == "" {
 		tagStart = ""
 		tagEnd = ""
 	}
+
 	if isShortTag {
 		tagStart = `<` + t.TagName + t.attrToString() + ` />`
 		tagEnd = ""
 	}
+
 	var builder strings.Builder
 	builder.WriteString(tagStart)
 	builder.WriteString(t.TagContent)

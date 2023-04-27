@@ -310,43 +310,106 @@ func TestClass(t *testing.T) {
 
 func TestOnBlur(t *testing.T) {
 	input := NewButton().OnBlur("alert('Focus Lost')").ToHTML()
-	if strings.Contains(input, `onblur="alert('Focus Lost')"`) == false {
-		t.Error(`Does not contain 'onblur="alert('Focus Lost')"', Output:` + input)
+	if strings.Contains(input, `onblur="alert(&#39;Focus Lost&#39;)"`) == false {
+		t.Error(`Does not contain 'onblur="alert(&#39;Focus Lost&#39;)"', Output:` + input)
 	}
 }
 
 func TestOnChange(t *testing.T) {
 	input := NewButton().OnChange("alert('Changed')").ToHTML()
-	if strings.Contains(input, `onchange="alert('Changed')"`) == false {
-		t.Error(`Does not contain 'onchange="alert('Changed')"', Output:` + input)
+	if strings.Contains(input, `onchange="alert(&#39;Changed&#39;)"`) == false {
+		t.Error(`Does not contain 'onchange="alert(&#39;Changed&#39;)"', Output:` + input)
 	}
 }
 
 func TestOnClick(t *testing.T) {
 	input := NewButton().OnClick("alert('Clicked')").ToHTML()
-	if strings.Contains(input, "onclick=\"alert('Clicked')\"") == false {
-		t.Error("Does not contain 'onclick=\"alert('Clicked')\", Output:" + input)
+	if strings.Contains(input, "onclick=\"alert(&#39;Clicked&#39;)\"") == false {
+		t.Error("Does not contain 'onclick=\"alert(&#39;Clicked&#39;)\", Output:" + input)
+	}
+}
+
+func TestOnDblClick(t *testing.T) {
+	input := NewButton().OnDblClick("alert('Double Clicked')").ToHTML()
+	if strings.Contains(input, "ondblclick=\"alert(&#39;Double Clicked&#39;)\"") == false {
+		t.Error("Does not contain 'ondblclick=\"alert(&#39;Double Clicked&#39;)\", Output:" + input)
 	}
 }
 
 func TestOnFocus(t *testing.T) {
 	input := NewButton().OnFocus("alert('Focus Gained')").ToHTML()
-	if strings.Contains(input, `onfocus="alert('Focus Gained')"`) == false {
-		t.Error(`Does not contain 'onfocus="alert('Focus Gained')"', Output:` + input)
+	if strings.Contains(input, `onfocus="alert(&#39;Focus Gained&#39;)"`) == false {
+		t.Error(`Does not contain 'onfocus="alert(&#39;Focus Gained&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnInput(t *testing.T) {
+	input := NewButton().OnInput("alert('Input')").ToHTML()
+	if strings.Contains(input, `oninput="alert(&#39;Input&#39;)"`) == false {
+		t.Error(`Does not contain 'oninput="alert(&#39;Input&#39;)"', Output:` + input)
 	}
 }
 
 func TestOnKeyDown(t *testing.T) {
 	input := NewButton().OnKeyDown("alert('Key Down')").ToHTML()
-	if strings.Contains(input, `onkeydown="alert('Key Down')"`) == false {
-		t.Error(`Does not contain 'onkeydown="alert('Key Down')"', Output:` + input)
+	if strings.Contains(input, `onkeydown="alert(&#39;Key Down&#39;)"`) == false {
+		t.Error(`Does not contain 'onkeydown="alert(&#39;Key Down&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnKeyPress(t *testing.T) {
+	input := NewButton().OnKeyPress("alert('Key Pressed')").ToHTML()
+	if strings.Contains(input, `onkeypress="alert(&#39;Key Pressed&#39;)"`) == false {
+		t.Error(`Does not contain 'onkeypress="alert(&#39;Key Pressed&#39;)"', Output:` + input)
 	}
 }
 
 func TestOnKeyUp(t *testing.T) {
 	input := NewButton().OnKeyUp("alert('Key Up')").ToHTML()
-	if strings.Contains(input, `onkeyup="alert('Key Up')"`) == false {
-		t.Error(`Does not contain 'onkeyup="alert('Key Up')"', Output:` + input)
+	if strings.Contains(input, `onkeyup="alert(&#39;Key Up&#39;)"`) == false {
+		t.Error(`Does not contain 'onkeyup="alert(&#39;Key Up&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnLoad(t *testing.T) {
+	input := NewButton().OnLoad("alert('Load')").ToHTML()
+	if strings.Contains(input, `onload="alert(&#39;Load&#39;)"`) == false {
+		t.Error(`Does not contain 'onload="alert(&#39;Load&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnMouseDown(t *testing.T) {
+	input := NewButton().OnMouseDown("alert('Mouse Down')").ToHTML()
+	if strings.Contains(input, `onmousedown="alert(&#39;Mouse Down&#39;)"`) == false {
+		t.Error(`Does not contain 'onmousedown="alert(&#39;Mouse Down&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnMouseOut(t *testing.T) {
+	input := NewButton().OnMouseOut("alert('Mouse Out')").ToHTML()
+	if strings.Contains(input, `onmouseout="alert(&#39;Mouse Out&#39;)"`) == false {
+		t.Error(`Does not contain 'onmouseout="alert(&#39;Mouse Out&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnMouseOver(t *testing.T) {
+	input := NewButton().OnMouseOver("alert('Mouse Over')").ToHTML()
+	if strings.Contains(input, `onmouseover="alert(&#39;Mouse Over&#39;)"`) == false {
+		t.Error(`Does not contain 'onmouseover="alert(&#39;Mouse Over&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnMouseUp(t *testing.T) {
+	input := NewButton().OnMouseUp("alert('Mouse Up')").ToHTML()
+	if strings.Contains(input, `onmouseup="alert(&#39;Mouse Up&#39;)"`) == false {
+		t.Error(`Does not contain 'onmouseup="alert(&#39;Mouse Up&#39;)"', Output:` + input)
+	}
+}
+
+func TestOnSubmit(t *testing.T) {
+	input := NewForm().OnSubmit("alert('Submit')").ToHTML()
+	if strings.Contains(input, `onsubmit="alert(&#39;Submit&#39;)"`) == false {
+		t.Error(`Does not contain 'onsubmit="alert(&#39;Submit&#39;)"', Output:` + input)
 	}
 }
 
