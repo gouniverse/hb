@@ -92,6 +92,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewTR()</b> - shortcut for &lt;tr> tag
 - <b>NewUL()</b> - shortcut for &lt;ul> tag
 - <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
+- <b>NewWrap()</b> - conveninence method to taglessly group elements together
 
 ## Tag Methods
 
@@ -339,6 +340,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.05.01 - Added NewWrap function
 
 2023.04.27 - Added OnDblClick, OnInput, OnKeyPress, OnMouseDown, OnMouseUp, and conditionals for data
 

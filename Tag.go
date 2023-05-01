@@ -476,7 +476,6 @@ func (t *Tag) ToHTML() string {
 	builder.WriteString(t.childrenToString())
 	builder.WriteString(tagEnd)
 	return builder.String()
-	// return tagStart + t.TagContent + t.childrenToString() + tagEnd
 }
 
 // Type shortcut for setting the "type" attribute
