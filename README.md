@@ -1,4 +1,4 @@
-# HTML Builder
+# HTML Builder <a href="https://github.com/gouniverse/hb" style="float:right:"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" loading="lazy"></a>
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
@@ -18,7 +18,7 @@ Unpretentious short and sweet declarative HTML Builder.
 - Nice looking fluent interface
 - Easy to extend and build your own flavor on top
 - Dynamic UI with conditions
-- Confitional attributes
+- Conditional attributes
 
 ## Example
 
