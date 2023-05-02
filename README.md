@@ -1,4 +1,4 @@
-# HTML Builder <a href="https://github.com/gouniverse/hb" style="float:right:"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" loading="lazy"></a>
+# HTML Builder <a href="https://gitpod.io/#https://github.com/gouniverse/hb" style="float:right:"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" loading="lazy"></a>
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
