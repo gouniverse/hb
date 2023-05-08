@@ -13,6 +13,14 @@ func TestAddClass(t *testing.T) {
 	}
 }
 
+func TestAlt(t *testing.T) {
+	img := NewImage().Alt("alternative text")
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, `alt="alternative text"`) == false {
+		t.Error(`Does not contain 'alt="alternative text"'`, "Output:"+imgHtml)
+	}
+}
+
 func TestAttr(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	imgHtml := img.ToHTML()

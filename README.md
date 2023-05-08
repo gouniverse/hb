@@ -342,6 +342,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 
 ## Changelog
 
+2023.05.08 - Added Alt attribute shortcut
+
 2023.05.01 - Added NewWrap function
 
 2023.04.27 - Added OnDblClick, OnInput, OnKeyPress, OnMouseDown, OnMouseUp, and conditionals for data

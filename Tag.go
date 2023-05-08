@@ -73,6 +73,11 @@ func (t *Tag) AddStyle(style string) *Tag {
 	return t.SetAttribute("style", styles)
 }
 
+// Alt shortcut for setting the "alt" attribute
+func (t *Tag) Alt(text string) *Tag {
+	return t.SetAttribute("alt", text)
+}
+
 // Attr shortcut for SetAttribute
 func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
