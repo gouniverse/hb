@@ -100,9 +100,11 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Action(action string)</b> - shortcut to add an "action" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
 - <b>AttrIf(condition bool, key, value string)</b> - conditional setting of attribute
+- <b>AttrIfF(condition bool, key string, valueFunc func() string)</b> -  conditional setting of attribute using function
 - <b>AttrIfElse(condition bool, key, valueIf string, valueElse string)</b> - conditional setting of attribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
 - <b>AttrsIf(conditon bool, attrs map[string]string)</b> - conditional setting of attributes
+- <b>AttrsIfF(condition bool, attrsFunc func() map[string]string)</b> - conditional setting of attributes using function
 - <b>AttrsIfElse(conditon, attrsIf map[string]string, attrsElse map[string]string)</b> - conditional setting of attributes
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
@@ -111,9 +113,11 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>AddStyle(style string)</b> - adds a style to the "style" attribute
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>ChildIf(condition bool, tag Tag)</b> - conditional adding of a child
+- <b>ChildIfF(condition bool, childFunc func() *Tag)</b> - conditional adding of a child using function
 - <b>ChildIfElse(condition bool, childIf Tag, childElse Tag)</b> - conditional adding of a child
 - <b>Children(children []Tag)</b> - shortcut for AddChildren
 - <b>ChildrenIf(condition bool, children []Tag)</b> - conditional adding of children
+- <b>ChildrenIfF(condition bool, childrenFunc func() []*Tag)</b> - conditional adding of children using function
 - <b>ChildrenIfElse(condition bool, childrenIf []Tag, childrenElse []Tag)</b> - conditional adding of a children
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
@@ -341,6 +345,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.06.09 - Added functional conditions AttrIfF, AttrsIfF, ChildIfF, ChildrenIfF
 
 2023.05.08 - Added Alt attribute shortcut
 

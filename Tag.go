@@ -91,6 +91,13 @@ func (t *Tag) AttrIf(condition bool, key, value string) *Tag {
 	return t
 }
 
+func (t *Tag) AttrIfF(condition bool, key string, valueFunc func() string) *Tag {
+	if condition {
+		return t.SetAttribute(key, valueFunc())
+	}
+	return t
+}
+
 // AttrIfElse shortcut for setting an attribute if a condition is met, otherwise adds another attribute
 func (t *Tag) AttrIfElse(condition bool, key, valueIf string, valueElse string) *Tag {
 	if condition {
@@ -112,6 +119,16 @@ func (t *Tag) Attrs(attrs map[string]string) *Tag {
 func (t *Tag) AttrsIf(condition bool, attrs map[string]string) *Tag {
 	if condition {
 		for key, value := range attrs {
+			t.SetAttribute(key, value)
+		}
+	}
+	return t
+}
+
+// AttrsIf shortcut for setting multiple attributes via function if a condition is met
+func (t *Tag) AttrsIfF(condition bool, attrsFunc func() map[string]string) *Tag {
+	if condition {
+		for key, value := range attrsFunc() {
 			t.SetAttribute(key, value)
 		}
 	}
@@ -174,6 +191,15 @@ func (t *Tag) ChildIf(condition bool, child *Tag) *Tag {
 	return t
 }
 
+// ChildIf adds a child using function if a condition is met
+func (t *Tag) ChildIfF(condition bool, childFunc func() *Tag) *Tag {
+	if condition {
+		return t.AddChild(childFunc())
+	}
+
+	return t
+}
+
 // ChildIfElse adds a child if a condition is met, otherwise adds another child
 func (t *Tag) ChildIfElse(condition bool, childIf *Tag, childElse *Tag) *Tag {
 	if condition {
@@ -192,6 +218,15 @@ func (t *Tag) Children(children []*Tag) *Tag {
 func (t *Tag) ChildrenIf(condition bool, children []*Tag) *Tag {
 	if condition {
 		return t.AddChildren(children)
+	}
+
+	return t
+}
+
+// ChildrenIf adds children using function if a condition is met
+func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []*Tag) *Tag {
+	if condition {
+		return t.AddChildren(childrenFunc())
 	}
 
 	return t
