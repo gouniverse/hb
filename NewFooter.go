@@ -1,6 +1,6 @@
 package hb
 
-// NewFooter represents a FOOTER tag
+// NewFooter is a shortcut to create a new FOOTER tag
 func NewFooter() *Tag {
 	tag := &Tag{
 		TagName: "footer",

@@ -7,7 +7,7 @@ Unpretentious short and sweet declarative HTML Builder.
 ## Benefits
 
 - Valid (X)HTML
-- Programatically generate (X)HTML
+- Programmatically generate (X)HTML
 - Pure GO code
 - No need to transfer HTML files
 - No need to embed HTML files
@@ -54,8 +54,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewDiv()</b> - shortcut for &lt;div> tag
 - <b>NewForm()</b> - shortcut for &lt;form> tag
 - <b>NewI()</b> - shortcut for &lt;i> tag
-- <b>NewHTML(html string)</b> - creates empty tag with the HTML content
-- <b>NewHR()</b> - shortcut for &lt;hr> tag
+- <b>NewHeader()</b> - shortcut for &lt;header> tag
 - <b>NewHeading1()</b> - shortcut for &lt;h1> tag
 - <b>NewHeading2()</b> - shortcut for &lt;h2> tag
 - <b>NewHeading3()</b> - shortcut for &lt;h3> tag
@@ -63,6 +62,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewHeading5()</b> - shortcut for &lt;h5> tag
 - <b>NewHeading6()</b> - shortcut for &lt;h6> tag
 - <b>NewHyperlink()</b> - shortcut for &lt;a> tag
+- <b>NewHR()</b> - shortcut for &lt;hr> tag
+- <b>NewHTML(html string)</b> - creates empty tag with the HTML content
 - <b>NewImage()</b> - shortcut for &lt;img> tag
 - <b>NewInput()</b> - shortcut for &lt;input> tag
 - <b>NewLI()</b> - shortcut for &lt;li> tag
@@ -93,7 +94,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewTR()</b> - shortcut for &lt;tr> tag
 - <b>NewUL()</b> - shortcut for &lt;ul> tag
 - <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
-- <b>NewWrap()</b> - conveninence method to taglessly group elements together
+- <b>NewWrap()</b> - convenience method to taglessly (without a root wrapping element) group elements together
 
 ## Tag Methods
 
@@ -345,6 +346,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.07.02 - Added NewHeader function
 
 2023.06.09 - Added functional conditions AttrIfF, AttrsIfF, ChildIfF, ChildrenIfF
 

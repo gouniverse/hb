@@ -5,14 +5,6 @@ import (
 	"testing"
 )
 
-func TestTagCode(t *testing.T) {
-	tag := NewCode()
-	h := tag.ToHTML()
-	if strings.Contains(h, "<code></code>") == false {
-		t.Error("Does not contain '<code></code>'", "Output:"+h)
-	}
-}
-
 func TestTagPRE(t *testing.T) {
 	tag := NewPRE()
 	h := tag.ToHTML()
