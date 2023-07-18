@@ -65,7 +65,6 @@ func (w *Webpage) ToHTML() string {
 	}
 
 	for _, styleURL := range w.styleURLs {
-		w.head.AddChild(NewStyleURL(styleURL))
 		if strings.HasPrefix(styleURL, "http") || strings.HasPrefix(styleURL, "//") {
 			w.head.AddChild(NewStyleURL(styleURL))
 		} else {
