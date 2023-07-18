@@ -83,3 +83,21 @@ func TestWebpageAddStyles(t *testing.T) {
 		}
 	}
 }
+
+func TestWebpageAddMetas(t *testing.T) {
+	html := NewWebpage().
+		AddMeta(NewMeta().Name("NAME 1").Value("VALUE 1")).
+		Meta(NewMeta().Name("NAME 2").Value("VALUE 2")).
+		ToHTML()
+
+	expectedExpressions := []string{
+		`<meta name="NAME 1" value="VALUE 1" />`,
+		`<meta name="NAME 2" value="VALUE 2" />`,
+	}
+
+	for _, expected := range expectedExpressions {
+		if !strings.Contains(html, expected) {
+			t.Error("Does not contain: ", expected, ", Output: ", html)
+		}
+	}
+}

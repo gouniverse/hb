@@ -1,6 +1,8 @@
 package hb
 
-import "strings"
+import (
+	"strings"
+)
 
 // Webpage represents a web page
 type Webpage struct {
@@ -18,6 +20,7 @@ type Webpage struct {
 	styleURLs   []string
 	scripts     []string
 	styles      []string
+	metas       []*Tag
 }
 
 // ToHTML returns HTML representation of the webpage
@@ -56,6 +59,11 @@ func (w *Webpage) ToHTML() string {
 		metaDescription.SetAttribute("content", w.description)
 		w.head.AddChild(metaDescription)
 	}
+
+	for _, meta := range w.metas {
+		w.head.AddChild(meta)
+	}
+
 	for _, styleURL := range w.styleURLs {
 		w.head.AddChild(NewStyleURL(styleURL))
 		if strings.HasPrefix(styleURL, "http") || strings.HasPrefix(styleURL, "//") {
@@ -227,9 +235,13 @@ func (w *Webpage) AddStyle(style string) *Webpage {
 	return w
 }
 
-// Style shortcut for setting the "style" attribute
-func (w *Webpage) Style(style string) *Webpage {
-	return w.AddStyle(style)
+// AddStyleURL adds a style URL to the webpage
+func (w *Webpage) AddStyleURL(styleURL string) *Webpage {
+	if styleURL == "" {
+		return w
+	}
+	w.styleURLs = append(w.styleURLs, styleURL)
+	return w
 }
 
 // AddStyleURLs adds style URLs to the webpage
@@ -243,21 +255,42 @@ func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 	return w
 }
 
-// StyleURLs shortcut for adding style URLs to the webpage
-func (w *Webpage) StyleURLs(styleURLs []string) *Webpage {
-	return w.AddStyleURLs(styleURLs)
-}
-
-// AddStyleURL adds a style URL to the webpage
-func (w *Webpage) AddStyleURL(styleURL string) *Webpage {
-	if styleURL == "" {
-		return w
-	}
-	w.styleURLs = append(w.styleURLs, styleURL)
+func (w *Webpage) AddMeta(meta *Tag) *Webpage {
+	w.metas = append(w.metas, meta)
 	return w
 }
 
-// StyleURL shortcut for adding a style URL
+// Meta shortcut for adding a meta
+func (w *Webpage) Meta(meta *Tag) *Webpage {
+	return w.AddMeta(meta)
+}
+
+// Script shortcut for adding a script
+func (w *Webpage) Script(script string) *Webpage {
+	return w.AddScript(script)
+}
+
+// ScriptURL shortcut for adding a script URL
+func (w *Webpage) ScriptURL(scriptURL string) *Webpage {
+	return w.AddScriptURL(scriptURL)
+}
+
+// ScriptURLs shortcut for adding script URLs
+func (w *Webpage) ScriptURLs(scriptURLs []string) *Webpage {
+	return w.AddScriptURLs(scriptURLs)
+}
+
+// Style shortcut for adding a style
+func (w *Webpage) Style(style string) *Webpage {
+	return w.AddStyle(style)
+}
+
+// StyleURL shortcut for adding a style URL to the webpage
 func (w *Webpage) StyleURL(styleURL string) *Webpage {
 	return w.AddStyleURL(styleURL)
+}
+
+// StyleURLs shortcut for adding style URLs to the webpage
+func (w *Webpage) StyleURLs(styleURLs []string) *Webpage {
+	return w.AddStyleURLs(styleURLs)
 }
