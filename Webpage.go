@@ -90,13 +90,18 @@ func (w *Webpage) ToHTML() string {
 	if w.Language != "" {
 		w.Attr("lang", w.Language)
 	}
+
 	for k, v := range w.Attributes {
 		htmlTag.Attr(k, v)
 	}
 
-	h := NewHTML("<!DOCTYPE html>")
-	h.AddChild(htmlTag.AddChild(w.Head).AddChild(w.Body))
-	return h.ToHTML()
+	return NewHTML("<!DOCTYPE html>").
+		Child(
+			htmlTag.
+				Child(w.Head).
+				Child(w.Body),
+		).
+		ToHTML()
 }
 
 // AddChild adds a tag to the webpage

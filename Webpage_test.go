@@ -39,3 +39,47 @@ func TestWebpageAddLanguageAttribute(t *testing.T) {
 		t.Error("Does not end with: ", suffix, ", Output: ", wpHtml)
 	}
 }
+
+func TestWebpageAddScripts(t *testing.T) {
+	html := NewWebpage().
+		AddScriptURL("http://example.com/example1.js").
+		AddScriptURL("http://example.com/example2.js").
+		AddScript(`alert("Hello world 1")`).
+		AddScript(`alert("Hello world 2")`).
+		ToHTML()
+
+	expectedExpressions := []string{
+		`<script src="http://example.com/example1.js"></script>`,
+		`<script src="http://example.com/example2.js"></script>`,
+		`<script>alert("Hello world 1")</script>`,
+		`<script>alert("Hello world 2")</script>`,
+	}
+
+	for _, expected := range expectedExpressions {
+		if !strings.Contains(html, expected) {
+			t.Error("Does not contain: ", expected, ", Output: ", html)
+		}
+	}
+}
+
+func TestWebpageAddStyles(t *testing.T) {
+	html := NewWebpage().
+		AddStyleURL("http://example.com/example1.css").
+		AddStyleURL("http://example.com/example2.css").
+		AddStyle(`body { color: red; }`).
+		AddStyle(`body { color: blue; }`).
+		ToHTML()
+
+	expectedExpressions := []string{
+		`<link href="http://example.com/example1.css" rel="stylesheet" />`,
+		`<link href="http://example.com/example2.css" rel="stylesheet" />`,
+		`<style>body { color: red; }</style>`,
+		`<style>body { color: blue; }</style>`,
+	}
+
+	for _, expected := range expectedExpressions {
+		if !strings.Contains(html, expected) {
+			t.Error("Does not contain: ", expected, ", Output: ", html)
+		}
+	}
+}
