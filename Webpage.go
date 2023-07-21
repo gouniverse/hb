@@ -174,6 +174,17 @@ func (w *Webpage) SetAttribute(key string, value string) *Webpage {
 	return w
 }
 
+// AddHTML adds an HTML to the body of the webpage
+func (w *Webpage) AddHTML(html string) *Webpage {
+	w.body.HTML(html)
+	return w
+}
+
+func (w *Webpage) AddMeta(meta *Tag) *Webpage {
+	w.metas = append(w.metas, meta)
+	return w
+}
+
 // AddScripts adds scripts to the webpage
 func (w *Webpage) AddScripts(scripts []string) *Webpage {
 	for _, script := range scripts {
@@ -254,9 +265,9 @@ func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 	return w
 }
 
-func (w *Webpage) AddMeta(meta *Tag) *Webpage {
-	w.metas = append(w.metas, meta)
-	return w
+// HTML shortcut for adding HTML to the body
+func (w *Webpage) HTML(html string) *Webpage {
+	return w.AddHTML(html)
 }
 
 // Meta shortcut for adding a meta
