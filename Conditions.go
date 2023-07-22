@@ -7,7 +7,7 @@ func If(condition bool, trueTag *Tag) *Tag {
 	return nil
 }
 
-func (t *Tag) IfF(condition bool, trueFunc func() *Tag) *Tag {
+func IfF(condition bool, trueFunc func() *Tag) *Tag {
 	if condition {
 		return trueFunc()
 	}
@@ -22,7 +22,7 @@ func IfElse(condition bool, trueTag *Tag, falseTag *Tag) *Tag {
 	return falseTag
 }
 
-func (t *Tag) IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag {
+func IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag {
 	if condition {
 		return trueFunc()
 	}
