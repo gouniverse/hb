@@ -152,15 +152,24 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>StyleIf(condition bool, style string)</b> - conditional adding of a style
 - <b>StyleIfElse(condition bool, styleIf string, styleElse string)</b> - conditional adding of a style
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
+- <b>TargetIf(conrition bool, target string)</b> - conditional adding of a "target" attribute
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Type(target string)</b> - shortcut to add a "type" attribute
+- <b>TypeIf(condition bool, target string)</b> - conditional setting of "type" attribute
 - <b>Value(value string)</b> - shortcut to add a "value" attribute
+- <b>ValueIf(condition bool, value string)</b> - conditional setting of "value" attribute
 
 ## Tag HTMX Attributes
 
 HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here is a shortcut for working with HTMX.
 
 - Hx(name string, value string) - shortcut for setting an HTMX attribute
+- HxGet(value string)
+- HxInclude(value string)
+- HxPost(value string)
+- HxSwap(value string)
+- HxSwap(value string)
+- HxTarget(value string)
 
 Check the example section, for how to use.
 
