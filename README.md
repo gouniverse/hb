@@ -164,12 +164,23 @@ go get -u github.com/gouniverse/hb@v2.0.0
 HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here is a shortcut for working with HTMX.
 
 - Hx(name string, value string) - shortcut for setting an HTMX attribute
+- HxConfirm(value string)
+- HxDelete(value string)
 - HxGet(value string)
 - HxInclude(value string)
+- HxOn(name string, value string)
+- HxPatch(value string)
 - HxPost(value string)
+- HxPut(value string)
+- HxSelect(value string)
+- HxSelectOob(value string)
+- HxSync(value string)
 - HxSwap(value string)
-- HxSwap(value string)
+- HxSwapOob(value string)
 - HxTarget(value string)
+- HxTrigger(value string)
+- HxVals(value string)
+- HxVars(value string)
 
 Check the example section, for how to use.
 
