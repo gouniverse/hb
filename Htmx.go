@@ -13,6 +13,10 @@ func (t *Tag) HxConfirm(value string) *Tag {
 	return t.SetAttribute("hx-confirm", value)
 }
 
+func (t *Tag) HxDelete(value string) *Tag {
+	return t.SetAttribute("hx-delete", value)
+}
+
 func (t *Tag) HxGet(value string) *Tag {
 	return t.SetAttribute("hx-get", value)
 }
@@ -25,8 +29,16 @@ func (t *Tag) HxOn(name string, value string) *Tag {
 	return t.SetAttribute("hx-on:"+name, value)
 }
 
+func (t *Tag) HxPatch(value string) *Tag {
+	return t.SetAttribute("hx-patch", value)
+}
+
 func (t *Tag) HxPost(value string) *Tag {
 	return t.SetAttribute("hx-post", value)
+}
+
+func (t *Tag) HxPut(value string) *Tag {
+	return t.SetAttribute("hx-put", value)
 }
 
 func (t *Tag) HxSelect(value string) *Tag {
