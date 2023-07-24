@@ -457,6 +457,15 @@ func (t *Tag) Src(src string) *Tag {
 	return t.SetAttribute("src", src)
 }
 
+// SrcIf sets the "src" attribute if a condition is met
+func (t *Tag) SrcIf(condition bool, src string) *Tag {
+	if condition {
+		return t.Src(src)
+	}
+
+	return t
+}
+
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
 	return t.AddStyle(style)
@@ -483,6 +492,16 @@ func (t *Tag) StyleIfElse(condition bool, styleIf string, styleElse string) *Tag
 // Target shortcut for setting the "target" attribute
 func (t *Tag) Target(target string) *Tag {
 	return t.SetAttribute("target", target)
+}
+
+
+// TargetIf sets the target if a condition is met
+func (t *Tag) TargetIf(condition bool, target string) *Tag {
+	if condition {
+		return t.Target(target)
+	}
+
+	return t
 }
 
 // ToHTML returns HTML from Node
@@ -523,9 +542,27 @@ func (t *Tag) Type(inputType string) *Tag {
 	return t.SetAttribute("type", inputType)
 }
 
+// TypeIf sets the type if a condition is met
+func (t *Tag) TypeIf(condition bool, inputType string) *Tag {
+	if condition {
+		return t.Type(inputType)
+	}
+
+	return t
+}
+
 // Value shortcut for setting the "value" attribute
 func (t *Tag) Value(value string) *Tag {
 	return t.SetAttribute("value", value)
+}
+
+// ValueIf sets the value if a condition is met
+func (t *Tag) ValueIf(condition bool, value string) *Tag {
+	if condition {
+		return t.Value(value)
+	}
+
+	return t
 }
 
 func (t Tag) attrToString() string {
