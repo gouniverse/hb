@@ -4,6 +4,8 @@
 
 Unpretentious short and sweet declarative HTML Builder.
 
+Demos can be found on: https://golangui.com
+
 ## Benefits
 
 - Valid (X)HTML
@@ -19,6 +21,11 @@ Unpretentious short and sweet declarative HTML Builder.
 - Easy to extend and build your own flavor on top
 - Dynamic UI with conditions
 - Conditional attributes
+- Lots of demos and examples
+- Works with any CSS library
+- Works with any JS library
+- Out of the box support for Alpine.js
+- Out of the box support for HTMX
 
 ## Example
 
@@ -50,6 +57,7 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewBR()</b> - shortcut for &lt;br> tag
 - <b>NewBorderLayout()</b> - border layout with top, bottom, left, right and center slots (see example below how to use it)
 - <b>NewButton()</b> - shortcut for &lt;button> tag
+- <b>NewCaption()</b> - shortcut for &lt;caption> tag
 - <b>NewCode()</b> - shortcut for &lt;code> tag
 - <b>NewDiv()</b> - shortcut for &lt;div> tag
 - <b>NewForm()</b> - shortcut for &lt;form> tag
@@ -95,6 +103,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>NewUL()</b> - shortcut for &lt;ul> tag
 - <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
 - <b>NewWrap()</b> - convenience method to taglessly (without a root wrapping element) group elements together
+
+Examples can be found on: https://golangui.com
 
 ## Tag Methods
 
@@ -159,6 +169,8 @@ go get -u github.com/gouniverse/hb@v2.0.0
 - <b>Value(value string)</b> - shortcut to add a "value" attribute
 - <b>ValueIf(condition bool, value string)</b> - conditional setting of "value" attribute
 
+Examples can be found on: https://golangui.com
+
 ## Tag HTMX Attributes
 
 HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here is a shortcut for working with HTMX.
@@ -182,7 +194,17 @@ HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here i
 - HxVals(value string)
 - HxVars(value string)
 
-Check the example section, for how to use.
+Examples can be found on: https://golangui.com
+
+## Tag Alpine.js Attributes
+
+Alpine.js (https://alpinejs.dev/) is a great match for Golang, therefore here is a shortcut for working with HTMX.
+
+- X(name string, value string) - shortcut for setting an AlpineJS attribute
+- XBind(name string, value string)
+- XOn(name string, value string)
+
+Examples can be found on: https://golangui.com
 
 ## Webpage Methods
 - <b>AddChild(child *Tag)</b>
@@ -366,6 +388,8 @@ webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content",
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.07.26 - Added NewCaption function and Alpine.js, HTMX functions
 
 2023.07.02 - Added NewHeader function
 
