@@ -157,7 +157,9 @@ Examples can be found on: https://golangui.com
 - <b>OnMouseOut(js string)</b> - shortcut to add an "onmouseout" attribute
 - <b>OnMouseUp(js string)</b> - shortcut to add an "onmouseup" attribute
 - <b>OnSubmit(js string)</b> - shortcut to add an "onsubmit" attribute
+- <b>Role(role string)</b> - shortcut to add a "role" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
+- <b>Src(src string)</b> - shortcut to add a "src" attribute
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
 - <b>StyleIf(condition bool, style string)</b> - conditional adding of a style
 - <b>StyleIfElse(condition bool, styleIf string, styleElse string)</b> - conditional adding of a style

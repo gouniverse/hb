@@ -443,6 +443,11 @@ func (t *Tag) OnSubmit(js string) *Tag {
 	return t.SetAttribute("onsubmit", html.EscapeString(js))
 }
 
+// Src shortcut for setting the "src" attribute
+func (t *Tag) Role(role string) *Tag {
+	return t.SetAttribute("role", role)
+}
+
 // SetAttribute sets the valua of an attribute
 func (t *Tag) SetAttribute(key, value string) *Tag {
 	if t.TagAttributes == nil {
@@ -493,7 +498,6 @@ func (t *Tag) StyleIfElse(condition bool, styleIf string, styleElse string) *Tag
 func (t *Tag) Target(target string) *Tag {
 	return t.SetAttribute("target", target)
 }
-
 
 // TargetIf sets the target if a condition is met
 func (t *Tag) TargetIf(condition bool, target string) *Tag {

@@ -421,6 +421,14 @@ func TestOnSubmit(t *testing.T) {
 	}
 }
 
+func TestRole(t *testing.T) {
+	img := NewButton().Role("button").ToHTML()
+
+	if strings.Contains(img, `role="button"`) == false {
+		t.Error(`Does not contain 'role="button"', Output:` + img)
+	}
+}
+
 func TestSrc(t *testing.T) {
 	img := NewImage().Src("http://test.com/image.jpg").ToHTML()
 
