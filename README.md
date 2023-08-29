@@ -49,7 +49,7 @@ html := section.ToHTML()
 ## Installation
 
 ```ssh
-go get -u github.com/gouniverse/hb@v2.0.0
+go get -u github.com/gouniverse/hb
 ```
 
 ## Implemented Tag Shortcuts
