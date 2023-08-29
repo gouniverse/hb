@@ -382,7 +382,7 @@ input := NewButton().
 ## How to Add a Redirection?
 
 ```go
-webpage.Head.AddChild(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
+webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
 ```
 
 ## Similar
