@@ -448,7 +448,7 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 
 ## Aternatives
 
-- Stevelacy Daz (https://github.com/stevelacy/daz) | Last update: 24 Jun 2021
+- Stevelacy Daz (https://github.com/stevelacy/daz) | Last update: 19 Apr 2023
 
 - Extemplate (https://github.com/dannyvankooten/extemplate) | Last update: 15 Jun 2021
 
