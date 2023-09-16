@@ -520,7 +520,7 @@ func (t *Tag) ToHTML() string {
 
 	isShortTag := inArrayString(shortTags, t.TagName)
 
-	tagStart := `<` + t.TagName + t.attrToString() + `>`
+	tagStart := `<` + t.TagName + t.attrsToString() + `>`
 	tagEnd := `</` + t.TagName + `>`
 
 	if t.TagName == "" {
@@ -529,7 +529,7 @@ func (t *Tag) ToHTML() string {
 	}
 
 	if isShortTag {
-		tagStart = `<` + t.TagName + t.attrToString() + ` />`
+		tagStart = `<` + t.TagName + t.attrsToString() + ` />`
 		tagEnd = ""
 	}
 
@@ -569,7 +569,7 @@ func (t *Tag) ValueIf(condition bool, value string) *Tag {
 	return t
 }
 
-func (t Tag) attrToString() string {
+func (t Tag) attrsToString() string {
 	attrString := ""
 
 	keys := make([]string, 0, len(t.TagAttributes))
@@ -580,11 +580,7 @@ func (t Tag) attrToString() string {
 
 	for _, key := range keys {
 		value := t.TagAttributes[key]
-		//for key, value := range t.TagAttributes {
-		if strings.Trim(value, " ") == "" {
-			continue
-		}
-		attrString += ` ` + key + `="` + addslashes(value) + `"`
+		attrString += t.attrToString(key, value)
 	}
 
 	if attrString != "" {
@@ -596,6 +592,18 @@ func (t Tag) attrToString() string {
 	}
 
 	return " " + strings.Trim(attrString, " ")
+}
+
+// attrToString converts a single key/value attribute to string
+// the empty values are skipped
+// the value attribute is kept, as it has special role for select element in forms
+func (t Tag) attrToString(key string, value string) string {
+	if strings.Trim(value, " ") == "" {
+		if key != "value" {
+			return ``
+		}
+	}
+	return ` ` + key + `="` + addslashes(value) + `"`
 }
 
 func (t Tag) childrenToString() string {
