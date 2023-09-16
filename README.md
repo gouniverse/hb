@@ -391,6 +391,8 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 
 ## Changelog
 
+2023.09.16 - Added special case for empty "value" attribute
+
 2023.07.26 - Added NewCaption function and Alpine.js, HTMX functions
 
 2023.07.02 - Added NewHeader function
