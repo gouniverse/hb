@@ -471,4 +471,7 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 - HTML as functions (https://github.com/jpincas/htmlfunc) | Last update: 23 Jan 2023
   Intersting library, following Elm. Not lots of documentation
 
+- Templ (https://github.com/a-h/templ) | 30 Sep 2023
+  Building templates with JSX like syntax, if JSX is your cup of tea
+
 
