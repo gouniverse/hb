@@ -101,3 +101,21 @@ func TestWebpageAddMetas(t *testing.T) {
 		}
 	}
 }
+
+func TestWebpageHead(t *testing.T) {
+	wp := NewWebpage()
+	wp.Head().Child(NewScript(`window.onload="alert('Hello')"`))
+	wpHtml := wp.ToHTML()
+
+	prefix := `<!DOCTYPE html><html><head><meta charset="utf-8" />`
+
+	if !strings.HasPrefix(wpHtml, prefix) {
+		t.Error("Does not start with: ", prefix, ", Output: ", wpHtml)
+	}
+
+	suffix := `<script>window.onload="alert('Hello')"</script></head><body></body></html>`
+
+	if !strings.HasSuffix(wpHtml, suffix) {
+		t.Error("Does not end with: ", suffix, ", Output: ", wpHtml)
+	}
+}

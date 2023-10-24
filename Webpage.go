@@ -25,6 +25,10 @@ type Webpage struct {
 
 // ToHTML returns HTML representation of the webpage
 func (w *Webpage) ToHTML() string {
+	preaddedChildren := w.head.TagChildren
+
+	w.head.TagChildren = []*Tag{}
+
 	metaCharset := NewMeta().Attr("charset", "utf-8")
 	w.head.AddChild(metaCharset)
 	if w.title != "" {
@@ -78,6 +82,9 @@ func (w *Webpage) ToHTML() string {
 			w.head.AddChild(NewHTML(style))
 		}
 	}
+
+	w.head.AddChildren(preaddedChildren)
+
 	for _, scriptURL := range w.scriptURLs {
 		if strings.HasPrefix(scriptURL, "http") || strings.HasPrefix(scriptURL, "//") {
 			w.body.AddChild(NewScriptURL(scriptURL))
@@ -263,6 +270,16 @@ func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 		w.AddStyleURL(styleURL)
 	}
 	return w
+}
+
+// Body returns a pointer to the body tag
+func (w *Webpage) Body() *Tag {
+	return w.body
+}
+
+// Head returns a pointer to the head tag
+func (w *Webpage) Head() *Tag {
+	return w.head
 }
 
 // HTML shortcut for adding HTML to the body
