@@ -55,7 +55,6 @@ go get -u github.com/gouniverse/hb
 ## Implemented Tag Shortcuts
 
 - <b>NewBR()</b> - shortcut for &lt;br> tag
-- <b>NewBorderLayout()</b> - border layout with top, bottom, left, right and center slots (see example below how to use it)
 - <b>NewButton()</b> - shortcut for &lt;button> tag
 - <b>NewCaption()</b> - shortcut for &lt;caption> tag
 - <b>NewCode()</b> - shortcut for &lt;code> tag
@@ -114,9 +113,9 @@ Examples can be found on: https://golangui.com
 - <b>AttrIfF(condition bool, key string, valueFunc func() string)</b> -  conditional setting of attribute using function
 - <b>AttrIfElse(condition bool, key, valueIf string, valueElse string)</b> - conditional setting of attribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
-- <b>AttrsIf(conditon bool, attrs map[string]string)</b> - conditional setting of attributes
+- <b>AttrsIf(condition bool, attrs map[string]string)</b> - conditional setting of attributes
 - <b>AttrsIfF(condition bool, attrsFunc func() map[string]string)</b> - conditional setting of attributes using function
-- <b>AttrsIfElse(conditon, attrsIf map[string]string, attrsElse map[string]string)</b> - conditional setting of attributes
+- <b>AttrsIfElse(condition, attrsIf map[string]string, attrsElse map[string]string)</b> - conditional setting of attributes
 - <b>AddChild(tag Tag)</b> - adds a child element
 - <b>AddChildren(tag []Tag)</b> - adds an array of child elements
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
@@ -164,7 +163,7 @@ Examples can be found on: https://golangui.com
 - <b>StyleIf(condition bool, style string)</b> - conditional adding of a style
 - <b>StyleIfElse(condition bool, styleIf string, styleElse string)</b> - conditional adding of a style
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
-- <b>TargetIf(conrition bool, target string)</b> - conditional adding of a "target" attribute
+- <b>TargetIf(condition bool, target string)</b> - conditional adding of a "target" attribute
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Type(target string)</b> - shortcut to add a "type" attribute
 - <b>TypeIf(condition bool, target string)</b> - conditional setting of "type" attribute
@@ -222,11 +221,48 @@ Examples can be found on: https://golangui.com
 - <b>AddStyleURLs(styleURLs []string)</b>
 
 ## Border Layout Methods
+- <b>NewBorderLayout()</b> - shortcut to quickly create a border layout with top, bottom, left, right and center slots (see example below how to use it)
 - <b>AddTop(tag *Tag, alignHorizontal string, alignVertical string)</b>
 - <b>AddBottom(tag *Tag, alignHorizontal string, alignVertical string)</b>
 - <b>AddLeft(tag *Tag, alignHorizontal string, alignVertical string)</b>
 - <b>AddRight(tag *Tag, alignHorizontal string, alignVertical string)</b>
 - <b>AddCenter(tag *Tag, alignHorizontal string, alignVertical string)</b>
+
+Usage example:
+```go
+bl := NewBorderLayout()
+	bl.AddTop(NewSpan().HTML("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddCenter(NewSpan().HTML("CENTER"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddBottom(NewSpan().HTML("BOTTOM"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddLeft(NewSpan().HTML("LEFT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddRight(NewSpan().HTML("RIGHT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+blHtml := bl.ToHTML()
+```
+
+## Swal
+- <b>NewSwal</b> - shortcut to quickly add Sweetalert 2 dialogs (note requires adding the Sweetalert JS library). See more at: https://sweetalert2.com/download
+
+Usage example in a form:
+
+```go
+form.
+	ChildIf(data.formErrorMessage != "", hb.NewSwal(swal.SwalOptions{
+		Icon:              "error",
+		Title:             "Oops...",
+		Text:              data.formErrorMessage,
+		ShowCancelButton:  false,
+		ConfirmButtonText: "OK",
+		ConfirmCallback:   "window.location.href = window.location.href",
+	})).
+	ChildIf(data.formSuccessMessage != "", hb.NewSwal(swal.SwalOptions{
+		Icon:              "success",
+		Title:             "Saved",
+		Text:              data.formSuccessMessage,
+		ShowCancelButton:  false,
+		ConfirmButtonText: "OK",
+		ConfirmCallback:   "window.location.href = window.location.href",
+	}))
+```
 
 ## Working with Raw Tags
 
@@ -243,17 +279,6 @@ For safeguarding HTML use the EscapeString method from the standard HTML library
 Link with example: https://golang.org/pkg/html/#EscapeString
 
 ## Examples
-
-- Border Layout
-```go
-bl := NewBorderLayout()
-	bl.AddTop(NewSpan().HTML("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddCenter(NewSpan().HTML("CENTER"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddBottom(NewSpan().HTML("BOTTOM"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddLeft(NewSpan().HTML("LEFT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddRight(NewSpan().HTML("RIGHT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	blHtml := bl.ToHTML()
-```
 
 - Bootstrap login form
 
@@ -391,6 +416,8 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 
 ## Changelog
 
+2023.12.10 - Added Swal method for quickly adding Sweetalert
+
 2023.09.16 - Added special case for empty "value" attribute
 
 2023.07.26 - Added NewCaption function and Alpine.js, HTMX functions
@@ -469,9 +496,8 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
   An extension to the standard html package. Not lots of documentation
 
 - HTML as functions (https://github.com/jpincas/htmlfunc) | Last update: 23 Jan 2023
-  Intersting library, following Elm. Not lots of documentation
+  Interesting library, following Elm. Not lots of documentation
 
 - Templ (https://github.com/a-h/templ) | 30 Sep 2023
   Building templates with JSX like syntax, if JSX is your cup of tea
-
 
