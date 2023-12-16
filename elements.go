@@ -1,38 +1,5 @@
 package hb
 
-// NewTag represents a tag
-func NewTag(tagName string) *Tag {
-	tag := &Tag{
-		TagName: tagName,
-	}
-	return tag
-}
-
-// NewForm represents a FORM tag
-func NewForm() *Tag {
-	tag := &Tag{
-		TagName: "form",
-	}
-	return tag
-}
-
-// NewHTML creates pure HTML without surrounding tags
-func NewHTML(html string) *Tag {
-	textTag := &Tag{
-		TagName:    "",
-		TagContent: html,
-	}
-	return textTag
-}
-
-// NewHR creates represents a HR tags
-func NewHR() *Tag {
-	textTag := &Tag{
-		TagName: "hr",
-	}
-	return textTag
-}
-
 // NewHeading1 represents a H1 tag
 func NewHeading1() *Tag {
 	tag := &Tag{
@@ -184,22 +151,6 @@ func NewScriptURL(javascriptURL string) *Tag {
 	return tag
 }
 
-// NewSection represents a SECTION tag
-func NewSection() *Tag {
-	tag := &Tag{
-		TagName: "section",
-	}
-	return tag
-}
-
-// NewSpan represents a SPAN tag
-func NewSpan() *Tag {
-	tag := &Tag{
-		TagName: "span",
-	}
-	return tag
-}
-
 // NewStyle represents a STYLE tag
 func NewStyle(css string) *Tag {
 	tag := &Tag{
@@ -277,14 +228,6 @@ func NewTbody() *Tag {
 func NewThead() *Tag {
 	tag := &Tag{
 		TagName: "thead",
-	}
-	return tag
-}
-
-// NewTemplate represents a TEMPLATE tag
-func NewTemplate() *Tag {
-	tag := &Tag{
-		TagName: "template",
 	}
 	return tag
 }

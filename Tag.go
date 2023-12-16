@@ -171,9 +171,15 @@ func (t *Tag) AddChildren(children []*Tag) *Tag {
 	return t
 }
 
-// AddHTML adds an HTML as child tags to this tag
+// AddHTML adds an HTML string as a child tag to this tag
 func (t *Tag) AddHTML(html string) *Tag {
 	t.AddChild(NewHTML(html))
+	return t
+}
+
+// AddText adds an escaped text string as a child tag to this tag
+func (t *Tag) AddText(text string) *Tag {
+	t.AddChild(NewText(text))
 	return t
 }
 
@@ -508,10 +514,34 @@ func (t *Tag) TargetIf(condition bool, target string) *Tag {
 	return t
 }
 
+// Text shortcut for AddText
+func (t *Tag) Text(text string) *Tag {
+	return t.AddText(text)
+}
+
+// TextIf adds escaped text if a condition is met
+func (t *Tag) TextIf(condition bool, text string) *Tag {
+	if condition {
+		return t.AddText(text)
+	}
+
+	return t
+}
+
+// TextIfElse adds escaped text if a condition is met
+func (t *Tag) TextIfElse(condition bool, textIf string, textElse string) *Tag {
+	if condition {
+		return t.AddText(textIf)
+	}
+
+	return t.AddText(textElse)
+}
+
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	shortTags := []string{
 		"br",
+		"hr",
 		"img",
 		"input",
 		"link",

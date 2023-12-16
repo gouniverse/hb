@@ -16,6 +16,8 @@ type SwalOptions struct {
 	ConfirmCallback    string `json:"-"`
 }
 
+// NewSwal generates a script with a Sweetalert2 dialog
+// Note! you must include the library yourself (i.e. CDN)
 func NewSwal(options SwalOptions) *Tag {
 	optionsJSON, _ := utils.ToJSON(options)
 	swal := `Swal.fire(` + optionsJSON + `)`

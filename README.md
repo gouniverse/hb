@@ -95,6 +95,7 @@ go get -u github.com/gouniverse/hb
 - <b>NewTBody()</b> - shortcut for &lt;tbody> tag
 - <b>NewTD()</b> - shortcut for &lt;td> tag
 - <b>NewTemplate()</b> - shortcut for &lt;template> tag
+- <b>NewText(text string)</b> - creates empty tag with the escaped text content
 - <b>NewTextArea()</b> - shortcut for &lt;textarea> tag
 - <b>NewTH()</b> - shortcut for &lt;th> tag
 - <b>NewThead()</b> - shortcut for &lt;thead> tag
@@ -121,6 +122,7 @@ Examples can be found on: https://golangui.com
 - <b>AddClass(className string)</b> - adds a class name to the "class" attribute
 - <b>AddHTML(html string)</b> - adds HTML content to the element
 - <b>AddStyle(style string)</b> - adds a style to the "style" attribute
+- <b>AddText(text string)</b> - adds escaped text content to the element
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>ChildIf(condition bool, tag Tag)</b> - conditional adding of a child
 - <b>ChildIfF(condition bool, childFunc func() *Tag)</b> - conditional adding of a child using function
@@ -164,6 +166,7 @@ Examples can be found on: https://golangui.com
 - <b>StyleIfElse(condition bool, styleIf string, styleElse string)</b> - conditional adding of a style
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
 - <b>TargetIf(condition bool, target string)</b> - conditional adding of a "target" attribute
+- <b>Text(html string)</b> - shortcut for AddText
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Type(target string)</b> - shortcut to add a "type" attribute
 - <b>TypeIf(condition bool, target string)</b> - conditional setting of "type" attribute
