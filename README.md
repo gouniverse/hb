@@ -143,6 +143,7 @@ Examples can be found on: https://golangui.com
 - <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
+- <b>Map[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - map a slice of anything to a slice of tags
 - <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
 - <b>Placeholder(placeholder string)</b> - shortcut to add a "placeholder" attribute
@@ -423,6 +424,8 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2023.12.17 - Added Map, Text
 
 2023.12.10 - Added Swal method for quickly adding Sweetalert
 

@@ -344,6 +344,12 @@ func (t *Tag) ID(id string) *Tag {
 	return t.SetAttribute("id", id)
 }
 
+// Map shortcut for setting the "id" attribute
+func (t *Tag) Map(items []any, callback func(item any, index int) *Tag) *Tag {
+	mappedItems := Map(items, callback)
+	return t.Children(mappedItems)
+}
+
 // Method shortcut for setting the "method" attribute
 func (t *Tag) Method(method string) *Tag {
 	return t.SetAttribute("method", method)
