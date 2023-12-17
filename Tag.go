@@ -247,6 +247,12 @@ func (t *Tag) ChildrenIfElse(condition bool, childrenIf []*Tag, childrenElse []*
 	return t.AddChildren(childrenElse)
 }
 
+// ChildrenMap map a slice to a slice of tags and adds as children
+func (t *Tag) ChildrenMap(items []any, callback func(item any, index int) *Tag) *Tag {
+	mappedItems := Map(items, callback)
+	return t.Children(mappedItems)
+}
+
 // Class shortcut for setting the "class" attribute
 func (t *Tag) Class(clasName string) *Tag {
 	return t.AddClass(clasName)
@@ -342,12 +348,6 @@ func (t *Tag) Href(href string) *Tag {
 // ID shortcut for setting the "id" attribute
 func (t *Tag) ID(id string) *Tag {
 	return t.SetAttribute("id", id)
-}
-
-// Map shortcut for setting the "id" attribute
-func (t *Tag) Map(items []any, callback func(item any, index int) *Tag) *Tag {
-	mappedItems := Map(items, callback)
-	return t.Children(mappedItems)
 }
 
 // Method shortcut for setting the "method" attribute

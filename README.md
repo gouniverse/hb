@@ -131,6 +131,7 @@ Examples can be found on: https://golangui.com
 - <b>ChildrenIf(condition bool, children []Tag)</b> - conditional adding of children
 - <b>ChildrenIfF(condition bool, childrenFunc func() []*Tag)</b> - conditional adding of children using function
 - <b>ChildrenIfElse(condition bool, childrenIf []Tag, childrenElse []Tag)</b> - conditional adding of a children
+- <b>ChildrenMap(items []any, callback func(item any, index int) *Tag) []*Tag</b> - map a slice to a slice of tags and adds as children
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
 - <b>ClassIfElse(condition bool, classNameIf string, classNameElse string)</b> - conditional adding of a class
@@ -143,7 +144,6 @@ Examples can be found on: https://golangui.com
 - <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
-- <b>Map(items []any, callback func(item any, index int) *Tag) []*Tag</b> - map a slice to a slice of tags and add as children
 - <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
 - <b>Placeholder(placeholder string)</b> - shortcut to add a "placeholder" attribute
