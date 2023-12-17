@@ -1,7 +1,7 @@
 package hb
 
 import (
-	"github.com/gouniverse/utils"
+	"strconv"
 )
 
 const BORDER_LAYOUT_ALIGN_BOTTOM = "bottom"
@@ -142,25 +142,25 @@ func (bl *BorderLayout) AddCenter(tag *Tag, alignHorizontal string, alignVertica
 }
 
 func (bl *BorderLayout) SetHeightPercents(height int) *BorderLayout {
-	bl.height = utils.ToString(height) + "%"
+	bl.height = strconv.Itoa(height) + "%"
 
 	return bl
 }
 
 func (bl *BorderLayout) SetWidthPercents(width int) *BorderLayout {
-	bl.width = utils.ToString(width) + "%"
+	bl.width = strconv.Itoa(width) + "%"
 
 	return bl
 }
 
 func (bl *BorderLayout) SetHeightPixels(height int) *BorderLayout {
-	bl.height = utils.ToString(height) + "px"
+	bl.height = strconv.Itoa(height) + "px"
 
 	return bl
 }
 
 func (bl *BorderLayout) SetWidthPixels(width int) *BorderLayout {
-	bl.width = utils.ToString(width) + "px"
+	bl.width = strconv.Itoa(width) + "px"
 
 	return bl
 }
@@ -193,7 +193,7 @@ func (bl *BorderLayout) ToHTML() string {
 			AddChild(bl.top)
 
 		if colspan > 1 {
-			td.Attr("colspan", utils.ToString(colspan))
+			td.Attr("colspan", strconv.Itoa(colspan))
 		}
 
 		tr := NewTR().AddChild(td)
@@ -234,7 +234,7 @@ func (bl *BorderLayout) ToHTML() string {
 			AddChild(bl.bottom)
 
 		if colspan > 1 {
-			td.Attr("colspan", utils.ToString(colspan))
+			td.Attr("colspan", strconv.Itoa(colspan))
 		}
 
 		tr := NewTR().AddChild(td)

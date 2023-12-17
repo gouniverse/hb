@@ -1,7 +1,7 @@
 package hb
 
 import (
-	"github.com/gouniverse/utils"
+	"encoding/json"
 )
 
 type SwalOptions struct {
@@ -19,7 +19,16 @@ type SwalOptions struct {
 // NewSwal generates a script with a Sweetalert2 dialog
 // Note! you must include the library yourself (i.e. CDN)
 func NewSwal(options SwalOptions) *Tag {
-	optionsJSON, _ := utils.ToJSON(options)
+	optionsBytes, err := json.Marshal(options)
+
+	var optionsJSON string
+
+	if err != nil {
+		optionsJSON = ""
+	} else {
+		optionsJSON = string(optionsBytes)
+	}
+
 	swal := `Swal.fire(` + optionsJSON + `)`
 
 	if options.ConfirmCallback != "" {
