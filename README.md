@@ -35,7 +35,7 @@ Demos can be found on: https://golangui.com
 import "github.com/gouniverse/hb"
 	
 // 1. Create a div container with "Hello world" message
-div := hb.NewDiv().Class("container").HTML("Hello world")
+div := hb.NewDiv().Class("container").Text("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
 section := hb.NewSection().Style("padding:40px;").Child(div)
@@ -234,11 +234,11 @@ Examples can be found on: https://golangui.com
 Usage example:
 ```go
 bl := NewBorderLayout()
-	bl.AddTop(NewSpan().HTML("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddCenter(NewSpan().HTML("CENTER"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddBottom(NewSpan().HTML("BOTTOM"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddLeft(NewSpan().HTML("LEFT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
-	bl.AddRight(NewSpan().HTML("RIGHT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddTop(NewSpan().Text("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddCenter(NewSpan().Text("CENTER"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddBottom(NewSpan().Text("BOTTOM"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddLeft(NewSpan().Text("LEFT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
+	bl.AddRight(NewSpan().Text("RIGHT"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
 blHtml := bl.ToHTML()
 ```
 
@@ -287,16 +287,16 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 
 ```go
 // Elements for the form
-header := hb.NewHeading3().HTML("Please sign in").Style("margin:0px;")
-emailLabel := hb.NewLabel().HTML("E-mail Address")
+header := hb.NewHeading3().text("Please sign in").Style("margin:0px;")
+emailLabel := hb.NewLabel().Text("E-mail Address")
 emailInput := hb.NewInput().Class("form-control").Name("email").Attr("placeholder", "Enter e-mail address")
-emailFormGroup := hb.NewDiv().Class("form-group").AddChild(emailLabel).AddChild(emailInput)
-passwordLabel := hb.NewLabel().AddChild(hb.NewHTML("Password"))
+emailFormGroup := hb.NewDiv().Class("form-group").Child(emailLabel).Child(emailInput)
+passwordLabel := hb.NewLabel().Child(hb.NewText("Password"))
 passwordInput := hb.NewInput().Class("form-control").Name("password").Attr("type", "password").Attr("placeholder", "Enter password")
 passwordFormGroup := hb.NewDiv().Class("form-group").Child(passwordLabel).Child(passwordInput)
-buttonLogin := hb.NewButton().Class("btn btn-lg btn-success btn-block").HTML("Login")
-buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").HTML("Register").Href("auth/register")
-buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").HTML("Forgot password?").Href("auth/password-restore")
+buttonLogin := hb.NewButton().Class("btn btn-lg btn-success btn-block").Text("Login")
+buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
+buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").Text("Forgot password?").Href("auth/password-restore")
 
 // Add elements in a card
 cardHeader := hb.NewDiv().
@@ -345,13 +345,18 @@ title := "Title"
 favicon := "data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAABNTU0AVKH/AOPj4wDExMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIiAREQEREAIiIBERAREQAiIgIiICIiACIiAiIgIiIAMzMDMzAzMwAzMwMzMDMzACIiAiIgIiIAIiICIiAiIgAzMwMzMDMzADMzAzMwMzMAIiICIiAiIgAiIgIiICIiAAAAAAAAAAAAIiICIiAiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 // 3. Webpage
-webpage := NewWebpage().SetTitle(title).SetFavicon(favicon).AddStyleURLs([]string{
+webpage := NewWebpage().
+	SetTitle(title).
+	SetFavicon(favicon).
+	AddStyleURLs([]string{
 		"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
 		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css",
-	}).AddScriptURLs([]string{
+	}).
+	AddScriptURLs([]string{
 		"https://code.jquery.com/jquery-3.2.1.min.js",
 		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js",
-	}).AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`).AddChild(NewDiv().HTML("Hello"))
+	}).
+	AddStyle(`html,body{height:100%;font-family: Ubuntu, sans-serif;}`).AddChild(NewDiv().Text("Hello"))
 ```
 
 - Wrap webpage in a function to be reused as a master template
@@ -400,7 +405,7 @@ the content of the webpage with the result.
 
 ```go
 input := NewButton().
-		HTML("Submit")
+		Text("Submit")
 		Hx("post", "http://test.com").
 		Hx("include", "#DivID").
 		Hx("target", "#PageID").
