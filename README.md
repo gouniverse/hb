@@ -143,7 +143,7 @@ Examples can be found on: https://golangui.com
 - <b>HTML(html string)</b> - shortcut for AddHTML
 - <b>ID(className string)</b> - shortcut to add an "id" attribute
 - <b>GetAttribute(key string) string</b>
-- <b>Map[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - map a slice of anything to a slice of tags
+- <b>Map(items []any, callback func(item any, index int) *Tag) []*Tag</b> - map a slice to a slice of tags and add as children
 - <b>Method(method string)</b> - shortcut to add a "method" attribute
 - <b>Name(name string)</b> - shortcut to add a "name" attribute
 - <b>Placeholder(placeholder string)</b> - shortcut to add a "placeholder" attribute
@@ -175,6 +175,16 @@ Examples can be found on: https://golangui.com
 - <b>ValueIf(condition bool, value string)</b> - conditional setting of "value" attribute
 
 Examples can be found on: https://golangui.com
+
+## Utility
+
+- <b>Map[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - map a slice of anything to a slice of tags
+- If(condition bool, trueTag *Tag) *Tag
+- IfF(condition bool, trueFunc func() *Tag) *Tag
+- IfElse(condition bool, trueTag *Tag, falseTag *Tag) *Tag
+- IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag
+- Ternary(condition bool, trueTag *Tag, falseTag *Tag) *Tag
+- TernaryF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag
 
 ## Tag HTMX Attributes
 
@@ -425,7 +435,7 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 
 ## Changelog
 
-2023.12.17 - Added Map, Text
+2023.12.17 - Added Map, Ternary, Text
 
 2023.12.10 - Added Swal method for quickly adding Sweetalert
 
