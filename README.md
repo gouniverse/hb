@@ -2,7 +2,7 @@
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
-<img src="screenshots/logo.jpg" width="100%" />
+<img src="screnshots/logo.jpg" width="100%" />
 
 Unpretentious short and sweet declarative HTML Builder.
 
