@@ -2,6 +2,8 @@
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
 
+<img src="screenshots/logo.jpg" width="100%" />
+
 Unpretentious short and sweet declarative HTML Builder.
 
 Demos can be found on: https://golangui.com
