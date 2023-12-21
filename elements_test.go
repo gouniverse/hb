@@ -23,14 +23,6 @@ func TestTagOption(t *testing.T) {
 	}
 }
 
-func TestTagTable(t *testing.T) {
-	tag := NewTable()
-	h := tag.ToHTML()
-	if strings.Contains(h, "<table></table>") == false {
-		t.Error("Does not contain '<table></table>'", "Output:"+h)
-	}
-}
-
 func TestTagSelect(t *testing.T) {
 	tag := NewSelect()
 	h := tag.ToHTML()

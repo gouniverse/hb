@@ -289,9 +289,13 @@ tag := &Tag{
 tag.toHTML()
 ```
 
-## Escaping HTML
-For safeguarding HTML use the EscapeString method from the standard HTML library
+## Safe Escaping HTML
 
+For safeguarding HTML, always use the .Text(text) method of the tags, it will automatically escape any HTML tags in the output.
+
+Using the .HTML(html) method of the tags, will output the raw HTML, and leaves you vulnerable to XSS attacks.
+
+You can escape the HTML yourself by using the EscapeString method from the standard HTML library
 Link with example: https://golang.org/pkg/html/#EscapeString
 
 ## Examples
