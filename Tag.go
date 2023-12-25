@@ -546,12 +546,22 @@ func (t *Tag) TextIfElse(condition bool, textIf string, textElse string) *Tag {
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	shortTags := []string{
+		"area",
+		"base",
 		"br",
+		"col",
+		"command",
+		"embed",
 		"hr",
 		"img",
 		"input",
+		"keygen",
 		"link",
 		"meta",
+		"param",
+		"source",
+		"track",
+		"wbr",
 	}
 
 	isShortTag := inArrayString(shortTags, t.TagName)
