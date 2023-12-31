@@ -1,8 +1,10 @@
+<img src="screnshots/logo.jpg" width="100%" />
+
 # HTML Builder <a href="https://gitpod.io/#https://github.com/gouniverse/hb" style="float:right:"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" loading="lazy"></a>
 
 ![tests](https://github.com/gouniverse/html/workflows/tests/badge.svg)
-
-<img src="screnshots/logo.jpg" width="100%" />
+[![Go Report Card](https://goreportcard.com/badge/github.com/gouniverse/hb)](https://goreportcard.com/report/github.com/gouniverse/hb)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/gouniverse/hb)](https://pkg.go.dev/github.com/gouniverse/hb)
 
 Unpretentious short and sweet declarative HTML Builder.
 
