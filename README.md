@@ -437,6 +437,10 @@ input := NewButton().
 webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
 ```
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/gouniverse/hb.svg)](https://starchart.cc/gouniverse/hb)
+
 ## Similar
 
 - https://github.com/goradd/html5tag - option to have string or stream
