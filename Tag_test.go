@@ -477,3 +477,37 @@ func TestStyleIfElse(t *testing.T) {
 		t.Error(`Does not contain '<img style="width:200px" />', "Output:"` + imgHtmlFalse)
 	}
 }
+
+func TestTitle(t *testing.T) {
+	input := NewDiv().Title("TestTitle").ToHTML()
+
+	if strings.Contains(input, `title="TestTitle"`) == false {
+		t.Error(`Does not contain 'title="TestTitle"', Output:` + input)
+	}
+
+	if strings.Contains(input, `title="TestTitle"`) == false {
+		t.Error(`Does not contain 'title="TestTitle"', Output:` + input)
+	}
+}
+
+func TestTitleIf(t *testing.T) {
+	input := NewDiv().TitleIf(true, "TestTitle").ToHTML()
+
+	if strings.Contains(input, `title="TestTitle"`) == false {
+		t.Error(`Does not contain 'title="TestTitle"', Output:` + input)
+	}
+
+	if strings.Contains(input, `title="TestTitle"`) == false {
+		t.Error(`Does not contain 'title="TestTitle"', Output:` + input)
+	}
+
+	input = NewDiv().TitleIf(false, "TestTitle").ToHTML()
+
+	if strings.Contains(input, `title="TestTitle"`) {
+		t.Error(`Does contain 'title="TestTitle"', Output:` + input)
+	}
+
+	if strings.Contains(input, `title="TestTitle"`) {
+		t.Error(`Does contain 'title="TestTitle"', Output:` + input)
+	}
+}

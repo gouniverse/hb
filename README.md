@@ -172,6 +172,10 @@ Examples can be found on: https://golangui.com
 - <b>Target(target string)</b> - shortcut to add a "target" attribute
 - <b>TargetIf(condition bool, target string)</b> - conditional adding of a "target" attribute
 - <b>Text(html string)</b> - shortcut for AddText
+- <b>TextIf(condition bool, text string)</b> - adds escaped text if a condition is met
+- <b>TextIfElse(condition bool, textIf string, textElse string)</b> - adds escaped text if a condition is met
+- <b>Title(title string)</b> - shortcut for setting the "title" attribute
+- <b>TitleIf(condition bool, title string)</b> - sets the title if a condition is met
 - <b>ToHTML() string</b> - outputs HTML code
 - <b>Type(target string)</b> - shortcut to add a "type" attribute
 - <b>TypeIf(condition bool, target string)</b> - conditional setting of "type" attribute

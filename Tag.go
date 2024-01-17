@@ -1,35 +1,11 @@
 package hb
 
 import (
-	"bytes"
 	"sort"
 	"strings"
 
 	"golang.org/x/net/html"
 )
-
-// Addslashes addslashes()
-func addslashes(str string) string {
-	var buf bytes.Buffer
-	for _, char := range str {
-		switch char {
-		//case '\'', '"', '\\':
-		case '"', '\\':
-			buf.WriteRune('\\')
-		}
-		buf.WriteRune(char)
-	}
-	return buf.String()
-}
-
-func inArrayString(arr []string, str string) bool {
-	for _, a := range arr {
-		if a == str {
-			return true
-		}
-	}
-	return false
-}
 
 // TagInterface represents an HTML tag interface
 type TagInterface interface {
@@ -183,7 +159,7 @@ func (t *Tag) AddText(text string) *Tag {
 	return t
 }
 
-// Childs shortcut for AddChild
+// Child shortcut for AddChild
 func (t *Tag) Child(child *Tag) *Tag {
 	return t.AddChild(child)
 }
@@ -254,23 +230,23 @@ func (t *Tag) ChildrenMap(items []any, callback func(item any, index int) *Tag) 
 }
 
 // Class shortcut for setting the "class" attribute
-func (t *Tag) Class(clasName string) *Tag {
-	return t.AddClass(clasName)
+func (t *Tag) Class(className string) *Tag {
+	return t.AddClass(className)
 }
 
 // ClassIf adds class name if a condition is met
-func (t *Tag) ClassIf(condition bool, clasName string) *Tag {
+func (t *Tag) ClassIf(condition bool, className string) *Tag {
 	if condition {
-		return t.AddClass(clasName)
+		return t.AddClass(className)
 	}
 
 	return t
 }
 
 // ClassIfElse adds class name if a condition is met
-func (t *Tag) ClassIfElse(condition bool, clasNameIf string, classNameElse string) *Tag {
+func (t *Tag) ClassIfElse(condition bool, classNameIf string, classNameElse string) *Tag {
 	if condition {
-		return t.AddClass(clasNameIf)
+		return t.AddClass(classNameIf)
 	}
 
 	return t.AddClass(classNameElse)
@@ -460,7 +436,7 @@ func (t *Tag) Role(role string) *Tag {
 	return t.SetAttribute("role", role)
 }
 
-// SetAttribute sets the valua of an attribute
+// SetAttribute sets the value of an attribute
 func (t *Tag) SetAttribute(key, value string) *Tag {
 	if t.TagAttributes == nil {
 		t.TagAttributes = map[string]string{}
@@ -541,6 +517,20 @@ func (t *Tag) TextIfElse(condition bool, textIf string, textElse string) *Tag {
 	}
 
 	return t.AddText(textElse)
+}
+
+// Title shortcut for setting the "title" attribute
+func (t *Tag) Title(title string) *Tag {
+	return t.SetAttribute("title", title)
+}
+
+// TitleIf sets the title if a condition is met
+func (t *Tag) TitleIf(condition bool, title string) *Tag {
+	if condition {
+		return t.Title(title)
+	}
+
+	return t
 }
 
 // ToHTML returns HTML from Node
