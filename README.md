@@ -526,6 +526,8 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
 
 - Uberswe HTML (https://github.com/uberswe/html) | Last update: 24 Feb 2021
 
+- Elem Go (https://github.com/chasefleming/elem-go)
+
 - Forms from Structs (https://github.com/joncalhoun/form)
   Still writ
 
@@ -536,5 +538,5 @@ webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url 
   Interesting library, following Elm. Not lots of documentation
 
 - Templ (https://github.com/a-h/templ) | 30 Sep 2023
-  Building templates with JSX like syntax, if JSX is your cup of tea
+  Building templates with JSX like syntax. Requires installing 3-rd party binaries, and additionaln compilation step before being usable.
 
