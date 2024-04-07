@@ -22,9 +22,27 @@ func TestWebpage(t *testing.T) {
 	}
 }
 
-func TestWebpageAddLanguageAttribute(t *testing.T) {
+func TestWebpageSetCharset(t *testing.T) {
 	wp := NewWebpage()
-	wp.Attr("lang", "en")
+	wp.SetCharset("testing")
+	wpHtml := wp.ToHTML()
+
+	prefix := `<!DOCTYPE html><html><head><meta charset="testing" />`
+
+	if !strings.HasPrefix(wpHtml, prefix) {
+		t.Error("Does not start with: ", prefix, ", Output: ", wpHtml)
+	}
+
+	suffix := `</head><body></body></html>`
+
+	if !strings.HasSuffix(wpHtml, suffix) {
+		t.Error("Does not end with: ", suffix, ", Output: ", wpHtml)
+	}
+}
+
+func TestWebpageSetLanguage(t *testing.T) {
+	wp := NewWebpage()
+	wp.SetLanguage("en")
 	wpHtml := wp.ToHTML()
 
 	prefix := `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" />`

@@ -76,4 +76,3 @@ func (t *Tag) HxVals(value string) *Tag {
 func (t *Tag) HxVars(value string) *Tag {
 	return t.SetAttribute("hx-vars", value)
 }
-

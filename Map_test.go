@@ -18,11 +18,11 @@ func TestMap(t *testing.T) {
 		},
 	}
 
-	spans := Map(items, func(item struct{text string}, index int) *Tag {
+	spans := Map(items, func(item struct{ text string }, index int) *Tag {
 		return NewSpan().
-		Text(strconv.Itoa(index+1)).
-		Text(". ").
-		Text(item.text)
+			Text(strconv.Itoa(index + 1)).
+			Text(". ").
+			Text(item.text)
 	})
 
 	html := NewWrap().Children(spans).ToHTML()

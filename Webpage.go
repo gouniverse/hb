@@ -29,7 +29,11 @@ func (w *Webpage) ToHTML() string {
 
 	w.head.TagChildren = []*Tag{}
 
-	metaCharset := NewMeta().Attr("charset", "utf-8")
+	if w.charset == "" {
+		w.charset = `utf-8`
+	}
+
+	metaCharset := NewMeta().Attr("charset", w.charset)
 	w.head.AddChild(metaCharset)
 	if w.title != "" {
 		titleTag := &Tag{TagName: "title"}
@@ -142,9 +146,21 @@ func (w *Webpage) Children(children []*Tag) *Webpage {
 	return w.AddChildren(children)
 }
 
+// SetCharset sets the charset of the webpage
+func (w *Webpage) SetCharset(charset string) *Webpage {
+	w.charset = charset
+	return w
+}
+
 // SetFavicon sets the favicon of the webpage
 func (w *Webpage) SetFavicon(favicon string) *Webpage {
 	w.favicon = favicon
+	return w
+}
+
+// SetLanguage sets the language of the webpage
+func (w *Webpage) SetLanguage(language string) *Webpage {
+	w.language = language
 	return w
 }
 
