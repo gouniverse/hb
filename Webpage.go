@@ -4,6 +4,8 @@ import (
 	"strings"
 )
 
+var _ TagInterface = (*Webpage)(nil)
+
 // Webpage represents a web page
 type Webpage struct {
 	Tag
@@ -27,7 +29,7 @@ type Webpage struct {
 func (w *Webpage) ToHTML() string {
 	preaddedChildren := w.head.TagChildren
 
-	w.head.TagChildren = []*Tag{}
+	w.head.TagChildren = []TagInterface{}
 
 	if w.charset == "" {
 		w.charset = `utf-8`

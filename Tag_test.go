@@ -169,7 +169,7 @@ func TestChildWithNil(t *testing.T) {
 
 func TestChildren(t *testing.T) {
 	img := NewImage().Attr("width", "100")
-	div := NewDiv().Children([]*Tag{
+	div := NewDiv().Children([]TagInterface{
 		img,
 		nil,
 		img,
@@ -182,7 +182,7 @@ func TestChildren(t *testing.T) {
 
 func TestChildrenIf(t *testing.T) {
 	img := NewImage().Attr("width", "100")
-	div := NewDiv().ChildrenIf(true, []*Tag{
+	div := NewDiv().ChildrenIf(true, []TagInterface{
 		img,
 		img,
 	})
@@ -191,7 +191,7 @@ func TestChildrenIf(t *testing.T) {
 		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
 	}
 
-	divFalse := NewDiv().ChildrenIf(false, []*Tag{
+	divFalse := NewDiv().ChildrenIf(false, []TagInterface{
 		img,
 		img,
 	})
@@ -204,10 +204,10 @@ func TestChildrenIf(t *testing.T) {
 func TestChildrenIfElse(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	input := NewInput()
-	div := NewDiv().ChildrenIfElse(true, []*Tag{
+	div := NewDiv().ChildrenIfElse(true, []TagInterface{
 		img,
 		img,
-	}, []*Tag{
+	}, []TagInterface{
 		input,
 		input,
 	})
@@ -216,10 +216,10 @@ func TestChildrenIfElse(t *testing.T) {
 		t.Error("Does not contain '<div><img width=\"100\" /><img width=\"100\" /></div>'", "Output:"+divHtml)
 	}
 
-	divFalse := NewDiv().ChildrenIfElse(false, []*Tag{
+	divFalse := NewDiv().ChildrenIfElse(false, []TagInterface{
 		img,
 		img,
-	}, []*Tag{
+	}, []TagInterface{
 		input,
 		input,
 	})

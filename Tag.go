@@ -1,16 +1,14 @@
 package hb
 
 import (
+	"slices"
 	"sort"
 	"strings"
 
 	"golang.org/x/net/html"
 )
 
-// TagInterface represents an HTML tag interface
-type TagInterface interface {
-	ToHTML() string
-}
+var _ TagInterface = (*Tag)(nil)
 
 // Tag represents an HTML tag
 type Tag struct {
@@ -18,7 +16,7 @@ type Tag struct {
 	TagName       string
 	TagContent    string
 	TagAttributes map[string]string
-	TagChildren   []*Tag
+	TagChildren   []TagInterface
 }
 
 // Action shortcut for setting the "action" attribute
@@ -126,7 +124,7 @@ func (t *Tag) AttrsIfElse(condition bool, attrsIf map[string]string, attrsElse m
 }
 
 // AddChild adds a new child tag to this tag
-func (t *Tag) AddChild(child *Tag) *Tag {
+func (t *Tag) AddChild(child TagInterface) *Tag {
 	if child == nil {
 		return t
 	}
@@ -136,7 +134,7 @@ func (t *Tag) AddChild(child *Tag) *Tag {
 }
 
 // AddChildren adds an array of child tags to this tag
-func (t *Tag) AddChildren(children []*Tag) *Tag {
+func (t *Tag) AddChildren(children []TagInterface) *Tag {
 	for _, child := range children {
 		if child == nil {
 			continue
@@ -160,12 +158,12 @@ func (t *Tag) AddText(text string) *Tag {
 }
 
 // Child shortcut for AddChild
-func (t *Tag) Child(child *Tag) *Tag {
+func (t *Tag) Child(child TagInterface) *Tag {
 	return t.AddChild(child)
 }
 
 // ChildIf adds a child if a condition is met
-func (t *Tag) ChildIf(condition bool, child *Tag) *Tag {
+func (t *Tag) ChildIf(condition bool, child TagInterface) *Tag {
 	if condition {
 		return t.AddChild(child)
 	}
@@ -174,7 +172,7 @@ func (t *Tag) ChildIf(condition bool, child *Tag) *Tag {
 }
 
 // ChildIf adds a child using function if a condition is met
-func (t *Tag) ChildIfF(condition bool, childFunc func() *Tag) *Tag {
+func (t *Tag) ChildIfF(condition bool, childFunc func() TagInterface) *Tag {
 	if condition {
 		return t.AddChild(childFunc())
 	}
@@ -183,7 +181,7 @@ func (t *Tag) ChildIfF(condition bool, childFunc func() *Tag) *Tag {
 }
 
 // ChildIfElse adds a child if a condition is met, otherwise adds another child
-func (t *Tag) ChildIfElse(condition bool, childIf *Tag, childElse *Tag) *Tag {
+func (t *Tag) ChildIfElse(condition bool, childIf TagInterface, childElse TagInterface) *Tag {
 	if condition {
 		return t.AddChild(childIf)
 	}
@@ -192,12 +190,12 @@ func (t *Tag) ChildIfElse(condition bool, childIf *Tag, childElse *Tag) *Tag {
 }
 
 // Children shortcut for AddChildren
-func (t *Tag) Children(children []*Tag) *Tag {
+func (t *Tag) Children(children []TagInterface) *Tag {
 	return t.AddChildren(children)
 }
 
 // ChildrenIf adds children if a condition is met
-func (t *Tag) ChildrenIf(condition bool, children []*Tag) *Tag {
+func (t *Tag) ChildrenIf(condition bool, children []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(children)
 	}
@@ -206,7 +204,7 @@ func (t *Tag) ChildrenIf(condition bool, children []*Tag) *Tag {
 }
 
 // ChildrenIf adds children using function if a condition is met
-func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []*Tag) *Tag {
+func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(childrenFunc())
 	}
@@ -215,7 +213,7 @@ func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []*Tag) *Tag {
 }
 
 // ChildrenIfElse adds children if a condition is met
-func (t *Tag) ChildrenIfElse(condition bool, childrenIf []*Tag, childrenElse []*Tag) *Tag {
+func (t *Tag) ChildrenIfElse(condition bool, childrenIf []TagInterface, childrenElse []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(childrenIf)
 	}
@@ -224,7 +222,7 @@ func (t *Tag) ChildrenIfElse(condition bool, childrenIf []*Tag, childrenElse []*
 }
 
 // ChildrenMap map a slice to a slice of tags and adds as children
-func (t *Tag) ChildrenMap(items []any, callback func(item any, index int) *Tag) *Tag {
+func (t *Tag) ChildrenMap(items []any, callback func(item any, index int) TagInterface) *Tag {
 	mappedItems := Map(items, callback)
 	return t.Children(mappedItems)
 }
@@ -290,7 +288,7 @@ func (t *Tag) GetAttribute(key string) string {
 func (t *Tag) HasClass(className string) bool {
 	classNames := t.GetAttribute("class")
 	classNamesArray := strings.Split(classNames, " ")
-	return inArrayString(classNamesArray, className)
+	return slices.Contains(classNamesArray, className)
 }
 
 // HTML shortcut for AddHTML
@@ -554,7 +552,7 @@ func (t *Tag) ToHTML() string {
 		"wbr",
 	}
 
-	isShortTag := inArrayString(shortTags, t.TagName)
+	isShortTag := slices.Contains(shortTags, t.TagName)
 
 	tagStart := `<` + t.TagName + t.attrsToString() + `>`
 	tagEnd := `</` + t.TagName + `>`

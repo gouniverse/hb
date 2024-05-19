@@ -61,15 +61,6 @@ func NewPRE() *Tag {
 	return NewTag("pre")
 }
 
-// NewScript represents a SCRIPT tag
-func NewScript(javascript string) *Tag {
-	tag := &Tag{
-		TagName: "script",
-	}
-	tag.AddChild(NewHTML(javascript))
-	return tag
-}
-
 // NewScriptURL represents a SCRIPT tag with URL
 func NewScriptURL(javascriptURL string) *Tag {
 	tag := &Tag{

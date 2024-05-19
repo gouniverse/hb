@@ -5,7 +5,7 @@ import (
 )
 
 func TestNewWrap(t *testing.T) {
-	wrap := NewWrap().Children([]*Tag{
+	wrap := NewWrap().Children([]TagInterface{
 		NewImage().Src("foo.jpg"),
 		NewBR(),
 		NewDiv().HTML("Image description"),

@@ -18,7 +18,7 @@ func TestMap(t *testing.T) {
 		},
 	}
 
-	spans := Map(items, func(item struct{ text string }, index int) *Tag {
+	spans := Map(items, func(item struct{ text string }, index int) TagInterface {
 		return NewSpan().
 			Text(strconv.Itoa(index + 1)).
 			Text(". ").

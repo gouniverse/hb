@@ -11,6 +11,8 @@ const BORDER_LAYOUT_ALIGN_MIDDLE = "middle"
 const BORDER_LAYOUT_ALIGN_RIGHT = "right"
 const BORDER_LAYOUT_ALIGN_TOP = "top"
 
+var _ TagInterface = (*BorderLayout)(nil)
+
 func NewBorderLayout() *BorderLayout {
 	return &BorderLayout{}
 }

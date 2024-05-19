@@ -31,7 +31,7 @@ func TestPod(t *testing.T) {
 		t.Error("Does not equal '' empty string, Output:" + html)
 	}
 
-	pod2 := NewPod().Children([]*Tag{
+	pod2 := NewPod().Children([]TagInterface{
 		NewBR(),
 		NewI(),
 	})
