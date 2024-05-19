@@ -533,6 +533,10 @@ func (t *Tag) TitleIf(condition bool, title string) *Tag {
 
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
+	if t == nil {
+		return ""
+	}
+
 	shortTags := []string{
 		"area",
 		"base",
@@ -644,6 +648,10 @@ func (t Tag) childrenToString() string {
 	childrenString := ""
 
 	for _, child := range t.TagChildren {
+		if child == nil {
+			continue
+		}
+
 		childrenString += child.ToHTML()
 	}
 
