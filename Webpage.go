@@ -22,7 +22,7 @@ type Webpage struct {
 	styleURLs   []string
 	scripts     []string
 	styles      []string
-	metas       []*Tag
+	metas       []TagInterface
 }
 
 // ToHTML returns HTML representation of the webpage
@@ -125,13 +125,13 @@ func (w *Webpage) ToHTML() string {
 }
 
 // AddChild adds a tag to the webpage
-func (w *Webpage) AddChild(child *Tag) *Webpage {
+func (w *Webpage) AddChild(child TagInterface) *Webpage {
 	w.body.AddChild(child)
 	return w
 }
 
 // AddChildren adds tags to the webpage
-func (w *Webpage) AddChildren(children []*Tag) *Webpage {
+func (w *Webpage) AddChildren(children []TagInterface) *Webpage {
 	for _, child := range children {
 		w.AddChild(child)
 	}
@@ -139,12 +139,12 @@ func (w *Webpage) AddChildren(children []*Tag) *Webpage {
 }
 
 // AddChild shortcut for AddChild
-func (w *Webpage) Child(child *Tag) *Webpage {
+func (w *Webpage) Child(child TagInterface) *Webpage {
 	return w.AddChild(child)
 }
 
 // Children shortcut for AddChildren
-func (w *Webpage) Children(children []*Tag) *Webpage {
+func (w *Webpage) Children(children []TagInterface) *Webpage {
 	return w.AddChildren(children)
 }
 
@@ -205,7 +205,7 @@ func (w *Webpage) AddHTML(html string) *Webpage {
 	return w
 }
 
-func (w *Webpage) AddMeta(meta *Tag) *Webpage {
+func (w *Webpage) AddMeta(meta TagInterface) *Webpage {
 	w.metas = append(w.metas, meta)
 	return w
 }
