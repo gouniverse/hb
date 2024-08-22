@@ -290,8 +290,8 @@ func TestEscapeAttributes(t *testing.T) {
 	}
 	tag.Attr("onclick", "page('PAGE_ID')")
 	h := tag.ToHTML()
-	if strings.Contains(h, "onclick=\"page('PAGE_ID')\"") == false {
-		t.Error("Does not contain onclick=\"page('PAGE_ID')\"", "Output:"+h)
+	if strings.Contains(h, "onclick=\"page(&#39;PAGE_ID&#39;)\"") == false {
+		t.Error("Does not contain onclick=\"page(&#39;PAGE_ID&#39;)\"", "Output:"+h)
 	}
 }
 

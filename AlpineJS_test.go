@@ -33,11 +33,11 @@ func TestX(t *testing.T) {
 		t.Error(`Does not contain ' x-on:click="open = true"', Output:` + input)
 	}
 
-	if strings.Contains(input, ` x-bind:class="! open ? 'hidden' : ''"`) == false {
-		t.Error(`Does not contain ' x-bind:class="! open ? 'hidden' : ''"', Output:` + input)
+	if strings.Contains(input, ` x-bind:class="! open ? &#39;hidden&#39; : &#39;&#39;"`) == false {
+		t.Error(`Does not contain ' x-bind:class="! open ? &#39;hidden&#39; : &#39;&#39;"', Output:` + input)
 	}
 
-	expected := `<div x-data="{open=false}"><button x-bind:class="! open ? 'hidden' : ''" x-on:click="open = true">Submit</button><span x-show="open">Content...</span></div>`
+	expected := `<div x-data="{open=false}"><button x-bind:class="! open ? &#39;hidden&#39; : &#39;&#39;" x-on:click="open = true">Submit</button><span x-show="open">Content...</span></div>`
 	if input != expected {
 		t.Error(`Expected: `, expected, `, Output:`, input)
 	}

@@ -4,8 +4,6 @@ import (
 	"slices"
 	"sort"
 	"strings"
-
-	"golang.org/x/net/html"
 )
 
 var _ TagInterface = (*Tag)(nil)
@@ -341,92 +339,92 @@ func (t *Tag) Placeholder(placeholder string) *Tag {
 
 // OnBlur shortcut for setting the "onblur" attribute
 func (t *Tag) OnBlur(js string) *Tag {
-	return t.SetAttribute("onblur", html.EscapeString(js))
+	return t.SetAttribute("onblur", js)
 }
 
 // OnChange shortcut for setting the "onchange" attribute
 func (t *Tag) OnChange(js string) *Tag {
-	return t.SetAttribute("onchange", html.EscapeString(js))
+	return t.SetAttribute("onchange", js)
 }
 
 // OnClick shortcut for setting the "onclick" attribute
 func (t *Tag) OnClick(js string) *Tag {
-	return t.SetAttribute("onclick", html.EscapeString(js))
+	return t.SetAttribute("onclick", js)
 }
 
 // OnDblClick shortcut for setting the "ondblclick" attribute
 func (t *Tag) OnDblClick(js string) *Tag {
-	return t.SetAttribute("ondblclick", html.EscapeString(js))
+	return t.SetAttribute("ondblclick", js)
 }
 
 // OnFocus shortcut for setting the "onfocus" attribute
 func (t *Tag) OnFocus(js string) *Tag {
-	return t.SetAttribute("onfocus", html.EscapeString(js))
+	return t.SetAttribute("onfocus", js)
 }
 
 // OnInput shortcut for setting the "oninput" attribute
 func (t *Tag) OnInput(js string) *Tag {
-	return t.SetAttribute("oninput", html.EscapeString(js))
+	return t.SetAttribute("oninput", js)
 }
 
 // OnKeyDown shortcut for setting the "onkeydown" attribute
 func (t *Tag) OnKeyDown(js string) *Tag {
-	return t.SetAttribute("onkeydown", html.EscapeString(js))
+	return t.SetAttribute("onkeydown", js)
 }
 
 // OnKeyPress shortcut for setting the "onkeydown" attribute
 func (t *Tag) OnKeyPress(js string) *Tag {
-	return t.SetAttribute("onkeypress", html.EscapeString(js))
+	return t.SetAttribute("onkeypress", js)
 }
 
 // OnKeyUp shortcut for setting the "onkeyup" attribute
 func (t *Tag) OnKeyUp(js string) *Tag {
-	return t.SetAttribute("onkeyup", html.EscapeString(js))
+	return t.SetAttribute("onkeyup", js)
 }
 
 // OnLoad shortcut for setting the "onload" attribute
 func (t *Tag) OnLoad(js string) *Tag {
-	return t.SetAttribute("onload", html.EscapeString(js))
+	return t.SetAttribute("onload", js)
 }
 
 // OnMouseDown shortcut for setting the "onmousedown" attribute
 func (t *Tag) OnMouseDown(js string) *Tag {
-	return t.SetAttribute("onmousedown", html.EscapeString(js))
+	return t.SetAttribute("onmousedown", js)
 }
 
 // OnMouseEnter shortcut for setting the "onmouseenter" attribute
 func (t *Tag) OnMouseEnter(js string) *Tag {
-	return t.SetAttribute("onmouseenter", html.EscapeString(js))
+	return t.SetAttribute("onmouseenter", js)
 }
 
 // OnMouseLeave shortcut for setting the "onmouseleave" attribute
 func (t *Tag) OnMouseLeave(js string) *Tag {
-	return t.SetAttribute("onmouseleave", html.EscapeString(js))
+	return t.SetAttribute("onmouseleave", js)
 }
 
 // OnMouseMove shortcut for setting the "onmousemove" attribute
 func (t *Tag) OnMouseMove(js string) *Tag {
-	return t.SetAttribute("onmousemove", html.EscapeString(js))
+	return t.SetAttribute("onmousemove", js)
 }
 
 // OnMouseOut shortcut for setting the "onmouseout" attribute
 func (t *Tag) OnMouseOut(js string) *Tag {
-	return t.SetAttribute("onmouseout", html.EscapeString(js))
+	return t.SetAttribute("onmouseout", js)
 }
 
 // OnMouseOver shortcut for setting the "onmouseover" attribute
 func (t *Tag) OnMouseOver(js string) *Tag {
-	return t.SetAttribute("onmouseover", html.EscapeString(js))
+	return t.SetAttribute("onmouseover", js)
 }
 
 // OnMouseUp shortcut for setting the "onmouseup" attribute
 func (t *Tag) OnMouseUp(js string) *Tag {
-	return t.SetAttribute("onmouseup", html.EscapeString(js))
+	return t.SetAttribute("onmouseup", js)
 }
 
 // OnSubmit shortcut for setting the "onsubmit" attribute
 func (t *Tag) OnSubmit(js string) *Tag {
-	return t.SetAttribute("onsubmit", html.EscapeString(js))
+	return t.SetAttribute("onsubmit", js)
 }
 
 // Src shortcut for setting the "src" attribute
@@ -641,7 +639,7 @@ func (t Tag) attrToString(key string, value string) string {
 			return ``
 		}
 	}
-	return ` ` + key + `="` + addslashes(value) + `"`
+	return ` ` + key + `="` + escapeHtmlAttr(value) + `"`
 }
 
 func (t Tag) childrenToString() string {
