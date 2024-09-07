@@ -92,12 +92,13 @@ func (w *Webpage) ToHTML() string {
 	w.head.AddChildren(preaddedChildren)
 
 	for _, scriptURL := range w.scriptURLs {
-		if strings.HasPrefix(scriptURL, "http") || strings.HasPrefix(scriptURL, "//") {
+		if strings.HasPrefix(scriptURL, "http") || strings.HasPrefix(scriptURL, "//") || strings.HasPrefix(scriptURL, "/") {
 			w.body.AddChild(NewScriptURL(scriptURL))
 		} else {
 			w.body.AddChild(NewHTML(scriptURL))
 		}
 	}
+
 	for _, script := range w.scripts {
 		if !strings.HasPrefix(script, "<script") {
 			w.body.AddChild(NewScript(script))
