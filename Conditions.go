@@ -1,13 +1,13 @@
 package hb
 
-func If(condition bool, trueTag *Tag) *Tag {
+func If(condition bool, trueTag TagInterface) TagInterface {
 	if condition {
 		return trueTag
 	}
 	return nil
 }
 
-func IfF(condition bool, trueFunc func() *Tag) *Tag {
+func IfF(condition bool, trueFunc func() TagInterface) TagInterface {
 	if condition {
 		return trueFunc()
 	}
@@ -15,14 +15,14 @@ func IfF(condition bool, trueFunc func() *Tag) *Tag {
 	return nil
 }
 
-func IfElse(condition bool, trueTag *Tag, falseTag *Tag) *Tag {
+func IfElse(condition bool, trueTag TagInterface, falseTag TagInterface) TagInterface {
 	if condition {
 		return trueTag
 	}
 	return falseTag
 }
 
-func IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag {
+func IfFElseF(condition bool, trueFunc func() TagInterface, falseFunc func() TagInterface) TagInterface {
 	if condition {
 		return trueFunc()
 	}
