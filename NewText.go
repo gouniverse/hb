@@ -6,9 +6,8 @@ import "text/template"
 func NewText(text string) *Tag {
 	escapedText := template.HTMLEscapeString(text)
 
-	textTag := &Tag{
+	return &Tag{
 		TagName:    "",
 		TagContent: escapedText,
 	}
-	return textTag
 }

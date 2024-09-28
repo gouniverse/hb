@@ -2,8 +2,7 @@ package hb
 
 // NewI represents an I tag
 func NewI() *Tag {
-	tag := &Tag{
+	return &Tag{
 		TagName: "i",
 	}
-	return tag
 }

@@ -4,8 +4,7 @@ package hb
 // useful for custom tags or ones that are not yet
 // added to the hb library
 func NewTag(tagName string) *Tag {
-	tag := &Tag{
+	return &Tag{
 		TagName: tagName,
 	}
-	return tag
 }

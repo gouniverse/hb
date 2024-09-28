@@ -24,12 +24,11 @@ func (t *Tag) Action(action string) *Tag {
 
 // AddClass adds a new class name to the tag attribute list.
 func (t *Tag) AddClass(className string) *Tag {
-	classNames := t.GetAttribute("class")
-	classNamesArray := strings.Split(classNames, " ")
-	classNamesArray = append(classNamesArray, className)
-	classNames = strings.Join(classNamesArray, " ")
-	classNames = strings.Trim(classNames, " ")
-	return t.SetAttribute("class", classNames)
+	classNamesArray := strings.Split(t.GetAttribute("class"), " ")
+	if !slices.Contains(classNamesArray, className) {
+		classNamesArray = append(classNamesArray, className)
+	}
+	return t.SetAttribute("class", strings.Trim(strings.Join(classNamesArray, " "), " "))
 }
 
 // AddStyle adds a new class name to the tag attribute list.

@@ -2,9 +2,8 @@ package hb
 
 // NewScript represents a SCRIPT tag
 func NewScript(javascript string) *Tag {
-	tag := &Tag{
-		TagName: "script",
+	return &Tag{
+		TagName:     "script",
+		TagChildren: []TagInterface{NewHTML(javascript)},
 	}
-	tag.AddChild(NewHTML(javascript))
-	return tag
 }

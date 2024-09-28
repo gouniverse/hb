@@ -2,103 +2,84 @@ package hb
 
 // NewLabel represents a LABEL tag
 func NewLabel() *Tag {
-	tag := &Tag{TagName: "label"}
-	return tag
+	return &Tag{TagName: "label"}
 }
 
 // NewLI represents a LI tag
 func NewLI() *Tag {
-	tag := &Tag{TagName: "li"}
-	return tag
+	return &Tag{TagName: "li"}
 }
 
 // NewLink represents a LINK tag
 func NewLink() *Tag {
-	tag := &Tag{TagName: "link"}
-	return tag
+	return &Tag{TagName: "link"}
 }
 
 // NewMeta represents a META tag
 func NewMeta() *Tag {
-	tag := &Tag{TagName: "meta"}
-	return tag
+	return &Tag{TagName: "meta"}
 }
 
 // NewNav represents a NAV tag
 func NewNav() *Tag {
-	tag := &Tag{
-		TagName: "nav",
-	}
-	return tag
+	return &Tag{TagName: "nav"}
 }
 
 // NewNavbar represents a NAVBAR tag
 func NewNavbar() *Tag {
-	tag := &Tag{
-		TagName: "navbar",
-	}
-	return tag
+	return &Tag{TagName: "navbar"}
 }
 
-// NewOL represents a UL tag
+// NewOL represents a OL tag
 func NewOL() *Tag {
-	tag := &Tag{
-		TagName: "ol",
-	}
-	return tag
+	return &Tag{TagName: "ol"}
 }
 
 // NewParagraph represents a IMG tag
 func NewParagraph() *Tag {
-	tag := &Tag{
-		TagName: "p",
-	}
-	return tag
+	return &Tag{TagName: "p"}
 }
 
 // NewPRE represents a PRE tag
 func NewPRE() *Tag {
-	return NewTag("pre")
+	return &Tag{TagName: "pre"}
 }
 
 // NewScriptURL represents a SCRIPT tag with URL
 func NewScriptURL(javascriptURL string) *Tag {
-	tag := &Tag{
+	return &Tag{
 		TagName: "script",
+		TagAttributes: map[string]string{
+			"src": javascriptURL,
+		},
 	}
-	tag.SetAttribute("src", javascriptURL)
-	return tag
 }
 
 // NewStyle represents a STYLE tag
 func NewStyle(css string) *Tag {
-	tag := &Tag{
-		TagName: "style",
+	return &Tag{
+		TagName:     "style",
+		TagChildren: []TagInterface{NewHTML(css)},
 	}
-	tag.AddChild(NewHTML(css))
-	return tag
 }
 
 // NewStyleURL represents a LINK tag with URL
 func NewStyleURL(styleURL string) *Tag {
-	tag := NewLink()
-	tag.SetAttribute("href", styleURL)
-	tag.SetAttribute("rel", "stylesheet")
-	return tag
+	return &Tag{
+		TagName: "link",
+		TagAttributes: map[string]string{
+			"href": styleURL,
+			"rel":  "stylesheet",
+		},
+	}
 }
 
 // NewSub represents a SUB tag
 func NewSub() *Tag {
-	tag := &Tag{
-		TagName: "sub",
-	}
-	return tag
+	return &Tag{TagName: "sub"}
 }
 
 // NewSup represents a SUP tag
 func NewSup() *Tag {
-	tag := &Tag{
-		TagName: "sup",
-	}
-	return tag
+	return &Tag{TagName: "sup"}
 }
