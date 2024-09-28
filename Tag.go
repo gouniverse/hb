@@ -1,6 +1,7 @@
 package hb
 
 import (
+	"bytes"
 	"slices"
 	"sort"
 	"strings"
@@ -528,52 +529,47 @@ func (t *Tag) TitleIf(condition bool, title string) *Tag {
 	return t
 }
 
+var shortTags = map[string]bool{
+	"area":    true,
+	"base":    true,
+	"br":      true,
+	"col":     true,
+	"command": true,
+	"embed":   true,
+	"hr":      true,
+	"img":     true,
+	"input":   true,
+	"keygen":  true,
+	"link":    true,
+	"meta":    true,
+	"param":   true,
+	"source":  true,
+	"track":   true,
+	"wbr":     true,
+}
+
+func isShortTag(tagName string) bool {
+	return shortTags[tagName]
+}
+
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	if t == nil {
 		return ""
 	}
 
-	shortTags := []string{
-		"area",
-		"base",
-		"br",
-		"col",
-		"command",
-		"embed",
-		"hr",
-		"img",
-		"input",
-		"keygen",
-		"link",
-		"meta",
-		"param",
-		"source",
-		"track",
-		"wbr",
-	}
-
-	isShortTag := slices.Contains(shortTags, t.TagName)
-
-	tagStart := `<` + t.TagName + t.attrsToString() + `>`
-	tagEnd := `</` + t.TagName + `>`
-
 	if t.TagName == "" {
-		tagStart = ""
-		tagEnd = ""
+		return t.TagContent + t.childrenToString()
 	}
 
-	if isShortTag {
-		tagStart = `<` + t.TagName + t.attrsToString() + ` />`
-		tagEnd = ""
+	if isShortTag(t.TagName) {
+		return "<" + t.TagName + t.attrsToString() + " />"
 	}
 
-	var builder strings.Builder
-	builder.WriteString(tagStart)
-	builder.WriteString(t.TagContent)
-	builder.WriteString(t.childrenToString())
-	builder.WriteString(tagEnd)
-	return builder.String()
+	return "<" + t.TagName + t.attrsToString() + ">" +
+		t.TagContent +
+		t.childrenToString() +
+		"</" + t.TagName + ">"
 }
 
 // Type shortcut for setting the "type" attribute
@@ -605,7 +601,9 @@ func (t *Tag) ValueIf(condition bool, value string) *Tag {
 }
 
 func (t Tag) attrsToString() string {
-	attrString := ""
+	if len(t.TagAttributes) == 0 {
+		return ""
+	}
 
 	keys := make([]string, 0, len(t.TagAttributes))
 	for k := range t.TagAttributes {
@@ -613,20 +611,13 @@ func (t Tag) attrsToString() string {
 	}
 	sort.Strings(keys)
 
+	var buf bytes.Buffer
+
 	for _, key := range keys {
-		value := t.TagAttributes[key]
-		attrString += t.attrToString(key, value)
+		buf.WriteString(t.attrToString(key, t.TagAttributes[key]))
 	}
 
-	if attrString != "" {
-		attrString = " " + attrString
-	}
-
-	if len(attrString) < 1 {
-		return ""
-	}
-
-	return " " + strings.Trim(attrString, " ")
+	return buf.String()
 }
 
 // attrToString converts a single key/value attribute to string
