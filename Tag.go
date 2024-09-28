@@ -1,7 +1,6 @@
 package hb
 
 import (
-	"bytes"
 	"slices"
 	"sort"
 	"strings"
@@ -529,29 +528,6 @@ func (t *Tag) TitleIf(condition bool, title string) *Tag {
 	return t
 }
 
-var shortTags = map[string]bool{
-	"area":    true,
-	"base":    true,
-	"br":      true,
-	"col":     true,
-	"command": true,
-	"embed":   true,
-	"hr":      true,
-	"img":     true,
-	"input":   true,
-	"keygen":  true,
-	"link":    true,
-	"meta":    true,
-	"param":   true,
-	"source":  true,
-	"track":   true,
-	"wbr":     true,
-}
-
-func isShortTag(tagName string) bool {
-	return shortTags[tagName]
-}
-
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	if t == nil {
@@ -605,19 +581,15 @@ func (t Tag) attrsToString() string {
 		return ""
 	}
 
-	keys := make([]string, 0, len(t.TagAttributes))
-	for k := range t.TagAttributes {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
+	attrs := make([]string, 0, len(t.TagAttributes))
 
-	var buf bytes.Buffer
-
-	for _, key := range keys {
-		buf.WriteString(t.attrToString(key, t.TagAttributes[key]))
+	for key, val := range t.TagAttributes {
+		attrs = append(attrs, t.attrToString(key, val))
 	}
 
-	return buf.String()
+	sort.Strings(attrs)
+
+	return " " + strings.Join(attrs, " ")
 }
 
 // attrToString converts a single key/value attribute to string
@@ -629,19 +601,19 @@ func (t Tag) attrToString(key string, value string) string {
 			return ``
 		}
 	}
-	return ` ` + key + `="` + escapeHtmlAttr(value) + `"`
+	return key + `="` + escapeHtmlAttr(value) + `"`
 }
 
 func (t Tag) childrenToString() string {
-	childrenString := ""
-
-	for _, child := range t.TagChildren {
-		if child == nil {
-			continue
-		}
-
-		childrenString += child.ToHTML()
+	if len(t.TagChildren) == 0 {
+		return ""
 	}
 
-	return childrenString
+	var str string
+
+	for _, child := range t.TagChildren {
+		str += child.ToHTML()
+	}
+
+	return str
 }
