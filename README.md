@@ -58,55 +58,55 @@ go get -u github.com/gouniverse/hb
 
 ## Implemented Tag Shortcuts
 
-- <b>NewBR()</b> - shortcut for &lt;br> tag
-- <b>NewButton()</b> - shortcut for &lt;button> tag
-- <b>NewCaption()</b> - shortcut for &lt;caption> tag
-- <b>NewCode()</b> - shortcut for &lt;code> tag
-- <b>NewDiv()</b> - shortcut for &lt;div> tag
-- <b>NewForm()</b> - shortcut for &lt;form> tag
-- <b>NewI()</b> - shortcut for &lt;i> tag
-- <b>NewHeader()</b> - shortcut for &lt;header> tag
-- <b>NewHeading1()</b> - shortcut for &lt;h1> tag
-- <b>NewHeading2()</b> - shortcut for &lt;h2> tag
-- <b>NewHeading3()</b> - shortcut for &lt;h3> tag
-- <b>NewHeading4()</b> - shortcut for &lt;h4> tag
-- <b>NewHeading5()</b> - shortcut for &lt;h5> tag
-- <b>NewHeading6()</b> - shortcut for &lt;h6> tag
-- <b>NewHyperlink()</b> - shortcut for &lt;a> tag
-- <b>NewHR()</b> - shortcut for &lt;hr> tag
-- <b>NewHTML(html string)</b> - creates empty tag with the HTML content
-- <b>NewImage()</b> - shortcut for &lt;img> tag
-- <b>NewInput()</b> - shortcut for &lt;input> tag
-- <b>NewLI()</b> - shortcut for &lt;li> tag
-- <b>NewLabel()</b> - shortcut for &lt;label> tag
-- <b>NewNav()</b> - shortcut for &lt;nav> tag
-- <b>NewNavbar()</b> - shortcut for &lt;navbar> tag
-- <b>NewOL()</b> - shortcut for &lt;ol> tag
-- <b>NewOption()</b> - shortcut for &lt;option> tag
-- <b>NewParagraph()</b> - shortcut for &lt;p> tag
-- <b>NewPRE()</b> - shortcut for &lt;pre> tag
-- <b>NewScript()</b> - shortcut for &lt;script> tag
-- <b>NewScriptURL()</b> - shortcut for &lt;script src="{SRC}"> tag
-- <b>NewSelect()</b> - shortcut for &lt;select> tag
-- <b>NewSpan()</b> - shortcut for &lt;span> tag
-- <b>NewStyle()</b> - shortcut for &lt;style> tag
-- <b>NewStyleURL()</b> - shortcut for &lt;link> tag
-- <b>NewSection()</b> - shortcut for &lt;section> tag
-- <b>NewSub()</b> - shortcut for &lt;sub> tag
-- <b>NewSup()</b> - shortcut for &lt;sup> tag
+- <b>BR()</b> - shortcut for &lt;br> tag
+- <b>Button()</b> - shortcut for &lt;button> tag
+- <b>Caption()</b> - shortcut for &lt;caption> tag
+- <b>Code()</b> - shortcut for &lt;code> tag
+- <b>Div()</b> - shortcut for &lt;div> tag
+- <b>Form()</b> - shortcut for &lt;form> tag
+- <b>I()</b> - shortcut for &lt;i> tag
+- <b>Header()</b> - shortcut for &lt;header> tag
+- <b>Heading1()</b> - shortcut for &lt;h1> tag
+- <b>Heading2()</b> - shortcut for &lt;h2> tag
+- <b>Heading3()</b> - shortcut for &lt;h3> tag
+- <b>Heading4()</b> - shortcut for &lt;h4> tag
+- <b>Heading5()</b> - shortcut for &lt;h5> tag
+- <b>Heading6()</b> - shortcut for &lt;h6> tag
+- <b>Hyperlink()</b> - shortcut for &lt;a> tag
+- <b>HR()</b> - shortcut for &lt;hr> tag
+- <b>HTML(html string)</b> - creates empty tag with the HTML content
+- <b>Image()</b> - shortcut for &lt;img> tag
+- <b>Input()</b> - shortcut for &lt;input> tag
+- <b>LI()</b> - shortcut for &lt;li> tag
+- <b>Label()</b> - shortcut for &lt;label> tag
+- <b>Nav()</b> - shortcut for &lt;nav> tag
+- <b>Navbar()</b> - shortcut for &lt;navbar> tag
+- <b>OL()</b> - shortcut for &lt;ol> tag
+- <b>Option()</b> - shortcut for &lt;option> tag
+- <b>Paragraph()</b> - shortcut for &lt;p> tag
+- <b>PRE()</b> - shortcut for &lt;pre> tag
+- <b>Script()</b> - shortcut for &lt;script> tag
+- <b>ScriptURL()</b> - shortcut for &lt;script src="{SRC}"> tag
+- <b>Select()</b> - shortcut for &lt;select> tag
+- <b>Span()</b> - shortcut for &lt;span> tag
+- <b>Style()</b> - shortcut for &lt;style> tag
+- <b>StyleURL()</b> - shortcut for &lt;link> tag
+- <b>Section()</b> - shortcut for &lt;section> tag
+- <b>Sub()</b> - shortcut for &lt;sub> tag
+- <b>Sup()</b> - shortcut for &lt;sup> tag
 - <b>NewTag(tagName string)</b> - for custom tags
-- <b>NewTable()</b> - shortcut for &lt;table> tag
-- <b>NewTBody()</b> - shortcut for &lt;tbody> tag
-- <b>NewTD()</b> - shortcut for &lt;td> tag
-- <b>NewTemplate()</b> - shortcut for &lt;template> tag
-- <b>NewText(text string)</b> - creates empty tag with the escaped text content
-- <b>NewTextArea()</b> - shortcut for &lt;textarea> tag
-- <b>NewTH()</b> - shortcut for &lt;th> tag
-- <b>NewThead()</b> - shortcut for &lt;thead> tag
-- <b>NewTR()</b> - shortcut for &lt;tr> tag
-- <b>NewUL()</b> - shortcut for &lt;ul> tag
-- <b>NewWebpage()</b> - full HTML page withe head, body, meta, styles and scripts
-- <b>NewWrap()</b> - convenience method to taglessly (without a root wrapping element) group elements together
+- <b>Table()</b> - shortcut for &lt;table> tag
+- <b>TBody()</b> - shortcut for &lt;tbody> tag
+- <b>TD()</b> - shortcut for &lt;td> tag
+- <b>Template()</b> - shortcut for &lt;template> tag
+- <b>Text(text string)</b> - creates empty tag with the escaped text content
+- <b>TextArea()</b> - shortcut for &lt;textarea> tag
+- <b>TH()</b> - shortcut for &lt;th> tag
+- <b>Thead()</b> - shortcut for &lt;thead> tag
+- <b>TR()</b> - shortcut for &lt;tr> tag
+- <b>UL()</b> - shortcut for &lt;ul> tag
+- <b>Webpage()</b> - full HTML page withe head, body, meta, styles and scripts
+- <b>Wrap()</b> - convenience method to taglessly (without a root wrapping element) group elements together
 
 Examples can be found on: https://golangui.com
 
