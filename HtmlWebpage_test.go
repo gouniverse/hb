@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestWebpage(t *testing.T) {
-	wp := Webpage()
+func TestHtmlWebpage(t *testing.T) {
+	wp := NewWebpage()
 	wpHtml := wp.ToHTML()
 
 	prefix := `<!DOCTYPE html><html><head><meta charset="utf-8" />`
@@ -22,8 +22,8 @@ func TestWebpage(t *testing.T) {
 	}
 }
 
-func TestWebpageSetCharset(t *testing.T) {
-	wp := Webpage()
+func TestHtmlWebpageSetCharset(t *testing.T) {
+	wp := NewWebpage()
 	wp.SetCharset("testing")
 	wpHtml := wp.ToHTML()
 
@@ -40,8 +40,8 @@ func TestWebpageSetCharset(t *testing.T) {
 	}
 }
 
-func TestWebpageSetLanguage(t *testing.T) {
-	wp := Webpage()
+func TestHtmlWebpageSetLanguage(t *testing.T) {
+	wp := NewWebpage()
 	wp.SetLanguage("en")
 	wpHtml := wp.ToHTML()
 
@@ -58,7 +58,7 @@ func TestWebpageSetLanguage(t *testing.T) {
 	}
 }
 
-func TestWebpageAddScripts(t *testing.T) {
+func TestHtmlWebpageAddScripts(t *testing.T) {
 	html := NewWebpage().
 		AddScriptURL("http://example.com/example1.js").
 		AddScriptURL("http://example.com/example2.js").
@@ -80,7 +80,7 @@ func TestWebpageAddScripts(t *testing.T) {
 	}
 }
 
-func TestWebpageAddStyles(t *testing.T) {
+func TestHtmlWebpageAddStyles(t *testing.T) {
 	html := NewWebpage().
 		AddStyleURL("http://example.com/example1.css").
 		AddStyleURL("http://example.com/example2.css").
@@ -102,7 +102,7 @@ func TestWebpageAddStyles(t *testing.T) {
 	}
 }
 
-func TestWebpageAddMetas(t *testing.T) {
+func TestHtmlWebpageAddMetas(t *testing.T) {
 	html := NewWebpage().
 		AddMeta(NewMeta().Name("NAME 1").Value("VALUE 1")).
 		Meta(NewMeta().Name("NAME 2").Value("VALUE 2")).
@@ -120,7 +120,7 @@ func TestWebpageAddMetas(t *testing.T) {
 	}
 }
 
-func TestWebpageHead(t *testing.T) {
+func TestHtmlWebpageHead(t *testing.T) {
 	wp := NewWebpage()
 	wp.Head().Child(NewScript(`window.onload="alert('Hello')"`))
 	wpHtml := wp.ToHTML()

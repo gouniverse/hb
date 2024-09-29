@@ -437,7 +437,7 @@ func TestSrc(t *testing.T) {
 	}
 }
 
-func TestStyle(t *testing.T) {
+func TestStyleMethod(t *testing.T) {
 	input := NewInput().Style("text-align:center;background:green;").ToHTML()
 	if strings.Contains(input, "style=\"text-align:center;background:green;\"") == false {
 		t.Error("Does not contain 'style=\"text-align:center;background:green;\", Output:" + input)
@@ -450,7 +450,7 @@ func TestStyle(t *testing.T) {
 	}
 }
 
-func TestStyleIf(t *testing.T) {
+func TestStyleIfMethod(t *testing.T) {
 	img := NewImage().StyleIf(true, "width:100px")
 	imgHtml := img.StyleIf(true, "height:100px").ToHTML()
 	if strings.Contains(imgHtml, `<img style="width:100px;height:100px" />`) == false {
@@ -464,7 +464,7 @@ func TestStyleIf(t *testing.T) {
 	}
 }
 
-func TestStyleIfElse(t *testing.T) {
+func TestStyleIfElseMethod(t *testing.T) {
 	img := NewImage().StyleIfElse(true, "width:100px", "width:200px")
 	imgHtml := img.ToHTML()
 	if strings.Contains(imgHtml, `<img style="width:100px" />`) == false {

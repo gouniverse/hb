@@ -6,7 +6,7 @@ import (
 
 var _ TagInterface = (*HtmlWebpage)(nil)
 
-// Webpage represents a web page
+// Webpage represents a new web page
 type HtmlWebpage struct {
 	Tag
 	head        *Tag

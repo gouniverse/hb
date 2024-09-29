@@ -1,302 +1,391 @@
 package hb
 
-// Shortcuts. These are still experimental.
+import "text/template"
 
+// A is a shortcut to create a new A tag
 func A(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHyperlink().Children(children)
 }
 
+// B is a shortcut to create a new B tag
 func B(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "b"}).Children(children)
 }
 
+// Bold is a shortcut to create a new B tag
 func Bold(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "b"}).Children(children)
 }
 
+// BR is a shortcut to create a new BR tag
 func BR() *Tag {
 	return NewBR()
 }
 
+// Button is a shortcut to create a new BUTTON tag
 func Button(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewButton().Children(children)
 }
 
+// Caption is a shortcut to create a new CAPTION tag
+func Caption(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return NewCaption().Children(children)
+}
+
+// Code is a shortcut to create a new CODE tag
 func Code(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewCode().Children(children)
 }
 
+// Div is a shortcut to create a new DIV tag
 func Div(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewDiv().Children(children)
 }
 
+// Footer is a shortcut to create a new FOOTER tag
 func Footer(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewFooter().Children(children)
 }
 
+// Form is a shortcut to create a new FORM tag
 func Form(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return NewForm().Children(children)
+	return (&Tag{TagName: "form"}).Children(children)
 }
 
+// Header is a shortcut to create a new HEADER tag
 func Header(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeader().Children(children)
 }
 
+// H1 is a shortcut to create a new H1 tag
 func H1(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading1().Children(children)
 }
 
+// H2 is a shortcut to create a new H2 tag
 func H2(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading2().Children(children)
 }
 
+// H3 is a shortcut to create a new H3 tag
 func H3(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading3().Children(children)
 }
 
+// H4 is a shortcut to create a new H4 tag
 func H4(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading4().Children(children)
 }
 
+// H5 is a shortcut to create a new H5 tag
 func H5(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading5().Children(children)
 }
 
+// H6 is a shortcut to create a new H6 tag
 func H6(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading6().Children(children)
 }
 
+// Heading1 is a shortcut to create a new H1 tag
 func Heading1(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading1().Children(children)
 }
 
+// Heading2 is a shortcut to create a new H2 tag
 func Heading2(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading2().Children(children)
 }
 
+// Heading3 is a shortcut to create a new H3 tag
 func Heading3(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading3().Children(children)
 }
 
+// Heading4 is a shortcut to create a new H4 tag
 func Heading4(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading4().Children(children)
 }
 
+// Heading5 is a shortcut to create a new H5 tag
 func Heading5(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading5().Children(children)
 }
 
+// Heading6 is a shortcut to create a new H6 tag
 func Heading6(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHeading6().Children(children)
 }
 
+// HR is a shortcut to create a new HR tag
 func HR() *Tag {
 	return NewHR()
 }
 
+// Hyperlink is a shortcut to create a new A tag
 func Hyperlink(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewHyperlink().Children(children)
 }
 
+// I is a shortcut to create a new I tag
 func I(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewI().Children(children)
 }
 
+// Img is a shortcut to create a new IMG tag
 func Img(src string) *Tag {
 	return NewImage().Src(src)
 }
 
+// Image is a shortcut to create a new IMG tag
 func Image(src string) *Tag {
 	return NewImage().Src(src)
 }
 
+// Input is a shortcut to create a new INPUT tag
 func Input() *Tag {
 	return NewInput()
 }
 
+// Label is a shortcut to create a new LABEL tag
 func Label(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewLabel().Children(children)
 }
 
+// LI is a shortcut to create a new LI tag
 func LI(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewLI().Children(children)
 }
 
+// Link is a shortcut to create a new LINK tag
 func Link() *Tag {
 	return NewLink()
 }
 
+// Main is a shortcut to create a new MAIN tag
 func Main(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "main"}).Children(children)
 }
 
+// Meta is a shortcut to create a new META tag
 func Meta() *Tag {
 	return NewMeta()
 }
 
+// Nav is a shortcut to create a new NAV tag
 func Nav(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewNav().Children(children)
 }
 
+// Navbar is a shortcut to create a new NAVBAR tag
 func Navbar(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewNavbar().Children(children)
 }
 
+// OL is a shortcut to create a new OL tag
 func OL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewOL().Children(children)
 }
 
+// Option is a shortcut to create a new OPTION tag
 func Option(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewOption().Children(children)
 }
 
+// P is a shortcut to create a new P tag
 func P(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewParagraph().Children(children)
 }
 
+// Paragraph is a shortcut to create a new P tag
 func Paragraph(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewParagraph().Children(children)
 }
 
+// PRE is a shortcut to create a new PRE tag
 func PRE(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "pre"}).Children(children)
 }
 
+// Raw is a shortcut to create a new HTML tag
 func Raw(html string) *Tag {
 	return NewHTML(html)
 }
 
+// Script is a shortcut to create a new SCRIPT tag
 func Script(javascript string) *Tag {
 	return NewScript(javascript)
 }
 
+// ScriptURL is a shortcut to create a new SCRIPT tag
 func ScriptURL(javascriptURL string) *Tag {
 	return NewScriptURL(javascriptURL)
 }
 
+// Section is a shortcut to create a new SECTION tag
 func Section(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewSection().Children(children)
 }
 
+// Select is a shortcut to create a new SELECT tag
 func Select(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewSelect().Children(children)
 }
 
+// Span is a shortcut to create a new SPAN tag
 func Span(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewSpan().Children(children)
 }
 
+// Strong is a shortcut to create a new STRONG tag
 func Strong(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "strong"}).Children(children)
 }
 
+// Style is a shortcut to create a new STYLE tag
 func Style(style string) *Tag {
 	return NewStyle(style)
 }
 
+// StyleURL is a shortcut to create a new STYLE tag
 func StyleURL(styleURL string) *Tag {
 	return NewStyleURL(styleURL)
 }
 
+// Sub is a shortcut to create a new SUB tag
 func Sub(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "sub"}).Children(children)
 }
 
+// Sup is a shortcut to create a new SUP tag
 func Sup(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return (&Tag{TagName: "sup"}).Children(children)
 }
 
+// Swal generates a script with a Sweetalert2 dialog
+// Note! you must include the library yourself (i.e. CDN)
 func Swal(options SwalOptions) *Tag {
 	return NewSwal(options)
 }
 
-func Text(text string) *Tag {
-	return NewText(text)
+// Template is a shortcut to create a new TEMPLATE tag
+func Template() *Tag {
+	return &Tag{TagName: "template"}
 }
 
+// Text creates pure escaped text without surrounding tags
+// to use a raw text use Raw
+func Text(text string) *Tag {
+	escapedText := template.HTMLEscapeString(text)
+
+	return &Tag{
+		TagName:    "",
+		TagContent: escapedText,
+	}
+}
+
+// TextArea is a shortcut to create a new TEXTAREA tag
 func TextArea() *Tag {
 	return NewTextArea()
 }
 
+// Table is a shortcut to create a new TABLE tag
 func Table(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTable().Children(children)
 }
 
+// Tbody is a shortcut to create a new TBODY tag
 func Tbody(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTbody().Children(children)
 }
 
+// TD is a shortcut to create a new TD tag
 func TD(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTD().Children(children)
 }
 
+// TH is a shortcut to create a new TH tag
 func TH(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTH().Children(children)
 }
 
+// Thead is a shortcut to create a new THEAD tag
 func Thead(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return NewThead().Children(children)
+	return (&Tag{TagName: "thead"}).Children(children)
 }
 
+// Tfoot is a shortcut to create a new TFOOT tag
+func Tfoot(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "tfoot"}).Children(children)
+}
+
+// TR is a shortcut to create a new TR tag
 func TR(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTR().Children(children)
 }
 
+// UL is a shortcut to create a new UL tag
 func UL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewUL().Children(children)
 }
 
+// Webpage is a shortcut to create a new HTML page
 func Webpage(children ...TagInterface) *HtmlWebpage {
 	children = append([]TagInterface{}, children...)
 	return NewWebpage().Children(children)
 }
 
+// Wrap is a convenience tagless container to wrap multiple
+// elements together. Any attributes added to the wrap tag will
+// be lost. If you need to keep these better use a DIV tag
 func Wrap(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewWrap().Children(children)
