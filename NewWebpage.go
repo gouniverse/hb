@@ -1,8 +1,8 @@
 package hb
 
 // NewWebpage returns a webpage instance
-func NewWebpage() *Webpage {
-	return &Webpage{
+func NewWebpage() *HtmlWebpage {
+	return &HtmlWebpage{
 		charset: "utf-8",
 		head:    &Tag{TagName: "head"},
 		body:    &Tag{TagName: "body"},

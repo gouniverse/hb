@@ -39,10 +39,10 @@ Demos can be found on: https://golangui.com
 import "github.com/gouniverse/hb"
 	
 // 1. Create a div container with "Hello world" message
-div := hb.NewDiv().Class("container").Text("Hello world")
+div := hb.Div().Class("container").Text("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := hb.NewSection().Style("padding:40px;").Child(div)
+section := hb.Section().Style("padding:40px;").Child(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
@@ -268,7 +268,7 @@ Usage example in a form:
 
 ```go
 form.
-	ChildIf(data.formErrorMessage != "", hb.NewSwal(swal.SwalOptions{
+	ChildIf(data.formErrorMessage != "", hb.Swal(swal.SwalOptions{
 		Icon:              "error",
 		Title:             "Oops...",
 		Text:              data.formErrorMessage,
@@ -276,7 +276,7 @@ form.
 		ConfirmButtonText: "OK",
 		ConfirmCallback:   "window.location.href = window.location.href",
 	})).
-	ChildIf(data.formSuccessMessage != "", hb.NewSwal(swal.SwalOptions{
+	ChildIf(data.formSuccessMessage != "", hb.Swal(swal.SwalOptions{
 		Icon:              "success",
 		Title:             "Saved",
 		Text:              data.formSuccessMessage,
@@ -310,23 +310,23 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 
 ```go
 // Elements for the form
-header := hb.NewHeading3().text("Please sign in").Style("margin:0px;")
-emailLabel := hb.NewLabel().Text("E-mail Address")
-emailInput := hb.NewInput().Class("form-control").Name("email").Attr("placeholder", "Enter e-mail address")
-emailFormGroup := hb.NewDiv().Class("form-group").Child(emailLabel).Child(emailInput)
-passwordLabel := hb.NewLabel().Child(hb.NewText("Password"))
-passwordInput := hb.NewInput().Class("form-control").Name("password").Attr("type", "password").Attr("placeholder", "Enter password")
-passwordFormGroup := hb.NewDiv().Class("form-group").Child(passwordLabel).Child(passwordInput)
-buttonLogin := hb.NewButton().Class("btn btn-lg btn-success btn-block").Text("Login")
-buttonRegister := hb.NewHyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
-buttonForgotPassword := hb.NewHyperlink().Class("btn btn-lg btn-warning float-right").Text("Forgot password?").Href("auth/password-restore")
+header := hb.Heading3().text("Please sign in").Style("margin:0px;")
+emailLabel := hb.Label().Text("E-mail Address")
+emailInput := hb.Input().Class("form-control").Name("email").Attr("placeholder", "Enter e-mail address")
+emailFormGroup := hb.Div().Class("form-group").Child(emailLabel).Child(emailInput)
+passwordLabel := hb.Label().Child(hb.Text("Password"))
+passwordInput := hb.Input().Class("form-control").Name("password").Attr("type", "password").Attr("placeholder", "Enter password")
+passwordFormGroup := hb.Div().Class("form-group").Child(passwordLabel).Child(passwordInput)
+buttonLogin := hb.Button().Class("btn btn-lg btn-success btn-block").Text("Login")
+buttonRegister := hb.Hyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
+buttonForgotPassword := hb.Hyperlink().Class("btn btn-lg btn-warning float-right").Text("Forgot password?").Href("auth/password-restore")
 
 // Add elements in a card
-cardHeader := hb.NewDiv().
+cardHeader := hb.Div().
 	Class("card-header").
 	Child(header)
 
-cardBody := hb.NewDiv().
+cardBody := hb.Div().
 	Class("card-body").
 	Children([]*hb.Tag{
 		emailFormGroup,
@@ -334,14 +334,14 @@ cardBody := hb.NewDiv().
 		buttonLogin,
 	})
 
-cardFooter := hb.NewDiv().
+cardFooter := hb.Div().
 	Class("card-footer").
 	Children([]*hb.Tag{
 		buttonRegister,
 		buttonForgotPassword,
 	})
 
-card := hb.NewDiv().
+card := hb.Div().
 	Class("card card-default").
 	Style("margin:0 auto;max-width: 360px;").
 	Children([]*hb.Tag{
@@ -388,7 +388,7 @@ webpage := NewWebpage().
 // Webpage returns the webpage template for the website
 func Webpage(title, content string) *hb.Webpage {
 	faviconImgCms := `data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAmzKzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEQEAAQERAAEAAQABAAEAAQABAQEBEQABAAEREQEAAAERARARAREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAAi6MAALu7AAC6owAAuC8AAIkjAAD//wAA//8AAP//AAD//wAA`
-	webpage := hb.NewWebpage()
+	webpage := hb.Webpage()
 	webpage.SetTitle(title)
 	webpage.SetFavicon(faviconImgCms)
 
@@ -412,7 +412,7 @@ func Webpage(title, content string) *hb.Webpage {
 		text-align: left;
 		background-color: #f8fafc;
 	}`)
-	webpage.AddChild(hb.NewHTML(content))
+	webpage.AddChild(hb.HTML(content))
 	return webpage
 }
 
@@ -438,7 +438,7 @@ input := NewButton().
 ## How to Add a Redirection?
 
 ```go
-webpage.Meta(hb.NewMeta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
+webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = https://www.yahoo.com"))
 ```
 
 ## Stargazers over time

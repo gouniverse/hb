@@ -6,7 +6,7 @@ import (
 )
 
 func TestWebpage(t *testing.T) {
-	wp := NewWebpage()
+	wp := Webpage()
 	wpHtml := wp.ToHTML()
 
 	prefix := `<!DOCTYPE html><html><head><meta charset="utf-8" />`
@@ -23,7 +23,7 @@ func TestWebpage(t *testing.T) {
 }
 
 func TestWebpageSetCharset(t *testing.T) {
-	wp := NewWebpage()
+	wp := Webpage()
 	wp.SetCharset("testing")
 	wpHtml := wp.ToHTML()
 
@@ -41,7 +41,7 @@ func TestWebpageSetCharset(t *testing.T) {
 }
 
 func TestWebpageSetLanguage(t *testing.T) {
-	wp := NewWebpage()
+	wp := Webpage()
 	wp.SetLanguage("en")
 	wpHtml := wp.ToHTML()
 

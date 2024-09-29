@@ -245,8 +245,12 @@ func Sup(children ...TagInterface) *Tag {
 	return (&Tag{TagName: "sup"}).Children(children)
 }
 
-func Swall(options SwalOptions) *Tag {
+func Swal(options SwalOptions) *Tag {
 	return NewSwal(options)
+}
+
+func Text(text string) *Tag {
+	return NewText(text)
 }
 
 func TextArea() *Tag {
@@ -258,7 +262,7 @@ func Table(children ...TagInterface) *Tag {
 	return NewTable().Children(children)
 }
 
-func TBody(children ...TagInterface) *Tag {
+func Tbody(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTbody().Children(children)
 }
@@ -268,7 +272,12 @@ func TD(children ...TagInterface) *Tag {
 	return NewTD().Children(children)
 }
 
-func THead(children ...TagInterface) *Tag {
+func TH(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return NewTH().Children(children)
+}
+
+func Thead(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewThead().Children(children)
 }
@@ -281,6 +290,11 @@ func TR(children ...TagInterface) *Tag {
 func UL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewUL().Children(children)
+}
+
+func Webpage(children ...TagInterface) *HtmlWebpage {
+	children = append([]TagInterface{}, children...)
+	return NewWebpage().Children(children)
 }
 
 func Wrap(children ...TagInterface) *Tag {

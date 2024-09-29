@@ -38,15 +38,15 @@ var navigation = []struct {
 func BenchmarkPageWithHeaderAndUL(b *testing.B) {
 	// run the benchmark function b.N times
 	for n := 0; n < b.N; n++ {
-		ul := hb.NewUL()
+		ul := hb.UL()
 		for i := 0; i < len(user.FavoriteColors); i++ {
-			ul.Child(hb.NewLI().HTML(user.FavoriteColors[i]))
+			ul.Child(hb.LI().HTML(user.FavoriteColors[i]))
 		}
 
 		page := hb.NewTag("html").
 			Child(hb.NewTag("body").
-				Child(hb.NewHeading1().HTML(user.FirstName)).
-				Child(hb.NewParagraph().HTML("Here's a list of your favorite colors:")).
+				Child(hb.Heading1().HTML(user.FirstName)).
+				Child(hb.Paragraph().HTML("Here's a list of your favorite colors:")).
 				Child(ul))
 
 		page.ToHTML()

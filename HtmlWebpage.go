@@ -4,10 +4,10 @@ import (
 	"strings"
 )
 
-var _ TagInterface = (*Webpage)(nil)
+var _ TagInterface = (*HtmlWebpage)(nil)
 
 // Webpage represents a web page
-type Webpage struct {
+type HtmlWebpage struct {
 	Tag
 	head        *Tag
 	body        *Tag
@@ -26,7 +26,7 @@ type Webpage struct {
 }
 
 // ToHTML returns HTML representation of the webpage
-func (w *Webpage) ToHTML() string {
+func (w *HtmlWebpage) ToHTML() string {
 	preaddedChildren := w.head.TagChildren
 
 	w.head.TagChildren = []TagInterface{}
@@ -126,13 +126,13 @@ func (w *Webpage) ToHTML() string {
 }
 
 // AddChild adds a tag to the webpage
-func (w *Webpage) AddChild(child TagInterface) *Webpage {
+func (w *HtmlWebpage) AddChild(child TagInterface) *HtmlWebpage {
 	w.body.AddChild(child)
 	return w
 }
 
 // AddChildren adds tags to the webpage
-func (w *Webpage) AddChildren(children []TagInterface) *Webpage {
+func (w *HtmlWebpage) AddChildren(children []TagInterface) *HtmlWebpage {
 	for _, child := range children {
 		w.AddChild(child)
 	}
@@ -140,46 +140,46 @@ func (w *Webpage) AddChildren(children []TagInterface) *Webpage {
 }
 
 // AddChild shortcut for AddChild
-func (w *Webpage) Child(child TagInterface) *Webpage {
+func (w *HtmlWebpage) Child(child TagInterface) *HtmlWebpage {
 	return w.AddChild(child)
 }
 
 // Children shortcut for AddChildren
-func (w *Webpage) Children(children []TagInterface) *Webpage {
+func (w *HtmlWebpage) Children(children []TagInterface) *HtmlWebpage {
 	return w.AddChildren(children)
 }
 
 // SetCharset sets the charset of the webpage
-func (w *Webpage) SetCharset(charset string) *Webpage {
+func (w *HtmlWebpage) SetCharset(charset string) *HtmlWebpage {
 	w.charset = charset
 	return w
 }
 
 // SetFavicon sets the favicon of the webpage
-func (w *Webpage) SetFavicon(favicon string) *Webpage {
+func (w *HtmlWebpage) SetFavicon(favicon string) *HtmlWebpage {
 	w.favicon = favicon
 	return w
 }
 
 // SetLanguage sets the language of the webpage
-func (w *Webpage) SetLanguage(language string) *Webpage {
+func (w *HtmlWebpage) SetLanguage(language string) *HtmlWebpage {
 	w.language = language
 	return w
 }
 
 // SetTitle sets the title of the webpage
-func (w *Webpage) SetTitle(title string) *Webpage {
+func (w *HtmlWebpage) SetTitle(title string) *HtmlWebpage {
 	w.title = title
 	return w
 }
 
 // Attr shortcut for SetAttribute
-func (w *Webpage) Attr(key, value string) *Webpage {
+func (w *HtmlWebpage) Attr(key, value string) *HtmlWebpage {
 	return w.SetAttribute(key, value)
 }
 
 // Attrs shortcut for setting multiple attributes
-func (w *Webpage) Attrs(attrs map[string]string) *Webpage {
+func (w *HtmlWebpage) Attrs(attrs map[string]string) *HtmlWebpage {
 	for key, value := range attrs {
 		w.SetAttribute(key, value)
 	}
@@ -187,7 +187,7 @@ func (w *Webpage) Attrs(attrs map[string]string) *Webpage {
 }
 
 // SetAttribute adds a style to the webpage
-func (w *Webpage) SetAttribute(key string, value string) *Webpage {
+func (w *HtmlWebpage) SetAttribute(key string, value string) *HtmlWebpage {
 	if value == "" {
 		return w
 	}
@@ -201,18 +201,18 @@ func (w *Webpage) SetAttribute(key string, value string) *Webpage {
 }
 
 // AddHTML adds an HTML to the body of the webpage
-func (w *Webpage) AddHTML(html string) *Webpage {
+func (w *HtmlWebpage) AddHTML(html string) *HtmlWebpage {
 	w.body.HTML(html)
 	return w
 }
 
-func (w *Webpage) AddMeta(meta TagInterface) *Webpage {
+func (w *HtmlWebpage) AddMeta(meta TagInterface) *HtmlWebpage {
 	w.metas = append(w.metas, meta)
 	return w
 }
 
 // AddScripts adds scripts to the webpage
-func (w *Webpage) AddScripts(scripts []string) *Webpage {
+func (w *HtmlWebpage) AddScripts(scripts []string) *HtmlWebpage {
 	for _, script := range scripts {
 		if script == "" {
 			continue
@@ -223,7 +223,7 @@ func (w *Webpage) AddScripts(scripts []string) *Webpage {
 }
 
 // AddScript adds a script to the webpage
-func (w *Webpage) AddScript(script string) *Webpage {
+func (w *HtmlWebpage) AddScript(script string) *HtmlWebpage {
 	if script == "" {
 		return w
 	}
@@ -232,7 +232,7 @@ func (w *Webpage) AddScript(script string) *Webpage {
 }
 
 // AddScriptURLs adds style URLs to the webpage
-func (w *Webpage) AddScriptURLs(scriptURLs []string) *Webpage {
+func (w *HtmlWebpage) AddScriptURLs(scriptURLs []string) *HtmlWebpage {
 	for _, scriptURL := range scriptURLs {
 		if scriptURL == "" {
 			continue
@@ -243,7 +243,7 @@ func (w *Webpage) AddScriptURLs(scriptURLs []string) *Webpage {
 }
 
 // AddScriptURL adds a style URL to the webpage
-func (w *Webpage) AddScriptURL(scriptURL string) *Webpage {
+func (w *HtmlWebpage) AddScriptURL(scriptURL string) *HtmlWebpage {
 	if scriptURL == "" {
 		return w
 	}
@@ -252,7 +252,7 @@ func (w *Webpage) AddScriptURL(scriptURL string) *Webpage {
 }
 
 // AddStyles adds styles to the webpage
-func (w *Webpage) AddStyles(styles []string) *Webpage {
+func (w *HtmlWebpage) AddStyles(styles []string) *HtmlWebpage {
 	for _, style := range styles {
 		if style == "" {
 			continue
@@ -263,7 +263,7 @@ func (w *Webpage) AddStyles(styles []string) *Webpage {
 }
 
 // AddStyle adds a style to the webpage
-func (w *Webpage) AddStyle(style string) *Webpage {
+func (w *HtmlWebpage) AddStyle(style string) *HtmlWebpage {
 	if style == "" {
 		return w
 	}
@@ -272,7 +272,7 @@ func (w *Webpage) AddStyle(style string) *Webpage {
 }
 
 // AddStyleURL adds a style URL to the webpage
-func (w *Webpage) AddStyleURL(styleURL string) *Webpage {
+func (w *HtmlWebpage) AddStyleURL(styleURL string) *HtmlWebpage {
 	if styleURL == "" {
 		return w
 	}
@@ -281,7 +281,7 @@ func (w *Webpage) AddStyleURL(styleURL string) *Webpage {
 }
 
 // AddStyleURLs adds style URLs to the webpage
-func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
+func (w *HtmlWebpage) AddStyleURLs(styleURLs []string) *HtmlWebpage {
 	for _, styleURL := range styleURLs {
 		if styleURL == "" {
 			continue
@@ -292,51 +292,51 @@ func (w *Webpage) AddStyleURLs(styleURLs []string) *Webpage {
 }
 
 // Body returns a pointer to the body tag
-func (w *Webpage) Body() *Tag {
+func (w *HtmlWebpage) Body() *Tag {
 	return w.body
 }
 
 // Head returns a pointer to the head tag
-func (w *Webpage) Head() *Tag {
+func (w *HtmlWebpage) Head() *Tag {
 	return w.head
 }
 
 // HTML shortcut for adding HTML to the body
-func (w *Webpage) HTML(html string) *Webpage {
+func (w *HtmlWebpage) HTML(html string) *HtmlWebpage {
 	return w.AddHTML(html)
 }
 
 // Meta shortcut for adding a meta
-func (w *Webpage) Meta(meta *Tag) *Webpage {
+func (w *HtmlWebpage) Meta(meta *Tag) *HtmlWebpage {
 	return w.AddMeta(meta)
 }
 
 // Script shortcut for adding a script
-func (w *Webpage) Script(script string) *Webpage {
+func (w *HtmlWebpage) Script(script string) *HtmlWebpage {
 	return w.AddScript(script)
 }
 
 // ScriptURL shortcut for adding a script URL
-func (w *Webpage) ScriptURL(scriptURL string) *Webpage {
+func (w *HtmlWebpage) ScriptURL(scriptURL string) *HtmlWebpage {
 	return w.AddScriptURL(scriptURL)
 }
 
 // ScriptURLs shortcut for adding script URLs
-func (w *Webpage) ScriptURLs(scriptURLs []string) *Webpage {
+func (w *HtmlWebpage) ScriptURLs(scriptURLs []string) *HtmlWebpage {
 	return w.AddScriptURLs(scriptURLs)
 }
 
 // Style shortcut for adding a style
-func (w *Webpage) Style(style string) *Webpage {
+func (w *HtmlWebpage) Style(style string) *HtmlWebpage {
 	return w.AddStyle(style)
 }
 
 // StyleURL shortcut for adding a style URL to the webpage
-func (w *Webpage) StyleURL(styleURL string) *Webpage {
+func (w *HtmlWebpage) StyleURL(styleURL string) *HtmlWebpage {
 	return w.AddStyleURL(styleURL)
 }
 
 // StyleURLs shortcut for adding style URLs to the webpage
-func (w *Webpage) StyleURLs(styleURLs []string) *Webpage {
+func (w *HtmlWebpage) StyleURLs(styleURLs []string) *HtmlWebpage {
 	return w.AddStyleURLs(styleURLs)
 }
