@@ -36,19 +36,19 @@ type BorderLayout struct {
 	Tag
 	width                 string
 	height                string
-	top                   *Tag
+	top                   TagInterface
 	topAlignHorizontal    string
 	topAlignVertical      string
-	bottom                *Tag
+	bottom                TagInterface
 	bottomAlignHorizontal string
 	bottomAlignVertical   string
-	left                  *Tag
+	left                  TagInterface
 	leftAlignHorizontal   string
 	leftAlignVertical     string
-	right                 *Tag
+	right                 TagInterface
 	rightAlignHorizontal  string
 	rightAlignVertical    string
-	center                *Tag
+	center                TagInterface
 	centerAlignHorizontal string
 	centerAlignVertical   string
 }
@@ -103,7 +103,7 @@ func (bl *BorderLayout) applyDefaultAlignments() {
 	}
 }
 
-func (bl *BorderLayout) AddTop(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddTop(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.top = tag
 	bl.topAlignHorizontal = alignHorizontal
 	bl.topAlignVertical = alignVertical
@@ -111,7 +111,7 @@ func (bl *BorderLayout) AddTop(tag *Tag, alignHorizontal string, alignVertical s
 	return bl
 }
 
-func (bl *BorderLayout) AddBottom(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddBottom(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.bottom = tag
 	bl.bottomAlignHorizontal = alignHorizontal
 	bl.bottomAlignVertical = alignVertical
@@ -119,7 +119,7 @@ func (bl *BorderLayout) AddBottom(tag *Tag, alignHorizontal string, alignVertica
 	return bl
 }
 
-func (bl *BorderLayout) AddLeft(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddLeft(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.left = tag
 	bl.leftAlignHorizontal = alignHorizontal
 	bl.leftAlignVertical = alignVertical
@@ -127,7 +127,7 @@ func (bl *BorderLayout) AddLeft(tag *Tag, alignHorizontal string, alignVertical 
 	return bl
 }
 
-func (bl *BorderLayout) AddRight(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddRight(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.right = tag
 	bl.rightAlignHorizontal = alignHorizontal
 	bl.rightAlignVertical = alignVertical
@@ -135,7 +135,7 @@ func (bl *BorderLayout) AddRight(tag *Tag, alignHorizontal string, alignVertical
 	return bl
 }
 
-func (bl *BorderLayout) AddCenter(tag *Tag, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddCenter(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
 	bl.center = tag
 	bl.centerAlignHorizontal = alignHorizontal
 	bl.centerAlignVertical = alignVertical
