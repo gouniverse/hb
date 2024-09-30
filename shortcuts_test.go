@@ -314,6 +314,18 @@ func TestI(t *testing.T) {
 	}
 }
 
+func TestIframe(t *testing.T) {
+	i := Iframe(`url`)
+	html := i.ToHTML()
+
+	if strings.Contains(html, "<iframe src=\"url\">") == false {
+		t.Error("Does not contain '<iframe src=\"url\">', Output:" + html)
+	}
+	if strings.Contains(html, "</iframe>") == false {
+		t.Error("Does not contain '</iframe>', Output:" + html)
+	}
+}
+
 func TestImg(t *testing.T) {
 	img := Img("url")
 	html := img.ToHTML()

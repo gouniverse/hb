@@ -157,6 +157,11 @@ func I(children ...TagInterface) *Tag {
 }
 
 // Img is a shortcut to create a new IMG tag
+func Iframe(src string) *Tag {
+	return (&Tag{TagName: `iframe`}).Src(src)
+}
+
+// Img is a shortcut to create a new IMG tag
 func Img(src string) *Tag {
 	return NewImage().Src(src)
 }
