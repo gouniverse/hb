@@ -18,6 +18,7 @@ type SwalOptions struct {
 
 // NewSwal generates a script with a Sweetalert2 dialog
 // Note! you must include the library yourself (i.e. CDN)
+// Deprecated: replaced by the new method Swal()
 func NewSwal(options SwalOptions) *Tag {
 	optionsBytes, err := json.Marshal(options)
 

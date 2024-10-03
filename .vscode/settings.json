@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "Enctype",
+        "fieldset",
         "keygen",
         "onblur",
         "onchange",
@@ -18,6 +19,7 @@
         "onmouseout",
         "onmouseover",
         "onmouseup",
-        "onsubmit"
+        "onsubmit",
+        "Tfoot"
     ]
 }

@@ -58,6 +58,11 @@ go get -u github.com/gouniverse/hb
 
 ## Implemented Tag Shortcuts
 
+- <b>A()</b> - shortcut for &lt;a> tag
+- <b>Abbr()</b> - shortcut for &lt;abbr> tag
+- <b>Address()</b> - shortcut for &lt;address> tag
+- <b>Article()</b> - shortcut for &lt;article> tag
+- <b>Aside()</b> - shortcut for &lt;aside> tag
 - <b>BR()</b> - shortcut for &lt;br> tag
 - <b>Button()</b> - shortcut for &lt;button> tag
 - <b>Caption()</b> - shortcut for &lt;caption> tag
@@ -528,6 +533,8 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 - Elem Go (https://github.com/chasefleming/elem-go)
 
+- HTMGO (https://github.com/maddalax/htmgo)
+
 - Forms from Structs (https://github.com/joncalhoun/form)
   Still writ
 
@@ -538,5 +545,5 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
   Interesting library, following Elm. Not lots of documentation
 
 - Templ (https://github.com/a-h/templ) | 30 Sep 2023
-  Building templates with JSX like syntax. Requires installing 3-rd party binaries, and additionaln compilation step before being usable.
+  Building templates with JSX like syntax. Requires installing 3-rd party binaries, and additional compilation step before being usable.
 

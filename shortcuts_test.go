@@ -17,6 +17,54 @@ func TestA(t *testing.T) {
 	}
 }
 
+func TestAbbr(t *testing.T) {
+	a := Abbr()
+	html := a.ToHTML()
+
+	if strings.Contains(html, "<abbr>") == false {
+		t.Error("Does not contain '<abbr>', Output:" + html)
+	}
+	if strings.Contains(html, "</abbr>") == false {
+		t.Error("Does not contain '</abbr>', Output:" + html)
+	}
+}
+
+func TestAddress(t *testing.T) {
+	a := Address()
+	html := a.ToHTML()
+
+	if strings.Contains(html, "<address>") == false {
+		t.Error("Does not contain '<address>', Output:" + html)
+	}
+	if strings.Contains(html, "</address>") == false {
+		t.Error("Does not contain '</address>', Output:" + html)
+	}
+}
+
+func TestArticle(t *testing.T) {
+	a := Article()
+	html := a.ToHTML()
+
+	if strings.Contains(html, "<article>") == false {
+		t.Error("Does not contain '<article>', Output:" + html)
+	}
+	if strings.Contains(html, "</article>") == false {
+		t.Error("Does not contain '</article>', Output:" + html)
+	}
+}
+
+func TestAside(t *testing.T) {
+	a := Aside()
+	html := a.ToHTML()
+
+	if strings.Contains(html, "<aside>") == false {
+		t.Error("Does not contain '<aside>', Output:" + html)
+	}
+	if strings.Contains(html, "</aside>") == false {
+		t.Error("Does not contain '</aside>', Output:" + html)
+	}
+}
+
 func TestB(t *testing.T) {
 	b := B()
 	html := b.ToHTML()
@@ -77,6 +125,19 @@ func TestCode(t *testing.T) {
 	}
 }
 
+func TestDialog(t *testing.T) {
+	e := Dialog()
+	html := e.ToHTML()
+
+	if strings.Contains(html, "<dialog>") == false {
+		t.Error("Does not contain '<dialog>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</dialog>") == false {
+		t.Error("Does not contain '</dialog>', Output:" + html)
+	}
+}
+
 func TestDiv(t *testing.T) {
 	div := Div()
 	html := div.ToHTML()
@@ -87,6 +148,19 @@ func TestDiv(t *testing.T) {
 
 	if strings.Contains(html, "</div>") == false {
 		t.Error("Does not contain '</div>', Output:" + html)
+	}
+}
+
+func TestFieldset(t *testing.T) {
+	e := FieldSet()
+	html := e.ToHTML()
+
+	if strings.Contains(html, "<fieldset>") == false {
+		t.Error("Does not contain '<fieldset>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</fieldset>") == false {
+		t.Error("Does not contain '</fieldset>', Output:" + html)
 	}
 }
 
@@ -764,6 +838,19 @@ func TestTR(t *testing.T) {
 	}
 	if strings.Contains(html, "</tr>") == false {
 		t.Error("Does not contain '</tr>', Output:" + html)
+	}
+}
+
+func TestTitle(t *testing.T) {
+	e := Title()
+	html := e.ToHTML()
+
+	if strings.Contains(html, "<title>") == false {
+		t.Error("Does not contain '<title>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</title>") == false {
+		t.Error("Does not contain '</title>', Output:" + html)
 	}
 }
 

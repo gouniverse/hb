@@ -478,7 +478,7 @@ func TestStyleIfElseMethod(t *testing.T) {
 	}
 }
 
-func TestTitle(t *testing.T) {
+func TestTitleAttr(t *testing.T) {
 	input := NewDiv().Title("TestTitle").ToHTML()
 
 	if strings.Contains(input, `title="TestTitle"`) == false {
@@ -490,7 +490,7 @@ func TestTitle(t *testing.T) {
 	}
 }
 
-func TestTitleIf(t *testing.T) {
+func TestTitleIfAttr(t *testing.T) {
 	input := NewDiv().TitleIf(true, "TestTitle").ToHTML()
 
 	if strings.Contains(input, `title="TestTitle"`) == false {

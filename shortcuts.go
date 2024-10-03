@@ -8,6 +8,26 @@ func A(children ...TagInterface) *Tag {
 	return NewHyperlink().Children(children)
 }
 
+func Abbr(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "abbr"}).Children(children)
+}
+
+func Address(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "address"}).Children(children)
+}
+
+func Article(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "article"}).Children(children)
+}
+
+func Aside(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "aside"}).Children(children)
+}
+
 // B is a shortcut to create a new B tag
 func B(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
@@ -43,10 +63,20 @@ func Code(children ...TagInterface) *Tag {
 	return NewCode().Children(children)
 }
 
+func Dialog(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "dialog"}).Children(children)
+}
+
 // Div is a shortcut to create a new DIV tag
 func Div(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewDiv().Children(children)
+}
+
+func FieldSet(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "fieldset"}).Children(children)
 }
 
 // Footer is a shortcut to create a new FOOTER tag
@@ -374,6 +404,12 @@ func Tfoot(children ...TagInterface) *Tag {
 func TR(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTR().Children(children)
+}
+
+// Title is a shortcut to create a new title tag
+func Title(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "title"}).Children(children)
 }
 
 // UL is a shortcut to create a new UL tag

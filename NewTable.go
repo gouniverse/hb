@@ -1,6 +1,7 @@
 package hb
 
 // NewTable represents a TABLE tag
+// Deprecated: replaced by the new method Table()
 func NewTable() *Tag {
 	return &Tag{TagName: "table"}
 }
