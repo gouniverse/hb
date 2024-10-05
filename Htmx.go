@@ -25,6 +25,10 @@ func (t *Tag) HxInclude(value string) *Tag {
 	return t.SetAttribute("hx-include", value)
 }
 
+func (t *Tag) HxIndicator(value string) *Tag {
+	return t.Attr("hx-indicator", value)
+}
+
 func (t *Tag) HxOn(name string, value string) *Tag {
 	return t.SetAttribute("hx-on:"+name, value)
 }

@@ -208,6 +208,7 @@ HTMX (https://htmx.org/reference/) is a great match for Golang, therefore here i
 - HxDelete(value string)
 - HxGet(value string)
 - HxInclude(value string)
+- HxIndicator(value string)
 - HxOn(name string, value string)
 - HxPatch(value string)
 - HxPost(value string)
@@ -317,10 +318,10 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 // Elements for the form
 header := hb.Heading3().text("Please sign in").Style("margin:0px;")
 emailLabel := hb.Label().Text("E-mail Address")
-emailInput := hb.Input().Class("form-control").Name("email").Attr("placeholder", "Enter e-mail address")
+emailInput := hb.Input().Class("form-control").Name("email").Placeholder("Enter e-mail address")
 emailFormGroup := hb.Div().Class("form-group").Child(emailLabel).Child(emailInput)
 passwordLabel := hb.Label().Child(hb.Text("Password"))
-passwordInput := hb.Input().Class("form-control").Name("password").Attr("type", "password").Attr("placeholder", "Enter password")
+passwordInput := hb.Input().Class("form-control").Name("password").Type("password").Placeholder("Enter password")
 passwordFormGroup := hb.Div().Class("form-group").Child(passwordLabel).Child(passwordInput)
 buttonLogin := hb.Button().Class("btn btn-lg btn-success btn-block").Text("Login")
 buttonRegister := hb.Hyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
@@ -455,6 +456,10 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2024.10.05 - Added HxIndicator
+
+2024.10.01 - Added additional shortcuts for more concise declaration
 
 2023.12.17 - Added Map, Ternary, Text
 

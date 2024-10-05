@@ -9,13 +9,13 @@ func TestX(t *testing.T) {
 	input := NewDiv().
 		X("data", "{open=false}").
 		Child(
-			NewButton().
+			Button().
 				XOn("click", "open = true").
 				XBind("class", "! open ? 'hidden' : ''").
 				HTML("Submit"),
 		).
 		Child(
-			NewSpan().
+			Span().
 				X("show", "open").
 				HTML("Content..."),
 		).
