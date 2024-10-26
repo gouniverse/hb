@@ -99,6 +99,19 @@ func TestButton(t *testing.T) {
 	}
 }
 
+func TestCanvas(t *testing.T) {
+	canvas := Canvas()
+	html := canvas.ToHTML()
+
+	if strings.Contains(html, "<canvas>") == false {
+		t.Error("Does not contain '<canvas>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</canvas>") == false {
+		t.Error("Does not contain '</canvas>', Output:" + html)
+	}
+}
+
 func TestCaption(t *testing.T) {
 	caption := Caption()
 	html := caption.ToHTML()

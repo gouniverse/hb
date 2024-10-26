@@ -54,6 +54,12 @@ func Button(children ...TagInterface) *Tag {
 	return (&Tag{TagName: "button"}).Children(children)
 }
 
+// Canvas is a shortcut to create a new CANVAS tag
+func Canvas(children ...TagInterface) *Tag {
+	children = append([]TagInterface{}, children...)
+	return (&Tag{TagName: "canvas"}).Children(children)
+}
+
 // Caption is a shortcut to create a new CAPTION tag
 func Caption(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
