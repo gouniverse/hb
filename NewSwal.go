@@ -11,6 +11,7 @@ type SwalOptions struct {
 	Position           string `json:"position,omitempty"`
 	Timer              int    `json:"timer,omitempty"`
 	ShowCancelButton   bool   `json:"showCancelButton,omitempty"`
+	ShowConfirmButton  bool   `json:"showConfirmButton,omitempty"`
 	CancelButtonColor  string `json:"cancelButtonColor,omitempty"`
 	CancelButtonText   string `json:"cancelButtonText,omitempty"`
 	ConfirmButtonText  string `json:"confirmButtonText,omitempty"`
