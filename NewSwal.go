@@ -8,6 +8,8 @@ type SwalOptions struct {
 	Icon               string `json:"icon,omitempty"`
 	Text               string `json:"text,omitempty"`
 	Title              string `json:"title,omitempty"`
+	Position           string `json:"position,omitempty"`
+	Timer              int    `json:"timer,omitempty"`
 	ShowCancelButton   bool   `json:"showCancelButton,omitempty"`
 	CancelButtonColor  string `json:"cancelButtonColor,omitempty"`
 	CancelButtonText   string `json:"cancelButtonText,omitempty"`
