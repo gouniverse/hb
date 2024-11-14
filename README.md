@@ -552,3 +552,5 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 - Templ (https://github.com/a-h/templ) | 30 Sep 2023
   Building templates with JSX like syntax. Requires installing 3-rd party binaries, and additional compilation step before being usable.
 
+- GoHTMX (https://gitlab.com/go-htmx/go-htmx)
+
