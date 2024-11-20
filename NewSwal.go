@@ -5,28 +5,35 @@ import (
 )
 
 type SwalOptions struct {
-	Icon               string `json:"icon,omitempty"`
-	Text               string `json:"text,omitempty"`
-	Title              string `json:"title,omitempty"`
-	Position           string `json:"position,omitempty"`
-	Timer              int    `json:"timer,omitempty"`
-	TimerProgressBar   bool    `json:"timerProgressBar,omitempty"`
-	ShowCancelButton   bool   `json:"showCancelButton,omitempty"`
-	ShowConfirmButton  bool   `json:"showConfirmButton,omitempty"`
+	Background         string `json:"background,omitempty"`
+	Backdrop           string `json:"backdrop,omitempty"`
 	CancelButtonColor  string `json:"cancelButtonColor,omitempty"`
 	CancelButtonText   string `json:"cancelButtonText,omitempty"`
+	Color              string `json:"color,omitempty"`
 	ConfirmButtonText  string `json:"confirmButtonText,omitempty"`
 	ConfirmButtonColor string `json:"confirmButtonColor,omitempty"`
 	ConfirmCallback    string `json:"-"`
-	ImageURL	   string `json:"imageUrl,omitempty"`
-	ImageWidth	   string `json:"imageWidth,omitempty"`
-	ImageHeight	   string `json:"imageHeight,omitempty"`
-	ImageAlt	   string `json:"imageAlt,omitempty"`
-	Width		   string `json:"width,omitempty"`
-	Padding		   string `json:"padding,omitempty"`
-	Color		   string `json:"color,omitempty"`
-	Background	   string `json:"background,omitempty"`
-	Backdrop	   string `json:"backdrop,omitempty"`
+	CustomClass        string `json:"customClass,omitempty"`
+	Grow               string `json:"grow,omitempty"`
+	HeightAuto         bool   `json:"heightAuto,omitempty"`
+	HTML               string `json:"html,omitempty"`
+	Icon               string `json:"icon,omitempty"`
+	IconColor          string `json:"iconColor,omitempty"`
+	IconHtml           string `json:"iconHtml,omitempty"`
+	ImageURL           string `json:"imageUrl,omitempty"`
+	ImageWidth         string `json:"imageWidth,omitempty"`
+	ImageHeight        string `json:"imageHeight,omitempty"`
+	ImageAlt           string `json:"imageAlt,omitempty"`
+	Padding            string `json:"padding,omitempty"`
+	Position           string `json:"position,omitempty"`
+	ShowCancelButton   bool   `json:"showCancelButton,omitempty"`
+	ShowConfirmButton  bool   `json:"showConfirmButton,omitempty"`
+	Text               string `json:"text,omitempty"`
+	TimerProgressBar   bool   `json:"timerProgressBar,omitempty"`
+	Title              string `json:"title,omitempty"`
+	Timer              int    `json:"timer,omitempty"`
+	Toast              string `json:"toast,omitempty"`
+	Width              string `json:"width,omitempty"`
 }
 
 // NewSwal generates a script with a Sweetalert2 dialog
