@@ -187,7 +187,7 @@ func (w *HtmlWebpage) Attrs(attrs map[string]string) *HtmlWebpage {
 }
 
 // SetAttribute adds a style to the webpage
-func (w *HtmlWebpage) SetAttribute(key string, value string) *HtmlWebpage {
+func (w *HtmlWebpage) SetAttribute(key, value string) *HtmlWebpage {
 	if value == "" {
 		return w
 	}

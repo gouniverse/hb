@@ -37,9 +37,9 @@ func (t *Tag) AddStyle(style string) *Tag {
 	if styles == "" {
 		styles = style
 	} else if strings.HasSuffix(styles, ";") {
-		styles = styles + style
+		styles += style
 	} else {
-		styles = styles + ";" + style
+		styles += ";" + style
 	}
 	return t.SetAttribute("style", styles)
 }
@@ -75,7 +75,7 @@ func (t *Tag) AttrIfF(condition bool, key string, valueFunc func() string) *Tag 
 }
 
 // AttrIfElse shortcut for setting an attribute if a condition is met, otherwise adds another attribute
-func (t *Tag) AttrIfElse(condition bool, key, valueIf string, valueElse string) *Tag {
+func (t *Tag) AttrIfElse(condition bool, key, valueIf, valueElse string) *Tag {
 	if condition {
 		return t.SetAttribute(key, valueIf)
 	}
@@ -112,7 +112,7 @@ func (t *Tag) AttrsIfF(condition bool, attrsFunc func() map[string]string) *Tag 
 }
 
 // AttrsIfElse shortcut for setting multiple attributes if a condition is met, otherwise adds another attribute
-func (t *Tag) AttrsIfElse(condition bool, attrsIf map[string]string, attrsElse map[string]string) *Tag {
+func (t *Tag) AttrsIfElse(condition bool, attrsIf, attrsElse map[string]string) *Tag {
 	if condition {
 		for key, value := range attrsIf {
 			t.SetAttribute(key, value)
@@ -183,7 +183,7 @@ func (t *Tag) ChildIfF(condition bool, childFunc func() TagInterface) *Tag {
 }
 
 // ChildIfElse adds a child if a condition is met, otherwise adds another child
-func (t *Tag) ChildIfElse(condition bool, childIf TagInterface, childElse TagInterface) *Tag {
+func (t *Tag) ChildIfElse(condition bool, childIf, childElse TagInterface) *Tag {
 	if condition {
 		return t.AddChild(childIf)
 	}
@@ -215,7 +215,7 @@ func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []TagInterface) *T
 }
 
 // ChildrenIfElse adds children if a condition is met
-func (t *Tag) ChildrenIfElse(condition bool, childrenIf []TagInterface, childrenElse []TagInterface) *Tag {
+func (t *Tag) ChildrenIfElse(condition bool, childrenIf, childrenElse []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(childrenIf)
 	}
@@ -244,7 +244,7 @@ func (t *Tag) ClassIf(condition bool, className string) *Tag {
 }
 
 // ClassIfElse adds class name if a condition is met
-func (t *Tag) ClassIfElse(condition bool, classNameIf string, classNameElse string) *Tag {
+func (t *Tag) ClassIfElse(condition bool, classNameIf, classNameElse string) *Tag {
 	if condition {
 		return t.AddClass(classNameIf)
 	}
@@ -253,12 +253,12 @@ func (t *Tag) ClassIfElse(condition bool, classNameIf string, classNameElse stri
 }
 
 // Data shortcut for setting a "data-" attribute
-func (t *Tag) Data(name string, value string) *Tag {
+func (t *Tag) Data(name, value string) *Tag {
 	return t.SetAttribute("data-"+name, value)
 }
 
 // DataIf shortcut for setting a "data-" attribute if a condition is met
-func (t *Tag) DataIf(condition bool, name string, value string) *Tag {
+func (t *Tag) DataIf(condition bool, name, value string) *Tag {
 	if condition {
 		return t.SetAttribute("data-"+name, value)
 	}
@@ -266,7 +266,7 @@ func (t *Tag) DataIf(condition bool, name string, value string) *Tag {
 }
 
 // DataIfElse shortcut for setting a "data-" attribute if a condition is met
-func (t *Tag) DataIfElse(condition bool, name string, valueIf string, valueElse string) *Tag {
+func (t *Tag) DataIfElse(condition bool, name, valueIf, valueElse string) *Tag {
 	if condition {
 		return t.SetAttribute("data-"+name, valueIf)
 	}
@@ -308,7 +308,7 @@ func (t *Tag) HTMLIf(condition bool, html string) *Tag {
 }
 
 // HTMLIfElse adds html if a condition is met
-func (t *Tag) HTMLIfElse(condition bool, htmlIf string, htmlElse string) *Tag {
+func (t *Tag) HTMLIfElse(condition bool, htmlIf, htmlElse string) *Tag {
 	if condition {
 		return t.AddHTML(htmlIf)
 	}
@@ -474,7 +474,7 @@ func (t *Tag) StyleIf(condition bool, style string) *Tag {
 }
 
 // StyleIfElse adds style if a condition is met
-func (t *Tag) StyleIfElse(condition bool, styleIf string, styleElse string) *Tag {
+func (t *Tag) StyleIfElse(condition bool, styleIf, styleElse string) *Tag {
 	if condition {
 		return t.AddStyle(styleIf)
 	}
@@ -511,7 +511,7 @@ func (t *Tag) TextIf(condition bool, text string) *Tag {
 }
 
 // TextIfElse adds escaped text if a condition is met
-func (t *Tag) TextIfElse(condition bool, textIf string, textElse string) *Tag {
+func (t *Tag) TextIfElse(condition bool, textIf, textElse string) *Tag {
 	if condition {
 		return t.AddText(textIf)
 	}

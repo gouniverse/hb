@@ -16,7 +16,7 @@ func IfF(condition bool, trueFunc func() TagInterface) TagInterface {
 	return nil
 }
 
-func IfElse(condition bool, trueTag TagInterface, falseTag TagInterface) TagInterface {
+func IfElse(condition bool, trueTag, falseTag TagInterface) TagInterface {
 	if condition {
 		return trueTag
 	}
@@ -24,7 +24,7 @@ func IfElse(condition bool, trueTag TagInterface, falseTag TagInterface) TagInte
 	return falseTag
 }
 
-func IfFElseF(condition bool, trueFunc func() TagInterface, falseFunc func() TagInterface) TagInterface {
+func IfFElseF(condition bool, trueFunc, falseFunc func() TagInterface) TagInterface {
 	if condition {
 		return trueFunc()
 	}
@@ -33,7 +33,7 @@ func IfFElseF(condition bool, trueFunc func() TagInterface, falseFunc func() Tag
 }
 
 // Ternary is a 1 line if/else statement.
-func Ternary(condition bool, trueTag TagInterface, falseTag TagInterface) TagInterface {
+func Ternary(condition bool, trueTag, falseTag TagInterface) TagInterface {
 	if condition {
 		return trueTag
 	}

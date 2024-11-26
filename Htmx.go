@@ -5,7 +5,7 @@ package hb
 
 // Hx shortcut for setting an HTMX attribute
 // Htmx attributes have the format of hx-{NAME}="{VALUE}"
-func (t *Tag) Hx(name string, value string) *Tag {
+func (t *Tag) Hx(name, value string) *Tag {
 	return t.SetAttribute("hx-"+name, value)
 }
 
@@ -29,7 +29,7 @@ func (t *Tag) HxIndicator(value string) *Tag {
 	return t.Attr("hx-indicator", value)
 }
 
-func (t *Tag) HxOn(name string, value string) *Tag {
+func (t *Tag) HxOn(name, value string) *Tag {
 	return t.SetAttribute("hx-on:"+name, value)
 }
 

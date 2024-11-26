@@ -21,6 +21,14 @@ func TestAlt(t *testing.T) {
 	}
 }
 
+func TestAria(t *testing.T) {
+	img := NewImage().Aria("alt", "alternative")
+	imgHtml := img.ToHTML()
+	if strings.Contains(imgHtml, `aria-alt="alternative"`) == false {
+		t.Error(`Does not contain 'aria-alt="alternative"'`, "Output:"+imgHtml)
+	}
+}
+
 func TestAttr(t *testing.T) {
 	img := NewImage().Attr("width", "100")
 	imgHtml := img.ToHTML()

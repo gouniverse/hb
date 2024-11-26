@@ -1,5 +1,9 @@
 package hb
 
+// This file contains short functions for creating HTML tags
+// Idiomatic functions which start with the New prefix are
+// defined in idiomatic.go
+
 import (
 	"encoding/json"
 	"text/template"

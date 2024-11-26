@@ -103,7 +103,7 @@ func (bl *BorderLayout) applyDefaultAlignments() {
 	}
 }
 
-func (bl *BorderLayout) AddTop(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddTop(tag TagInterface, alignHorizontal, alignVertical string) *BorderLayout {
 	bl.top = tag
 	bl.topAlignHorizontal = alignHorizontal
 	bl.topAlignVertical = alignVertical
@@ -111,7 +111,7 @@ func (bl *BorderLayout) AddTop(tag TagInterface, alignHorizontal string, alignVe
 	return bl
 }
 
-func (bl *BorderLayout) AddBottom(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddBottom(tag TagInterface, alignHorizontal, alignVertical string) *BorderLayout {
 	bl.bottom = tag
 	bl.bottomAlignHorizontal = alignHorizontal
 	bl.bottomAlignVertical = alignVertical
@@ -119,7 +119,7 @@ func (bl *BorderLayout) AddBottom(tag TagInterface, alignHorizontal string, alig
 	return bl
 }
 
-func (bl *BorderLayout) AddLeft(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddLeft(tag TagInterface, alignHorizontal, alignVertical string) *BorderLayout {
 	bl.left = tag
 	bl.leftAlignHorizontal = alignHorizontal
 	bl.leftAlignVertical = alignVertical
@@ -127,7 +127,7 @@ func (bl *BorderLayout) AddLeft(tag TagInterface, alignHorizontal string, alignV
 	return bl
 }
 
-func (bl *BorderLayout) AddRight(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddRight(tag TagInterface, alignHorizontal, alignVertical string) *BorderLayout {
 	bl.right = tag
 	bl.rightAlignHorizontal = alignHorizontal
 	bl.rightAlignVertical = alignVertical
@@ -135,7 +135,7 @@ func (bl *BorderLayout) AddRight(tag TagInterface, alignHorizontal string, align
 	return bl
 }
 
-func (bl *BorderLayout) AddCenter(tag TagInterface, alignHorizontal string, alignVertical string) *BorderLayout {
+func (bl *BorderLayout) AddCenter(tag TagInterface, alignHorizontal, alignVertical string) *BorderLayout {
 	bl.center = tag
 	bl.centerAlignHorizontal = alignHorizontal
 	bl.centerAlignVertical = alignVertical
