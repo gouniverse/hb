@@ -118,6 +118,7 @@ Examples can be found on: https://golangui.com
 ## Tag Methods
 
 - <b>Action(action string)</b> - shortcut to add an "action" attribute
+- <b>Aria(key, value string)</b> - shortcut for "aria-" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
 - <b>AttrIf(condition bool, key, value string)</b> - conditional setting of attribute
 - <b>AttrIfF(condition bool, key string, valueFunc func() string)</b> -  conditional setting of attribute using function
@@ -456,6 +457,8 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2024.11.26 - Added Aria attribute shortcut
 
 2024.10.05 - Added HxIndicator
 
