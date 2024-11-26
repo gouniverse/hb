@@ -1,0 +1,149 @@
+#
+# This task file allows you to:
+#  1. Build a coverage report
+#  2. Install errcheck
+#  3. Run errcheck
+#  4. Install nilaway
+#  5. Run nilaway
+#  6. Run tests
+#
+# Task file usage: https://taskfile.dev
+#
+
+version: '3'
+
+vars:
+  APPNAME: Html Builder Module
+
+tasks:
+  # ========================== #
+  # START: Help screem (Default)
+  # ========================== #
+  default:
+    cmds:
+        - echo "================================================================"
+        - echo "=                                                              ="
+        - echo "= Welcome to {{.APPNAME}}                                      ="
+        - echo "=                                                              ="
+        - echo "= Select an option from the list below                         ="
+        - echo "=                                                              ="
+        - echo "= 1. To run coverage report type 'task cover'                  ="
+        - echo "= 2. To install err check type 'task errcheck:install'         ="
+        - echo "= 3. To run err check type 'task errcheck'                     ="
+        - echo "= 4. To install nils check type 'task nilaway:install'         ="
+        - echo "= 4. To run nils check type 'task nilaway'                     ="
+        - echo "= 5. To run tests type 'task test'                             ="
+        - echo "=                                                              ="
+        - echo "================================================================"
+    silent: true
+  # ========================== #
+  # END: Help screem (Default) #
+  # ========================== #
+
+  cover:
+    desc: Builds a coverage report
+    cmds:
+      - echo "Generating cover report..."
+      - go test ./... -coverprofile=coverage.out  -covermode=count
+      - go tool cover -html=coverage.out
+      # Eventually add to workflow! - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken=$COVERALLS_TOKEN
+      - echo "Done!"
+    silent: true
+
+  errcheck:install:
+    desc: Install errcheck or update to latest
+    cmds:
+      - echo "Installing/updating errcheck..."
+      - go install github.com/kisielk/errcheck@latest
+      - echo "Done!"
+    silent: true
+
+  errcheck:
+    desc: Tests for errors
+    cmds:
+      - echo "Checking for errors..."
+      - errcheck ./...
+      - echo "Done!"
+    silent: true
+
+  gocritic:install:
+    desc: Install gocritic or update to latest
+    cmds:
+      - echo "Installing/updating gocritic..."
+      - go install github.com/go-critic/go-critic/cmd/gocritic@latest
+      - echo "Done!"
+    silent: true
+
+  gocritic:
+    desc: Tests for errors
+    cmds:
+      - echo "Checking for errors..."
+      - gocritic check -enableAll -disable=ifElseChain ./...
+      - echo "Done!"
+    silent: true
+
+  golangci-lint:install:
+    desc: Install golangci-lint or update to latest
+    cmds:
+      - echo "Installing/updating golangci-lint..."
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      - echo "Done!"
+    silent: true
+
+  golangci-lint:
+    desc: Tests for errors
+    cmds:
+      - echo "Checking for errors..."
+      - golangci-lint run ./...
+      - echo "Done!"
+    silent: true
+
+  gosec:install:
+    desc: Install gosec or update to latest
+    cmds:
+      - echo "Installing/updating gosec..."
+      - go install github.com/securego/gosec/v2/cmd/gosec@latest
+      - echo "Done!"
+    silent: true
+
+  gosec:
+    desc: Tests for security
+    cmds:
+      - echo "Checking for security..."
+      - gosec ./...
+      - echo "Done!"
+    silent: true
+    
+  nilaway:install:
+    desc: Install nilaway or update to latest
+    cmds:
+      - echo "installing/updating nilaway..."
+      - go install go.uber.org/nilaway/cmd/nilaway@latest
+      - echo "Done!"
+    silent: true
+
+  nilaway:
+    desc: Tests for nils
+    cmds:
+      - echo "Checking for nils..."
+      - nilaway ./...
+      - echo "Done!"
+    silent: true
+    
+  profile:
+    cmds:
+      - echo "Running profiling..."
+      - go test -cpuprofile=cpu.out ./...
+      - go tool pprof cpu.out
+      - go tool pprof -aloc_objects -top -cup mem.profile
+      - go tool pprof -aloc_space -top -cup mem.out
+      - go test -gcflags 'm = m'
+      - echo "Done!"
+    silent: true
+
+  test:
+    cmds:
+      - echo "Running tests..."
+      - go test ./...
+      - echo "Done!"
+    silent: true

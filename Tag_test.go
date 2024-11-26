@@ -511,3 +511,21 @@ func TestTitleIfAttr(t *testing.T) {
 		t.Error(`Does contain 'title="TestTitle"', Output:` + input)
 	}
 }
+
+func TestTag_childrenToString(t *testing.T) {
+	zero := new(Tag)
+	div := NewDiv().Child(zero).Child(nil)
+
+	str := div.childrenToString()
+	if str != "" {
+		t.Error("Expected empty string, got " + str)
+	}
+
+	input := NewInput().ID("first").Name("first_name").Value("John")
+
+	div = NewDiv().Child(zero).Child(input)
+	str = div.childrenToString()
+	if str != `<input id="first" name="first_name" value="John" />` {
+		t.Error(`Expected "<input id="first" name="first_name" value="John" />", got ` + str)
+	}
+}

@@ -368,7 +368,7 @@ func Sup(children ...TagInterface) *Tag {
 
 // Swal generates a script with a Sweetalert2 dialog
 // Note! you must include the library yourself (i.e. CDN)
-func Swal(options SwalOptions) *Tag {
+func Swal(options SwalOptions) TagInterface {
 	optionsBytes, err := json.Marshal(options)
 
 	var optionsJSON string

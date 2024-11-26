@@ -49,6 +49,11 @@ func (t *Tag) Alt(text string) *Tag {
 	return t.SetAttribute("alt", text)
 }
 
+// Aria shortcut for setting an "aria-" attribute
+func (t *Tag) Aria(key, value string) *Tag {
+	return t.SetAttribute("aria-"+key, value)
+}
+
 // Attr shortcut for SetAttribute
 func (t *Tag) Attr(key, value string) *Tag {
 	return t.SetAttribute(key, value)
@@ -595,12 +600,13 @@ func (t Tag) attrsToString() string {
 // attrToString converts a single key/value attribute to string
 // the empty values are skipped
 // the value attribute is kept, as it has special role for select element in forms
-func (t Tag) attrToString(key string, value string) string {
+func (t Tag) attrToString(key, value string) string {
 	if strings.Trim(value, " ") == "" {
 		if key != "value" {
 			return ``
 		}
 	}
+
 	return key + `="` + escapeHtmlAttr(value) + `"`
 }
 
@@ -612,6 +618,10 @@ func (t Tag) childrenToString() string {
 	var str string
 
 	for _, child := range t.TagChildren {
+		if child == nil {
+			continue
+		}
+
 		str += child.ToHTML()
 	}
 
