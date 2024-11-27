@@ -37,13 +37,17 @@ Demos can be found on: https://golangui.com
 - Section containing div container (Bootstrap) with a message "Hello world"
 
 ```go
-import "github.com/gouniverse/hb"
+// imported to global namespace, to avoid typing hb.* each time
+import . "github.com/gouniverse/hb"
+
+// or, regular import, and type hb.* before using it each time
+// import "github.com/gouniverse/hb"
 	
 // 1. Create a div container with "Hello world" message
-div := hb.Div().Class("container").Text("Hello world")
+div := Div().Class("container").Text("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := hb.Section().Style("padding:40px;").Child(div)
+section := Section().Style("padding:40px;").Child(div)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
@@ -142,7 +146,6 @@ Examples can be found on: https://golangui.com
 - <b>ChildrenIf(condition bool, children []Tag)</b> - conditional adding of children
 - <b>ChildrenIfF(condition bool, childrenFunc func() []*Tag)</b> - conditional adding of children using function
 - <b>ChildrenIfElse(condition bool, childrenIf []Tag, childrenElse []Tag)</b> - conditional adding of a children
-- <b>ChildrenMap(items []any, callback func(item any, index int) *Tag) []*Tag</b> - map a slice to a slice of tags and adds as children
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
 - <b>ClassIfElse(condition bool, classNameIf string, classNameElse string)</b> - conditional adding of a class
@@ -197,7 +200,7 @@ Examples can be found on: https://golangui.com
 
 ## Utility
 
-- <b>Map[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - map a slice of anything to a slice of tags
+- <b>ToTags[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - transforms a slice of anything to a slice of tags
 - If(condition bool, trueTag *Tag) *Tag
 - IfF(condition bool, trueFunc func() *Tag) *Tag
 - IfElse(condition bool, trueTag *Tag, falseTag *Tag) *Tag
@@ -322,23 +325,23 @@ Link with example: https://golang.org/pkg/html/#EscapeString
 
 ```go
 // Elements for the form
-header := hb.Heading3().text("Please sign in").Style("margin:0px;")
-emailLabel := hb.Label().Text("E-mail Address")
-emailInput := hb.Input().Class("form-control").Name("email").Placeholder("Enter e-mail address")
-emailFormGroup := hb.Div().Class("form-group").Child(emailLabel).Child(emailInput)
-passwordLabel := hb.Label().Child(hb.Text("Password"))
-passwordInput := hb.Input().Class("form-control").Name("password").Type("password").Placeholder("Enter password")
-passwordFormGroup := hb.Div().Class("form-group").Child(passwordLabel).Child(passwordInput)
-buttonLogin := hb.Button().Class("btn btn-lg btn-success btn-block").Text("Login")
-buttonRegister := hb.Hyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
-buttonForgotPassword := hb.Hyperlink().Class("btn btn-lg btn-warning float-right").Text("Forgot password?").Href("auth/password-restore")
+header := Heading3().text("Please sign in").Style("margin:0px;")
+emailLabel := Label().Text("E-mail Address")
+emailInput := Input().Class("form-control").Name("email").Placeholder("Enter e-mail address")
+emailFormGroup := Div().Class("form-group").Child(emailLabel).Child(emailInput)
+passwordLabel := Label().Child(hb.Text("Password"))
+passwordInput := Input().Class("form-control").Name("password").Type("password").Placeholder("Enter password")
+passwordFormGroup := Div().Class("form-group").Child(passwordLabel).Child(passwordInput)
+buttonLogin := Button().Class("btn btn-lg btn-success btn-block").Text("Login")
+buttonRegister := Hyperlink().Class("btn btn-lg btn-info float-left").Text("Register").Href("auth/register")
+buttonForgotPassword := Hyperlink().Class("btn btn-lg btn-warning float-right").Text("Forgot password?").Href("auth/password-restore")
 
 // Add elements in a card
-cardHeader := hb.Div().
+cardHeader := Div().
 	Class("card-header").
 	Child(header)
 
-cardBody := hb.Div().
+cardBody := Div().
 	Class("card-body").
 	Children([]*hb.Tag{
 		emailFormGroup,
@@ -346,14 +349,14 @@ cardBody := hb.Div().
 		buttonLogin,
 	})
 
-cardFooter := hb.Div().
+cardFooter := Div().
 	Class("card-footer").
 	Children([]*hb.Tag{
 		buttonRegister,
 		buttonForgotPassword,
 	})
 
-card := hb.Div().
+card := Div().
 	Class("card card-default").
 	Style("margin:0 auto;max-width: 360px;").
 	Children([]*hb.Tag{
@@ -469,7 +472,7 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 2024.10.01 - Added additional shortcuts for more concise declaration
 
-2023.12.17 - Added Map, Ternary, Text
+2023.12.17 - Added ToTags, Ternary, Text
 
 2023.12.10 - Added Swal method for quickly adding Sweetalert
 
