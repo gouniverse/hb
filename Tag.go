@@ -9,6 +9,7 @@ import (
 var _ TagInterface = (*Tag)(nil)
 
 // Tag represents an HTML tag
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 type Tag struct {
 	TagInterface
 	TagName       string
@@ -221,12 +222,6 @@ func (t *Tag) ChildrenIfElse(condition bool, childrenIf, childrenElse []TagInter
 	}
 
 	return t.AddChildren(childrenElse)
-}
-
-// ChildrenMap map a slice to a slice of tags and adds as children
-func (t *Tag) ChildrenMap(items []any, callback func(item any, index int) TagInterface) *Tag {
-	mappedItems := Map(items, callback)
-	return t.Children(mappedItems)
 }
 
 // Class shortcut for setting the "class" attribute

@@ -2,8 +2,25 @@ package hb
 
 import "golang.org/x/net/html"
 
-// Map a slice of anything to a slice of tags.
-func Map[T any](items []T, callback func(item T, index int) TagInterface) []TagInterface {
+// ToTags is a functional helper to convert a slice of items
+// to a slice of tags using a callback function
+//
+// Example:
+//
+// items := []string{"one", "two", "three"}
+// tags := ToTags(items, func(item string, index int) TagInterface {
+//   return NewSpan().Text(item)
+// })
+//
+// Output: <span>one</span><span>two</span><span>three</span>
+//
+// Parameters:
+// - items: The slice of items to convert to tags
+// - callback: A function that takes an item and index and returns a TagInterface
+//
+// Returns:
+// - []TagInterface: A slice of tags
+func ToTags[T any](items []T, callback func(item T, index int) TagInterface) []TagInterface {
 	tags := make([]TagInterface, len(items))
 	for i, item := range items {
 		tags[i] = callback(item, i)

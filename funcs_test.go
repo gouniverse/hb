@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestMap(t *testing.T) {
+func TestToTags(t *testing.T) {
 	items := []struct {
 		text string
 	}{
@@ -18,7 +18,7 @@ func TestMap(t *testing.T) {
 		},
 	}
 
-	spans := Map(items, func(item struct{ text string }, index int) TagInterface {
+	spans := ToTags(items, func(item struct{ text string }, index int) TagInterface {
 		return NewSpan().
 			Text(strconv.Itoa(index + 1)).
 			Text(". ").
