@@ -286,6 +286,15 @@ func (t *Tag) GetAttribute(key string) string {
 	return t.TagAttributes[key]
 }
 
+// For shortcut for setting the "for" attribute
+// It is only applicable to the <label> element
+// The value of the for attribute must be a single id for a labelable
+// form-related element in the same document as the <label> element.
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+func (t *Tag) For(forID string) *Tag {
+	return t.SetAttribute("for", forID)
+}
+
 // HasClass returns true if the tag has a class with the specified name.
 func (t *Tag) HasClass(className string) bool {
 	classNames := t.GetAttribute("class")
@@ -431,16 +440,74 @@ func (t *Tag) OnSubmit(js string) *Tag {
 	return t.SetAttribute("onsubmit", js)
 }
 
-// Src shortcut for setting the "src" attribute
+// ReadOnly shortcut for setting the "readonly" attribute
+// The readonly attribute is supported by text, search, url, tel, email,
+// password, date, month, week, time, datetime-local, and number
+// <input> types and the <textarea> form control elements.
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly
+func (t *Tag) ReadOnly(isReadOnly bool) *Tag {
+	if !isReadOnly {
+		t.RemoveAttribute("readonly")
+		return t
+	}
+
+	return t.SetAttribute("readonly", "readonly")
+}
+
+// Rel shortcut for setting the "rel" attribute
+// The rel attribute defines the relationship between a linked resource
+// and the current document. Valid on <link>, <a>, <area>, and <form>.
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types
+func (t *Tag) Rel(rel string) *Tag {
+	return t.SetAttribute("rel", rel)
+}
+
+// RemoveAttribute removes an attribute
+func (t *Tag) RemoveAttribute(key string) *Tag {
+	delete(t.TagAttributes, key)
+	return t
+}
+
+// Required shortcut for setting the "required" attribute
+// The required attribute is supported by text, search, url, tel,
+// email, password, date, month, week, time, datetime-local,
+// number, checkbox, radio, file, <input> types along with
+// the <select> and <textarea> form control elements.
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required
+func (t *Tag) Required(isRequired bool) *Tag {
+	if !isRequired {
+		t.RemoveAttribute("required")
+		return t
+	}
+
+	return t.SetAttribute("required", "required")
+}
+
+// Role shortcut for setting the "role" attribute
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
 func (t *Tag) Role(role string) *Tag {
 	return t.SetAttribute("role", role)
 }
 
+// Selected shortcut for setting the "selected" attribute
+// Only applies to the <option> element in a <select>, <optgroup>, or <datalist>.
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+func (t *Tag) Selected(isSelected bool) *Tag {
+	if !isSelected {
+		t.RemoveAttribute("selected")
+		return t
+	}
+
+	return t.SetAttribute("selected", "selected")
+}
+
 // SetAttribute sets the value of an attribute
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 func (t *Tag) SetAttribute(key, value string) *Tag {
 	if t.TagAttributes == nil {
 		t.TagAttributes = map[string]string{}
 	}
+
 	t.TagAttributes[key] = value
 	return t
 }

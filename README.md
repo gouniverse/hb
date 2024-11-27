@@ -15,6 +15,7 @@ Demos can be found on: https://golangui.com
 - Valid (X)HTML
 - Programmatically generate (X)HTML
 - Pure GO code
+- Full support, and autocomplete by your favorite editor
 - No need to transfer HTML files
 - No need to embed HTML files
 - No need for using template files
@@ -169,7 +170,11 @@ Examples can be found on: https://golangui.com
 - <b>OnMouseOut(js string)</b> - shortcut to add an "onmouseout" attribute
 - <b>OnMouseUp(js string)</b> - shortcut to add an "onmouseup" attribute
 - <b>OnSubmit(js string)</b> - shortcut to add an "onsubmit" attribute
+- <b>ReadOnly(isReadOnly bool)</b> - shortcut to add a "readonly" attribute
+- <b>Rel(rel string)</b> - shortcut to add a "rel" attribute
 - <b>Role(role string)</b> - shortcut to add a "role" attribute
+- <b>Required(isRequired bool)</b> - shortcut to add a "required" attribute
+- <b>Selected(isSelected bool)</b> - shortcut to add a "selected" attribute
 - <b>SetAttribute(key, value string)</b> - sets an attribute (i.e. id, class, etc)
 - <b>Src(src string)</b> - shortcut to add a "src" attribute
 - <b>Style(style string)</b> - shortcut to add a "style" attribute
@@ -458,7 +463,7 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 ## Changelog
 
-2024.11.26 - Added Aria attribute shortcut
+2024.11.26 - Added Aria, Readonly, Required, Selected
 
 2024.10.05 - Added HxIndicator
 
