@@ -565,3 +565,21 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 - GoHTMX (https://gitlab.com/go-htmx/go-htmx)
 
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=gouniverse/hb&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=gouniverse/hb&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=gouniverse/hb&type=Date"
+  />
+</picture>
