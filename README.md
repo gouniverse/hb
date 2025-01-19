@@ -43,11 +43,11 @@ import . "github.com/gouniverse/hb"
 // or, regular import, and type hb.* before using it each time
 // import "github.com/gouniverse/hb"
 	
-// 1. Create a div container with "Hello world" message
-div := Div().Class("container").Text("Hello world")
+// 1. Create a container div with a "Hello world" message inside
+container := Div().Class("container").Text("Hello world")
 
 // 2. Create a section with padding of 40px containing the container
-section := Section().Style("padding:40px;").Child(div)
+section := Section().Style("padding:40px;").Child(container)
 
 // 3. Render to HTML to display
 html := section.ToHTML()
@@ -567,3 +567,21 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 - GoHTMX (https://gitlab.com/go-htmx/go-htmx)
 
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=gouniverse/hb&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=gouniverse/hb&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=gouniverse/hb&type=Date"
+  />
+</picture>
