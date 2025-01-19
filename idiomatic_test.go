@@ -322,6 +322,102 @@ func TestNewImage(t *testing.T) {
 	}
 }
 
+func TestNewInput(t *testing.T) {
+	s := NewInput()
+	html := s.ToHTML()
+
+	if strings.Contains(html, "<input />") == false {
+		t.Error("Does not contain '<input />', Output:" + html)
+	}
+
+	if strings.Contains(html, "</input>") {
+		t.Error("Must not contain '</input>' as it is a self closing tag, Output:" + html)
+	}
+}
+
+func TestNewLabel(t *testing.T) {
+	s := NewLabel()
+	html := s.ToHTML()
+
+	if strings.Contains(html, "<label>") == false {
+		t.Error("Does not contain '<label>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</label>") == false {
+		t.Error("Does not contain '</label>', Output:" + html)
+	}
+}
+
+func TestNewLI(t *testing.T) {
+	li := NewLI()
+	html := li.ToHTML()
+
+	if strings.Contains(html, "<li>") == false {
+		t.Error("Does not contain '<li>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</li>") == false {
+		t.Error("Does not contain '</li>', Output:" + html)
+	}
+}
+
+func TestNewLink(t *testing.T) {
+	link := NewLink()
+	html := link.ToHTML()
+
+	if strings.Contains(html, "<link />") == false {
+		t.Error("Does not contain '<link />', Output:" + html)
+	}
+}
+
+func TestNewMain(t *testing.T) {
+	main := NewMain()
+	html := main.ToHTML()
+
+	if strings.Contains(html, "<main>") == false {
+		t.Error("Does not contain '<main>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</main>") == false {
+		t.Error("Does not contain '</main>', Output:" + html)
+	}
+}
+
+func TestNewMeta(t *testing.T) {
+	meta := NewMeta()
+	html := meta.ToHTML()
+
+	if strings.Contains(html, "<meta />") == false {
+		t.Error("Does not contain '<meta />', Output:" + html)
+	}
+}
+
+func TestNewNav(t *testing.T) {
+	nav := NewNav()
+	html := nav.ToHTML()
+
+	if strings.Contains(html, "<nav>") == false {
+		t.Error("Does not contain '<nav>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</nav>") == false {
+		t.Error("Does not contain '</nav>', Output:" + html)
+	}
+}
+
+func TestNewNavbar(t *testing.T) {
+	navbar := NewNavbar()
+	html := navbar.ToHTML()
+
+	if strings.Contains(html, "<navbar>") == false {
+		t.Error("Does not contain '<navbar>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</navbar>") == false {
+		t.Error("Does not contain '</navbar>', Output:" + html)
+	}
+}
+
 func TestNewOption(t *testing.T) {
 	e := NewOption()
 	html := e.ToHTML()

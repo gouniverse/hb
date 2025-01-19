@@ -6,6 +6,9 @@ package hb
 
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
+	"testing"
 	"text/template"
 )
 
@@ -181,10 +184,15 @@ type SwalOptions struct {
 	Timer              int    `json:"timer,omitempty"`
 	Toast              string `json:"toast,omitempty"`
 	Width              string `json:"width,omitempty"`
+	// The following are not standard Sweetalert2 options, do not export to JSON
+	RedirectURL     string `json:"-"`
+	RedirectSeconds int    `json:"-"`
 }
 
 // NewHTML creates pure HTML without surrounding tags
+// for safe escaped outut use NewText()
 // Shortcut method exists: Raw()
+// Deprecated: replaced by the new method NewRaw()
 func NewHTML(html string) *Tag {
 	return &Tag{
 		TagName:    "",
@@ -230,6 +238,14 @@ func NewSwal(options SwalOptions) *Tag {
 				` + options.ConfirmCallback + `
 			}
 		});`
+	} else {
+		swal += `;`
+	}
+
+	if options.RedirectURL != "" {
+		swal += `setTimeout(() => {
+			window.location.href = "` + options.RedirectURL + `";
+		}, ` + strconv.Itoa(options.RedirectSeconds) + `000);`
 	}
 
 	return NewScript(swal)
@@ -247,10 +263,70 @@ func NewInput() *Tag {
 	return &Tag{TagName: "input"}
 }
 
+// NewLabel represents a LABEL tag
+// Shortcut method exists: Label()
+func NewLabel() *Tag {
+	return &Tag{TagName: "label"}
+}
+
+// NewLI represents a LI tag
+// Shortcut method exists: LI()
+func NewLI() *Tag {
+	return &Tag{TagName: "li"}
+}
+
+// NewLink represents a LINK tag
+// Shortcut method exists: Link()
+func NewLink() *Tag {
+	return &Tag{TagName: "link"}
+}
+
+// NewMain represents a MAIN tag
+// Shortcut method exists: Main()
+func NewMain() *Tag {
+	return &Tag{TagName: "main"}
+}
+
+// NewMeta represents a META tag
+// Shortcut method exists: Meta()
+func NewMeta() *Tag {
+	return &Tag{TagName: "meta"}
+}
+
+// NewNav represents a NAV tag
+// Shortcut method exists: Nav()
+func NewNav() *Tag {
+	return &Tag{TagName: "nav"}
+}
+
+// NewNavbar represents a NAVBAR tag
+// Deprecated: replaced by the new method Navbar()
+func NewNavbar() *Tag {
+	return &Tag{TagName: "navbar"}
+}
+
+// NewOL represents a OL tag
+// Shortcut method exists: OL()
+func NewOL() *Tag {
+	return &Tag{TagName: "ol"}
+}
+
 // NewOption represents an OPTION tag
 // Shortcut method exists: Option()
 func NewOption() *Tag {
 	return &Tag{TagName: "option"}
+}
+
+// NewP represents a P tag
+// Shortcut method exists: P()
+func NewP() *Tag {
+	return &Tag{TagName: "p"}
+}
+
+// NewParagraph represents a IMG tag
+// Shortcut method exists: Paragraph()
+func NewParagraph() *Tag {
+	return &Tag{TagName: "p"}
 }
 
 // NewPod represents a wrapper tag
@@ -261,12 +337,39 @@ func NewPod() *Tag {
 	return &Tag{TagName: ""}
 }
 
+// NewPRE represents a PRE tag
+// Shortcut method exists: PRE()
+func NewPRE() *Tag {
+	return &Tag{TagName: "pre"}
+}
+
+// NewRaw creates pure escaped HTML without surrounding tags
+// for safe escaped outut use NewText()
+// Shortcut method exists: Raw()
+func NewRaw(html string) *Tag {
+	return &Tag{
+		TagName:    "",
+		TagContent: html,
+	}
+}
+
 // NewScript represents a SCRIPT tag
 // Shortcut method exists: Script()
 func NewScript(javascript string) *Tag {
 	return &Tag{
 		TagName:     "script",
 		TagChildren: []TagInterface{NewHTML(javascript)},
+	}
+}
+
+// NewScriptURL represents a SCRIPT tag with URL
+// Shortcut method exists: ScriptURL()
+func NewScriptURL(javascriptURL string) *Tag {
+	return &Tag{
+		TagName: "script",
+		TagAttributes: map[string]string{
+			"src": javascriptURL,
+		},
 	}
 }
 
@@ -286,6 +389,45 @@ func NewSelect() *Tag {
 // Shortcut method exists: Span()
 func NewSpan() *Tag {
 	return &Tag{TagName: "span"}
+}
+
+// NewStrong represents a STRONG tag
+// Shortcut method exists: Strong()
+func NewStrong() *Tag {
+	return &Tag{TagName: "strong"}
+}
+
+// NewStyle represents a STYLE tag
+// Shortcut method exists: Style()
+func NewStyle(css string) *Tag {
+	return &Tag{
+		TagName:     "style",
+		TagChildren: []TagInterface{NewHTML(css)},
+	}
+}
+
+// NewStyleURL represents a LINK tag with URL
+// Shortcut method exists: StyleURL()
+func NewStyleURL(styleURL string) *Tag {
+	return &Tag{
+		TagName: "link",
+		TagAttributes: map[string]string{
+			"href": styleURL,
+			"rel":  "stylesheet",
+		},
+	}
+}
+
+// NewSub represents a SUB tag
+// Shortcut method exists: Sub()
+func NewSub() *Tag {
+	return &Tag{TagName: "sub"}
+}
+
+// NewSup represents a SUP tag
+// Shortcut method exists: Sup()
+func NewSup() *Tag {
+	return &Tag{TagName: "sup"}
 }
 
 // NewTable represents a TABLE tag
@@ -324,6 +466,12 @@ func NewThead() *Tag {
 	return &Tag{TagName: "thead"}
 }
 
+// NewTfoot represents a TFOOT tag
+// Shortcut method exists: Tfoot()
+func NewTfoot() *Tag {
+	return &Tag{TagName: "tfoot"}
+}
+
 // NewTag creates a tag, with the specified name
 // useful for custom tags or ones that are not yet
 // added to the hb library
@@ -358,6 +506,12 @@ func NewTextArea() *Tag {
 	}
 }
 
+// NewTitle represents a TITLE tag
+// Shortcut method exists: Title()
+func NewTitle() *Tag {
+	return &Tag{TagName: "title"}
+}
+
 // NewUL represents a UL tag
 // Shortcut method exists: UL()
 func NewUL() *Tag {
@@ -382,4 +536,30 @@ func NewWebpage() *HtmlWebpage {
 // Shortcut method exists: Wrap()
 func NewWrap() *Tag {
 	return &Tag{TagName: ""}
+}
+
+func TestTagPRE(t *testing.T) {
+	tag := NewPRE()
+	h := tag.ToHTML()
+	if !strings.Contains(h, "<pre></pre>") {
+		t.Error("Does not contain '<pre></pre>'", "Output:"+h)
+	}
+}
+
+func TestTagOption(t *testing.T) {
+	tag := NewSelect()
+	option1 := NewOption().Attr("value", "key1").HTML("value1")
+	option2 := NewOption().Attr("value", "key2").Attr("selected", "selected").HTML("value2")
+	h := tag.AddChild(option1).AddChild(option2).ToHTML()
+	if !strings.Contains(h, "<select><option value=\"key1\">value1</option><option selected=\"selected\" value=\"key2\">value2</option></select>") {
+		t.Error("Does not contain '<select><option value=\"key1\">value1</option><option selected=\"selected\" value=\"key2\">value2</option></select>'", "Output:"+h)
+	}
+}
+
+func TestTagSelect(t *testing.T) {
+	tag := NewSelect()
+	h := tag.ToHTML()
+	if !strings.Contains(h, "<select></select>") {
+		t.Error("Does not contain '<select></select>'", "Output:"+h)
+	}
 }

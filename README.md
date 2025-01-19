@@ -466,6 +466,8 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 
 ## Changelog
 
+2025.01.19 - Added additional Sweetalert options to redirect after delay
+
 2024.11.26 - Added Aria, Readonly, Required, Selected
 
 2024.10.05 - Added HxIndicator

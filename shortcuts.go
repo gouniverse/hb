@@ -5,7 +5,6 @@ package hb
 // defined in idiomatic.go
 
 import (
-	"encoding/json"
 	"text/template"
 )
 
@@ -239,48 +238,48 @@ func Link() *Tag {
 // Main is a shortcut to create a new MAIN tag
 func Main(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "main"}).Children(children)
+	return NewMain().Children(children)
 }
 
 // Meta is a shortcut to create a new META tag
 func Meta() *Tag {
-	return (&Tag{TagName: "meta"})
+	return NewMeta()
 }
 
 // Nav is a shortcut to create a new NAV tag
 func Nav(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "nav"}).Children(children)
+	return NewNav().Children(children)
 }
 
 // Navbar is a shortcut to create a new NAVBAR tag
 func Navbar(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "navbar"}).Children(children)
+	return NewNavbar().Children(children)
 }
 
 // OL is a shortcut to create a new OL tag
 func OL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "ol"}).Children(children)
+	return NewOL().Children(children)
 }
 
 // Option is a shortcut to create a new OPTION tag
 func Option(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "option"}).Children(children)
+	return NewOption().Children(children)
 }
 
 // P is a shortcut to create a new P tag
 func P(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "p"}).Children(children)
+	return NewP().Children(children)
 }
 
 // Paragraph is a shortcut to create a new P tag
 func Paragraph(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "p"}).Children(children)
+	return NewParagraph().Children(children)
 }
 
 // PRE is a shortcut to create a new PRE tag
@@ -299,106 +298,69 @@ func Raw(html string) *Tag {
 
 // Script is a shortcut to create a new SCRIPT tag
 func Script(javascript string) *Tag {
-	return &Tag{
-		TagName:     "script",
-		TagChildren: []TagInterface{NewHTML(javascript)},
-	}
+	return NewScript(javascript)
 }
 
 // ScriptURL is a shortcut to create a new SCRIPT tag
 func ScriptURL(javascriptURL string) *Tag {
-	return &Tag{
-		TagName: "script",
-		TagAttributes: map[string]string{
-			"src": javascriptURL,
-		},
-	}
+	return NewScriptURL(javascriptURL)
 }
 
 // Section is a shortcut to create a new SECTION tag
 func Section(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "section"}).Children(children)
+	return NewSection().Children(children)
 }
 
 // Select is a shortcut to create a new SELECT tag
 func Select(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "select"}).Children(children)
+	return NewSelect().Children(children)
 }
 
 // Span is a shortcut to create a new SPAN tag
 func Span(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "span"}).Children(children)
+	return NewSpan().Children(children)
 }
 
 // Strong is a shortcut to create a new STRONG tag
 func Strong(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "strong"}).Children(children)
+	return NewStrong().Children(children)
 }
 
 // Style is a shortcut to create a new STYLE tag
 func Style(css string) *Tag {
-	return &Tag{
-		TagName:     "style",
-		TagChildren: []TagInterface{Raw(css)},
-	}
+	return NewStyle(css)
 }
 
 // StyleURL is a shortcut to create a new STYLE tag
 func StyleURL(styleURL string) *Tag {
-	return &Tag{
-		TagName: "link",
-		TagAttributes: map[string]string{
-			"href": styleURL,
-			"rel":  "stylesheet",
-		},
-	}
+	return NewStyleURL(styleURL)
 }
 
 // Sub is a shortcut to create a new SUB tag
 func Sub(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "sub"}).Children(children)
+	return NewSub().Children(children)
 }
 
 // Sup is a shortcut to create a new SUP tag
 func Sup(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "sup"}).Children(children)
+	return NewSup().Children(children)
 }
 
 // Swal generates a script with a Sweetalert2 dialog
 // Note! you must include the library yourself (i.e. CDN)
 func Swal(options SwalOptions) TagInterface {
-	optionsBytes, err := json.Marshal(options)
-
-	var optionsJSON string
-
-	if err != nil {
-		optionsJSON = ""
-	} else {
-		optionsJSON = string(optionsBytes)
-	}
-
-	swal := `Swal.fire(` + optionsJSON + `)`
-
-	if options.ConfirmCallback != "" {
-		swal += `.then((result) => {
-			if (result.isConfirmed) {
-				` + options.ConfirmCallback + `
-			}
-		});`
-	}
-
-	return Script(swal)
+	return NewSwal(options)
 }
 
 // Template is a shortcut to create a new TEMPLATE tag
 func Template() *Tag {
-	return &Tag{TagName: "template"}
+	return NewTemplate()
 }
 
 // Text creates pure escaped text without surrounding tags
@@ -414,61 +376,61 @@ func Text(text string) *Tag {
 
 // TextArea is a shortcut to create a new TEXTAREA tag
 func TextArea() *Tag {
-	return (&Tag{TagName: "textarea"})
+	return NewTextArea()
 }
 
 // Table is a shortcut to create a new TABLE tag
 func Table(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "table"}).Children(children)
+	return NewTable().Children(children)
 }
 
 // Tbody is a shortcut to create a new TBODY tag
 func Tbody(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "tbody"}).Children(children)
+	return NewTbody().Children(children)
 }
 
 // TD is a shortcut to create a new TD tag
 func TD(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "td"}).Children(children)
+	return NewTD().Children(children)
 }
 
 // TH is a shortcut to create a new TH tag
 func TH(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "th"}).Children(children)
+	return NewTH().Children(children)
 }
 
 // Thead is a shortcut to create a new THEAD tag
 func Thead(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "thead"}).Children(children)
+	return NewThead().Children(children)
 }
 
 // Tfoot is a shortcut to create a new TFOOT tag
 func Tfoot(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "tfoot"}).Children(children)
+	return NewTfoot().Children(children)
 }
 
 // TR is a shortcut to create a new TR tag
 func TR(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "tr"}).Children(children)
+	return NewTR().Children(children)
 }
 
 // Title is a shortcut to create a new title tag
 func Title(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "title"}).Children(children)
+	return NewTitle().Children(children)
 }
 
 // UL is a shortcut to create a new UL tag
 func UL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
-	return (&Tag{TagName: "ul"}).Children(children)
+	return NewUL().Children(children)
 }
 
 // Webpage is a shortcut to create a new HTML page

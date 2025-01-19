@@ -724,8 +724,8 @@ func TestSwal(t *testing.T) {
 	s := Swal(SwalOptions{Title: "Hello", Text: "World"})
 	html := s.ToHTML()
 
-	if strings.Contains(html, `<script>Swal.fire({"text":"World","title":"Hello"})</script>`) == false {
-		t.Error(`Does not contain '<script>Swal.fire({"text":"World","title":"Hello"})</script>', Output:` + html)
+	if strings.Contains(html, `<script>Swal.fire({"text":"World","title":"Hello"});</script>`) == false {
+		t.Error(`Does not contain '<script>Swal.fire({"text":"World","title":"Hello"});</script>', Output:` + html)
 	}
 }
 
