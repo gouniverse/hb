@@ -44,6 +44,21 @@ type SwalOptions struct {
 }
 
 func swalToJS(options SwalOptions) string {
+	// By default, show the cancel button if text is specified
+	if options.CancelButtonText != "" && !options.ShowCancelButton {
+		options.ShowCancelButton = true
+	}
+
+	// By default, show the confirm button if text is specified
+	if options.ConfirmButtonText != "" && !options.ShowConfirmButton {
+		options.ShowConfirmButton = true
+	}
+
+	// By default, show the deny button if text is specified
+	if options.DenyButtonText != "" && !options.ShowDenyButton {
+		options.ShowDenyButton = true
+	}
+
 	optionsBytes, err := json.Marshal(options)
 
 	var optionsJSON string
