@@ -28,9 +28,9 @@ type SwalOptions struct {
 	ImageAlt           string `json:"imageAlt,omitempty"`
 	Padding            string `json:"padding,omitempty"`
 	Position           string `json:"position,omitempty"`
-	ShowCancelButton   bool   `json:"showCancelButton,omitempty"`
-	ShowConfirmButton  bool   `json:"showConfirmButton,omitempty"`
-	ShowDenyButton     bool   `json:"showDenyButton,omitempty"`
+	ShowCancelButton   bool   `json:"showCancelButton"`
+	ShowConfirmButton  bool   `json:"showConfirmButton"`
+	ShowDenyButton     bool   `json:"showDenyButton"`
 	Text               string `json:"text,omitempty"`
 	TimerProgressBar   bool   `json:"timerProgressBar,omitempty"`
 	Title              string `json:"title,omitempty"`
