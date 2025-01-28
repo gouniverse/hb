@@ -35,7 +35,7 @@ type SwalOptions struct {
 	TimerProgressBar   bool   `json:"timerProgressBar,omitempty"`
 	Title              string `json:"title,omitempty"`
 	Timer              int    `json:"timer,omitempty"`
-	Toast              string `json:"toast,omitempty"`
+	Toast              bool   `json:"toast,omitempty"`
 	Width              string `json:"width,omitempty"`
 
 	// The following are not standard Sweetalert2 options, do not export to JSON
