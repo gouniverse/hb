@@ -11,7 +11,6 @@ var _ TagInterface = (*Tag)(nil)
 // Tag represents an HTML tag
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 type Tag struct {
-	TagInterface
 	TagName       string
 	TagContent    string
 	TagAttributes map[string]string
@@ -103,7 +102,7 @@ func (t *Tag) Attrs(attrs map[string]string) *Tag {
 	return t
 }
 
-// AttrsIfF shortcut for setting multiple attributes via function if a condition is met
+// AttrsIf shortcut for setting multiple attributes if a condition is met
 func (t *Tag) AttrsIf(condition bool, attrs map[string]string) *Tag {
 	if condition {
 		for key, value := range attrs {
@@ -208,7 +207,7 @@ func (t *Tag) Children(children []TagInterface) *Tag {
 	return t.AddChildren(children)
 }
 
-// ChildrenIfF adds children if a condition is met
+// ChildrenIf adds children if a condition is met
 func (t *Tag) ChildrenIf(condition bool, children []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(children)
@@ -391,7 +390,7 @@ func (t *Tag) OnKeyDown(js string) *Tag {
 	return t.SetAttribute("onkeydown", js)
 }
 
-// OnKeyPress shortcut for setting the "onkeydown" attribute
+// OnKeyPress shortcut for setting the "onkeypress" attribute
 func (t *Tag) OnKeyPress(js string) *Tag {
 	return t.SetAttribute("onkeypress", js)
 }
@@ -470,7 +469,9 @@ func (t *Tag) Rel(rel string) *Tag {
 
 // RemoveAttribute removes an attribute
 func (t *Tag) RemoveAttribute(key string) *Tag {
-	delete(t.TagAttributes, key)
+	if t.TagAttributes != nil {
+		delete(t.TagAttributes, key)
+	}
 	return t
 }
 
