@@ -6,6 +6,7 @@ import (
 	"github.com/gouniverse/hb"
 )
 
+// user is a sample struct used for benchmarking.
 var user = struct {
 	FirstName      string
 	FavoriteColors []string
@@ -18,39 +19,38 @@ var user = struct {
 	EscapedContent: "<div><div><div>Escaped</div></div></div>",
 }
 
-var navigation = []struct {
-	Item string
-	Link string
-}{
-	{
-		Item: "Link 1",
-		Link: "http://www.mytest.com/",
-	}, {
-		Item: "Link 2",
-		Link: "http://www.mytest.com/",
-	}, {
-		Item: "Link 3",
-		Link: "http://www.mytest.com/",
-	},
-}
-
-// go test -bench=^Benchmark*  -benchtime 5s -count 2 -cpu 1,4
+// BenchmarkPageWithHeaderAndUL benchmarks the creation of a page with a header and unordered list.
+// To run this benchmark, use the following command:
+// go test -bench=^BenchmarkPageWithHeaderAndUL*  -benchtime 5s -count 2 -cpu 1,4
+//
+// Flags explanation:
+// -bench=^BenchmarkPageWithHeaderAndUL*: specifies to run benchmarks matching the name "BenchmarkPageWithHeaderAndUL".
+// -benchtime=5s: specifies the minimum running time for each benchmark to be 5 seconds.
+// -count=2: specifies that each benchmark will be run 2 times.
+// -cpu=1,4: specifies the number of CPUs to use for running benchmarks (1 and 4 in this case).
+//
+// To see the number of allocations, use the -benchmem flag:
+// go test -bench=^BenchmarkPageWithHeaderAndUL* -benchmem
+//
+// To run profiling, use the following command from the project root:
+// task profile
 func BenchmarkPageWithHeaderAndUL(b *testing.B) {
-	// run the benchmark function b.N times
-	for n := 0; n < b.N; n++ {
-		ul := hb.UL()
-		for i := 0; i < len(user.FavoriteColors); i++ {
-			ul.Child(hb.LI().HTML(user.FavoriteColors[i]))
-		}
-
-		page := hb.NewTag("html").
-			Child(hb.NewTag("body").
-				Child(hb.Heading1().HTML(user.FirstName)).
-				Child(hb.Paragraph().HTML("Here's a list of your favorite colors:")).
-				Child(ul))
-
-		page.ToHTML()
-	}
-
+	b.ResetTimer()
 	b.ReportAllocs()
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			ul := hb.UL()
+			for i := 0; i < len(user.FavoriteColors); i++ {
+				li := hb.LI()
+				li.Text(user.FavoriteColors[i]) // Use Text to reduce allocations
+				ul.Child(li)
+			}
+			page := hb.NewTag("html"). // Create a new HTML tag
+							Child(hb.NewTag("body"). // Add a body tag as a child
+											Child(hb.Heading1().Text(user.FirstName)).                            // Add an H1 heading with the user's first name, using Text to reduce allocations
+											Child(hb.Paragraph().Text("Here's a list of your favorite colors:")). // Add a paragraph, using Text to reduce allocations
+											Child(ul))                                                            // Add the unordered list
+			page.ToHTML() // Render the HTML page
+		}
+	})
 }

@@ -25,11 +25,22 @@ func (t *Tag) Action(action string) *Tag {
 
 // AddClass adds a new class name to the tag attribute list.
 func (t *Tag) AddClass(className string) *Tag {
-	classNamesArray := strings.Split(t.GetAttribute("class"), " ")
-	if !slices.Contains(classNamesArray, className) {
-		classNamesArray = append(classNamesArray, className)
+	classValue := t.GetAttribute("class")
+	if classValue == "" {
+		return t.SetAttribute("class", className)
 	}
-	return t.SetAttribute("class", strings.Trim(strings.Join(classNamesArray, " "), " "))
+
+	classNamesArray := strings.Split(classValue, " ")
+	if slices.Contains(classNamesArray, className) {
+		return t
+	}
+
+	var sb strings.Builder
+	sb.WriteString(classValue)
+	sb.WriteString(" ")
+	sb.WriteString(className)
+
+	return t.SetAttribute("class", sb.String())
 }
 
 // AddStyle adds a new class name to the tag attribute list.
@@ -656,7 +667,13 @@ func (t Tag) attrsToString() string {
 
 	sort.Strings(attrs)
 
-	return " " + strings.Join(attrs, " ")
+	var sb strings.Builder
+	for _, attr := range attrs {
+		sb.WriteString(" ")
+		sb.WriteString(attr)
+	}
+
+	return sb.String()
 }
 
 // attrToString converts a single key/value attribute to string
@@ -677,15 +694,14 @@ func (t Tag) childrenToString() string {
 		return ""
 	}
 
-	var str string
-
+	var sb strings.Builder
 	for _, child := range t.TagChildren {
 		if child == nil {
 			continue
 		}
 
-		str += child.ToHTML()
+		sb.WriteString(child.ToHTML())
 	}
 
-	return str
+	return sb.String()
 }
