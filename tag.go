@@ -43,7 +43,7 @@ func (t *Tag) AddClass(className string) *Tag {
 	return t.SetAttribute("class", sb.String())
 }
 
-// AddStyle adds a new class name to the tag attribute list.
+// AddStyle adds a new style to the tag attribute list.
 func (t *Tag) AddStyle(style string) *Tag {
 	styles := t.GetAttribute("style")
 	if styles == "" {
@@ -103,7 +103,7 @@ func (t *Tag) Attrs(attrs map[string]string) *Tag {
 	return t
 }
 
-// AttrsIf shortcut for setting multiple attributes if a condition is met
+// AttrsIfF shortcut for setting multiple attributes via function if a condition is met
 func (t *Tag) AttrsIf(condition bool, attrs map[string]string) *Tag {
 	if condition {
 		for key, value := range attrs {
@@ -113,7 +113,7 @@ func (t *Tag) AttrsIf(condition bool, attrs map[string]string) *Tag {
 	return t
 }
 
-// AttrsIf shortcut for setting multiple attributes via function if a condition is met
+// AttrsIfF shortcut for setting multiple attributes via function if a condition is met
 func (t *Tag) AttrsIfF(condition bool, attrsFunc func() map[string]string) *Tag {
 	if condition {
 		for key, value := range attrsFunc() {
@@ -185,7 +185,7 @@ func (t *Tag) ChildIf(condition bool, child TagInterface) *Tag {
 	return t
 }
 
-// ChildIf adds a child using function if a condition is met
+// ChildIfF adds a child using function if a condition is met
 func (t *Tag) ChildIfF(condition bool, childFunc func() TagInterface) *Tag {
 	if condition {
 		return t.AddChild(childFunc())
@@ -208,7 +208,7 @@ func (t *Tag) Children(children []TagInterface) *Tag {
 	return t.AddChildren(children)
 }
 
-// ChildrenIf adds children if a condition is met
+// ChildrenIfF adds children if a condition is met
 func (t *Tag) ChildrenIf(condition bool, children []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(children)
@@ -217,7 +217,7 @@ func (t *Tag) ChildrenIf(condition bool, children []TagInterface) *Tag {
 	return t
 }
 
-// ChildrenIf adds children using function if a condition is met
+// ChildrenIfF adds children using function if a condition is met
 func (t *Tag) ChildrenIfF(condition bool, childrenFunc func() []TagInterface) *Tag {
 	if condition {
 		return t.AddChildren(childrenFunc())
@@ -322,7 +322,7 @@ func (t *Tag) HTMLIf(condition bool, html string) *Tag {
 	return t
 }
 
-// HTMLIfElse adds html if a condition is met
+// HTMLIfElse adds HTML if a condition is met
 func (t *Tag) HTMLIfElse(condition bool, htmlIf, htmlElse string) *Tag {
 	if condition {
 		return t.AddHTML(htmlIf)
