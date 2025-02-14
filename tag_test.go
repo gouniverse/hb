@@ -677,6 +677,32 @@ func TestErrorConditions(t *testing.T) {
 	}
 }
 
+func TestHasAttributeValue(t *testing.T) {
+	img := NewImage().Attr("name", "viewport")
+	if !img.HasAttributeValue("name", "viewport") {
+		t.Fatal("Expected HasAttributeValue to return true")
+	}
+	if img.HasAttributeValue("name", "other") {
+		t.Fatal("Expected HasAttributeValue to return false")
+	}
+}
+
+func TestHasAttribute(t *testing.T) {
+	img := NewImage().Attr("name", "viewport")
+	if !img.HasAttribute("name") {
+		t.Fatal("Expected HasAttribute to return true")
+	}
+	if img.HasAttribute("other") {
+		t.Fatal("Expected HasAttribute to return false")
+	}
+
+	// Test the nil case
+	imgNil := NewImage()
+	if imgNil.HasAttribute("name") {
+		t.Fatal("Expected HasAttribute to return false for nil case")
+	}
+}
+
 func TestHTML5Compliance(t *testing.T) {
 	// Test case 1: Correct use of the "required" attribute on an input element
 	input := NewInput().Type("text").Required(true).ToHTML()

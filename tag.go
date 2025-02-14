@@ -296,6 +296,15 @@ func (t *Tag) HasAttributeValue(key, value string) bool {
 	return t.GetAttribute(key) == value
 }
 
+// HasAttribute returns true if the tag has an attribute with the specified key.
+func (t *Tag) HasAttribute(key string) bool {
+	if t.TagAttributes == nil {
+		return false
+	}
+	_, exists := t.TagAttributes[key]
+	return exists
+}
+
 // For shortcut for setting the "for" attribute
 // It is only applicable to the <label> element
 // The value of the for attribute must be a single id for a labelable
