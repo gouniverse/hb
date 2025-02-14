@@ -36,6 +36,60 @@ func TestHx(t *testing.T) {
 	}
 }
 
+func TestSwapMethod(t *testing.T) {
+	tests := []struct {
+		method   SwapMethod
+		expected string
+	}{
+		{SwapInnerHTML, "innerHTML"},
+		{SwapOuterHTML, "outerHTML"},
+		{SwapBeforeEnd, "beforeend"},
+		{SwapAfterEnd, "afterend"},
+		{SwapBeforeBegin, "beforebegin"},
+		{SwapAfterBegin, "afterbegin"},
+		{SwapNone, "none"},
+	}
+
+	for _, tt := range tests {
+		t.Run(string(tt.method), func(t *testing.T) {
+			btn := Button().HxSwap(tt.method).ToHTML()
+			if !strings.Contains(btn, `hx-swap="`+tt.expected+`"`) {
+				t.Errorf("Expected hx-swap=%q, got: %s", tt.expected, btn)
+			}
+		})
+	}
+}
+
+func TestHxValidation(t *testing.T) {
+	t.Run("EmptyValue", func(t *testing.T) {
+		btn := Button().HxPost("").ToHTML()
+		if btn != "<button></button>" {
+			t.Errorf("Expected empty button, got: %s", btn)
+		}
+	})
+
+	t.Run("EmptyName", func(t *testing.T) {
+		btn := Button().Hx("", "value").ToHTML()
+		if btn != "<button></button>" {
+			t.Errorf("Expected empty button, got: %s", btn)
+		}
+	})
+}
+
+func BenchmarkHxMethods(b *testing.B) {
+	b.Run("HxPost", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			Button().HxPost("http://test.com").ToHTML()
+		}
+	})
+
+	b.Run("HxSwap", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			Button().HxSwap(SwapOuterHTML).ToHTML()
+		}
+	})
+}
+
 func TestHxShorts(t *testing.T) {
 	input := Button().
 		HxPost("http://test.com").
