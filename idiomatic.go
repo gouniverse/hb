@@ -501,6 +501,54 @@ func NewWrap() *Tag {
 	return &Tag{TagName: ""}
 }
 
+// NewAddress represents an ADDRESS tag
+// Shortcut method exists: Address()
+func NewAddress() *Tag {
+	return &Tag{TagName: "address"}
+}
+
+// NewB represents a B tag
+// Shortcut method exists: B()
+func NewB() *Tag {
+	return &Tag{TagName: "b"}
+}
+
+// NewBold represents a B tag
+// Shortcut method exists: Bold()
+func NewBold() *Tag {
+	return &Tag{TagName: "b"}
+}
+
+// NewCanvas represents a CANVAS tag
+// Shortcut method exists: Canvas()
+func NewCanvas() *Tag {
+	return &Tag{TagName: "canvas"}
+}
+
+// NewDialog represents a DIALOG tag
+// Shortcut method exists: Dialog()
+func NewDialog() *Tag {
+	return &Tag{TagName: "dialog"}
+}
+
+// NewFieldSet represents a FIELDSET tag
+// Shortcut method exists: FieldSet()
+func NewFieldSet() *Tag {
+	return &Tag{TagName: "fieldset"}
+}
+
+// NewIframe represents an IFRAME tag
+// Shortcut method exists: Iframe()
+func NewIframe() *Tag {
+	return &Tag{TagName: "iframe"}
+}
+
+// NewImg represents an IMG tag
+// Shortcut method exists: Img()
+func NewImg() *Tag {
+	return &Tag{TagName: "img"}
+}
+
 func TestTagPRE(t *testing.T) {
 	tag := NewPRE()
 	h := tag.ToHTML()
