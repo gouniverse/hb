@@ -611,3 +611,88 @@ func TestTag_childrenToString(t *testing.T) {
 		t.Fatal(`Expected "<input id="first" name="first_name" value="John" />", got ` + str)
 	}
 }
+
+func BenchmarkTag_ToHTML(b *testing.B) {
+	tag := NewDiv().
+		Class("container").
+		Style("padding: 20px").
+		Child(NewSpan().Text("Hello, world!"))
+
+	for i := 0; i < b.N; i++ {
+		tag.ToHTML()
+	}
+}
+
+func TestComplexHTML(t *testing.T) {
+	html := NewWebpage().
+		SetTitle("Complex HTML Test").
+		AddStyle(`body { font-family: sans-serif; }`).
+		AddChild(
+			NewDiv().
+				Class("container").
+				Style("margin: 20px").
+				Child(
+					NewHeading1().
+						Text("Welcome!").
+						ID("main-heading"),
+				).
+				Child(
+					NewParagraph().
+						HTML("This is a <strong>complex</strong> HTML structure for testing purposes."),
+				),
+		).
+		ToHTML()
+
+	html = strings.ReplaceAll(html, DEFAULT_FAVICON, "")
+	expected := `<!DOCTYPE html><html><head><meta charset="utf-8" /><meta content="width=device-width, initial-scale=1.0" name="viewport" /><title>Complex HTML Test</title><link href="" rel="icon" type="image/x-icon" /><style>body { font-family: sans-serif; }</style></head><body><div class="container" style="margin: 20px"><h1 id="main-heading">Welcome!</h1><p>This is a <strong>complex</strong> HTML structure for testing purposes.</p></div></body></html>`
+	expected = strings.ReplaceAll(expected, DEFAULT_FAVICON, "")
+	if html != expected {
+		t.Errorf("Complex HTML output does not match expected value.\nGot:\n%s\nExpected:\n%s", html, expected)
+	}
+}
+
+func TestErrorConditions(t *testing.T) {
+	// Test case 1: Invalid attribute name
+	div := NewDiv().Attr("invalid-attr!", "value")
+	html := div.ToHTML()
+	if strings.Contains(html, `invalid-attr`) { // The invalid attribute might be dropped or escaped
+		t.Logf("Invalid attribute test: %s", html) // Log the output for inspection
+	}
+
+	// Test case 2: Empty tag name
+	tag := &Tag{
+		TagName:    "",
+		TagContent: "Some content",
+	}
+	html = tag.ToHTML()
+	if html != "Some content" {
+		t.Errorf("Expected 'Some content', got '%s'", html)
+	}
+
+	// Test case 3: Nil Tag
+	var nilTag *Tag
+	html = nilTag.ToHTML()
+	if html != "" {
+		t.Errorf("Expected empty string for nil tag, got '%s'", html)
+	}
+}
+
+func TestHTML5Compliance(t *testing.T) {
+	// Test case 1: Correct use of the "required" attribute on an input element
+	input := NewInput().Type("text").Required(true).ToHTML()
+	if !strings.Contains(input, `required="required"`) {
+		t.Errorf("Expected 'required' attribute, got '%s'", input)
+	}
+
+	// Test case 2: Correct use of the "alt" attribute on an image element
+	img := NewImage().Src("test.jpg").Alt("Test image").ToHTML()
+	if !strings.Contains(img, `alt="Test image"`) {
+		t.Errorf("Expected 'alt' attribute, got '%s'", img)
+	}
+
+	// Test case 3: Correct use of the "type" attribute on a button element
+	button := NewButton().Type("submit").Text("Submit").ToHTML()
+	if !strings.Contains(button, `type="submit"`) {
+		t.Errorf("Expected 'type' attribute, got '%s'", button)
+	}
+}
