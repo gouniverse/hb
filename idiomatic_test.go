@@ -686,3 +686,16 @@ func TestNewA(t *testing.T) {
 		t.Error("Does not contain '</a>', Output:" + html)
 	}
 }
+
+func TestNewAbbr(t *testing.T) {
+	abbr := NewAbbr()
+	html := abbr.ToHTML()
+
+	if strings.Contains(html, "<abbr>") == false {
+		t.Error("Does not contain '<abbr>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</abbr>") == false {
+		t.Error("Does not contain '</abbr>', Output:" + html)
+	}
+}

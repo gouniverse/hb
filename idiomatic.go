@@ -476,7 +476,11 @@ func NewUL() *Tag {
 // NewVideo represents a VIDEO tag
 // Shortcut method exists: Video()
 func NewVideo() *Tag {
-	return &Tag{TagName: "video"}
+	return NewTag("video")
+}
+
+func NewAbbr() *Tag {
+	return NewTag("abbr")
 }
 
 // NewWebpage returns a webpage instance
