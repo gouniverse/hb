@@ -621,3 +621,55 @@ func TestNewWrap(t *testing.T) {
 		t.Error(`Must be exactly '`+expected+`', Output: `, html)
 	}
 }
+
+func TestNewArticle(t *testing.T) {
+	article := NewArticle()
+	html := article.ToHTML()
+
+	if strings.Contains(html, "<article>") == false {
+		t.Error("Does not contain '<article>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</article>") == false {
+		t.Error("Does not contain '</article>', Output:" + html)
+	}
+}
+
+func TestNewAside(t *testing.T) {
+	aside := NewAside()
+	html := aside.ToHTML()
+
+	if strings.Contains(html, "<aside>") == false {
+		t.Error("Does not contain '<aside>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</aside>") == false {
+		t.Error("Does not contain '</aside>', Output:" + html)
+	}
+}
+
+func TestNewFigure(t *testing.T) {
+	figure := NewFigure()
+	html := figure.ToHTML()
+
+	if strings.Contains(html, "<figure>") == false {
+		t.Error("Does not contain '<figure>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</figure>") == false {
+		t.Error("Does not contain '</figure>', Output:" + html)
+	}
+}
+
+func TestNewVideo(t *testing.T) {
+	video := NewVideo()
+	html := video.ToHTML()
+
+	if strings.Contains(html, "<video>") == false {
+		t.Error("Does not contain '<video>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</video>") == false {
+		t.Error("Does not contain '</video>', Output:" + html)
+	}
+}

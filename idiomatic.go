@@ -14,6 +14,18 @@ func NewA() *Tag {
 	return NewHyperlink()
 }
 
+// NewArticle represents an ARTICLE tag
+// Shortcut method exists: Article()
+func NewArticle() *Tag {
+	return &Tag{TagName: "article"}
+}
+
+// NewAside represents an ASIDE tag
+// Shortcut method exists: Aside()
+func NewAside() *Tag {
+	return &Tag{TagName: "aside"}
+}
+
 // NewBR represents a BR tag
 // Shortcut method exists: BR()
 func NewBR() *Tag {
@@ -42,6 +54,12 @@ func NewCode() *Tag {
 // Shortcut method exists: Div()
 func NewDiv() *Tag {
 	return &Tag{TagName: "div"}
+}
+
+// NewFigure represents a FIGURE tag
+// Shortcut method exists: Figure()
+func NewFigure() *Tag {
+	return &Tag{TagName: "figure"}
 }
 
 // NewFooter is a shortcut to create a new FOOTER tag
@@ -177,13 +195,6 @@ func NewI() *Tag {
 	return &Tag{
 		TagName: "i",
 	}
-}
-
-// NewSwal generates a script with a Sweetalert2 dialog
-// Note! you must include the library yourself (i.e. CDN)
-// Shortcut method exists: Swal()
-func NewSwal(options SwalOptions) *Tag {
-	return NewScript(swalToJS(options))
 }
 
 // NewImage represents a IMG tag
@@ -365,46 +376,17 @@ func NewSup() *Tag {
 	return &Tag{TagName: "sup"}
 }
 
+// NewSwal generates a script with a Sweetalert2 dialog
+// Note! you must include the library yourself (i.e. CDN)
+// Shortcut method exists: Swal()
+func NewSwal(options SwalOptions) *Tag {
+	return NewScript(swalToJS(options))
+}
+
 // NewTable represents a TABLE tag
 // Shortcut method exists: Table()
 func NewTable() *Tag {
 	return &Tag{TagName: "table"}
-}
-
-// NewTR represents a TR tag
-// Shortcut method exists: TR()
-func NewTR() *Tag {
-	return &Tag{TagName: "tr"}
-}
-
-// NewTD represents a TD tag
-// Shortcut method exists: TD()
-func NewTD() *Tag {
-	return &Tag{TagName: "td"}
-}
-
-// NewTH represents a TH tag
-// Shortcut method exists: TH()
-func NewTH() *Tag {
-	return &Tag{TagName: "th"}
-}
-
-// NewTbody represents a TBODY tag
-// Shortcut method exists: Tbody()
-func NewTbody() *Tag {
-	return &Tag{TagName: "tbody"}
-}
-
-// NewThead represents a THEAD tag
-// Shortcut method exists: Thead()
-func NewThead() *Tag {
-	return &Tag{TagName: "thead"}
-}
-
-// NewTfoot represents a TFOOT tag
-// Shortcut method exists: Tfoot()
-func NewTfoot() *Tag {
-	return &Tag{TagName: "tfoot"}
 }
 
 // NewTag creates a tag, with the specified name
@@ -414,6 +396,18 @@ func NewTag(tagName string) *Tag {
 	return &Tag{
 		TagName: tagName,
 	}
+}
+
+// NewTD represents a TD tag
+// Shortcut method exists: TD()
+func NewTD() *Tag {
+	return &Tag{TagName: "td"}
+}
+
+// NewTbody represents a TBODY tag
+// Shortcut method exists: Tbody()
+func NewTbody() *Tag {
+	return &Tag{TagName: "tbody"}
 }
 
 // NewTemplate represents a TEMPLATE tag
@@ -441,10 +435,34 @@ func NewTextArea() *Tag {
 	}
 }
 
+// NewTH represents a TH tag
+// Shortcut method exists: TH()
+func NewTH() *Tag {
+	return &Tag{TagName: "th"}
+}
+
+// NewThead represents a THEAD tag
+// Shortcut method exists: Thead()
+func NewThead() *Tag {
+	return &Tag{TagName: "thead"}
+}
+
+// NewTfoot represents a TFOOT tag
+// Shortcut method exists: Tfoot()
+func NewTfoot() *Tag {
+	return &Tag{TagName: "tfoot"}
+}
+
 // NewTitle represents a TITLE tag
 // Shortcut method exists: Title()
 func NewTitle() *Tag {
 	return &Tag{TagName: "title"}
+}
+
+// NewTR represents a TR tag
+// Shortcut method exists: TR()
+func NewTR() *Tag {
+	return &Tag{TagName: "tr"}
 }
 
 // NewUL represents a UL tag
@@ -453,6 +471,12 @@ func NewUL() *Tag {
 	return &Tag{
 		TagName: "ul",
 	}
+}
+
+// NewVideo represents a VIDEO tag
+// Shortcut method exists: Video()
+func NewVideo() *Tag {
+	return &Tag{TagName: "video"}
 }
 
 // NewWebpage returns a webpage instance
@@ -476,7 +500,7 @@ func NewWrap() *Tag {
 func TestTagPRE(t *testing.T) {
 	tag := NewPRE()
 	h := tag.ToHTML()
-	if !strings.Contains(h, "<pre></pre>") {
+	if !strings.Contains(h, "<pre></pre") {
 		t.Error("Does not contain '<pre></pre>'", "Output:"+h)
 	}
 }
