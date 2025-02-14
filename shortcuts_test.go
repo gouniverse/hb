@@ -895,3 +895,12 @@ func TestWebpage(t *testing.T) {
 		t.Error("Does not end with: ", suffix, ", Output: ", html)
 	}
 }
+
+func TestWrap(t *testing.T) {
+	w := Wrap()
+	html := w.ToHTML()
+
+	if html != "" {
+		t.Error("Expected empty string for Wrap(), Output:", html)
+	}
+}

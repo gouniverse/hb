@@ -10,6 +10,20 @@ import (
 	"text/template"
 )
 
+// NewAbbr represents an ABBR tag
+// Shortcut method exists: Abbr()
+func NewAbbr() *Tag {
+	return NewTag("abbr")
+}
+
+// NewAddress represents an ADDRESS tag
+// Shortcut method exists: Address()
+func NewAddress() *Tag {
+	return &Tag{TagName: "address"}
+}
+
+// NewA represents an A tag
+// Shortcut method exists: A()
 func NewA() *Tag {
 	return NewHyperlink()
 }
@@ -26,6 +40,18 @@ func NewAside() *Tag {
 	return &Tag{TagName: "aside"}
 }
 
+// NewB represents a B tag
+// Shortcut method exists: B()
+func NewB() *Tag {
+	return &Tag{TagName: "b"}
+}
+
+// NewBold represents a B tag
+// Shortcut method exists: Bold()
+func NewBold() *Tag {
+	return &Tag{TagName: "b"}
+}
+
 // NewBR represents a BR tag
 // Shortcut method exists: BR()
 func NewBR() *Tag {
@@ -36,6 +62,12 @@ func NewBR() *Tag {
 // Shortcut method exists: Button()
 func NewButton() *Tag {
 	return &Tag{TagName: "button"}
+}
+
+// NewCanvas represents a CANVAS tag
+// Shortcut method exists: Canvas()
+func NewCanvas() *Tag {
+	return &Tag{TagName: "canvas"}
 }
 
 // NewCaption is a shortcut to create a new CAPTION tag
@@ -50,10 +82,22 @@ func NewCode() *Tag {
 	return NewTag("code")
 }
 
+// NewDialog represents a DIALOG tag
+// Shortcut method exists: Dialog()
+func NewDialog() *Tag {
+	return &Tag{TagName: "dialog"}
+}
+
 // NewDiv represents a DIV tag
 // Shortcut method exists: Div()
 func NewDiv() *Tag {
 	return &Tag{TagName: "div"}
+}
+
+// NewFieldSet represents a FIELDSET tag
+// Shortcut method exists: FieldSet()
+func NewFieldSet() *Tag {
+	return &Tag{TagName: "fieldset"}
 }
 
 // NewFigure represents a FIGURE tag
@@ -72,6 +116,42 @@ func NewFooter() *Tag {
 // Shortcut method exists: Form()
 func NewForm() *Tag {
 	return &Tag{TagName: "form"}
+}
+
+// NewH1 represents a H1 tag
+// Shortcut method exists: H1()
+func NewH1() *Tag {
+	return NewHeading1()
+}
+
+// NewH2 represents a H2 tag
+// Shortcut method exists: H2()
+func NewH2() *Tag {
+	return NewHeading2()
+}
+
+// NewH3 represents a H3 tag
+// Shortcut method exists: H3()
+func NewH3() *Tag {
+	return NewHeading3()
+}
+
+// NewH4 represents a H4 tag
+// Shortcut method exists: H4()
+func NewH4() *Tag {
+	return NewHeading4()
+}
+
+// NewH5 represents a H5 tag
+// Shortcut method exists: H5()
+func NewH5() *Tag {
+	return NewHeading5()
+}
+
+// NewH6 represents a H6 tag
+// Shortcut method exists: H6()
+func NewH6() *Tag {
+	return NewHeading6()
 }
 
 // NewHeader is a shortcut to create a new HEADER tag
@@ -128,42 +208,6 @@ func NewHeading6() *Tag {
 	}
 }
 
-// NewH1 represents a H1 tag
-// Shortcut method exists: H1()
-func NewH1() *Tag {
-	return NewHeading1()
-}
-
-// NewH2 represents a H2 tag
-// Shortcut method exists: H2()
-func NewH2() *Tag {
-	return NewHeading2()
-}
-
-// NewH3 represents a H3 tag
-// Shortcut method exists: H3()
-func NewH3() *Tag {
-	return NewHeading3()
-}
-
-// NewH4 represents a H4 tag
-// Shortcut method exists: H4()
-func NewH4() *Tag {
-	return NewHeading4()
-}
-
-// NewH5 represents a H5 tag
-// Shortcut method exists: H5()
-func NewH5() *Tag {
-	return NewHeading5()
-}
-
-// NewH6 represents a H6 tag
-// Shortcut method exists: H6()
-func NewH6() *Tag {
-	return NewHeading6()
-}
-
 // NewHR creates represents a HR tags
 // Shortcut method exists: HR()
 func NewHR() *Tag {
@@ -197,9 +241,21 @@ func NewI() *Tag {
 	}
 }
 
+// NewIframe represents an IFRAME tag
+// Shortcut method exists: Iframe()
+func NewIframe() *Tag {
+	return &Tag{TagName: "iframe"}
+}
+
 // NewImage represents a IMG tag
 // Shortcut method exists: Image()
 func NewImage() *Tag {
+	return &Tag{TagName: "img"}
+}
+
+// NewImg represents an IMG tag
+// Shortcut method exists: Img()
+func NewImg() *Tag {
 	return &Tag{TagName: "img"}
 }
 
@@ -479,10 +535,6 @@ func NewVideo() *Tag {
 	return NewTag("video")
 }
 
-func NewAbbr() *Tag {
-	return NewTag("abbr")
-}
-
 // NewWebpage returns a webpage instance
 // Shortcut method exists: Webpage()
 func NewWebpage() *HtmlWebpage {
@@ -499,54 +551,6 @@ func NewWebpage() *HtmlWebpage {
 // Shortcut method exists: Wrap()
 func NewWrap() *Tag {
 	return &Tag{TagName: ""}
-}
-
-// NewAddress represents an ADDRESS tag
-// Shortcut method exists: Address()
-func NewAddress() *Tag {
-	return &Tag{TagName: "address"}
-}
-
-// NewB represents a B tag
-// Shortcut method exists: B()
-func NewB() *Tag {
-	return &Tag{TagName: "b"}
-}
-
-// NewBold represents a B tag
-// Shortcut method exists: Bold()
-func NewBold() *Tag {
-	return &Tag{TagName: "b"}
-}
-
-// NewCanvas represents a CANVAS tag
-// Shortcut method exists: Canvas()
-func NewCanvas() *Tag {
-	return &Tag{TagName: "canvas"}
-}
-
-// NewDialog represents a DIALOG tag
-// Shortcut method exists: Dialog()
-func NewDialog() *Tag {
-	return &Tag{TagName: "dialog"}
-}
-
-// NewFieldSet represents a FIELDSET tag
-// Shortcut method exists: FieldSet()
-func NewFieldSet() *Tag {
-	return &Tag{TagName: "fieldset"}
-}
-
-// NewIframe represents an IFRAME tag
-// Shortcut method exists: Iframe()
-func NewIframe() *Tag {
-	return &Tag{TagName: "iframe"}
-}
-
-// NewImg represents an IMG tag
-// Shortcut method exists: Img()
-func NewImg() *Tag {
-	return &Tag{TagName: "img"}
 }
 
 func TestTagPRE(t *testing.T) {
