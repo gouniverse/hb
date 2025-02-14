@@ -349,12 +349,6 @@ func Sup(children ...TagInterface) *Tag {
 	return NewSup().Children(children)
 }
 
-// Swal generates a script with a Sweetalert2 dialog
-// Note! you must include the library yourself (i.e. CDN)
-func Swal(options SwalOptions) TagInterface {
-	return NewSwal(options)
-}
-
 // Template is a shortcut to create a new TEMPLATE tag
 func Template() *Tag {
 	return NewTemplate()

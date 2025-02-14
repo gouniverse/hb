@@ -432,13 +432,6 @@ func NewSup() *Tag {
 	return &Tag{TagName: "sup"}
 }
 
-// NewSwal generates a script with a Sweetalert2 dialog
-// Note! you must include the library yourself (i.e. CDN)
-// Shortcut method exists: Swal()
-func NewSwal(options SwalOptions) *Tag {
-	return NewScript(swalToJS(options))
-}
-
 // NewTable represents a TABLE tag
 // Shortcut method exists: Table()
 func NewTable() *Tag {

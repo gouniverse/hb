@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+// SwalOptions represents configuration options for SweetAlert2 dialogs
+// See https://sweetalert2.github.io/ for full documentation
 type SwalOptions struct {
 	Background         string `json:"background,omitempty"`
 	Backdrop           string `json:"backdrop,omitempty"`
@@ -43,7 +45,13 @@ type SwalOptions struct {
 	RedirectSeconds int    `json:"-"`
 }
 
+// swalToJS converts SwalOptions to JavaScript code for SweetAlert2
+// Returns empty string if options cannot be marshaled to JSON
 func swalToJS(options SwalOptions) string {
+	// Validate required fields
+	if options.Title == "" && options.Text == "" && options.HTML == "" {
+		return ""
+	}
 	// By default, show the cancel button if text is specified
 	if options.CancelButtonText != "" && !options.ShowCancelButton {
 		options.ShowCancelButton = true
@@ -88,4 +96,61 @@ func swalToJS(options SwalOptions) string {
 	}
 
 	return swal
+}
+
+// Swal generates a script with a SweetAlert2 dialog
+// Note! you must include the library yourself (i.e. CDN)
+func Swal(options SwalOptions) TagInterface {
+	return NewSwal(options)
+}
+
+// SwalSuccess creates a SweetAlert2 success dialog
+func SwalSuccess(options SwalOptions) TagInterface {
+	return NewSwalSuccess(options)
+}
+
+// SwalError creates a SweetAlert2 error dialog
+func SwalError(options SwalOptions) TagInterface {
+	return NewSwalError(options)
+}
+
+// SwalWarning creates a SweetAlert2 warning dialog
+func SwalWarning(options SwalOptions) TagInterface {
+	return NewSwalWarning(options)
+}
+
+// SwalInfo creates a SweetAlert2 info dialog
+func SwalInfo(options SwalOptions) TagInterface {
+	return NewSwalInfo(options)
+}
+
+// NewSwal generates a script with a Sweetalert2 dialog
+// Note! you must include the library yourself (i.e. CDN)
+// Shortcut method exists: Swal()
+func NewSwal(options SwalOptions) TagInterface {
+	return NewScript(swalToJS(options))
+}
+
+// NewSwalSuccess creates a SweetAlert2 success dialog with the provided options
+func NewSwalSuccess(options SwalOptions) TagInterface {
+	options.Icon = "success"
+	return NewScript(swalToJS(options))
+}
+
+// NewSwalError creates a SweetAlert2 error dialog with the provided options
+func NewSwalError(options SwalOptions) TagInterface {
+	options.Icon = "error"
+	return NewScript(swalToJS(options))
+}
+
+// NewSwalWarning creates a SweetAlert2 warning dialog with the provided options
+func NewSwalWarning(options SwalOptions) TagInterface {
+	options.Icon = "warning"
+	return NewScript(swalToJS(options))
+}
+
+// NewSwalInfo creates a SweetAlert2 info dialog with the provided options
+func NewSwalInfo(options SwalOptions) TagInterface {
+	options.Icon = "info"
+	return NewScript(swalToJS(options))
 }
