@@ -1,6 +1,7 @@
 package hb
 
 import (
+	"slices"
 	"strings"
 )
 
@@ -38,24 +39,13 @@ func (w *HtmlWebpage) ToHTML() string {
 	metaCharset := NewMeta().Attr("charset", w.charset)
 	w.head.AddChild(metaCharset)
 
-	hasViewport := false
-	for _, meta := range w.metas {
-		if t, ok := meta.(*Tag); ok {
-			if t.TagAttributes["name"] == "viewport" {
-				hasViewport = true
-				break
-			}
-		}
-	}
-
-	if !hasViewport {
+	if !w.hasViewportMeta() {
 		metaViewport := NewMeta().Attr("name", "viewport").Attr("content", "width=device-width, initial-scale=1.0")
 		w.head.AddChild(metaViewport)
 	}
 
 	if w.title != "" {
-		titleTag := &Tag{TagName: "title"}
-		titleTag.AddChild(NewHTML(w.title))
+		titleTag := (&Tag{TagName: "title"}).AddChild(NewHTML(w.title))
 		w.head.AddChild(titleTag)
 	}
 
@@ -187,6 +177,13 @@ func (w *HtmlWebpage) SetLanguage(language string) *HtmlWebpage {
 func (w *HtmlWebpage) SetTitle(title string) *HtmlWebpage {
 	w.title = title
 	return w
+}
+
+func (w *HtmlWebpage) hasViewportMeta() bool {
+	return slices.ContainsFunc(w.metas, func(meta TagInterface) bool {
+		t, ok := meta.(*Tag)
+		return ok && t.HasAttributeValue("name", "viewport")
+	})
 }
 
 // Attr shortcut for SetAttribute
