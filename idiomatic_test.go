@@ -673,3 +673,16 @@ func TestNewVideo(t *testing.T) {
 		t.Error("Does not contain '</video>', Output:" + html)
 	}
 }
+
+func TestNewA(t *testing.T) {
+	a := NewA()
+	html := a.ToHTML()
+
+	if strings.Contains(html, "<a>") == false {
+		t.Error("Does not contain '<a>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</a>") == false {
+		t.Error("Does not contain '</a>', Output:" + html)
+	}
+}
