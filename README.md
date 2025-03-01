@@ -1,4 +1,4 @@
-<img src="screnshots/logo.jpg" width="100%" />
+<img src="screenshots/logo.jpg" width="100%" />
 
 # HTML Builder <a href="https://gitpod.io/#https://github.com/gouniverse/hb" style="float:right:"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod" loading="lazy"></a>
 
@@ -465,6 +465,8 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2025.02.22 - Updated README.md with latest changes.
 
 2025.01.19 - Added additional Sweetalert options to redirect after delay
 

@@ -1,0 +1,10 @@
+{
+    "files_to_read": [
+        "memory-bank/projectbrief.md",
+        "memory-bank/techContext.md",
+        "memory-bank/systemPatterns.md",
+        "memory-bank/activeContext.md",
+        "memory-bank/productContext.md",
+        "memory-bank/progress.md"
+    ]
+} 
