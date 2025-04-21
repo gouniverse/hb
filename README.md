@@ -42,7 +42,7 @@ import . "github.com/gouniverse/hb"
 
 // or, regular import, and type hb.* before using it each time
 // import "github.com/gouniverse/hb"
-	
+
 // 1. Create a container div with a "Hello world" message inside
 container := Div().Class("container").Text("Hello world")
 
@@ -68,7 +68,7 @@ go get -u github.com/gouniverse/hb
 - <b>Address()</b> - shortcut for &lt;address> tag
 - <b>Article()</b> - shortcut for &lt;article> tag
 - <b>Aside()</b> - shortcut for &lt;aside> tag
-- <b>BR()</b> - shortcut for &lt;br> tag
+- <b>BR()</b> / <b>Br()</b> - shortcut for &lt;br> tag
 - <b>Button()</b> - shortcut for &lt;button> tag
 - <b>Caption()</b> - shortcut for &lt;caption> tag
 - <b>Code()</b> - shortcut for &lt;code> tag
@@ -83,15 +83,15 @@ go get -u github.com/gouniverse/hb
 - <b>Heading5()</b> - shortcut for &lt;h5> tag
 - <b>Heading6()</b> - shortcut for &lt;h6> tag
 - <b>Hyperlink()</b> - shortcut for &lt;a> tag
-- <b>HR()</b> - shortcut for &lt;hr> tag
+- <b>HR()</b> / <b>Hr()</b> - shortcut for &lt;hr> tag
 - <b>HTML(html string)</b> - creates empty tag with the HTML content
 - <b>Image()</b> - shortcut for &lt;img> tag
 - <b>Input()</b> - shortcut for &lt;input> tag
-- <b>LI()</b> - shortcut for &lt;li> tag
+- <b>LI()</b> / <b>Li()</b> - shortcut for &lt;li> tag
 - <b>Label()</b> - shortcut for &lt;label> tag
 - <b>Nav()</b> - shortcut for &lt;nav> tag
 - <b>Navbar()</b> - shortcut for &lt;navbar> tag
-- <b>OL()</b> - shortcut for &lt;ol> tag
+- <b>OL()</b> / <b>Ol()</b> - shortcut for &lt;ol> tag
 - <b>Option()</b> - shortcut for &lt;option> tag
 - <b>Paragraph()</b> - shortcut for &lt;p> tag
 - <b>PRE()</b> - shortcut for &lt;pre> tag
@@ -106,15 +106,16 @@ go get -u github.com/gouniverse/hb
 - <b>Sup()</b> - shortcut for &lt;sup> tag
 - <b>NewTag(tagName string)</b> - for custom tags
 - <b>Table()</b> - shortcut for &lt;table> tag
-- <b>TBody()</b> - shortcut for &lt;tbody> tag
-- <b>TD()</b> - shortcut for &lt;td> tag
+- <b>Tbody()</b> / <b>TBody()</b> - shortcut for &lt;tbody> tag
+- <b>TD()</b> / <b>Td()</b> - shortcut for &lt;td> tag
 - <b>Template()</b> - shortcut for &lt;template> tag
 - <b>Text(text string)</b> - creates empty tag with the escaped text content
-- <b>TextArea()</b> - shortcut for &lt;textarea> tag
-- <b>TH()</b> - shortcut for &lt;th> tag
-- <b>Thead()</b> - shortcut for &lt;thead> tag
-- <b>TR()</b> - shortcut for &lt;tr> tag
-- <b>UL()</b> - shortcut for &lt;ul> tag
+- <b>TextArea()</b> / <b>Textarea()</b> - shortcut for &lt;textarea> tag
+- <b>TH()</b> / <b>Th()</b> - shortcut for &lt;th> tag
+- <b>Thead()</b> / <b>THead()</b> - shortcut for &lt;thead> tag
+- <b>Tfoot()</b> / <b>TFoot()</b> - shortcut for &lt;tfoot> tag
+- <b>TR()</b> / <b>Tr()</b> - shortcut for &lt;tr> tag
+- <b>UL()</b> / <b>Ul()</b> - shortcut for &lt;ul> tag
 - <b>Webpage()</b> - full HTML page withe head, body, meta, styles and scripts
 - <b>Wrap()</b> - convenience method to taglessly (without a root wrapping element) group elements together
 
@@ -126,7 +127,7 @@ Examples can be found on: https://golangui.com
 - <b>Aria(key, value string)</b> - shortcut for "aria-" attribute
 - <b>Attr(key, value string)</b> - shortcut for SetAttribute
 - <b>AttrIf(condition bool, key, value string)</b> - conditional setting of attribute
-- <b>AttrIfF(condition bool, key string, valueFunc func() string)</b> -  conditional setting of attribute using function
+- <b>AttrIfF(condition bool, key string, valueFunc func() string)</b> - conditional setting of attribute using function
 - <b>AttrIfElse(condition bool, key, valueIf string, valueElse string)</b> - conditional setting of attribute
 - <b>Attrs(map[string]string)</b> - shortcut for setting multiple attributes
 - <b>AttrsIf(condition bool, attrs map[string]string)</b> - conditional setting of attributes
@@ -140,11 +141,11 @@ Examples can be found on: https://golangui.com
 - <b>AddText(text string)</b> - adds escaped text content to the element
 - <b>Child(tag Tag)</b> - shortcut for AddChild
 - <b>ChildIf(condition bool, tag Tag)</b> - conditional adding of a child
-- <b>ChildIfF(condition bool, childFunc func() *Tag)</b> - conditional adding of a child using function
+- <b>ChildIfF(condition bool, childFunc func() \*Tag)</b> - conditional adding of a child using function
 - <b>ChildIfElse(condition bool, childIf Tag, childElse Tag)</b> - conditional adding of a child
 - <b>Children(children []Tag)</b> - shortcut for AddChildren
 - <b>ChildrenIf(condition bool, children []Tag)</b> - conditional adding of children
-- <b>ChildrenIfF(condition bool, childrenFunc func() []*Tag)</b> - conditional adding of children using function
+- <b>ChildrenIfF(condition bool, childrenFunc func() []\*Tag)</b> - conditional adding of children using function
 - <b>ChildrenIfElse(condition bool, childrenIf []Tag, childrenElse []Tag)</b> - conditional adding of a children
 - <b>Class(className string)</b> - shortcut for AddClass
 - <b>ClassIf(condition bool, className string)</b> - conditional adding of a class
@@ -203,10 +204,10 @@ Examples can be found on: https://golangui.com
 - <b>ToTags[T any](items []T, callback func(item T, index int) *Tag) []*Tag</b> - transforms a slice of anything to a slice of tags
 - If(condition bool, trueTag *Tag) *Tag
 - IfF(condition bool, trueFunc func() *Tag) *Tag
-- IfElse(condition bool, trueTag *Tag, falseTag *Tag) *Tag
-- IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag
-- Ternary(condition bool, trueTag *Tag, falseTag *Tag) *Tag
-- TernaryF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) *Tag
+- IfElse(condition bool, trueTag *Tag, falseTag *Tag) \*Tag
+- IfFElseF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) \*Tag
+- Ternary(condition bool, trueTag *Tag, falseTag *Tag) \*Tag
+- TernaryF(condition bool, trueFunc func() *Tag, falseFunc func() *Tag) \*Tag
 
 ## Tag HTMX Attributes
 
@@ -245,7 +246,8 @@ Alpine.js (https://alpinejs.dev/) is a great match for Golang, therefore here is
 Examples can be found on: https://golangui.com
 
 ## Webpage Methods
-- <b>AddChild(child *Tag)</b>
+
+- <b>AddChild(child \*Tag)</b>
 - <b>SetFavicon(favicon string)</b>
 - <b>SetTitle(title string)</b>
 - <b>AddScripts(scripts []string)</b>
@@ -258,14 +260,16 @@ Examples can be found on: https://golangui.com
 - <b>AddStyleURLs(styleURLs []string)</b>
 
 ## Border Layout Methods
+
 - <b>NewBorderLayout()</b> - shortcut to quickly create a border layout with top, bottom, left, right and center slots (see example below how to use it)
-- <b>AddTop(tag *Tag, alignHorizontal string, alignVertical string)</b>
-- <b>AddBottom(tag *Tag, alignHorizontal string, alignVertical string)</b>
-- <b>AddLeft(tag *Tag, alignHorizontal string, alignVertical string)</b>
-- <b>AddRight(tag *Tag, alignHorizontal string, alignVertical string)</b>
-- <b>AddCenter(tag *Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddTop(tag \*Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddBottom(tag \*Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddLeft(tag \*Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddRight(tag \*Tag, alignHorizontal string, alignVertical string)</b>
+- <b>AddCenter(tag \*Tag, alignHorizontal string, alignVertical string)</b>
 
 Usage example:
+
 ```go
 bl := NewBorderLayout()
 	bl.AddTop(NewSpan().Text("TOP"), BORDER_LAYOUT_ALIGN_CENTER, BORDER_LAYOUT_ALIGN_MIDDLE)
@@ -277,6 +281,7 @@ blHtml := bl.ToHTML()
 ```
 
 ## Swal
+
 - <b>NewSwal</b> - shortcut to quickly add Sweetalert 2 dialogs (note requires adding the Sweetalert JS library). See more at: https://sweetalert2.com/download
 
 Usage example in a form:
@@ -535,7 +540,6 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 2020.09.16 - Added shortcuts for &lt;nav>, &lt;navbar>, &lt;ol>, &lt;ul>, &lt;li> tags
 
 2020.06.16 - Initial commit
-
 
 ## Aternatives
 
