@@ -547,6 +547,14 @@ func (t *Tag) SrcIf(condition bool, src string) *Tag {
 	return t
 }
 
+// SrcIfElse sets the "src" attribute based on a condition
+func (t *Tag) SrcIfElse(condition bool, srcIf, srcElse string) *Tag {
+	if condition {
+		return t.Src(srcIf)
+	}
+	return t.Src(srcElse)
+}
+
 // Style shortcut for setting the "style" attribute
 func (t *Tag) Style(style string) *Tag {
 	return t.AddStyle(style)
@@ -582,6 +590,14 @@ func (t *Tag) TargetIf(condition bool, target string) *Tag {
 	}
 
 	return t
+}
+
+// TargetIfElse sets the "target" attribute based on a condition
+func (t *Tag) TargetIfElse(condition bool, targetIf, targetElse string) *Tag {
+	if condition {
+		return t.Target(targetIf)
+	}
+	return t.Target(targetElse)
 }
 
 // Text shortcut for AddText
@@ -621,6 +637,14 @@ func (t *Tag) TitleIf(condition bool, title string) *Tag {
 	return t
 }
 
+// TitleIfElse sets the "title" attribute based on a condition
+func (t *Tag) TitleIfElse(condition bool, titleIf, titleElse string) *Tag {
+	if condition {
+		return t.Title(titleIf)
+	}
+	return t.Title(titleElse)
+}
+
 // ToHTML returns HTML from Node
 func (t *Tag) ToHTML() string {
 	if t == nil {
@@ -655,6 +679,14 @@ func (t *Tag) TypeIf(condition bool, inputType string) *Tag {
 	return t
 }
 
+// TypeIfElse sets the "type" attribute based on a condition
+func (t *Tag) TypeIfElse(condition bool, typeIf, typeElse string) *Tag {
+	if condition {
+		return t.Type(typeIf)
+	}
+	return t.Type(typeElse)
+}
+
 // Value shortcut for setting the "value" attribute
 func (t *Tag) Value(value string) *Tag {
 	return t.SetAttribute("value", value)
@@ -667,6 +699,14 @@ func (t *Tag) ValueIf(condition bool, value string) *Tag {
 	}
 
 	return t
+}
+
+// ValueIfElse sets the "value" attribute based on a condition
+func (t *Tag) ValueIfElse(condition bool, valueIf, valueElse string) *Tag {
+	if condition {
+		return t.Value(valueIf)
+	}
+	return t.Value(valueElse)
 }
 
 func (t Tag) attrsToString() string {
