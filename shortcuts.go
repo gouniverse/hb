@@ -51,6 +51,11 @@ func BR() *Tag {
 	return NewBR()
 }
 
+// Br is a lowercase alias for BR
+func Br() *Tag {
+	return BR()
+}
+
 // Button is a shortcut to create a new BUTTON tag
 func Button(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
@@ -186,6 +191,11 @@ func HR() *Tag {
 	return NewHR()
 }
 
+// Hr is a lowercase alias for HR
+func Hr() *Tag {
+	return HR()
+}
+
 // Hyperlink is a shortcut to create a new A tag
 func Hyperlink(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
@@ -230,6 +240,11 @@ func LI(children ...TagInterface) *Tag {
 	return NewLI().Children(children)
 }
 
+// Li is a lowercase alias for LI
+func Li(children ...TagInterface) *Tag {
+	return LI(children...)
+}
+
 // Link is a shortcut to create a new LINK tag
 func Link() *Tag {
 	return NewLink()
@@ -262,6 +277,11 @@ func Navbar(children ...TagInterface) *Tag {
 func OL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewOL().Children(children)
+}
+
+// Ol is a lowercase alias for OL
+func Ol(children ...TagInterface) *Tag {
+	return OL(children...)
 }
 
 // Option is a shortcut to create a new OPTION tag
@@ -370,6 +390,11 @@ func TextArea() *Tag {
 	return NewTextArea()
 }
 
+// Textarea is a lowercase alias for TextArea
+func Textarea() *Tag {
+	return TextArea()
+}
+
 // Table is a shortcut to create a new TABLE tag
 func Table(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
@@ -382,10 +407,20 @@ func Tbody(children ...TagInterface) *Tag {
 	return NewTbody().Children(children)
 }
 
+// TBody is an alternative capitalization alias for Tbody
+func TBody(children ...TagInterface) *Tag {
+	return Tbody(children...)
+}
+
 // TD is a shortcut to create a new TD tag
 func TD(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTD().Children(children)
+}
+
+// Td is a lowercase alias for TD
+func Td(children ...TagInterface) *Tag {
+	return TD(children...)
 }
 
 // TH is a shortcut to create a new TH tag
@@ -394,10 +429,20 @@ func TH(children ...TagInterface) *Tag {
 	return NewTH().Children(children)
 }
 
+// Th is a lowercase alias for TH
+func Th(children ...TagInterface) *Tag {
+	return TH(children...)
+}
+
 // Thead is a shortcut to create a new THEAD tag
 func Thead(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewThead().Children(children)
+}
+
+// THead is an alternative capitalization alias for Thead
+func THead(children ...TagInterface) *Tag {
+	return Thead(children...)
 }
 
 // Tfoot is a shortcut to create a new TFOOT tag
@@ -406,10 +451,20 @@ func Tfoot(children ...TagInterface) *Tag {
 	return NewTfoot().Children(children)
 }
 
+// TFoot is an alternative capitalization alias for Tfoot
+func TFoot(children ...TagInterface) *Tag {
+	return Tfoot(children...)
+}
+
 // TR is a shortcut to create a new TR tag
 func TR(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewTR().Children(children)
+}
+
+// Tr is a lowercase alias for TR
+func Tr(children ...TagInterface) *Tag {
+	return TR(children...)
 }
 
 // Title is a shortcut to create a new title tag
@@ -422,6 +477,11 @@ func Title(children ...TagInterface) *Tag {
 func UL(children ...TagInterface) *Tag {
 	children = append([]TagInterface{}, children...)
 	return NewUL().Children(children)
+}
+
+// Ul is a lowercase alias for UL
+func Ul(children ...TagInterface) *Tag {
+	return UL(children...)
 }
 
 // Webpage is a shortcut to create a new HTML page
