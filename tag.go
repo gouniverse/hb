@@ -248,6 +248,15 @@ func (t *Tag) ClassIf(condition bool, className string) *Tag {
 	return t
 }
 
+// ClassIfF adds class name using function if a condition is met
+func (t *Tag) ClassIfF(condition bool, classNameFunc func() string) *Tag {
+	if condition {
+		return t.AddClass(classNameFunc())
+	}
+
+	return t
+}
+
 // ClassIfElse adds class name if a condition is met
 func (t *Tag) ClassIfElse(condition bool, classNameIf, classNameElse string) *Tag {
 	if condition {
@@ -330,6 +339,15 @@ func (t *Tag) HTML(html string) *Tag {
 func (t *Tag) HTMLIf(condition bool, html string) *Tag {
 	if condition {
 		return t.AddHTML(html)
+	}
+
+	return t
+}
+
+// HTMLIfF adds html using function if a condition is met
+func (t *Tag) HTMLIfF(condition bool, htmlFunc func() string) *Tag {
+	if condition {
+		return t.AddHTML(htmlFunc())
 	}
 
 	return t
@@ -547,6 +565,15 @@ func (t *Tag) SrcIf(condition bool, src string) *Tag {
 	return t
 }
 
+// SrcIfF sets the "src" attribute using function if a condition is met
+func (t *Tag) SrcIfF(condition bool, srcFunc func() string) *Tag {
+	if condition {
+		return t.Src(srcFunc())
+	}
+
+	return t
+}
+
 // SrcIfElse sets the "src" attribute based on a condition
 func (t *Tag) SrcIfElse(condition bool, srcIf, srcElse string) *Tag {
 	if condition {
@@ -564,6 +591,15 @@ func (t *Tag) Style(style string) *Tag {
 func (t *Tag) StyleIf(condition bool, style string) *Tag {
 	if condition {
 		return t.AddStyle(style)
+	}
+
+	return t
+}
+
+// StyleIfF adds style using function if a condition is met
+func (t *Tag) StyleIfF(condition bool, styleFunc func() string) *Tag {
+	if condition {
+		return t.AddStyle(styleFunc())
 	}
 
 	return t
@@ -609,6 +645,15 @@ func (t *Tag) Text(text string) *Tag {
 func (t *Tag) TextIf(condition bool, text string) *Tag {
 	if condition {
 		return t.AddText(text)
+	}
+
+	return t
+}
+
+// TextIfF adds escaped text using function if a condition is met
+func (t *Tag) TextIfF(condition bool, textFunc func() string) *Tag {
+	if condition {
+		return t.AddText(textFunc())
 	}
 
 	return t
