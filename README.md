@@ -98,6 +98,7 @@ go get -u github.com/gouniverse/hb
 - <b>Script()</b> - shortcut for &lt;script> tag
 - <b>ScriptURL()</b> - shortcut for &lt;script src="{SRC}"> tag
 - <b>Select()</b> - shortcut for &lt;select> tag
+- <b>Small()</b> - shortcut for &lt;small> tag
 - <b>Span()</b> - shortcut for &lt;span> tag
 - <b>Style()</b> - shortcut for &lt;style> tag
 - <b>StyleURL()</b> - shortcut for &lt;link> tag
@@ -470,6 +471,8 @@ webpage.Meta(hb.Meta().Attr("http-equiv", "refresh").Attr("content", "2; url = h
 - https://github.com/goradd/html5tag - option to have string or stream
 
 ## Changelog
+
+2025.07.02 - Added Small() shortcut
 
 2025.02.22 - Updated README.md with latest changes.
 

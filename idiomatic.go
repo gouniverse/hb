@@ -387,6 +387,12 @@ func NewSelect() *Tag {
 	return &Tag{TagName: "select"}
 }
 
+// NewSmall represents a SMALL tag
+// Shortcut method exists: Small()
+func NewSmall() *Tag {
+	return &Tag{TagName: "small"}
+}
+
 // NewSpan represents a SPAN tag
 // Shortcut method exists: Span()
 func NewSpan() *Tag {

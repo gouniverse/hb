@@ -194,6 +194,19 @@ func TestNewScriptURL(t *testing.T) {
 	}
 }
 
+func TestNewSmall(t *testing.T) {
+	small := NewSmall()
+	html := small.ToHTML()
+
+	if strings.Contains(html, "<small>") == false {
+		t.Error("Does not contain '<small>', Output:" + html)
+	}
+
+	if strings.Contains(html, "</small>") == false {
+		t.Error("Does not contain '</small>', Output:" + html)
+	}
+}
+
 func TestNewSpan(t *testing.T) {
 	span := NewSpan()
 	html := span.ToHTML()

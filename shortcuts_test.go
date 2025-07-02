@@ -644,6 +644,18 @@ func TestSelect(t *testing.T) {
 	}
 }
 
+func TestSmall(t *testing.T) {
+	s := Small()
+	html := s.ToHTML()
+
+	if strings.Contains(html, "<small>") == false {
+		t.Error("Does not contain '<small>', Output:" + html)
+	}
+	if strings.Contains(html, "</small>") == false {
+		t.Error("Does not contain '</small>', Output:" + html)
+	}
+}
+
 func TestSpan(t *testing.T) {
 	s := Span()
 	html := s.ToHTML()

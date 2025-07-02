@@ -336,6 +336,12 @@ func Select(children ...TagInterface) *Tag {
 	return NewSelect().Children(children)
 }
 
+// Small is a shortcut to create a new SMALL tag
+func Small(children ...TagInterface) *Tag {
+	children = slices.Clone(children)
+	return NewSmall().Children(children)
+}
+
 // Span is a shortcut to create a new SPAN tag
 func Span(children ...TagInterface) *Tag {
 	children = slices.Clone(children)
